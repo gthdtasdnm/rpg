@@ -1,0 +1,42 @@
+{
+  "id": "gerald_intro",
+  "startNode": "start",
+  "startRules": [
+    { "requiresFlag": "quest_completed_quest_first_herbs", "node": "thanks" },
+    { "requiresFlag": "quest_ready_quest_first_herbs", "node": "turn_in" },
+    { "requiresFlag": "quest_started_quest_first_herbs", "node": "waiting" }
+  ],
+  "nodes": {
+    "start": {
+      "text": "Hallo Fremder. Kannst du mir helfen?",
+      "choices": [
+        { "text": "Klar, was brauchst du?", "next": "explain_quest" },
+        { "text": "Keine Zeit.", "next": null }
+      ]
+    },
+    "explain_quest": {
+      "text": "Ich brauche 3 rote Kräuter für eine Medizin.",
+      "choices": [
+        { "text": "Ich kümmere mich darum.", "next": null, "startQuest": "quest_first_herbs" }
+      ]
+    },
+    "waiting": {
+      "text": "Hast du die roten Kräuter schon gefunden?",
+      "choices": [
+        { "text": "Noch nicht.", "next": null }
+      ]
+    },
+    "turn_in": {
+      "text": "Hast du die Kräuter gefunden?",
+      "choices": [
+        { "text": "Hier hast du deine Kräuter.", "next": null, "completeQuest": "quest_first_herbs" }
+      ]
+    },
+    "thanks": {
+      "text": "Danke nochmal für die Kräuter, das hat mir sehr geholfen!",
+      "choices": [
+        { "text": "Gern geschehen.", "next": null }
+      ]
+    }
+  }
+}

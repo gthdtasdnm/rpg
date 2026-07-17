@@ -1,0 +1,8 @@
+{
+  "id": "npc_gerald",
+  "name": "Gerald",
+  "maxHealth": 30,
+  "strength": 5,
+  "dexterity": 5,
+  "dialogueId": "gerald_intro"
+}

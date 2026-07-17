@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bjwik5udwwm2u"]
+
+[ext_resource type="Script" uid="uid://ct38ojq55ykds" path="res://scripts/Characters/Player.cs" id="1_player"]
+[ext_resource type="Script" uid="uid://b7345nacgt64b" path="res://scripts/Characters/CharacterStats.cs" id="2_stats"]
+[ext_resource type="Script" uid="uid://cemxiuflhgnca" path="res://scripts/Interaction/Interactor.cs" id="3_interactor"]
+[ext_resource type="Script" uid="uid://c4cmxj82kwwkj" path="res://scripts/Items/Inventory.cs" id="4_inventory"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eibnf"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_eibnf"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1945379676]
+script = ExtResource("1_player")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=755042226]
+shape = SubResource("CapsuleShape3D_eibnf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=554229377]
+mesh = SubResource("CapsuleMesh_eibnf")
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=117565701]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.40439403, 0)
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1699323703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, 0.4, 3)
+
+[node name="Interactor" type="RayCast3D" parent="CameraPivot/Camera3D" unique_id=576948668]
+target_position = Vector3(0, 0, -6)
+script = ExtResource("3_interactor")
+
+[node name="Stats" type="Node" parent="." unique_id=2026175161]
+script = ExtResource("2_stats")
+CharacterId = "player"
+
+[node name="Inventory" type="Node" parent="." unique_id=960527433]
+script = ExtResource("4_inventory")

@@ -1,0 +1,7 @@
+{
+  "id": "player",
+  "name": "Held",
+  "maxHealth": 100,
+  "strength": 10,
+  "dexterity": 10
+}

@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d0enyd7efgdve"]
+
+[ext_resource type="PackedScene" uid="uid://bjwik5udwwm2u" path="res://Characters/Player.tscn" id="1_2x3ou"]
+[ext_resource type="PackedScene" uid="uid://r6s136j275aa" path="res://Maps/ground.tscn" id="3_ground"]
+[ext_resource type="PackedScene" path="res://Maps/Environment.tscn" id="4_env"]
+[ext_resource type="PackedScene" path="res://Objects/Crate.tscn" id="5_crate"]
+[ext_resource type="PackedScene" path="res://Objects/Rock.tscn" id="6_rock"]
+[ext_resource type="PackedScene" path="res://UI/Hud.tscn" id="7_hud"]
+[ext_resource type="PackedScene" path="res://Characters/Npc.tscn" id="8_npc"]
+[ext_resource type="PackedScene" path="res://Objects/Items/ItemPickup.tscn" id="9_pickup"]
+[ext_resource type="PackedScene" path="res://Objects/Triggers/LocationTrigger.tscn" id="10_trigger"]
+
+[node name="Node" type="Node" unique_id=861455901]
+
+[node name="Environment" parent="." instance=ExtResource("4_env")]
+
+[node name="Ground" parent="." instance=ExtResource("3_ground")]
+
+[node name="Player" parent="." unique_id=1945379676 instance=ExtResource("1_2x3ou")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1776739, 0)
+
+[node name="Crate" parent="." instance=ExtResource("5_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -4)
+
+[node name="Crate2" parent="." instance=ExtResource("5_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -3.2)
+
+[node name="Rock" parent="." instance=ExtResource("6_rock")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.4, -3)
+
+[node name="Rock2" parent="." instance=ExtResource("6_rock")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.4, -5.5)
+
+[node name="Hud" parent="." instance=ExtResource("7_hud")]
+
+[node name="Gerald" parent="." instance=ExtResource("8_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.1776739, -8)
+CharacterId = "npc_gerald"
+
+[node name="Stats" parent="Gerald" index="2"]
+CharacterId = "npc_gerald"
+
+[node name="Herb1" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+ItemId = "herb_red"
+
+[node name="Herb2" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+ItemId = "herb_red"
+
+[node name="Herb3" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+ItemId = "herb_red"
+
+[node name="GeraldsLichtungTrigger" parent="." instance=ExtResource("10_trigger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -8)
+FlagId = "entered_geralds_lichtung"

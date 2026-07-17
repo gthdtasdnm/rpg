@@ -1,0 +1,9 @@
+{
+  "id": "quest_first_herbs",
+  "title": "Kräuter für Gerald",
+  "giverNpcId": "npc_gerald",
+  "objectives": [
+    { "type": "collect_item", "itemId": "herb_red", "amount": 3 }
+  ],
+  "rewardItemIds": ["sword_rusty"]
+}

@@ -1,0 +1,21 @@
+# Git Merkzettel – Basis-Workflow
+
+git status                          # Änderungen anzeigen
+git add .                           # Alle Änderungen vormerken
+git commit -m "Beschreibung"        # Commit erstellen
+git push                            # Zu GitHub hochladen
+
+# Typischer Ablauf nach einer Session:
+git add .
+git commit -m "Kurze Beschreibung was geändert wurde"
+git push
+
+# Nützlich zum Nachschauen:
+git diff                            # Änderungen vor dem Commit ansehen
+git log --oneline                   # Commit-Historie ansehen
+
+# Aufräumen (Arch/pacman, falls gebraucht):
+sudo pacman -Syu                    # System updaten
+pacman -Qdt                         # Verwaiste Pakete anzeigen
+sudo pacman -Rns $(pacman -Qdtq)    # Verwaiste Pakete entfernen
+sudo pacman -Rns paketname          # Paket + Abhängigkeiten entfernen
