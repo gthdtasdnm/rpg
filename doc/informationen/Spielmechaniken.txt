@@ -1,0 +1,12 @@
+Waffen: Es gibt Einhand Schwerter, Zweihand Schwerter, Stumpfwaffen wie Keulen, Morgenstern, Äxte, Bogen und schild.
+Schwerter haben schneid schaden, Stumpfwaffen Stoß schaden, Äxte eine mischung aus beidem. Je nach gegner braucht man was anderes.
+Schild ist zum verteildigen, man kann auch ohne schild blocken aber man wird dann einfacher gestaggert und man bekommt trotzdem noch schaden.
+
+magie:
+Alte Magie, kampf zauber, feuerbälle, eis, energie bzw arkane magie. blutmagie. man muss mehr blut bezahlen aber der schaden wird als leben hinzuaddiert, damit man leben bekommen kann, wenn man es schlau macht. zb ein fluch siegel der zb die hälfte des lebens als kosten hat aber jede sekunde von jedem gegner im siegel auf dem boden einen festen betrag bekommt.
+
+göttliche magie oder gebete. man muss dafür stehen bleiben, zb heilen, und buffs, mehr rüstung oder so. oder auch angriffe speziell gegen dämonen.
+
+
+punkte die mir wichtig sind:
+unendlich kapazität, kampfsystem wie in gothic, also timing und kombinationen.
