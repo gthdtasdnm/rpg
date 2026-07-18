@@ -5,3 +5,5 @@ Zeit, Ort, Grundstimmung der Welt. Wie fühlt sich die Welt an (düster, hoffnun
 trotz allem)? Was ist der Zeitrahmen der Handlung (wie lange nach Errichtung der Barriere)?
 Ausgangsbasis: doc/informationen/Grundidee.txt
 -->
+
+Mittelalter, trist, jeder ist angespannt und will nur überleben. hoffnungslos, düster, gothic- Barriere gibt es seit 20 Jahren

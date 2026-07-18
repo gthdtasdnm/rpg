@@ -34,7 +34,7 @@ Grobe Sammlung an Themen, die für das Spiel noch durchdacht und umgesetzt werde
 - [x] Speichersystem (ein Slot, `user://savegame.json`)
 
 ## Story
-- [ ] Grundidee/Setting überlegen
+- [x] Grundidee/Setting überlegen
 - [ ] Hauptkonflikt / roter Faden
 - [ ] Grober Handlungsbogen
 
