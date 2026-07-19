@@ -1,0 +1,97 @@
+[gd_scene format=4 uid="uid://cgsainqpfoqxm"]
+
+[ext_resource type="Texture2D" uid="uid://dcdbdmqfdbj5q" path="res://Models/Various_Forest_Assets_Pack/textures/wood_0027_color_1kV2_27.png" id="1_7go5f"]
+[ext_resource type="Texture2D" uid="uid://b63gqg87tvkpo" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_COLOR0000_29.png" id="2_2c08n"]
+[ext_resource type="Texture2D" uid="uid://bysgia3umsejp" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_NORMAL0000_28.png" id="3_dpkhy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7u1l"]
+resource_name = "BirchBark"
+cull_mode = 2
+albedo_texture = ExtResource("1_7go5f")
+roughness = 0.88
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1lvgw"]
+_surfaces = [{
+"aabb": AABB(-0.198687, -0.0489453, -0.440086, 0.36599132, 2.53306, 0.58867216),
+"format": 34359742465,
+"index_count": 141,
+"index_data": PackedByteArray("AAABAAIAAQADAAQABQAGAAcACAAJAAoACwAMAA0ADgAPABAAEAAPAA8AEQANABIACwATAAkAFAAHABUABQAWAAMAFwACABgAGQAaABsAGgAcAB0AHgAdAAAAHQABAB0AHwAaAB8AGAAgABcAIQAWACIAFQAjABQAJAATACUAEgAmABEAEQACAAIAGQAAACcAHgAeABkAGQAnABsAGwAmACYAEAAlAA4AJAAMACMACgAiAAgAIQAGACAABAAfAAEAAQAoACgAKQAqACsALAAtAC4ALQAvADAAMQAyADMALAAuAC4AKQApACsANAA1ADYANwAoADcAKgAyACwALAArACsANQAtADUAMAA3ADIAMgAnACcAHgAbABwA"),
+"name": "BirchBark",
+"primitive": 4,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 56,
+"vertex_data": PackedByteArray("/d0YPUPLFb0WaSa8+jH8PfCRjT54tc28VJiyPYCjkj5G44c8qNAJPrdqGj8ue8i601ErPoXIGT92Nx69XW/3PSsZbT8b7wm7G6UYPl27bT/NuQ29gXBePfjHnj8wpMa8342fPSpqnz+kZlS9uasqvM/axj9e0/y8gOkIPI2lxz/td1u9DNyVveYi7j/vcAk9xCFxvaXt7j8VLYM8ETEYvvOMCkAFBNU9wGMNvgzeCkD7Gbs9mAhDvjDTHkD5Jhg+akI8vr37HkAk6A8+m3RLvjDTHkCwFRE+kI4lvvOMCkCfor49vte6vVr67T/XBZY8x6wHvbaJxj90sE+9Ry3hPDr9nT8TREa9/OO1PcfUaz9FePq8OdXHPekMGz9AjAy9/AQ8Patwlj70A6i8Ra4PuzMUvLzcChQ9GkNCvTmwQby5n6y7ZQI4vVI3xrwaDLa7z5YEvNPcGr23zEm95KgBvHFa0LykZlS9SJ0OPd56SL0WaSa8JJynPRxfkT5Zzn696TwFPrdqGj/vP5K9GGHvPfl2bD+5lIC94UFRPd92nj+KFZu99y9ovHRUxz+TyJW9lIydvaXt7j93woo6P8EavgzeCkDOIaQ9bK5Evr37HkA+Igk+mR0nu7S5EL17ngo9vpRpPBtuFkAVYd6+qw0DPKeWFkCautu+2RKLO/CjBUCQeJm+n9/Cuwn1BUDCDZW+/6M9PLGX6D9Rnz6+72Ubu3Bi6T8SQTK+A16oO1sDxz8YOVO9uNJNvDIfyD+i+BW9m0aBvLGX6D8YNj++WIXzvOcrxz9J71e94H3wuvPM5z9XlEu++AhFvBAQxj/gl4q9tYkJOxtuFkB4rN6+TJ9/vDa4BUDzw5m+gOkIPI5FFkD0UuG+9Se3ux1nBUDALp6+")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_q3hlb"]
+resource_name = "Various Forest Assets Pack_mesh56"
+_surfaces = [{
+"aabb": AABB(-0.198687, -0.0489453, -0.440086, 0.36599132, 2.53306, 0.58867216),
+"attribute_data": PackedByteArray("1YDiPuD+j78Tbd08NNozv8Q/tz3M7zS/AWk7vkiGlr7hnne+9ICUvgWzpb7Qw+A9QUbCvrCm6D1PfbC+dGgBPzxPzL4xWAI/iW+KvmwLZT/FAqe+eAFmPyK2nL04TqM/8ZAKvo7Poz/KNH8+XvHSP7dMPz4qfNM/WbA1P2u0AEBixyc/WvAAQMSWQz/odgBA6PqePrpp0j/iEZO848yiP2+uW75gFWQ/ebCUvrd4AD+0Gom+cBPZPVng/r2ci5i+6GAaPhT/Nb/BUv4+vnaQv8sPDT+c7pC/yw8NP5zukL/C+Bo/pGmRv8L4Gj+kaZG/uOEoP4Lhkb+44Sg/guGRv2triT64Cji/9opXPg4IN7/SpYe98JCavvEOWb4QY9E9Gr1xvlYF/z74hyK+BBljPx3sJD2OS6I/74+9PhXi0T+6f1E/+ToAQMFS/j6+dpC/1YDiPuD+j7+waF8/E/7/P9812z7oY9E/Z7zIPTnKoT+169K9+CJiP0IZOr7aJf0+0/wfvqiyyT3J+wq8RJacvmLHJz9a8ABAWbA1P2u0AEAJhI2+K2SDP23tYL795YI/UtyxvkD+o7z/zpS+wInDvNWA4j7g/o+/wVL+Pr52kL+yl2++QBXjvMsPDT+c7pC/wKU1vkBQAb3C+Bo/pGmRv1jN970gsRC9uOEoP4Lhkb/ElkM/6HYAQCHnJr7QZ4I/un9RP/k6AEBd6tm9yeyBP7BoXz8T/v8/ua9MvZxugT8p96g80OZbP6MBrzyYH1w/5kmiPEkZXD/7Aqg8EFJcPw=="),
+"format": 34359742487,
+"index_count": 141,
+"index_data": PackedByteArray("AAABAAIAAQADAAQABQAGAAcACAAJAAoACwAMAA0ADgAPABAAEAAPAA8AEQANABIACwATAAkAFAAHABUABQAWAAMAFwACABgAGQAaABsAGgAcAB0AHgAdAB8AHQAgAB0AIQAaACEAGAAiABcAIwAWACQAFQAlABQAJgATACcAEgAoABEAEQACAAIAGQAAACkAKgAqABkAGQApABsAGwAoACgAKwAnACwAJgAtACUALgAkAC8AIwAwACIAMQAhACAAIAAyADIAMwA0ADUANgA3ADgANwA5ADoAOwA8AD0APgA/AD8AMwAzADUAQABBAEIAQwBEAEMARQA8AD4APgA1ADUAQQA3AEEAOgBDADwAPABGAEYARwBIAEkA"),
+"material": SubResource("StandardMaterial3D_x7u1l"),
+"name": "BirchBark",
+"primitive": 4,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 74,
+"vertex_data": PackedByteArray("/d0YPUPLFb0WaSa8+jH8PfCRjT54tc28VJiyPYCjkj5G44c8qNAJPrdqGj8ue8i601ErPoXIGT92Nx69XW/3PSsZbT8b7wm7G6UYPl27bT/NuQ29gXBePfjHnj8wpMa8342fPSpqnz+kZlS9uasqvM/axj9e0/y8gOkIPI2lxz/td1u9DNyVveYi7j/vcAk9xCFxvaXt7j8VLYM8ETEYvvOMCkAFBNU9wGMNvgzeCkD7Gbs9mAhDvjDTHkD5Jhg+akI8vr37HkAk6A8+m3RLvjDTHkCwFRE+kI4lvvOMCkCfor49vte6vVr67T/XBZY8x6wHvbaJxj90sE+9Ry3hPDr9nT8TREa9/OO1PcfUaz9FePq8OdXHPekMGz9AjAy9/AQ8Patwlj70A6i8Ra4PuzMUvLzcChQ9GkNCvTmwQby5n6y7ZQI4vVI3xrwaDLa7z5YEvNPcGr23zEm95KgBvHFa0LykZlS9SJ0OPd56SL0WaSa8/d0YPUPLFb0WaSa8+jH8PfCRjT54tc28JJynPRxfkT5Zzn696TwFPrdqGj/vP5K9GGHvPfl2bD+5lIC94UFRPd92nj+KFZu99y9ovHRUxz+TyJW9lIydvaXt7j93woo6P8EavgzeCkDOIaQ9bK5Evr37HkA+Igk+mR0nu7S5EL17ngo9SJ0OPd56SL0WaSa8akI8vr37HkAk6A8+wGMNvgzeCkD7Gbs9xCFxvaXt7j8VLYM8gOkIPI2lxz/td1u9342fPSpqnz+kZlS9G6UYPl27bT/NuQ2901ErPoXIGT92Nx69vpRpPBtuFkAVYd6+qw0DPKeWFkCautu+2RKLO/CjBUCQeJm+n9/Cuwn1BUDCDZW+/6M9PLGX6D9Rnz6+72Ubu3Bi6T8SQTK+A16oO1sDxz8YOVO9uNJNvDIfyD+i+BW9m0aBvLGX6D8YNj++WIXzvOcrxz9J71e94H3wuvPM5z9XlEu++AhFvBAQxj/gl4q9/6M9PLGX6D9Rnz6+A16oO1sDxz8YOVO9tYkJOxtuFkB4rN6+TJ9/vDa4BUDzw5m+gOkIPI5FFkD0UuG+9Se3ux1nBUDALp6+vpRpPBtuFkAVYd6+2RKLO/CjBUCQeJm+mR0nu7S5EL17ngo9SJ0OPd56SL0WaSa8ZQI4vVI3xrwaDLa7z5YEvNPcGr23zEm9q+eRYuGRVyAW6/9kSogkxB2LJYTiI9TNoIyCgpoakMeh+0xz3YjWw8CK6IRsC8a/PPE6lBuDrMaVhuKGlQ6PvBvqBJ76hKnHdIm0d+MMeL4G6kehe4uCw5eLK22PDpC/SucMn4yGbsJxiIZu/hJXxEXq65pvgQ7JwordchgeCMl17/yYlIPJzQsX/nGyKBv68BszbSclCPnrHIZpbiH9+U8WzWs1GBD9ChoXbPQLwfsAFTF0rQzw+mYOK4hXDu79MR0yl54J4v3lfsN3HbqgH9cQRonsQWmEzDN4UVOyeZepNv4K3hTjxAcLXw7iQpilj7sIOeQCzP6r55FiVJEwIhbr/2RSiH3DpwL4A/nw6bYAALwCT/wJw2IBgAOU6jXMcQNxBzjk/tDoCj/2peHU0XEVV/XR2h3TTBKQ8tnU49YkEHn1LNHq19F8I0hF+Z++j7sIOeQCzP517/yYc4WqyUXq65oahPjCSucMn0WIjr8G6kehBIuAxBvqBJ4lhgLGPPE6lGaFY8Kh+0xzg4iswUX5QH35ft7bln75q/MNtcsI++2AHnyx2AB9pKgZC/LJ//9GgEx/ndcaf2Sp2AmFxyz7I35Cfh7Xln75q7EJYsjrAPyFcdyNgH8E7Ii/JS6ACdmCAs/4McML1vQBdPvcwf//RoDSf4LWLPsjfrx9uNZWBTuKU+BmgbYDDoXt3jCAy9VAAZXyxchQ2F0AmvXSxkX5QH0if6DZCPvtgOZ82NbRfCNI7Os7sI+7CDnSw+DbzDN4UaWu9ZmpNv4KV+Ezsw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1lvgw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06bcv"]
+resource_name = "BirchBranchAtlas"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("2_2c08n")
+roughness = 0.9
+normal_enabled = true
+normal_texture = ExtResource("3_dpkhy")
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ukkpq"]
+_surfaces = [{
+"aabb": AABB(-2.04995, -0.214099, -2.65733, 3.7498527, 4.6113825, 4.821212),
+"format": 34359742465,
+"index_count": 130,
+"index_data": PackedByteArray("AAABAAIAAwADAAQABAAFAAYABgAHAAcACAAJAAoACgALAAsADAANAA0ADgAOAA8AEAARABEAEgASABMAFAAUABUAFQAWABcAGAAYABkAGQAaABsAGwAcABwAHQAeAB8AHwAgACAAIQAiACIAIwAjACQAJQAmACYAJwAnACgAKQApACoAKgArACwALQAtAC4ALgAvADAAMAAxADEAMgAzADQANAA1ADUANgA3ADcAOAA4ADkAOgA7ADsAPAA8AD0APgA+AD8APwBAAEEAQgBCAEMAQwBEAEUARQBGAEYARwBIAEkASQBKAEoASwBMAEwATQBNAE4ATwBQAFAAUQBRAFIAUwA="),
+"name": "BirchBranchAtlas",
+"primitive": 4,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("7I1tv7tDhz9XfZu/CUzcPledGUD7gL2/rW2KPMU8W7438q4+SunCPy0+qT4j7a6/U/7KvumrC0CfhN+/h5eBPgQYsT/qW0K/bqmCP4qD7T+6zNW/E6SdvjVyrD84E6o/s9OfPhBunD07dhu+atkSvxrTN0ACYsI+0ga3v8eAnj/qW0K/dWgav907JUBto5Y/kayJv/XoIkAbbpu9pJNgvus35D8TZkI+SunCP03s2j+pRWk+RYAbP28XSEDGz1U/WedOvKdszj5pNWm+E6SdvjVyrD+0qto/rwOwPxrTN0AVqDg/3g++PjKzBEDO0dU+h5eBPpQ0LEAey7M/9xx1v9/6zD89NaW/Yj4KPoMqRD+gEog+E6Sdvg1jUUA9NaW/rwOwPyjP9j9/6Yy/1m9ev0otM0C6zNW/CUzcPp9xQ0AWybO/It8FvqCkEkAf7C6/TRskvijP9j8Dg70/IQOVvw1jUUChM4M/h5eBPik1lT9Lepu+EmHkv9/6zD9ILem9zOBWvwEmOkDCztU/dWgavz7wG0Blsfw+/ULVvzKANUAv8C4/vKVuP+l4PEAf7C6/pJNgvmbMpz9ILem9NIj6Pta9hUBjgBs/nPhXP9H+DUDcFsw/xzR2P3pBgkBILem9cLw5P+hFbUBto5Y/5PJkPp9xQ0Brgps+ggrZvw6WIEDaXRu9vOinv9a9hUDiWcK+Yj4KPk3s2j8TZkI+gyc+Pel4PEDuXMK/rUb3vwHzakCACoi+qzNAvz69TEA7dhu+1m9evyXdf0BMq3y/bgTYPRrTN0CaYuQ/WedOvEtgAkBpNWm+hh2CvxmNi0DcFsw/YTIDwMSOJ0B+yBE/VbsDvz2KfUALfQpA/ULVv1Y3e0Ar764/gPchv5MBXUCrh18/yPGuPtO9tT/H8NC/xzR2P28XSEDUFMy/z89+vvjamT9rgps+apbZPxoGB0ATZkI+nPhXPyZDHkAUoAXANIj6Pm9KF0C1y1W/xCG/P+l4PECZMYO/bezJv907JUDdnhs9s9OfPtO9tT/KTek9sVmgvwHzakDhOMe/atkSv3IJvz8bMgPAHfDrv2KnYUCBO2m/nDuRv7geQUAbMgPAgPchv0otM0CBO2m/SunCP5Q0LEA5NCW/nPhXP4y2jEAEpDi/pJNgvt/6zD9pNWm+mM2SvauuWkChM4M/z7DGPz2KfUDQE0y/CUzcPvW1U0CIDAi/MGIMPxmNi0D/BQI49xx1vyZDHkCFPOm/WedOvGMNAEDdnhs9Yj4KPoeRdkDZfRvAxCG/P7hREEDH8NC/atkSv8RbWECyESrAkWlQP8RbWEDZfRvAGIybPW8XSED7gL2/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ur2l2"]
+resource_name = "Various Forest Assets Pack_mesh57"
+_surfaces = [{
+"aabb": AABB(-2.04995, -0.214099, -2.65733, 3.7498527, 4.6113825, 4.821212),
+"attribute_data": PackedByteArray("hueGP9Z8Ij9PpQ0/CwqfP0+lDT9k5I2+PzckvrrO4T4Txb08rEQJP5Eiuj6cpp4+lI3HPYRQAz6G54Y/1nwiP0+lDT9k5I2+T6UNPwsKnz8/NyS+us7hPhPFvTysRAk/lI3HPYRQAz6RIro+nKaePobnhj/WfCI/T6UNPwsKnz9PpQ0/ZOSNvj83JL66zuE+E8W9PKxECT+RIro+nKaePpSNxz2EUAM+hueGP9Z8Ij9PpQ0/ZOSNvk+lDT8LCp8/PzckvrrO4T4Txb08rEQJP5SNxz2EUAM+kSK6Ppymnj6G54Y/1nwiP0+lDT8LCp8/T6UNP2Tkjb4/NyS+us7hPhPFvTysRAk/kSK6Ppymnj6Ujcc9hFADPobnhj/WfCI/T6UNP2Tkjb5PpQ0/CwqfPz83JL66zuE+E8W9PKxECT+Ujcc9hFADPpEiuj6cpp4+hueGP9Z8Ij9PpQ0/CwqfP0+lDT9k5I2+PzckvrrO4T4Txb08rEQJP5Eiuj6cpp4+lI3HPYRQAz6G54Y/1nwiP0+lDT9k5I2+T6UNPwsKnz8/NyS+us7hPhPFvTysRAk/lI3HPYRQAz6RIro+nKaePobnhj/WfCI/T6UNPwsKnz9PpQ0/ZOSNvj83JL66zuE+E8W9PKxECT+RIro+nKaePpSNxz2EUAM+hueGP9Z8Ij9PpQ0/ZOSNvk+lDT8LCp8/PzckvrrO4T4Txb08rEQJP5SNxz2EUAM+kSK6Ppymnj6G54Y/1nwiP0+lDT8LCp8/T6UNP2Tkjb4/NyS+us7hPhPFvTysRAk/kSK6Ppymnj6Ujcc9hFADPobnhj/WfCI/T6UNP2Tkjb5PpQ0/CwqfPz83JL66zuE+E8W9PKxECT+Ujcc9hFADPpEiuj6cpp4+"),
+"format": 34359742487,
+"index_count": 130,
+"index_data": PackedByteArray("AAABAAIAAwADAAQABAAFAAYABgAHAAcACAAJAAoACgALAAsADAANAA0ADgAOAA8AEAARABEAEgASABMAFAAUABUAFQAWABcAGAAYABkAGQAaABsAGwAcABwAHQAeAB8AHwAgACAAIQAiACIAIwAjACQAJQAmACYAJwAnACgAKQApACoAKgArACwALQAtAC4ALgAvADAAMAAxADEAMgAzADQANAA1ADUANgA3ADcAOAA4ADkAOgA7ADsAPAA8AD0APgA+AD8APwBAAEEAQgBCAEMAQwBEAEUARQBGAEYARwBIAEkASQBKAEoASwBMAEwATQBNAE4ATwBQAFAAUQBRAFIAUwA="),
+"material": SubResource("StandardMaterial3D_06bcv"),
+"name": "BirchBranchAtlas",
+"primitive": 4,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("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")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ukkpq")
+
+[node name="DeciduousSapling2_33" type="Node3D" unique_id=1650528802]
+
+[node name="_gltfNode_88" type="MeshInstance3D" parent="." unique_id=464229797]
+mesh = SubResource("ArrayMesh_q3hlb")
+
+[node name="_gltfNode_89" type="MeshInstance3D" parent="." unique_id=406691740]
+mesh = SubResource("ArrayMesh_ur2l2")

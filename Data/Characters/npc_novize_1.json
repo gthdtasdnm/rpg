@@ -1,0 +1,8 @@
+{
+  "id": "npc_novize_1",
+  "name": "Novize",
+  "maxHealth": 16,
+  "strength": 4,
+  "dexterity": 4,
+  "dialogueId": "novize_1_intro"
+}

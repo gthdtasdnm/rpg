@@ -1,0 +1,121 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Characters/Npc.tscn" id="3_npc"]
+[ext_resource type="PackedScene" path="res://Objects/Items/ItemPickup.tscn" id="4_pickup"]
+[ext_resource type="PackedScene" path="res://Objects/Triggers/ProximityDialogue.tscn" id="6_proximitydialogue"]
+
+[sub_resource type="StandardMaterial3D" id="mat_0"]
+albedo_color = Color(0.35, 0.15, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="mesh_0"]
+material = SubResource("mat_0")
+size = Vector3(9, 4, 9)
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(9, 4, 9)
+
+[sub_resource type="StandardMaterial3D" id="mat_1"]
+albedo_color = Color(0.4, 0.1, 0.15, 1)
+
+[sub_resource type="BoxMesh" id="mesh_1"]
+material = SubResource("mat_1")
+size = Vector3(4, 2, 4)
+
+[sub_resource type="BoxShape3D" id="shape_1"]
+size = Vector3(4, 2, 4)
+
+[sub_resource type="StandardMaterial3D" id="mat_2"]
+albedo_color = Color(0.25, 0.08, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="mesh_2"]
+material = SubResource("mat_2")
+size = Vector3(2, 3, 2)
+
+[sub_resource type="BoxShape3D" id="shape_2"]
+size = Vector3(2, 3, 2)
+
+[node name="Sektentempel" type="Node3D"]
+
+[node name="Haupttempel" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, -18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Haupttempel"]
+mesh = SubResource("mesh_0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Haupttempel"]
+shape = SubResource("shape_0")
+
+[node name="Ritualkammer" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ritualkammer"]
+mesh = SubResource("mesh_1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ritualkammer"]
+shape = SubResource("shape_1")
+
+[node name="HinweisKatakombenZugang" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, -22)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisKatakombenZugang"]
+mesh = SubResource("mesh_2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisKatakombenZugang"]
+shape = SubResource("shape_2")
+
+[node name="Halvor" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1776739, 4)
+CharacterId = "npc_halvor"
+
+[node name="Stats" parent="Halvor" index="2"]
+CharacterId = "npc_halvor"
+
+[node name="Kael" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1.1776739, -8)
+CharacterId = "npc_kael"
+
+[node name="Stats" parent="Kael" index="2"]
+CharacterId = "npc_kael"
+
+[node name="VoxAedificares" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1776739, -16)
+CharacterId = "npc_voxaedificares"
+
+[node name="Stats" parent="VoxAedificares" index="2"]
+CharacterId = "npc_voxaedificares"
+
+[node name="Anhaenger" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.1776739, 2)
+CharacterId = "npc_anhaenger_1"
+
+[node name="Stats" parent="Anhaenger" index="2"]
+CharacterId = "npc_anhaenger_1"
+
+[node name="Novize" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1.1776739, 4)
+CharacterId = "npc_novize_1"
+
+[node name="Stats" parent="Novize" index="2"]
+CharacterId = "npc_novize_1"
+
+[node name="Malvern" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.1776739, -6)
+CharacterId = "npc_malvern"
+
+[node name="Stats" parent="Malvern" index="2"]
+CharacterId = "npc_malvern"
+
+[node name="Ritualzutat1" parent="." instance=ExtResource("4_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -8)
+ItemId = "item_ritualzutat"
+
+[node name="Ritualzutat2" parent="." instance=ExtResource("4_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -10)
+ItemId = "item_ritualzutat"
+
+[node name="HalvorAnsprache" parent="." instance=ExtResource("6_proximitydialogue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 3)
+DialogueId = "halvor_intro"
+SpeakerName = "Halvor"
+SpeakerCharacterId = "npc_halvor"
+TriggerFlagId = "ambient_halvor_greeted"

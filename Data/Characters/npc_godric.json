@@ -1,0 +1,15 @@
+{
+  "id": "npc_godric",
+  "name": "Godric",
+  "maxHealth": 20,
+  "strength": 8,
+  "dexterity": 4,
+  "dialogueId": "godric_intro",
+  "shopItemIds": [
+    "weapon_ordensklinge",
+    "weapon_zeremonienschwert",
+    "weapon_wachtkeule",
+    "weapon_custodes_streitaxt",
+    "weapon_grenzwaechter_bogen"
+  ]
+}

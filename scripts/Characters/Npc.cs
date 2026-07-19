@@ -2,6 +2,7 @@ using Godot;
 using RPG.Data;
 using RPG.Dialogue;
 using RPG.Interaction;
+using RPG.Quests;
 using RPG.World;
 
 namespace RPG.Characters;
@@ -29,10 +30,11 @@ public partial class Npc : StaticBody3D, IInteractable
 	public void Interact(Node interactor)
 	{
 		GameFlags.Instance.SetFlag($"talked_{CharacterId}");
+		QuestManager.Instance.NotifyNpcTalkedTo(CharacterId);
 
 		if (string.IsNullOrEmpty(_definition.DialogueId))
 			return;
 
-		DialogueRunner.Instance.Start(_definition.DialogueId, _definition.Name);
+		DialogueRunner.Instance.Start(_definition.DialogueId, _definition.Name, CharacterId);
 	}
 }

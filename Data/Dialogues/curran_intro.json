@@ -1,0 +1,21 @@
+{
+  "id": "curran_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Geflickt, aber scharf. Bei Curran bekommst du keine Ordensklingen, aber alles hält, was ich verkaufe.",
+      "choices": [
+        {
+          "text": "Zeig mir dein Sortiment.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Schau dir um, was du brauchst.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

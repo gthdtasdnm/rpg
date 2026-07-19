@@ -1,0 +1,21 @@
+{
+  "id": "ivo_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Rüstung und Schild, sauber gearbeitet. Wer sich in die Wildnis wagt, sollte nicht in Lumpen gehen.",
+      "choices": [
+        {
+          "text": "Zeig mir dein Sortiment.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Pass auf dich auf, Fremder.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

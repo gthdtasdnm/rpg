@@ -1,0 +1,9 @@
+{
+  "id": "spell_segnung",
+  "name": "Segnung",
+  "school": "divine",
+  "healthCost": 5,
+  "healAmount": 25,
+  "castTime": 3.0,
+  "cooldown": 6
+}

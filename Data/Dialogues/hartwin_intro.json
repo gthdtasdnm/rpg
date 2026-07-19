@@ -1,0 +1,16 @@
+{
+  "id": "hartwin_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Setz dich, Fremder. Hier hört man alles - vom Freien Lager in den Bergen bis zu den Wahnsinnigen, die einen alten Dämon anbeten wollen. Man muss nur zuhören.",
+      "choices": [
+        {
+          "text": "Trink was, wenn du Geld hast.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

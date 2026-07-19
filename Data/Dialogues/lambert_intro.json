@@ -1,0 +1,21 @@
+{
+  "id": "lambert_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Werkzeug, Proviant, Kleinkram - keine Waffen, keine Wunder, nur ehrliche Ware.",
+      "choices": [
+        {
+          "text": "Zeig mir dein Sortiment.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Ein andermal.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

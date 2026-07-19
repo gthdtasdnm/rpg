@@ -1,0 +1,9 @@
+{
+  "id": "shield_ritualschild",
+  "name": "Ritualschild",
+  "type": "shield",
+  "stackable": false,
+  "defense": 5,
+  "staggerResist": 6,
+  "price": 38
+}

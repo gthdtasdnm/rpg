@@ -1,0 +1,62 @@
+{
+  "id": "bettler_1_intro",
+  "startNode": "start",
+  "startRules": [
+    {
+      "requiresFlag": "quest_completed_quest_bettler_gefallen",
+      "node": "thanks"
+    },
+    {
+      "requiresFlag": "quest_ready_quest_bettler_gefallen",
+      "node": "turn_in"
+    },
+    {
+      "requiresFlag": "quest_started_quest_bettler_gefallen",
+      "node": "waiting"
+    }
+  ],
+  "nodes": {
+    "start": {
+      "text": "Ein Almosen, Fremder? Nur einen Schluck Medizin, mehr will ich nicht.",
+      "choices": [
+        {
+          "text": "Ich schau, was ich habe.",
+          "next": null,
+          "startQuest": "quest_bettler_gefallen"
+        },
+        {
+          "text": "Ich hab nichts für dich.",
+          "next": null
+        }
+      ]
+    },
+    "waiting": {
+      "text": "Hast du etwas für mich gefunden?",
+      "choices": [
+        {
+          "text": "Noch nicht.",
+          "next": null
+        }
+      ]
+    },
+    "turn_in": {
+      "text": "Hast du eine Medizin für mich?",
+      "choices": [
+        {
+          "text": "Hier, nimm.",
+          "next": null,
+          "completeQuest": "quest_bettler_gefallen"
+        }
+      ]
+    },
+    "thanks": {
+      "text": "Segne dich, Fremder. Das wird mir helfen.",
+      "choices": [
+        {
+          "text": "Gern geschehen.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

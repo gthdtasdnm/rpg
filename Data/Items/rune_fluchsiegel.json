@@ -1,0 +1,7 @@
+{
+  "id": "rune_fluchsiegel",
+  "name": "Fluchsiegel-Rune",
+  "type": "material",
+  "stackable": true,
+  "price": 12
+}

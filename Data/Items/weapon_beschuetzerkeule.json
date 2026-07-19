@@ -1,0 +1,11 @@
+{
+  "id": "weapon_beschuetzerkeule",
+  "name": "Beschützerkeule",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 9,
+  "damageType": "blunt",
+  "stackable": false,
+  "price": 36,
+  "weaponCategory": "onehand"
+}

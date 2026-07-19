@@ -1,0 +1,8 @@
+{
+  "id": "npc_bauer_1",
+  "name": "Bauer",
+  "maxHealth": 16,
+  "strength": 6,
+  "dexterity": 4,
+  "dialogueId": "bauer_1_intro"
+}

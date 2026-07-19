@@ -1,0 +1,11 @@
+{
+  "id": "weapon_ritualaxt",
+  "name": "Ritualaxt",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 12,
+  "damageType": "mixed",
+  "stackable": false,
+  "price": 50,
+  "weaponCategory": "onehand"
+}

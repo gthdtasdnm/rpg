@@ -1,0 +1,11 @@
+{
+  "id": "npc_bertram",
+  "name": "Bertram",
+  "maxHealth": 45,
+  "strength": 14,
+  "dexterity": 8,
+  "dialogueId": "bertram_intro",
+  "shopItemIds": [
+    "skill_onehanded_combo"
+  ]
+}

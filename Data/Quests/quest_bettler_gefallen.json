@@ -1,0 +1,10 @@
+{
+  "id": "quest_bettler_gefallen",
+  "title": "Ein Almosen",
+  "giverNpcId": "npc_bettler_1",
+  "objectives": [
+    { "type": "collect_item", "itemId": "potion_heiltrank", "amount": 1 }
+  ],
+  "rewardItemIds": [],
+  "rewardGold": 10
+}

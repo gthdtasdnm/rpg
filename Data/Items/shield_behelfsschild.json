@@ -1,0 +1,9 @@
+{
+  "id": "shield_behelfsschild",
+  "name": "Behelfsschild",
+  "type": "shield",
+  "stackable": false,
+  "defense": 4,
+  "staggerResist": 5,
+  "price": 30
+}

@@ -1,0 +1,10 @@
+{
+  "id": "quest_ritualzutaten",
+  "title": "Zutaten für das Ritual",
+  "giverNpcId": "npc_kael",
+  "objectives": [
+    { "type": "collect_item", "itemId": "item_ritualzutat", "amount": 2 }
+  ],
+  "rewardItemIds": ["rune_fluchsiegel"],
+  "rewardGold": 15
+}

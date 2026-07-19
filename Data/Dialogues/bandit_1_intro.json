@@ -1,0 +1,16 @@
+{
+  "id": "bandit_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Solang du nichts Dummes versuchst, sind wir bester Laune.",
+      "choices": [
+        {
+          "text": "Verstanden.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

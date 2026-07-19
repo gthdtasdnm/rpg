@@ -1,0 +1,10 @@
+{
+  "id": "quest_ruinenfragmente",
+  "title": "Gefährliches Wissen",
+  "giverNpcId": "npc_torvald",
+  "objectives": [
+    { "type": "collect_item", "itemId": "item_ruinenfragment", "amount": 2 }
+  ],
+  "rewardItemIds": ["rune_splitterrune"],
+  "rewardGold": 15
+}

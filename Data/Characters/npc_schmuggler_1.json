@@ -1,0 +1,8 @@
+{
+  "id": "npc_schmuggler_1",
+  "name": "Schmuggler",
+  "maxHealth": 20,
+  "strength": 6,
+  "dexterity": 6,
+  "dialogueId": "schmuggler_1_intro"
+}

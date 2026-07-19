@@ -1,0 +1,11 @@
+{
+  "id": "weapon_wanderstab",
+  "name": "Wanderstab",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 6,
+  "damageType": "blunt",
+  "stackable": false,
+  "price": 20,
+  "weaponCategory": "onehand"
+}

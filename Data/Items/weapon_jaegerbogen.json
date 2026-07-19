@@ -1,0 +1,11 @@
+{
+  "id": "weapon_jaegerbogen",
+  "name": "Jägerbogen",
+  "type": "weapon",
+  "scalingStat": "dexterity",
+  "damage": 6,
+  "damageType": "ranged",
+  "stackable": false,
+  "price": 32,
+  "weaponCategory": "bow"
+}

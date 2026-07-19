@@ -9,12 +9,42 @@ public partial class Inventory : Node
 	// InventoryChanged: generisches "bitte neu anzeigen" fuers Inventar-UI, feuert bei jeder Aenderung.
 	[Signal] public delegate void ItemAddedEventHandler(string itemId, int totalCount);
 	[Signal] public delegate void InventoryChangedEventHandler();
+	[Signal] public delegate void GoldChangedEventHandler(int totalGold);
 
 	private readonly Dictionary<string, int> _items = new();
+
+	// Waehrung (siehe doc/TODO.md Milestone 9): bewusst kein Item-Stack, kein Gewicht/Slot-Konzept
+	// noetig fuer reines Zahlenkonto.
+	public int Gold { get; private set; }
 
 	public int GetCount(string itemId) => _items.GetValueOrDefault(itemId, 0);
 	public bool HasItem(string itemId, int amount = 1) => GetCount(itemId) >= amount;
 	public IReadOnlyDictionary<string, int> GetAllItems() => _items;
+
+	public void AddGold(int amount)
+	{
+		if (amount <= 0)
+			return;
+
+		Gold += amount;
+		EmitSignal(SignalName.GoldChanged, Gold);
+	}
+
+	public bool SpendGold(int amount)
+	{
+		if (amount <= 0 || Gold < amount)
+			return false;
+
+		Gold -= amount;
+		EmitSignal(SignalName.GoldChanged, Gold);
+		return true;
+	}
+
+	public void RestoreGold(int amount)
+	{
+		Gold = Mathf.Max(0, amount);
+		EmitSignal(SignalName.GoldChanged, Gold);
+	}
 
 	public void AddItem(string itemId, int amount = 1)
 	{

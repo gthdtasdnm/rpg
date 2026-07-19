@@ -1,0 +1,9 @@
+{
+  "id": "spell_fluchsiegel",
+  "name": "Fluchsiegel",
+  "school": "blood",
+  "healthCost": 20,
+  "damage": 4,
+  "range": 5,
+  "cooldown": 8
+}

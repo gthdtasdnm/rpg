@@ -1,0 +1,16 @@
+{
+  "id": "halvor_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Wenn du hierbleiben willst, lern die Regeln. Wir opfern nicht aus Grausamkeit - wir opfern, weil er es verdient.",
+      "choices": [
+        {
+          "text": "Du wirst verstehen, mit der Zeit.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

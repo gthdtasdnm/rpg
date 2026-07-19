@@ -1,0 +1,42 @@
+{
+  "id": "kael_intro",
+  "startNode": "start",
+  "startRules": [
+    { "requiresFlag": "quest_completed_quest_ritualzutaten", "node": "thanks" },
+    { "requiresFlag": "quest_ready_quest_ritualzutaten", "node": "turn_in" },
+    { "requiresFlag": "quest_started_quest_ritualzutaten", "node": "waiting" }
+  ],
+  "nodes": {
+    "start": {
+      "text": "Er hört uns, Fremder. Auch dich wird er hören, früher oder später. Alle hören ihn irgendwann.",
+      "choices": [
+        { "text": "Gibt es etwas, das ich für dich tun kann?", "next": "explain_quest" },
+        { "text": "Geh in Frieden - solange es noch Frieden gibt.", "next": null }
+      ]
+    },
+    "explain_quest": {
+      "text": "Für das nächste Ritual fehlen mir noch Zutaten. Bring mir zwei, dann können wir beginnen.",
+      "choices": [
+        { "text": "Ich besorge sie.", "next": null, "startQuest": "quest_ritualzutaten" }
+      ]
+    },
+    "waiting": {
+      "text": "Hast du die Ritualzutaten schon?",
+      "choices": [
+        { "text": "Noch nicht.", "next": null }
+      ]
+    },
+    "turn_in": {
+      "text": "Die Zutaten - hast du sie?",
+      "choices": [
+        { "text": "Hier.", "next": null, "completeQuest": "quest_ritualzutaten" }
+      ]
+    },
+    "thanks": {
+      "text": "Das Ritual kann beginnen. Er wird zufrieden sein.",
+      "choices": [
+        { "text": "...", "next": null }
+      ]
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "id": "renward_intro",
+  "startNode": "start",
+  "startRules": [
+    { "requiresFlag": "quest_completed_quest_wegelagerer", "node": "thanks_bandits" },
+    { "requiresFlag": "quest_ready_quest_wegelagerer", "node": "turn_in_bandits" },
+    { "requiresFlag": "quest_started_quest_wegelagerer", "node": "waiting_bandits" },
+    { "requiresNotFlag": "quest_completed_quest_der_bote", "node": "deny_entry" }
+  ],
+  "nodes": {
+    "deny_entry": {
+      "text": "Kein Zutritt zur Burg ohne die Zustimmung des Ordensmeisters. Sprich zuerst mit Cassian.",
+      "choices": [
+        { "text": "Verstanden.", "next": null }
+      ]
+    },
+    "start": {
+      "text": "Ein Verurteilter, der frei herumläuft. Cassian mag dir trauen. Ich nicht. Wenn du dich nützlich machen willst: Wegelagerer plagen die Straßen vor der Stadt. Räum sie aus, und ich überlege es mir vielleicht anders.",
+      "choices": [
+        { "text": "Ich kümmere mich darum.", "next": null, "startQuest": "quest_wegelagerer" },
+        { "text": "Ich werde dich im Auge behalten.", "next": null }
+      ]
+    },
+    "waiting_bandits": {
+      "text": "Die Wegelagerer sind noch nicht erledigt?",
+      "choices": [
+        { "text": "Noch nicht.", "next": null }
+      ]
+    },
+    "turn_in_bandits": {
+      "text": "Hast du mit den Wegelagerern aufgeräumt?",
+      "choices": [
+        { "text": "Erledigt.", "next": null, "completeQuest": "quest_wegelagerer" }
+      ]
+    },
+    "thanks_bandits": {
+      "text": "Die Straßen sind sicherer dank dir. Ich revidiere mein Urteil - ein wenig.",
+      "choices": [
+        { "text": "...", "next": null }
+      ]
+    }
+  }
+}

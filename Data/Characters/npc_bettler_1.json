@@ -1,0 +1,8 @@
+{
+  "id": "npc_bettler_1",
+  "name": "Bettler",
+  "maxHealth": 12,
+  "strength": 3,
+  "dexterity": 3,
+  "dialogueId": "bettler_1_intro"
+}

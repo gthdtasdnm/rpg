@@ -1,0 +1,16 @@
+{
+  "id": "voxaedificares_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Du trägst die Stimme des Zweifels in dir. Das wird sich ändern. Er spricht auch zu dir, du hörst es nur noch nicht.",
+      "choices": [
+        {
+          "text": "Geh. Noch ist es nicht deine Zeit.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

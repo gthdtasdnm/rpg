@@ -1,0 +1,9 @@
+{
+  "id": "armor_ritterharnisch",
+  "name": "Ritterharnisch",
+  "type": "armor",
+  "stackable": false,
+  "defense": 8,
+  "staggerResist": 3,
+  "price": 41
+}

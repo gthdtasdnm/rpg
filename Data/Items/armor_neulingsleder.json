@@ -1,0 +1,8 @@
+{
+  "id": "armor_neulingsleder",
+  "name": "Neulingsleder",
+  "type": "armor",
+  "stackable": false,
+  "defense": 2,
+  "price": 8
+}

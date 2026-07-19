@@ -1,0 +1,11 @@
+{
+  "id": "weapon_erweckerbogen",
+  "name": "Erweckerbogen",
+  "type": "weapon",
+  "scalingStat": "dexterity",
+  "damage": 7,
+  "damageType": "ranged",
+  "stackable": false,
+  "price": 42,
+  "weaponCategory": "bow"
+}

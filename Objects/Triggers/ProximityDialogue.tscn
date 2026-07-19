@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/Interaction/ProximityDialogue.cs" id="1_proximitydialogue"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_proximity"]
+size = Vector3(5, 4, 5)
+
+[node name="ProximityDialogue" type="Area3D"]
+script = ExtResource("1_proximitydialogue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_proximity")

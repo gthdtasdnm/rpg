@@ -1,0 +1,11 @@
+{
+  "id": "weapon_custodes_streitaxt",
+  "name": "Custodes-Streitaxt",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 12,
+  "damageType": "mixed",
+  "stackable": false,
+  "price": 55,
+  "weaponCategory": "onehand"
+}

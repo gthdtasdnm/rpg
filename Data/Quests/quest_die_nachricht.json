@@ -1,0 +1,10 @@
+{
+  "id": "quest_die_nachricht",
+  "title": "Die Nachricht",
+  "giverNpcId": "npc_cassian",
+  "objectives": [
+    { "type": "collect_item", "itemId": "item_koenigsbrief", "amount": 1 },
+    { "type": "talk_to_npc", "targetId": "npc_aldemar", "amount": 1 }
+  ],
+  "rewardItemIds": []
+}

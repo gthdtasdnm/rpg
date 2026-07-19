@@ -1,0 +1,16 @@
+{
+  "id": "bauer_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Die Ernte wird jedes Jahr schlechter, seit die Barriere steht. Aber was will man machen.",
+      "choices": [
+        {
+          "text": "Ein hartes Los.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

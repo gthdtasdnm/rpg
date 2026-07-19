@@ -1,0 +1,16 @@
+{
+  "id": "schmuggler_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Ich hab Waren, die du in Nethora nicht offen kaufen kannst. Aber das bleibt unter uns.",
+      "choices": [
+        {
+          "text": "Interessant.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

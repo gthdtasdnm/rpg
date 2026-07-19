@@ -1,0 +1,21 @@
+{
+  "id": "ivar_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Ivar. Zweihandwaffen und Äxte fordern mehr Kraft, aber auch mehr Kontrolle. Wer das beherrscht, schlägt niemand zweimal.",
+      "choices": [
+        {
+          "text": "Lehr mich das.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Ein andermal.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

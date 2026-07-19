@@ -1,0 +1,32 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" uid="uid://bjwik5udwwm2u" path="res://Characters/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://UI/Hud.tscn" id="2_hud"]
+[ext_resource type="PackedScene" uid="uid://r6s136j275aa" path="res://Maps/ground.tscn" id="3_ground"]
+[ext_resource type="PackedScene" path="res://Maps/Environment.tscn" id="4_env"]
+[ext_resource type="PackedScene" path="res://Level/Zones/Ankunft.tscn" id="5_ankunft"]
+[ext_resource type="PackedScene" path="res://Level/Zones/Nethora.tscn" id="6_nethora"]
+[ext_resource type="PackedScene" path="res://Level/Zones/FreiesLager.tscn" id="7_freieslager"]
+[ext_resource type="PackedScene" path="res://Level/Zones/Sektentempel.tscn" id="8_sektentempel"]
+
+[node name="World" type="Node3D"]
+
+[node name="Environment" parent="." instance=ExtResource("4_env")]
+
+[node name="Ground" parent="." instance=ExtResource("3_ground")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1776739, 0)
+
+[node name="Hud" parent="." instance=ExtResource("2_hud")]
+
+[node name="Ankunft" parent="." instance=ExtResource("5_ankunft")]
+
+[node name="Nethora" parent="." instance=ExtResource("6_nethora")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -70)
+
+[node name="FreiesLager" parent="." instance=ExtResource("7_freieslager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90, 0, -80)
+
+[node name="Sektentempel" parent="." instance=ExtResource("8_sektentempel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, -80)

@@ -1,0 +1,16 @@
+{
+  "id": "wache_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Nichts zu sehen hier. Weiterschauen.",
+      "choices": [
+        {
+          "text": "Schon gut.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

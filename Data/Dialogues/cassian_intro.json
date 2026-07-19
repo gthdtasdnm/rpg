@@ -1,0 +1,48 @@
+{
+  "id": "cassian_intro",
+  "startNode": "start",
+  "startRules": [
+    { "requiresFlag": "quest_completed_quest_die_nachricht", "node": "after_breakdown" },
+    { "requiresFlag": "quest_completed_quest_der_bote", "node": "after" },
+    { "requiresFlag": "quest_ready_quest_der_bote", "node": "receive_message" }
+  ],
+  "nodes": {
+    "start": {
+      "text": "Halt. Kein Vigil trägt diese Kleidung. Wer bist du, und was suchst du im Ordenssitz?",
+      "choices": [
+        { "text": "Ich habe eine Nachricht für den König.", "next": "explain" },
+        { "text": "Das geht dich nichts an.", "next": null }
+      ]
+    },
+    "explain": {
+      "text": "Ein Verurteilter, geschickt durch die Barriere, mit einer Nachricht für den König. Das ist... ungewöhnlich. Zeig sie mir nicht - sie ist nicht für mich bestimmt. Aber ich werde dir Zugang verschaffen.",
+      "choices": [
+        { "text": "Danke.", "next": null }
+      ]
+    },
+    "receive_message": {
+      "text": "Ein Verurteilter, aus der Barriere hereingelassen, mit einer versiegelten Nachricht für den König. Das ist mir noch nie untergekommen. Ich sollte dich abweisen lassen - und doch spüre ich, dass es klüger ist, dich vorzulassen.",
+      "choices": [
+        { "text": "Ich soll dem König eine Nachricht überbringen.", "next": "grant_access", "startQuest": "quest_die_nachricht", "completeQuest": "quest_der_bote" }
+      ]
+    },
+    "grant_access": {
+      "text": "Gut. Ich lasse dich zu König Aldemar vor. Aber sei gewarnt: der König ist seit Jahren nicht mehr, was er einmal war. Was auch immer diese Nachricht enthält - übergib sie ihm direkt, niemand sonst.",
+      "choices": [
+        { "text": "Verstanden.", "next": null }
+      ]
+    },
+    "after": {
+      "text": "Der König erwartet dich im Schloss. Beeil dich, bevor er es sich anders überlegt.",
+      "choices": [
+        { "text": "Ich gehe.", "next": null }
+      ]
+    },
+    "after_breakdown": {
+      "text": "Seit deinem Besuch beim König ist er kaum noch ansprechbar. Was auch immer in dieser Nachricht stand - ich hoffe, du weißt, was du damit angerichtet hast.",
+      "choices": [
+        { "text": "...", "next": null }
+      ]
+    }
+  }
+}

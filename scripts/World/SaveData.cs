@@ -10,6 +10,7 @@ public class SaveData
 	public float PlayerZ { get; set; }
 	public float PlayerRotationY { get; set; }
 	public int PlayerHealth { get; set; }
+	public int Gold { get; set; }
 	public Dictionary<string, int> InventoryItems { get; set; } = new();
 	public List<string> Flags { get; set; } = new();
 	public Dictionary<string, int[]> ActiveQuestProgress { get; set; } = new();

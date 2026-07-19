@@ -1,0 +1,21 @@
+{
+  "id": "meinhard_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Kräuter, Reagenzien, Heiltränke - alles, was Leib und Seele brauchen.",
+      "choices": [
+        {
+          "text": "Zeig mir, was du hast.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Vielleicht später.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "id": "novize_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Ich war einmal wie du - voller Zweifel. Das vergeht.",
+      "choices": [
+        {
+          "text": "Wir werden sehen.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

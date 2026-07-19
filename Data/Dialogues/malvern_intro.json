@@ -1,0 +1,21 @@
+{
+  "id": "malvern_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Malvern. Kampf im Dienst des Erbauers verlangt Hingabe - und Technik. Ich lehre beides, wenn du bereit bist.",
+      "choices": [
+        {
+          "text": "Lehr mich das.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Ein andermal.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

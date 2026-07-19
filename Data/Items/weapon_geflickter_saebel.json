@@ -1,0 +1,11 @@
+{
+  "id": "weapon_geflickter_saebel",
+  "name": "Geflickter Säbel",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 9,
+  "damageType": "slashing",
+  "stackable": false,
+  "price": 35,
+  "weaponCategory": "onehand"
+}

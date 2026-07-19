@@ -1,0 +1,9 @@
+{
+  "id": "shield_ordensschild",
+  "name": "Ordensschild",
+  "type": "shield",
+  "stackable": false,
+  "defense": 6,
+  "staggerResist": 8,
+  "price": 50
+}

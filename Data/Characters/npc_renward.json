@@ -1,0 +1,8 @@
+{
+  "id": "npc_renward",
+  "name": "Renward",
+  "maxHealth": 45,
+  "strength": 12,
+  "dexterity": 10,
+  "dialogueId": "renward_intro"
+}

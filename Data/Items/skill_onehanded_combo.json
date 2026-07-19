@@ -1,0 +1,7 @@
+{
+  "id": "skill_onehanded_combo",
+  "name": "Einhandwaffen-Kombo",
+  "type": "skill",
+  "stackable": false,
+  "price": 30
+}

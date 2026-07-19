@@ -1,0 +1,14 @@
+{
+  "id": "npc_meinhard",
+  "name": "Meinhard",
+  "maxHealth": 22,
+  "strength": 4,
+  "dexterity": 4,
+  "dialogueId": "meinhard_intro",
+  "shopItemIds": [
+    "potion_heiltrank",
+    "potion_segenswasser",
+    "item_bittermoos",
+    "item_reine_quellblute"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "quest_wegelagerer",
+  "title": "Wegelagerer",
+  "giverNpcId": "npc_renward",
+  "objectives": [
+    { "type": "kill_enemy", "targetId": "enemy_wegelagerer", "amount": 2 }
+  ],
+  "rewardItemIds": ["potion_heiltrank"],
+  "rewardGold": 20
+}

@@ -1,0 +1,6 @@
+{
+  "id": "item_geweihter_gegenstand",
+  "name": "Geweihter Gegenstand",
+  "type": "quest",
+  "stackable": false
+}

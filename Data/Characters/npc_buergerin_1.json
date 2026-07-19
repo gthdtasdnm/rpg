@@ -1,0 +1,8 @@
+{
+  "id": "npc_buergerin_1",
+  "name": "Bürgerin",
+  "maxHealth": 14,
+  "strength": 4,
+  "dexterity": 4,
+  "dialogueId": "buergerin_1_intro"
+}

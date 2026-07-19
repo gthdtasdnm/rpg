@@ -1,4 +1,5 @@
 using Godot;
+using RPG.Quests;
 
 namespace RPG.World;
 
@@ -15,7 +16,10 @@ public partial class LocationTrigger : Area3D
 
 	private void OnBodyEntered(Node3D body)
 	{
-		if (body.IsInGroup("player"))
-			GameFlags.Instance.SetFlag(FlagId);
+		if (!body.IsInGroup("player"))
+			return;
+
+		GameFlags.Instance.SetFlag(FlagId);
+		QuestManager.Instance.NotifyLocationEntered(FlagId);
 	}
 }

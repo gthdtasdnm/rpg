@@ -1,0 +1,7 @@
+{
+  "id": "skill_twohanded_combo",
+  "name": "Zweihandwaffen-Kombo",
+  "type": "skill",
+  "stackable": false,
+  "price": 45
+}

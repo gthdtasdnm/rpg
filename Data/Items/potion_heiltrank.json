@@ -1,0 +1,8 @@
+{
+  "id": "potion_heiltrank",
+  "name": "Heiltrank",
+  "type": "consumable",
+  "stackable": true,
+  "healAmount": 30,
+  "price": 15
+}

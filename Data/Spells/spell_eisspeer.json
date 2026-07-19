@@ -1,0 +1,9 @@
+{
+  "id": "spell_eisspeer",
+  "name": "Eisspeer",
+  "school": "arcane",
+  "healthCost": 10,
+  "damage": 18,
+  "range": 10,
+  "cooldown": 3.5
+}

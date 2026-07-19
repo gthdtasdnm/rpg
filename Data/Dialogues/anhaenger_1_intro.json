@@ -1,0 +1,16 @@
+{
+  "id": "anhaenger_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Er wartet. Wir warten mit ihm.",
+      "choices": [
+        {
+          "text": "...",
+          "next": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "hagen_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Hagen. Ich bringe dir bei, wie man mit Stahl umgeht, ohne sich selbst die Finger abzuschneiden. Der Rest ist Übung.",
+      "choices": [
+        {
+          "text": "Lehr mich den fließenden Umgang mit Einhandwaffen.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Komm wieder, wenn du trainieren willst.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

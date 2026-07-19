@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://be72cq0alph4l"]
+
+[ext_resource type="PackedScene" uid="uid://bjwik5udwwm2u" path="res://Characters/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://UI/Hud.tscn" id="2_hud"]
+
+[node name="Main" type="Node" unique_id=520487139]
+
+[node name="ZoneRoot" type="Node3D" parent="." unique_id=831400976]
+
+[node name="Player" parent="." unique_id=2090519914 instance=ExtResource("1_player")]
+
+[node name="Hud" parent="." unique_id=1698883138 instance=ExtResource("2_hud")]

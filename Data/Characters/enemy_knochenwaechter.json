@@ -1,0 +1,16 @@
+{
+  "id": "enemy_knochenwaechter",
+  "name": "Knochenwächter",
+  "maxHealth": 35,
+  "strength": 10,
+  "dexterity": 4,
+  "attackDamage": 8,
+  "attackDamageType": "mixed",
+  "weakTo": "blunt",
+  "resistantTo": "slashing",
+  "aggroRadius": 7,
+  "attackRange": 1.8,
+  "attackCooldown": 1.6,
+  "moveSpeed": 2.8,
+  "lootItemIds": ["potion_heiltrank"]
+}

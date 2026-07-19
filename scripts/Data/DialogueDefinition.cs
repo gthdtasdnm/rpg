@@ -11,6 +11,10 @@ public class DialogueChoice
 	public string? SetFlag { get; set; }
 	public string? RequiresFlag { get; set; }
 	public string? RequiresNotFlag { get; set; }
+
+	// Oeffnet das Shop-Panel des sprechenden NPCs (siehe doc/TODO.md Milestone 9,
+	// DialogueRunner.ShopRequested, CharacterDefinition.ShopItemIds).
+	public bool OpenShop { get; set; }
 }
 
 public class DialogueNode

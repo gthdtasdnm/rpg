@@ -7,8 +7,9 @@ using System.Collections.Generic;
 
 namespace RPG.Quests;
 
-// Autoload: haelt Fortschritt aktiver Quests. Kennt nur "collect_item" als Objective-Typ,
-// weitere Typen koennen additiv ergaenzt werden (neuer Fall in NotifyXyz + Schema-Erweiterung).
+// Autoload: haelt Fortschritt aktiver Quests. Objective-Typen siehe QuestDefinition.cs
+// (collect_item/talk_to_npc/reach_location/kill_enemy) - weitere additiv ergaenzbar (neuer Fall
+// in einer NotifyXyz-Methode + Schema-Erweiterung).
 public partial class QuestManager : Node
 {
 	public static QuestManager Instance { get; private set; } = null!;
@@ -49,15 +50,23 @@ public partial class QuestManager : Node
 		QuestState state = new() { Definition = definition, Progress = new int[definition.Objectives.Count] };
 		_active[questId] = state;
 
-		// Bereits vor Quest-Start eingesammelte Items sofort werten (Reihenfolge soll egal sein).
+		// Bereits vor Quest-Start erfuellte Objectives sofort werten (Reihenfolge soll egal sein:
+		// z.B. Item schon im Inventar, NPC schon angesprochen, Ort schon betreten).
 		Inventory? inventory = GetPlayerInventory();
-		if (inventory != null)
+		for (int i = 0; i < definition.Objectives.Count; i++)
 		{
-			for (int i = 0; i < definition.Objectives.Count; i++)
+			QuestObjective objective = definition.Objectives[i];
+			switch (objective.Type)
 			{
-				QuestObjective objective = definition.Objectives[i];
-				if (objective.Type == "collect_item")
+				case "collect_item" when inventory != null:
 					state.Progress[i] = Mathf.Min(inventory.GetCount(objective.ItemId), objective.Amount);
+					break;
+				case "talk_to_npc" when GameFlags.Instance.HasFlag($"talked_{objective.TargetId}"):
+					state.Progress[i] = objective.Amount;
+					break;
+				case "reach_location" when objective.TargetId != null && GameFlags.Instance.HasFlag(objective.TargetId):
+					state.Progress[i] = objective.Amount;
+					break;
 			}
 		}
 
@@ -103,6 +112,76 @@ public partial class QuestManager : Node
 			MarkReady(questId);
 	}
 
+	// Aehnlich NotifyItemCollected, nur ohne Inventar-Abgleich - Gegner-Kills werden nicht
+	// rueckwirkend vor Quest-Start gewertet (kein historischer Kill-Zaehler ausserhalb der Quest).
+	public void NotifyEnemyKilled(string characterId)
+	{
+		List<string> justReady = new();
+
+		foreach (KeyValuePair<string, QuestState> pair in _active)
+		{
+			string questId = pair.Key;
+			QuestState state = pair.Value;
+			bool changed = false;
+
+			for (int i = 0; i < state.Definition.Objectives.Count; i++)
+			{
+				QuestObjective objective = state.Definition.Objectives[i];
+				if (objective.Type != "kill_enemy" || objective.TargetId != characterId || state.Progress[i] >= objective.Amount)
+					continue;
+
+				state.Progress[i]++;
+				changed = true;
+			}
+
+			if (changed)
+				EmitSignal(SignalName.QuestProgressed, questId, state.Definition.Title, BuildProgressText(state));
+
+			if (IsComplete(state))
+				justReady.Add(questId);
+		}
+
+		foreach (string questId in justReady)
+			MarkReady(questId);
+	}
+
+	public void NotifyNpcTalkedTo(string npcId) => NotifyTargetReached("talk_to_npc", npcId);
+
+	public void NotifyLocationEntered(string flagId) => NotifyTargetReached("reach_location", flagId);
+
+	// Gemeinsame Logik fuer talk_to_npc/reach_location: beide sind reine "einmal erledigt"-Ziele
+	// (TargetId trifft zu -> Objective sofort komplett), im Gegensatz zu collect_item mit Amount > 1.
+	private void NotifyTargetReached(string objectiveType, string targetId)
+	{
+		List<string> justReady = new();
+
+		foreach (KeyValuePair<string, QuestState> pair in _active)
+		{
+			string questId = pair.Key;
+			QuestState state = pair.Value;
+			bool changed = false;
+
+			for (int i = 0; i < state.Definition.Objectives.Count; i++)
+			{
+				QuestObjective objective = state.Definition.Objectives[i];
+				if (objective.Type != objectiveType || objective.TargetId != targetId || state.Progress[i] >= objective.Amount)
+					continue;
+
+				state.Progress[i] = objective.Amount;
+				changed = true;
+			}
+
+			if (changed)
+				EmitSignal(SignalName.QuestProgressed, questId, state.Definition.Title, BuildProgressText(state));
+
+			if (IsComplete(state))
+				justReady.Add(questId);
+		}
+
+		foreach (string questId in justReady)
+			MarkReady(questId);
+	}
+
 	// Objectives erfuellt heisst noch nicht abgeschlossen - der Spieler muss die Quest erst bei
 	// der gebenden Person abgeben (Dialog-Choice mit "completeQuest").
 	private void MarkReady(string questId)
@@ -129,6 +208,9 @@ public partial class QuestManager : Node
 
 			foreach (string rewardItemId in state.Definition.RewardItemIds)
 				inventory.AddItem(rewardItemId);
+
+			if (state.Definition.RewardGold > 0)
+				inventory.AddGold(state.Definition.RewardGold);
 		}
 
 		GameFlags.Instance.SetFlag($"quest_completed_{questId}");
@@ -206,11 +288,26 @@ public partial class QuestManager : Node
 		for (int i = 0; i < state.Definition.Objectives.Count; i++)
 		{
 			QuestObjective objective = state.Definition.Objectives[i];
-			if (objective.Type != "collect_item")
-				continue;
+			bool done = state.Progress[i] >= objective.Amount;
 
-			string itemName = GameData.Instance.GetItem(objective.ItemId)?.Name ?? objective.ItemId;
-			parts.Add($"{state.Progress[i]}/{objective.Amount} {itemName}");
+			switch (objective.Type)
+			{
+				case "collect_item":
+					string itemName = GameData.Instance.GetItem(objective.ItemId)?.Name ?? objective.ItemId;
+					parts.Add($"{state.Progress[i]}/{objective.Amount} {itemName}");
+					break;
+				case "talk_to_npc":
+					string npcName = GameData.Instance.GetCharacter(objective.TargetId ?? "")?.Name ?? objective.TargetId ?? "?";
+					parts.Add(done ? $"Mit {npcName} gesprochen" : $"Mit {npcName} sprechen");
+					break;
+				case "reach_location":
+					parts.Add(done ? "Ort erreicht" : "Ort aufsuchen");
+					break;
+				case "kill_enemy":
+					string enemyName = GameData.Instance.GetCharacter(objective.TargetId ?? "")?.Name ?? objective.TargetId ?? "?";
+					parts.Add($"{state.Progress[i]}/{objective.Amount} {enemyName} besiegt");
+					break;
+			}
 		}
 
 		return string.Join(", ", parts);

@@ -1,0 +1,21 @@
+{
+  "id": "bertram_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Waffenmeister Bertram. Wer den Umgang mit der Klinge wirklich lernen will, muss über die Grundlagen hinaus - ich kann dir zeigen, wie man fließend zuschlägt.",
+      "choices": [
+        {
+          "text": "Lehr mich das.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Ein andermal.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

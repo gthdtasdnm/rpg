@@ -1,0 +1,16 @@
+{
+  "id": "grimbold_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Grimbold. Hier befiehlt keiner - aber wenn du Ärger suchst, wirst du ihn bei mir finden. Willkommen im Lager, falls du bleiben willst.",
+      "choices": [
+        {
+          "text": "Sieh dich um. Niemand hier beißt dich, solange du dich benimmst.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

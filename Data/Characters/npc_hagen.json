@@ -1,0 +1,11 @@
+{
+  "id": "npc_hagen",
+  "name": "Hagen",
+  "maxHealth": 42,
+  "strength": 13,
+  "dexterity": 9,
+  "dialogueId": "hagen_intro",
+  "shopItemIds": [
+    "skill_onehanded_combo"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "enemy_mutierter_wolf",
+  "name": "Mutierter Wolf",
+  "maxHealth": 25,
+  "strength": 6,
+  "dexterity": 8,
+  "attackDamage": 6,
+  "attackDamageType": "blunt",
+  "weakTo": "slashing",
+  "aggroRadius": 9,
+  "attackRange": 1.6,
+  "attackCooldown": 1.2,
+  "moveSpeed": 4.5,
+  "lootItemIds": ["herb_red"]
+}

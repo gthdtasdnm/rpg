@@ -19,22 +19,42 @@ anzufassen. Bei Unsicherheit: hier nachschauen, bevor eine neue Konvention erfun
   `Stats`-Node) setzen.
 - **Neues Item**: neue Datei `Data/Items/x.json`. Für eine aufsammelbare Instanz:
   `Objects/Items/ItemPickup.tscn` platzieren, `ItemId` setzen.
-- **Neue Quest**: neue Datei `Data/Quests/x.json`. `QuestManager` versteht aktuell nur
-  `objectives[].type = "collect_item"`; weitere Typen brauchen einen neuen Fall in
-  `QuestManager.NotifyItemCollected` (bzw. eine neue `NotifyXyz`-Methode für andere Auslöser).
+- **Neue Quest**: neue Datei `Data/Quests/x.json`. `QuestManager` versteht `objectives[].type =
+  "collect_item"` (nutzt `itemId`/`amount`), `"talk_to_npc"` (nutzt `targetId` = CharacterId,
+  ausgelöst von `Npc.Interact()`), `"reach_location"` (nutzt `targetId` = FlagId, ausgelöst von
+  `LocationTrigger`) und `"kill_enemy"` (nutzt `targetId` = CharacterId des Gegners, `amount`,
+  ausgelöst von `Enemy.OnDied`). Weitere Typen: neuer Fall + eigene `NotifyXyz`-Methode nach
+  demselben Muster. `rewardGold` zusätzlich zu `rewardItemIds` möglich.
 - **Neuer Dialog**: neue Datei `Data/Dialogues/x.json`, per `dialogueId` an einem Charakter
-  referenziert. Eine `choice.startQuest` löst automatisch `QuestManager.StartQuest` aus.
+  referenziert. Eine `choice.startQuest` löst automatisch `QuestManager.StartQuest` aus,
+  `choice.openShop` öffnet das Shop-Panel des sprechenden NPCs (siehe "Handel" unten).
+- **Neues Gebiet**: neue Datei `Level/Zones/x.tscn` (Root-Node-Typ **muss** `Node3D` sein, kein
+  eigenes Environment/Ground), als Kindnode mit eigenem Transform-Offset in `Level/World.tscn`
+  instanzieren (siehe "Welt" unten) — kein Zonenwechsel-Code mehr, alles ist durchgehend begehbar.
+- **Neuer Händler**: `CharacterDefinition.ShopItemIds` befüllen, im Dialog eine Choice mit
+  `openShop: true` ergänzen (siehe "Handel" unten).
+- **Neuer Waffentrainer**: wie Händler, aber `ShopItemIds` enthält ein `skill_*`-Item
+  (siehe "Handel"/"Training" unten) statt echter Waren.
+- **NPC, der den Spieler proaktiv anspricht**: `Objects/Triggers/ProximityDialogue.tscn` neben dem
+  NPC platzieren (siehe "Proaktive NPC-Interaktion" unten).
+- **Zugangskontrolle/Wache, die den Weg versperrt**: `Objects/Triggers/GuardCheckpoint.tscn`
+  platzieren (siehe "Proaktive NPC-Interaktion" unten).
 
 ## JSON-Schemas
 
 Siehe `scripts/Data/*.cs` für die genauen Felder (POCOs, per `System.Text.Json`,
 case-insensitive deserialisiert). Kurzfassung:
 
-- **Character**: `id, name, maxHealth, strength, dexterity, dialogueId?`
-- **Item**: `id, name, type (weapon|consumable|material|quest), scalingStat? (strength|dexterity), damage, stackable`
-- **Quest**: `id, title, giverNpcId?, objectives[{type, itemId, amount}], rewardItemIds[]`
+- **Character**: `id, name, maxHealth, strength, dexterity, dialogueId?, shopItemIds[]`
+  (+ Gegner-Felder, siehe `CharacterDefinition.cs`)
+- **Item**: `id, name, type (weapon|armor|shield|consumable|material|quest|skill),
+  scalingStat? (strength|dexterity), damage, damageType? (slashing|blunt|mixed|ranged),
+  weaponCategory? (onehand|twohand|bow), defense, staggerResist, healAmount, price, stackable`
+- **Quest**: `id, title, giverNpcId?, objectives[{type, itemId, targetId?, amount}],
+  rewardItemIds[], rewardGold`
 - **Dialogue**: `id, startNode, startRules?[{requiresFlag?, requiresNotFlag?, node}],
-  nodes{ [id]: { text, choices[{text, next?, startQuest?, completeQuest?, setFlag?, requiresFlag?, requiresNotFlag?}] } }`
+  nodes{ [id]: { text, choices[{text, next?, startQuest?, completeQuest?, setFlag?, requiresFlag?,
+  requiresNotFlag?, openShop?}] } }`
 
 ## Flag-System (wie Gothics Weltvariablen)
 
@@ -77,19 +97,146 @@ Code nötig — es sei denn, das Flag soll automatisch durch ein *neues* Ereigni
 (dann an der jeweiligen Stelle, z.B. einem neuen Interactable, `GameFlags.Instance.SetFlag(...)`
 ergänzen).
 
-## Stats & Magie (Regeln, aktuell nur als Datenmodell vorbereitet)
+## Welt (`Level/`)
+
+**Geschichte/Entscheidung**: Ursprünglich (Phase 2, erster Anlauf) gab es ein Zonen-Wechsel-
+System (`ZoneManager`/`ZoneTransition`), das den Karteninhalt zur Laufzeit austauschte, analog zu
+Gothic 1's Gebietsladen. Der Nutzer wollte stattdessen ausdrücklich eine **durchgehende offene
+Welt** ("alles schon geladen, selbst hinlaufen, alles sehen können") — das Zonen-Wechsel-System
+wurde daraufhin komplett entfernt (`ZoneManager.cs`, `ZoneTransition.cs`,
+`Objects/Triggers/ZoneTransition.tscn`, `SaveData.CurrentZoneScenePath` — alles gelöscht, nicht
+nur deaktiviert).
+
+Jetzt: `Level/World.tscn` ist die `run/main_scene` und enthält **alles gleichzeitig**:
+`Player`, `Hud`, ein gemeinsames `Environment`+`Ground` (genau einmal — die einzelnen
+Gebiets-Dateien haben **kein** eigenes Environment/Ground mehr, sonst gäbe es mehrere
+überlappende `WorldEnvironment`/Kollisionsebenen) und vier Gebiets-Szenen als Kindnodes mit
+Transform-Offset, sodass sie sich räumlich nicht überlappen:
+
+| Gebiet | Datei | Offset in `World.tscn` |
+|---|---|---|
+| Ankunft | `Level/Zones/Ankunft.tscn` | `(0, 0, 0)` |
+| Nethora | `Level/Zones/Nethora.tscn` | `(0, 0, -70)` |
+| Freies Lager | `Level/Zones/FreiesLager.tscn` | `(-90, 0, -80)` |
+| Sektentempel | `Level/Zones/Sektentempel.tscn` | `(90, 0, -80)` |
+
+Der Ordner heißt weiterhin `Level/Zones/`, auch wenn es keine Zonen-*Wechsel*-Logik mehr gibt —
+die einzelnen Dateien sind einfach räumlich getrennte Gebietsinhalte, die alle zusammen in einer
+Szene existieren. Root-Node-Typ jeder Gebiets-Datei muss `Node3D` sein (sonst brechen globale
+Transforms der Kinder unter dem Offset-Node in `World.tscn`).
+
+**Neues Gebiet hinzufügen**: neue Datei `Level/Zones/x.tscn` (Node3D-Root, ohne eigenes
+Environment/Ground), als Kindnode mit passendem Transform-Offset in `World.tscn` instanzieren —
+Offset so wählen, dass sich die Bounding-Box nicht mit bestehenden Gebieten überschneidet
+(Abstand von mindestens der Summe der halben Ausdehnungen beider Gebiete plus Puffer für einen
+begehbaren Übergangsweg).
+
+`GuardCheckpoint`/`ProximityDialogue` (siehe "Proaktive NPC-Interaktion" unten) sind von dieser
+Umstellung unberührt — sie hingen nie von `ZoneManager` ab, nur `GameFlags`/`DialogueRunner`.
+
+## Kampf (`scripts/Combat/`)
+
+- `IDamageable` (Schaden nehmen, `TakeDamage(amount, damageType?)`) implementieren `Player` und
+  `Enemy`. `DamageType` folgt `doc/konzept/Gameplay/Kampfsystem.md` (slashing/blunt/mixed/ranged).
+- `Enemy`: eigener Gegner-Node (CharacterBody3D), nutzt aber dieselbe Datenquelle wie NPCs
+  (`CharacterDefinition`/`CharacterStats` aus `Data/Characters/*.json`) — Gegner sind einfach
+  Einträge mit befüllten `AttackDamage`/`ResistantTo`/`WeakTo`/`AggroRadius`/... Feldern statt
+  `DialogueId`. Einfache KI: verfolgt Ziele in Gruppe `"player"` innerhalb `AggroRadius`, greift
+  in `AttackRange` direkt an (kein eigenes Hitbox-Timing). Loot fällt beim Tod als `ItemPickup`
+  ab (`LootItemIds`).
+- `Equipment`: manuelles Anlegen über `Equip(itemId)` — sortiert nach `ItemDefinition.Type` in
+  den passenden Slot (`weapon`/`shield`/`armor`). Ausgelöst über den "Ausrüsten"-Knopf im
+  Inventar-Panel (`Hud.RefreshInventory`), kein Auto-Equip mehr. Nicht ausrüstbare Typen
+  (`material`/`consumable`/`quest` — darunter auch die Runen aus `doc/konzept/Items/Runen.md`,
+  die als Zauber-Reagenz statt als Ausrüstung gedacht sind) tauchen im Inventar ohne Knopf auf.
+- Spieler-Nahkampf: `MeleeHitbox` (Area3D-Kind von `Player`), Schaden wird beim Tastendruck sofort
+  anhand der aktuellen Überlappung ausgewertet (kein Windup/Aktiv-Fenster, mangels
+  Animationssystem). Schaden/Schadensart kommen von `Equipment.EquippedWeaponId`, sonst
+  Notfall-Basiswerte (bloße Hand).
+  - Zwei Tasten (`attack_left`/`attack_right`, Maus links/rechts) statt einer: aufeinanderfolgende
+    Treffer müssen die Seite wechseln, um als "flüssig" zu gelten (`Player._lastAttackSide`,
+    `_comboWindowTimer`) — nur dann gibt's kürzeren Folge-Cooldown und einen Combo-Schadensbonus
+    (`_comboCount`, max. `MaxComboStacks`). Zweimal dieselbe Taste oder zu langsam reagiert
+    zurückgesetzt die Combo auf 1 und der nächste Angriff braucht länger (`ChoppyAttackCooldown`).
+    Grundlage für das spätere Timing-/Kombosystem aus `doc/konzept/Gameplay/Kampfsystem.md` —
+    aktuell noch ohne echtes Timing-Fenster. Die Combo selbst ist an Waffentraining gekoppelt
+    (`Player.IsComboUnlocked`, siehe "Training" unten) — ohne das passende `learned_*`-Flag gibt's
+    nur Basisangriffe, unabhängig vom Klickmuster.
+- Blocken (`block`-Taste, jetzt `B` statt Maus rechts — die ist für `attack_right` belegt)
+  reduziert eingehenden Schaden stärker mit Schild als ohne (siehe `Player.TakeDamage`); starke
+  Treffer bzw. Blocken ohne Schild lösen kurzen Stagger aus (`_staggerTimer`, sperrt Angriff/
+  Block, keine Bewegungssperre). Rüstung (`Equipment.EquippedArmorId`) zieht vor der
+  Block-Berechnung `ItemDefinition.Defense` flach vom eingehenden Schaden ab.
+
+## Handel (`Hud.cs` ShopPanel)
+
+- Währung: `Inventory.Gold` (einfaches `int`, kein Item-Stack). `AddGold`/`SpendGold`/
+  `RestoreGold`, Signal `GoldChanged` — HUD zeigt es permanent (`GoldLabel`) und im Shop-Panel.
+- Ein Händler = ein `CharacterDefinition.ShopItemIds`-Eintrag (1:1, keine eigene `Data/Shops/`-
+  Kategorie nötig, solange kein Sortiment geteilt wird). `choice.OpenShop: true` in einem Dialog-
+  Knoten löst `DialogueRunner.ShopRequested(characterId)` aus (braucht `speakerCharacterId` beim
+  `DialogueRunner.Start(...)`-Aufruf, siehe `Npc.Interact()`), `Hud` öffnet darauf das
+  `ShopPanel` (neuer `PanelKind.Shop`, gleiches Prinzip wie Inventar/Questlog).
+- Kaufen: Preis (`ItemDefinition.Price`) wird von `Inventory.Gold` abgezogen, Item landet im
+  Inventar. Verkaufen: Inventar-Items mit `Price > 0` und `Type != "quest"` können verkauft
+  werden, Verkaufspreis = `Price / 2` (abgerundet, mindestens 1).
+- `ItemDefinition.Type == "skill"` ist ein Sonderfall: kein Inventareintrag, stattdessen wird
+  beim Kauf `GameFlags.SetFlag($"learned_{itemId}")` gesetzt (siehe "Training" unten) — taucht
+  deshalb nie in der Verkaufen-Spalte auf.
+- `QuestDefinition.RewardGold` zusätzlich zu `RewardItemIds` möglich (`QuestManager.CompleteQuest`).
+
+## Training (`skill`-Items + `Player.IsComboUnlocked`)
+
+- Kein eigenes Trainings-UI — Lehrer sind einfach Händler (siehe "Handel"), deren
+  `ShopItemIds` ein `skill_*`-Item enthalten (`Data/Items/skill_onehanded_combo.json`,
+  `skill_twohanded_combo.json`). Kauf setzt `learned_onehanded_combo`/`learned_twohanded_combo`.
+- `Player.PerformAttack` prüft über `IsComboUnlocked(weapon.WeaponCategory)`, ob das passende
+  Flag gesetzt ist, bevor der Links-/Rechts-Combo-Bonus greift (siehe "Kampf" oben).
+  `ItemDefinition.WeaponCategory` (`onehand`/`twohand`/`bow`) steuert, welches Flag zählt — Bögen
+  haben aktuell keine Combo-Mechanik.
+- Neuer Trainer/neue Fähigkeit hinzufügen = neues `skill_*`-Item anlegen, in `ShopItemIds` eines
+  NPCs eintragen, im entsprechenden Code (aktuell nur `Player.IsComboUnlocked`) den Flag-Namen
+  auswerten.
+
+## Proaktive NPC-Interaktion (`scripts/Interaction/`, `scripts/World/GuardCheckpoint.cs`)
+
+Bisher lösten NPCs Dialoge nur über `E`/`Npc.Interact()` aus. Zwei neue Bausteine für NPCs, die
+selbst die Initiative ergreifen:
+
+- `ProximityDialogue` (Area3D, `Objects/Triggers/ProximityDialogue.tscn`): startet beim Betreten
+  automatisch einen Dialog (`DialogueRunner.Start(...)`), einmalig über ein eigenes
+  `TriggerFlagId`. Ergänzt einen NPC, ersetzt `Npc.Interact()` nicht — beide können auf dieselbe
+  `DialogueId` zeigen (z.B. Bettler in Nethora: proaktive Ansprache beim Vorbeilaufen, danach
+  normal per `E` weiter ansprechbar).
+- `GuardCheckpoint` (Area3D + Kind-`StaticBody3D` "Barrier", `Objects/Triggers/
+  GuardCheckpoint.tscn`): ohne `RequiredFlagId` bleibt die Barriere-`CollisionShape3D` aktiv
+  (physisch blockiert) und eine (halbtransparente, rote) `MeshInstance3D` zeigt sie an; zusätzlich
+  löst das Betreten der Trigger-Area3D einen erzwungenen Dialog mit der Wache aus. Sobald das
+  Flag gesetzt wird (`GameFlags.FlagChanged`), gibt die Barriere automatisch den Weg frei.
+  Beispiel: `BurgtorWache` in `Nethora.tscn` sperrt den Weg zu König Aldemar, bis
+  `quest_completed_quest_der_bote` (Cassian-Gespräch) gesetzt ist.
+  **Bekannte Einschränkung**: die Barriere ist eine einzelne breite Wand (16 Einheiten), kein
+  vollständiger Zaun um die Zone — auf offenem, flachem Gelände könnte ein Spieler theoretisch
+  weit genug außen herumlaufen. Für eine Blockout-Welt ohne echte Wege/Mauern ist das eine
+  bewusste Einschränkung (siehe "Bewusste Vereinfachungen" unten), keine vollständige Lösung.
+
+## Stats & Magie (`scripts/Magic/`)
 
 - Jeder Charakter hat `Health` (Leben), `Strength` (Stärke) und `Dexterity` (Geschicklichkeit).
-- Waffen skalieren über `Item.ScalingStat`: Schwerter mit `strength`, Bögen mit `dexterity`.
-- Magie-System (noch nicht implementiert, da aktuell kein Kampf/keine Gegner existieren, an
-  denen es sich zeigen würde):
-  - Zwei Schulen: **göttlich** und **dämonisch**. Beide nutzen `CharacterStats.CurrentHealth`
-    als gemeinsame Ressource statt eines separaten Mana-Werts.
-  - **Dämonisch**: kostet Leben direkt beim Wirken, sonst kampftauglich (schnell, riskant).
-  - **Göttlich**: lange Kanalzeit, Bewegung währenddessen gesperrt — dadurch nur für Effekte
-    gedacht, die man *nicht* im Kampf braucht (z.B. Heilung/Buffs außerhalb von Gefechten).
-  - Wenn Kampf/Gegner gebaut werden: `SpellCaster`-Komponente analog zu `CharacterStats` als
-    neue Kategorie `scripts/Magic/` ergänzen, ohne bestehende Systeme zu ändern.
+- Waffen skalieren über `Item.ScalingStat`: Nahkampfwaffen mit `strength`, Bögen mit `dexterity`.
+- Drei Schulen (`SpellDefinition.School`, `Data/Spells/*.json`, siehe
+  `doc/konzept/Gameplay/Magiesystem.md`): **arcane** (alte Kampfmagie), **blood** (Blutmagie),
+  **divine** (göttliche Magie/Gebete). Alle nutzen `CharacterStats.CurrentHealth` als gemeinsame
+  Ressource statt eines separaten Mana-Werts (`HealthCost` wird sofort beim Wirken abgezogen).
+  - **arcane**: sofortiger Treffer auf den nächsten Gegner in `Range`, kein echtes Projektil.
+  - **blood**: befristeter Flächeneffekt (`spell_fluchsiegel`) — zieht periodisch Leben von allen
+    Gegnern in `Range` zum Wirkenden. Nur ein aktiver Fluch gleichzeitig (v1-Einschränkung).
+  - **divine**: `CastTime > 0` sperrt Bewegung während der Kanalzeit (`SpellCaster.IsChanneling`,
+    von `Player._PhysicsProcess` abgefragt wie der Dialog-Freeze), Effekt (z.B. Heilung) wird nach
+    Ablauf auf einmal angewendet statt tatsächlich tropfenweise über Zeit.
+  - `SpellCaster` sitzt als Sibling von `Stats`/`Inventory`/`Equipment` am Player, feste 3
+    Zauber-Slots (`KnownSpellIds`) statt Zauberbuch/Lern-UI — Tasten 1/2/3
+    (`cast_spell_1/2/3`).
 
 ## HUD & Pause-Menü
 
@@ -127,3 +274,35 @@ direkt setzen), sonst desynct der intern getrackte Kamera-Yaw und die Kamera "sp
 ## Bewusste Vereinfachungen (v1)
 
 - Nur ein Savegame-Slot (kein Save-Auswahlmenü, jedes Speichern überschreibt).
+- Kampf: kein echtes Timing-Fenster/Windup (kein Animationssystem, nur simples Links-/Rechts-
+  Abwechseln als Combo-Grundlage), Gegner greifen ohne eigene Hitbox direkt an, kein echtes Parry,
+  kein visuelles/akustisches Trefferfeedback.
+- Ausrüstung: manuelles Equip nur über den Inventar-Knopf (kein Drag&Drop, keine Slot-Grafik),
+  Runen sind bewusst nicht ausrüstbar (Zauber-Reagenz statt Ausrüstung).
+- Magie: feste 3 Zauber-Slots statt Zauberbuch/Lern-UI, arkane Zauber ohne echtes Projektil,
+  Blutmagie erlaubt nur einen aktiven Fluch gleichzeitig, göttliche Heilung wird nach der
+  Kanalzeit auf einmal statt tropfenweise angewendet.
+- Handel/Training: kein Drag&Drop, keine Mengenauswahl beim Kaufen/Verkaufen (immer 1 Stück pro
+  Klick bei Consumables/Material, Waffen/Rüstung ohnehin nicht stapelbar), Training ist ein reiner
+  Gold-Kauf ohne Lernpunkte-/XP-System aus `doc/konzept/Gameplay/Progression.md`.
+- Zugangskontrolle (`GuardCheckpoint`): einzelne breite Barriere statt vollständigem Zaun um die
+  Zone, siehe Einschränkung im Abschnitt "Proaktive NPC-Interaktion".
+- Weltgröße: Die vier Gebiete sind größer als ursprünglich, aber weiterhin Blockout-Boxen ohne
+  Wegenetz/Straßen — "größer" heißt mehr Abstand und mehr Unterbereiche, nicht mehr Detailgrad.
+  Zwischen den Gebieten liegt offenes, leeres Gelände (kein gestalteter Übergangsweg).
+- Kampf/Magie/Handel/Training sind ausschließlich `dotnet build`-geprüft, nicht im Godot-Editor
+  gespielt (siehe `doc/TODO.md`) — echter Playtest steht noch aus.
+
+## Lektion: `Free()` vs. `QueueFree()`
+
+Erster echter Laufzeit-Absturz (nicht durch `dotnet build` auffindbar): Das inzwischen entfernte
+`ZoneManager.LoadZoneContent` rief `child.Free()` (sofortiges, synchrones Löschen) auf allen
+Kindern eines Nodes auf — aufgerufen aus dem `BodyEntered`-Signal-Handler eines dieser Kinder
+selbst (`ZoneTransition`). Das Objekt, dessen eigener Callback noch auf dem Call-Stack lag, wurde
+mitten in der Ausführung zerstört → Absturz. **Merksatz für dieses Projekt**: Nodes niemals per
+`Free()` löschen, wenn der Aufruf (auch indirekt) aus einem Signal-Handler eines der zu
+löschenden Nodes selbst stammen könnte — dafür immer `QueueFree()` (verschiebt das Löschen ans
+Frame-Ende). Aktuell gibt es keinen Laufzeit-Code mehr, der Nodes zur Laufzeit entfernt (die
+Welt ist jetzt statisch, siehe "Welt" oben), aber falls das wieder gebraucht wird (Lade-Systeme,
+Gegner-Despawn o.ä.): `QueueFree()` ist die Standardwahl, `Free()` nur wenn wirklich sofortige
+Zerstörung außerhalb jeder Signalverarbeitung sichergestellt ist.

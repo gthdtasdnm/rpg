@@ -1,0 +1,11 @@
+{
+  "id": "weapon_grobe_zweihandklinge",
+  "name": "Grobe Zweihandklinge",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 15,
+  "damageType": "slashing",
+  "stackable": false,
+  "price": 80,
+  "weaponCategory": "twohand"
+}

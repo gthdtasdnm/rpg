@@ -1,0 +1,184 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Objects/Crate.tscn" id="5_crate"]
+[ext_resource type="PackedScene" path="res://Objects/Rock.tscn" id="6_rock"]
+[ext_resource type="PackedScene" path="res://Characters/Npc.tscn" id="8_npc"]
+[ext_resource type="PackedScene" path="res://Objects/Items/ItemPickup.tscn" id="9_pickup"]
+[ext_resource type="PackedScene" path="res://Objects/Triggers/LocationTrigger.tscn" id="10_trigger"]
+[ext_resource type="PackedScene" path="res://Characters/Enemy.tscn" id="11_enemy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kueste"]
+albedo_color = Color(0.2, 0.4, 0.6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kueste"]
+material = SubResource("StandardMaterial3D_kueste")
+size = Vector3(8, 0.4, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kueste"]
+size = Vector3(8, 0.4, 8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mine"]
+albedo_color = Color(0.15, 0.12, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mine"]
+material = SubResource("StandardMaterial3D_mine")
+size = Vector3(3, 3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mine"]
+size = Vector3(3, 3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kathedrale"]
+albedo_color = Color(0.5, 0.5, 0.55, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kathedrale"]
+material = SubResource("StandardMaterial3D_kathedrale")
+size = Vector3(2, 8, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kathedrale"]
+size = Vector3(2, 8, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tempel"]
+albedo_color = Color(0.35, 0.1, 0.3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tempel"]
+material = SubResource("StandardMaterial3D_tempel")
+size = Vector3(1.5, 3, 1.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tempel"]
+size = Vector3(1.5, 3, 1.5)
+
+[node name="Ankunft" type="Node3D"]
+
+[node name="Crate" parent="." instance=ExtResource("5_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -4)
+
+[node name="Crate2" parent="." instance=ExtResource("5_crate")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.5, -3.2)
+
+[node name="Rock" parent="." instance=ExtResource("6_rock")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0.4, -3)
+
+[node name="Rock2" parent="." instance=ExtResource("6_rock")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.4, -5.5)
+
+[node name="Gerald" parent="." instance=ExtResource("8_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.1776739, -8)
+CharacterId = "npc_gerald"
+
+[node name="Stats" parent="Gerald" index="2"]
+CharacterId = "npc_gerald"
+
+[node name="Herb1" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -6)
+ItemId = "herb_red"
+
+[node name="Herb2" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -8)
+ItemId = "herb_red"
+
+[node name="Herb3" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12)
+ItemId = "herb_red"
+
+[node name="GeraldsLichtungTrigger" parent="." instance=ExtResource("10_trigger")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.5, -8)
+FlagId = "entered_geralds_lichtung"
+
+[node name="Koenigsbrief" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, 0.8)
+ItemId = "item_koenigsbrief"
+
+[node name="SwordPickup" parent="." instance=ExtResource("9_pickup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -2)
+ItemId = "sword_rusty"
+
+[node name="Wolf" parent="." instance=ExtResource("11_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -16)
+CharacterId = "enemy_mutierter_wolf"
+
+[node name="Stats" parent="Wolf" index="2"]
+CharacterId = "enemy_mutierter_wolf"
+
+[node name="Knochenwaechter" parent="." instance=ExtResource("11_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1, -20)
+CharacterId = "enemy_knochenwaechter"
+
+[node name="Stats" parent="Knochenwaechter" index="2"]
+CharacterId = "enemy_knochenwaechter"
+
+[node name="Wegelagerer1" parent="." instance=ExtResource("11_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -24)
+CharacterId = "enemy_wegelagerer"
+
+[node name="Stats" parent="Wegelagerer1" index="2"]
+CharacterId = "enemy_wegelagerer"
+
+[node name="Wegelagerer2" parent="." instance=ExtResource("11_enemy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, -27)
+CharacterId = "enemy_wegelagerer"
+
+[node name="Stats" parent="Wegelagerer2" index="2"]
+CharacterId = "enemy_wegelagerer"
+
+[node name="HinweisKueste" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 0.2, -10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisKueste"]
+mesh = SubResource("BoxMesh_kueste")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisKueste"]
+shape = SubResource("BoxShape3D_kueste")
+
+[node name="HinweisMine" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1.5, 6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisMine"]
+mesh = SubResource("BoxMesh_mine")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisMine"]
+shape = SubResource("BoxShape3D_mine")
+
+[node name="HinweisKathedrale" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 4, -22)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisKathedrale"]
+mesh = SubResource("BoxMesh_kathedrale")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisKathedrale"]
+shape = SubResource("BoxShape3D_kathedrale")
+
+[node name="HinweisErbauerTempel1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26, 1.5, -26)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisErbauerTempel1"]
+mesh = SubResource("BoxMesh_tempel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisErbauerTempel1"]
+shape = SubResource("BoxShape3D_tempel")
+
+[node name="HinweisErbauerTempel2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 1.5, -28)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisErbauerTempel2"]
+mesh = SubResource("BoxMesh_tempel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisErbauerTempel2"]
+shape = SubResource("BoxShape3D_tempel")
+
+[node name="HinweisErbauerTempel3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 1.5, 8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisErbauerTempel3"]
+mesh = SubResource("BoxMesh_tempel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisErbauerTempel3"]
+shape = SubResource("BoxShape3D_tempel")
+
+[node name="HinweisErbauerTempel4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1.5, 18)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisErbauerTempel4"]
+mesh = SubResource("BoxMesh_tempel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisErbauerTempel4"]
+shape = SubResource("BoxShape3D_tempel")

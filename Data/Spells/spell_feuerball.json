@@ -1,0 +1,9 @@
+{
+  "id": "spell_feuerball",
+  "name": "Feuerball",
+  "school": "arcane",
+  "healthCost": 8,
+  "damage": 14,
+  "range": 10,
+  "cooldown": 2.5
+}

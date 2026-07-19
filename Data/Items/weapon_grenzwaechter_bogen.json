@@ -1,0 +1,11 @@
+{
+  "id": "weapon_grenzwaechter_bogen",
+  "name": "Grenzwächter-Bogen",
+  "type": "weapon",
+  "scalingStat": "dexterity",
+  "damage": 7,
+  "damageType": "ranged",
+  "stackable": false,
+  "price": 60,
+  "weaponCategory": "bow"
+}

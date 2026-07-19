@@ -1,0 +1,8 @@
+{
+  "id": "npc_kael",
+  "name": "Kael",
+  "maxHealth": 22,
+  "strength": 6,
+  "dexterity": 6,
+  "dialogueId": "kael_intro"
+}

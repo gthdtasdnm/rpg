@@ -1,0 +1,11 @@
+{
+  "id": "weapon_wachtkeule",
+  "name": "Wachtkeule",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 9,
+  "damageType": "blunt",
+  "stackable": false,
+  "price": 40,
+  "weaponCategory": "onehand"
+}

@@ -1,0 +1,9 @@
+{
+  "id": "armor_beschuetzerruestung",
+  "name": "Beschützerrüstung",
+  "type": "armor",
+  "stackable": false,
+  "defense": 10,
+  "staggerResist": 5,
+  "price": 55
+}

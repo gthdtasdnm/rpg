@@ -1,0 +1,15 @@
+{
+  "id": "npc_ivo",
+  "name": "Ivo",
+  "maxHealth": 20,
+  "strength": 7,
+  "dexterity": 4,
+  "dialogueId": "ivo_intro",
+  "shopItemIds": [
+    "armor_vigil_wams",
+    "armor_ritterharnisch",
+    "armor_paladinruestung",
+    "armor_priestergewand",
+    "shield_ordensschild"
+  ]
+}

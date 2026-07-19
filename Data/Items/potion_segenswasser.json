@@ -1,0 +1,8 @@
+{
+  "id": "potion_segenswasser",
+  "name": "Segenswasser",
+  "type": "consumable",
+  "stackable": true,
+  "healAmount": 5,
+  "price": 8
+}

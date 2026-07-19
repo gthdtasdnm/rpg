@@ -1,0 +1,8 @@
+{
+  "id": "npc_bandit_1",
+  "name": "Bandit",
+  "maxHealth": 30,
+  "strength": 9,
+  "dexterity": 8,
+  "dialogueId": "bandit_1_intro"
+}

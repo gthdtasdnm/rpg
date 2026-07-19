@@ -4,5 +4,8 @@
   "type": "weapon",
   "scalingStat": "strength",
   "damage": 5,
-  "stackable": false
+  "damageType": "slashing",
+  "stackable": false,
+  "price": 15,
+  "weaponCategory": "onehand"
 }

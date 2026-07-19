@@ -1,0 +1,11 @@
+{
+  "id": "weapon_rostige_axt",
+  "name": "Rostige Axt",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 11,
+  "damageType": "mixed",
+  "stackable": false,
+  "price": 45,
+  "weaponCategory": "onehand"
+}

@@ -17,11 +17,13 @@ public partial class DialogueRunner : Node
 	[Signal] public delegate void DialogueEndedEventHandler();
 	[Signal] public delegate void QuestStartRequestedEventHandler(string questId);
 	[Signal] public delegate void QuestCompleteRequestedEventHandler(string questId);
+	[Signal] public delegate void ShopRequestedEventHandler(string characterId);
 
 	public bool IsActive { get; private set; }
 
 	private DialogueDefinition? _dialogue;
 	private string _speaker = "";
+	private string? _speakerCharacterId;
 	private readonly List<DialogueChoice> _visibleChoices = new();
 
 	public override void _Ready()
@@ -29,7 +31,9 @@ public partial class DialogueRunner : Node
 		Instance = this;
 	}
 
-	public void Start(string dialogueId, string speaker = "")
+	// speakerCharacterId: wird fuer choice.OpenShop gebraucht (welches Sortiment oeffnen, siehe
+	// CharacterDefinition.ShopItemIds) - optional, da nicht jeder Dialog von einem Händler kommt.
+	public void Start(string dialogueId, string speaker = "", string? speakerCharacterId = null)
 	{
 		DialogueDefinition? dialogue = GameData.Instance.GetDialogue(dialogueId);
 		if (dialogue == null)
@@ -40,6 +44,7 @@ public partial class DialogueRunner : Node
 
 		_dialogue = dialogue;
 		_speaker = speaker;
+		_speakerCharacterId = speakerCharacterId;
 		IsActive = true;
 
 		string startNode = dialogue.StartNode;
@@ -70,6 +75,9 @@ public partial class DialogueRunner : Node
 
 		if (choice.CompleteQuest != null)
 			EmitSignal(SignalName.QuestCompleteRequested, choice.CompleteQuest);
+
+		if (choice.OpenShop && _speakerCharacterId != null)
+			EmitSignal(SignalName.ShopRequested, _speakerCharacterId);
 
 		if (choice.Next == null)
 		{
@@ -117,6 +125,7 @@ public partial class DialogueRunner : Node
 	{
 		IsActive = false;
 		_dialogue = null;
+		_speakerCharacterId = null;
 		_visibleChoices.Clear();
 		EmitSignal(SignalName.DialogueEnded);
 	}

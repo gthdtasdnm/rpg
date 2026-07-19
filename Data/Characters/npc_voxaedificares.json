@@ -1,0 +1,8 @@
+{
+  "id": "npc_voxaedificares",
+  "name": "Vox Aedificares",
+  "maxHealth": 35,
+  "strength": 7,
+  "dexterity": 7,
+  "dialogueId": "voxaedificares_intro"
+}

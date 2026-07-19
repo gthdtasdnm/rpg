@@ -1,0 +1,16 @@
+{
+  "id": "buergerin_1_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Man hört, der König hat uns aufgegeben. Ich will's nicht glauben, aber die Gerüchte reißen nicht ab.",
+      "choices": [
+        {
+          "text": "Ich habe davon auch gehört.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

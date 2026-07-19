@@ -1,0 +1,21 @@
+{
+  "id": "godric_intro",
+  "startNode": "start",
+  "startRules": [],
+  "nodes": {
+    "start": {
+      "text": "Godric, Waffenschmied des Ordens. Schwerter, Äxte, Stumpfwaffen - alles aus gutem Stahl, wenn auch nicht mehr so viel, seit die Stadt verarmt ist.",
+      "choices": [
+        {
+          "text": "Zeig mir dein Sortiment.",
+          "next": null,
+          "openShop": true
+        },
+        {
+          "text": "Komm wieder, wenn du Stahl brauchst.",
+          "next": null
+        }
+      ]
+    }
+  }
+}

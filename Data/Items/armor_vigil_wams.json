@@ -1,0 +1,8 @@
+{
+  "id": "armor_vigil_wams",
+  "name": "Vigil-Wams",
+  "type": "armor",
+  "stackable": false,
+  "defense": 3,
+  "price": 12
+}

@@ -1,0 +1,33 @@
+{
+  "id": "aldemar_intro",
+  "startNode": "start",
+  "startRules": [
+    { "requiresFlag": "quest_completed_quest_die_nachricht", "node": "after_breakdown" }
+  ],
+  "nodes": {
+    "start": {
+      "text": "Ein Verurteilter, in meiner Halle. Cassian muss gute Gründe gehabt haben, dich vorzulassen. Sprich - was willst du?",
+      "choices": [
+        { "text": "Ich habe eine Nachricht des Königs für dich.", "next": "deliver_letter" }
+      ]
+    },
+    "deliver_letter": {
+      "text": "Aldemar bricht das Siegel auf und liest. Für einen langen Moment sagt er nichts. Dann beginnt seine Hand zu zittern, kaum merklich zuerst, dann deutlich.",
+      "choices": [
+        { "text": "...", "next": "breakdown", "completeQuest": "quest_die_nachricht", "setFlag": "aldemar_zusammenbruch" }
+      ]
+    },
+    "breakdown": {
+      "text": "'Er gibt uns auf.' Aldemars Stimme ist kaum mehr als ein Flüstern. 'Zwanzig Jahre halten wir die Barriere, zwanzig Jahre warten wir auf Hilfe - und er schreibt, es gebe keine Hoffnung mehr.' Er faltet den Brief zusammen, sorgfältig, als könnte er die Worte darin ungeschehen machen. 'Das ist nicht wahr. Das kann nicht wahr sein. Geh jetzt.'",
+      "choices": [
+        { "text": "(gehen)", "next": null }
+      ]
+    },
+    "after_breakdown": {
+      "text": "Aldemar starrt an dir vorbei, als wäre da noch jemand anderes im Raum. 'Du bist der Bote', murmelt er. 'Was willst du noch von mir?'",
+      "choices": [
+        { "text": "Nichts.", "next": null }
+      ]
+    }
+  }
+}

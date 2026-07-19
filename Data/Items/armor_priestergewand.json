@@ -1,0 +1,8 @@
+{
+  "id": "armor_priestergewand",
+  "name": "Priestergewand",
+  "type": "armor",
+  "stackable": false,
+  "defense": 1,
+  "price": 4
+}

@@ -1,0 +1,15 @@
+{
+  "id": "enemy_wegelagerer",
+  "name": "Wegelagerer",
+  "maxHealth": 28,
+  "strength": 8,
+  "dexterity": 7,
+  "attackDamage": 7,
+  "attackDamageType": "slashing",
+  "weakTo": "blunt",
+  "aggroRadius": 8,
+  "attackRange": 1.6,
+  "attackCooldown": 1.3,
+  "moveSpeed": 4.0,
+  "lootItemIds": ["potion_heiltrank"]
+}

@@ -38,6 +38,7 @@ public partial class SaveSystem : Node
 			PlayerZ = player.GlobalPosition.Z,
 			PlayerRotationY = player.Rotation.Y,
 			PlayerHealth = stats.CurrentHealth,
+			Gold = inventory.Gold,
 			InventoryItems = new(inventory.GetAllItems()),
 			Flags = new(GameFlags.Instance.GetAllFlags()),
 			ActiveQuestProgress = QuestManager.Instance.GetActiveQuestProgressForSave(),
@@ -79,7 +80,9 @@ public partial class SaveSystem : Node
 		player.ApplySaveState(new Vector3(data.PlayerX, data.PlayerY, data.PlayerZ), data.PlayerRotationY);
 
 		player.GetNode<CharacterStats>("Stats").RestoreHealth(data.PlayerHealth);
-		player.GetNode<Inventory>("Inventory").LoadItems(data.InventoryItems);
+		Inventory playerInventory = player.GetNode<Inventory>("Inventory");
+		playerInventory.LoadItems(data.InventoryItems);
+		playerInventory.RestoreGold(data.Gold);
 		GameFlags.Instance.LoadFlags(data.Flags);
 		QuestManager.Instance.RestoreActiveQuests(data.ActiveQuestProgress);
 

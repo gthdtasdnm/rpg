@@ -19,6 +19,7 @@ public partial class GameData : Node
 	private readonly Dictionary<string, ItemDefinition> _items = new();
 	private readonly Dictionary<string, QuestDefinition> _quests = new();
 	private readonly Dictionary<string, DialogueDefinition> _dialogues = new();
+	private readonly Dictionary<string, SpellDefinition> _spells = new();
 
 	public override void _Ready()
 	{
@@ -28,12 +29,14 @@ public partial class GameData : Node
 		LoadAll("res://Data/Items", _items, d => d.Id);
 		LoadAll("res://Data/Quests", _quests, d => d.Id);
 		LoadAll("res://Data/Dialogues", _dialogues, d => d.Id);
+		LoadAll("res://Data/Spells", _spells, d => d.Id);
 	}
 
 	public CharacterDefinition? GetCharacter(string id) => _characters.GetValueOrDefault(id);
 	public ItemDefinition? GetItem(string id) => _items.GetValueOrDefault(id);
 	public QuestDefinition? GetQuest(string id) => _quests.GetValueOrDefault(id);
 	public DialogueDefinition? GetDialogue(string id) => _dialogues.GetValueOrDefault(id);
+	public SpellDefinition? GetSpell(string id) => _spells.GetValueOrDefault(id);
 
 	public IEnumerable<ItemDefinition> GetAllItems() => _items.Values;
 	public IEnumerable<QuestDefinition> GetAllQuests() => _quests.Values;

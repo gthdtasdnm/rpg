@@ -1,0 +1,9 @@
+{
+  "id": "armor_paladinruestung",
+  "name": "Paladinrüstung",
+  "type": "armor",
+  "stackable": false,
+  "defense": 14,
+  "staggerResist": 6,
+  "price": 74
+}

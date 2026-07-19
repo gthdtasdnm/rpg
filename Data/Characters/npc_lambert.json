@@ -1,0 +1,11 @@
+{
+  "id": "npc_lambert",
+  "name": "Lambert",
+  "maxHealth": 18,
+  "strength": 5,
+  "dexterity": 4,
+  "dialogueId": "lambert_intro",
+  "shopItemIds": [
+    "potion_ausdauertrank"
+  ]
+}

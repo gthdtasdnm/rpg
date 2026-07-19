@@ -1,0 +1,11 @@
+{
+  "id": "weapon_soeldnerkeule",
+  "name": "Söldnerkeule",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 8,
+  "damageType": "blunt",
+  "stackable": false,
+  "price": 30,
+  "weaponCategory": "onehand"
+}

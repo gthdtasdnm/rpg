@@ -1,0 +1,8 @@
+{
+  "id": "npc_aldemar",
+  "name": "König Aldemar",
+  "maxHealth": 25,
+  "strength": 4,
+  "dexterity": 4,
+  "dialogueId": "aldemar_intro"
+}

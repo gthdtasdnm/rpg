@@ -1,0 +1,42 @@
+{
+  "id": "torvald_intro",
+  "startNode": "start",
+  "startRules": [
+    { "requiresFlag": "quest_completed_quest_ruinenfragmente", "node": "thanks" },
+    { "requiresFlag": "quest_ready_quest_ruinenfragmente", "node": "turn_in" },
+    { "requiresFlag": "quest_started_quest_ruinenfragmente", "node": "waiting" }
+  ],
+  "nodes": {
+    "start": {
+      "text": "Die alte Magie fordert ihren Preis, Fremder. Wer sie lernen will, muss bereit sein, mit dem eigenen Leben zu zahlen. Manche zahlen zu viel.",
+      "choices": [
+        { "text": "Gibt es etwas, womit ich helfen kann?", "next": "explain_quest" },
+        { "text": "Geh vorsichtig um mit dem, was du nicht verstehst.", "next": null }
+      ]
+    },
+    "explain_quest": {
+      "text": "Such mir zwei Ruinenfragmente aus den alten Gemäuern. Es gibt Dinge darin, die selbst ich noch nicht verstehe.",
+      "choices": [
+        { "text": "Ich mache mich auf die Suche.", "next": null, "startQuest": "quest_ruinenfragmente" }
+      ]
+    },
+    "waiting": {
+      "text": "Hast du die Ruinenfragmente schon gefunden?",
+      "choices": [
+        { "text": "Noch nicht.", "next": null }
+      ]
+    },
+    "turn_in": {
+      "text": "Zeig her, was du gefunden hast.",
+      "choices": [
+        { "text": "Hier, die Fragmente.", "next": null, "completeQuest": "quest_ruinenfragmente" }
+      ]
+    },
+    "thanks": {
+      "text": "Diese Fragmente... interessant. Danke, Fremder.",
+      "choices": [
+        { "text": "Gern.", "next": null }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "weapon_ordensklinge",
+  "name": "Ordensklinge",
+  "type": "weapon",
+  "scalingStat": "strength",
+  "damage": 10,
+  "damageType": "slashing",
+  "stackable": false,
+  "price": 50,
+  "weaponCategory": "onehand"
+}

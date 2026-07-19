@@ -1,0 +1,302 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://Characters/Npc.tscn" id="3_npc"]
+[ext_resource type="PackedScene" path="res://Objects/Triggers/GuardCheckpoint.tscn" id="5_guardcheckpoint"]
+[ext_resource type="PackedScene" path="res://Objects/Triggers/ProximityDialogue.tscn" id="6_proximitydialogue"]
+
+[sub_resource type="StandardMaterial3D" id="mat_0"]
+albedo_color = Color(0.75, 0.7, 0.55, 1)
+
+[sub_resource type="BoxMesh" id="mesh_0"]
+material = SubResource("mat_0")
+size = Vector3(10, 5, 8)
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(10, 5, 8)
+
+[sub_resource type="StandardMaterial3D" id="mat_1"]
+albedo_color = Color(0.8, 0.78, 0.65, 1)
+
+[sub_resource type="BoxMesh" id="mesh_1"]
+material = SubResource("mat_1")
+size = Vector3(7, 3, 7)
+
+[sub_resource type="BoxShape3D" id="shape_1"]
+size = Vector3(7, 3, 7)
+
+[sub_resource type="StandardMaterial3D" id="mat_2"]
+albedo_color = Color(0.6, 0.5, 0.35, 1)
+
+[sub_resource type="BoxMesh" id="mesh_2"]
+material = SubResource("mat_2")
+size = Vector3(6, 2.5, 6)
+
+[sub_resource type="BoxShape3D" id="shape_2"]
+size = Vector3(6, 2.5, 6)
+
+[sub_resource type="StandardMaterial3D" id="mat_3"]
+albedo_color = Color(0.55, 0.5, 0.45, 1)
+
+[sub_resource type="BoxMesh" id="mesh_3"]
+material = SubResource("mat_3")
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="shape_3"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="StandardMaterial3D" id="mat_4"]
+albedo_color = Color(0.55, 0.5, 0.45, 1)
+
+[sub_resource type="BoxMesh" id="mesh_4"]
+material = SubResource("mat_4")
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="shape_4"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="StandardMaterial3D" id="mat_5"]
+albedo_color = Color(0.55, 0.5, 0.45, 1)
+
+[sub_resource type="BoxMesh" id="mesh_5"]
+material = SubResource("mat_5")
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="shape_5"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="StandardMaterial3D" id="mat_6"]
+albedo_color = Color(0.55, 0.5, 0.45, 1)
+
+[sub_resource type="BoxMesh" id="mesh_6"]
+material = SubResource("mat_6")
+size = Vector3(3, 2, 3)
+
+[sub_resource type="BoxShape3D" id="shape_6"]
+size = Vector3(3, 2, 3)
+
+[sub_resource type="StandardMaterial3D" id="mat_7"]
+albedo_color = Color(0.65, 0.55, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="mesh_7"]
+material = SubResource("mat_7")
+size = Vector3(4, 3, 4)
+
+[sub_resource type="BoxShape3D" id="shape_7"]
+size = Vector3(4, 3, 4)
+
+[sub_resource type="StandardMaterial3D" id="mat_8"]
+albedo_color = Color(0.65, 0.55, 0.4, 1)
+
+[sub_resource type="BoxMesh" id="mesh_8"]
+material = SubResource("mat_8")
+size = Vector3(4, 3, 4)
+
+[sub_resource type="BoxShape3D" id="shape_8"]
+size = Vector3(4, 3, 4)
+
+[sub_resource type="StandardMaterial3D" id="mat_9"]
+albedo_color = Color(0.15, 0.12, 0.1, 1)
+
+[sub_resource type="BoxMesh" id="mesh_9"]
+material = SubResource("mat_9")
+size = Vector3(3, 3, 2)
+
+[sub_resource type="BoxShape3D" id="shape_9"]
+size = Vector3(3, 3, 2)
+
+[node name="Nethora" type="Node3D"]
+
+[node name="Schloss" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, -34)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Schloss"]
+mesh = SubResource("mesh_0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Schloss"]
+shape = SubResource("shape_0")
+
+[node name="Ordenssitz" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1.5, -16)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ordenssitz"]
+mesh = SubResource("mesh_1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ordenssitz"]
+shape = SubResource("shape_1")
+
+[node name="Taverne" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.25, -4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Taverne"]
+mesh = SubResource("mesh_2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Taverne"]
+shape = SubResource("shape_2")
+
+[node name="MarktstandGodric" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MarktstandGodric"]
+mesh = SubResource("mesh_3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MarktstandGodric"]
+shape = SubResource("shape_3")
+
+[node name="MarktstandIvo" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MarktstandIvo"]
+mesh = SubResource("mesh_4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MarktstandIvo"]
+shape = SubResource("shape_4")
+
+[node name="MarktstandMeinhard" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MarktstandMeinhard"]
+mesh = SubResource("mesh_5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MarktstandMeinhard"]
+shape = SubResource("shape_5")
+
+[node name="MarktstandLambert" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MarktstandLambert"]
+mesh = SubResource("mesh_6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MarktstandLambert"]
+shape = SubResource("shape_6")
+
+[node name="WohnhausA" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1.5, 4)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WohnhausA"]
+mesh = SubResource("mesh_7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WohnhausA"]
+shape = SubResource("shape_7")
+
+[node name="WohnhausB" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1.5, 8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WohnhausB"]
+mesh = SubResource("mesh_8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WohnhausB"]
+shape = SubResource("shape_8")
+
+[node name="HinweisMinenZugang" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 1.5, 10)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HinweisMinenZugang"]
+mesh = SubResource("mesh_9")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HinweisMinenZugang"]
+shape = SubResource("shape_9")
+
+[node name="Cassian" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1.1776739, -10)
+CharacterId = "npc_cassian"
+
+[node name="Stats" parent="Cassian" index="2"]
+CharacterId = "npc_cassian"
+
+[node name="Aldemar" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1776739, -30)
+CharacterId = "npc_aldemar"
+
+[node name="Stats" parent="Aldemar" index="2"]
+CharacterId = "npc_aldemar"
+
+[node name="Renward" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1776739, -22)
+CharacterId = "npc_renward"
+
+[node name="Stats" parent="Renward" index="2"]
+CharacterId = "npc_renward"
+
+[node name="Bertram" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1.1776739, -10)
+CharacterId = "npc_bertram"
+
+[node name="Stats" parent="Bertram" index="2"]
+CharacterId = "npc_bertram"
+
+[node name="Godric" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.1776739, 6)
+CharacterId = "npc_godric"
+
+[node name="Stats" parent="Godric" index="2"]
+CharacterId = "npc_godric"
+
+[node name="Ivo" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1.1776739, 6)
+CharacterId = "npc_ivo"
+
+[node name="Stats" parent="Ivo" index="2"]
+CharacterId = "npc_ivo"
+
+[node name="Meinhard" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1.1776739, 6)
+CharacterId = "npc_meinhard"
+
+[node name="Stats" parent="Meinhard" index="2"]
+CharacterId = "npc_meinhard"
+
+[node name="Lambert" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1.1776739, 10)
+CharacterId = "npc_lambert"
+
+[node name="Stats" parent="Lambert" index="2"]
+CharacterId = "npc_lambert"
+
+[node name="Hartwin" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 1.1776739, -2)
+CharacterId = "npc_hartwin"
+
+[node name="Stats" parent="Hartwin" index="2"]
+CharacterId = "npc_hartwin"
+
+[node name="Bauer" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 1.1776739, 2)
+CharacterId = "npc_bauer_1"
+
+[node name="Stats" parent="Bauer" index="2"]
+CharacterId = "npc_bauer_1"
+
+[node name="Buergerin" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 1.1776739, 6)
+CharacterId = "npc_buergerin_1"
+
+[node name="Stats" parent="Buergerin" index="2"]
+CharacterId = "npc_buergerin_1"
+
+[node name="Bettler" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1.1776739, 8)
+CharacterId = "npc_bettler_1"
+
+[node name="Stats" parent="Bettler" index="2"]
+CharacterId = "npc_bettler_1"
+
+[node name="Wache" parent="." instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 1.1776739, -2)
+CharacterId = "npc_wache_1"
+
+[node name="Stats" parent="Wache" index="2"]
+CharacterId = "npc_wache_1"
+
+[node name="BurgtorWache" parent="." instance=ExtResource("5_guardcheckpoint")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -24)
+RequiredFlagId = "quest_completed_quest_der_bote"
+GuardDialogueId = "renward_intro"
+GuardName = "Renward"
+GuardCharacterId = "npc_renward"
+
+[node name="BettlerAnsprache" parent="." instance=ExtResource("6_proximitydialogue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 1, 7)
+DialogueId = "bettler_1_intro"
+SpeakerName = "Bettler"
+SpeakerCharacterId = "npc_bettler_1"
+TriggerFlagId = "ambient_bettler_1_greeted"

@@ -4,10 +4,15 @@
 [ext_resource type="Script" uid="uid://b7345nacgt64b" path="res://scripts/Characters/CharacterStats.cs" id="2_stats"]
 [ext_resource type="Script" uid="uid://cemxiuflhgnca" path="res://scripts/Interaction/Interactor.cs" id="3_interactor"]
 [ext_resource type="Script" uid="uid://c4cmxj82kwwkj" path="res://scripts/Items/Inventory.cs" id="4_inventory"]
+[ext_resource type="Script" path="res://scripts/Combat/Equipment.cs" id="5_equipment"]
+[ext_resource type="Script" path="res://scripts/Magic/SpellCaster.cs" id="6_spellcaster"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eibnf"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_eibnf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_meleehitbox"]
+size = Vector3(1.2, 1.4, 1.0)
 
 [node name="Player" type="CharacterBody3D" unique_id=1945379676]
 script = ExtResource("1_player")
@@ -34,3 +39,17 @@ CharacterId = "player"
 
 [node name="Inventory" type="Node" parent="." unique_id=960527433]
 script = ExtResource("4_inventory")
+
+[node name="Equipment" type="Node" parent="."]
+script = ExtResource("5_equipment")
+
+[node name="SpellCaster" type="Node" parent="."]
+script = ExtResource("6_spellcaster")
+
+[node name="MeleeHitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.3)
+monitoring = true
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeHitbox"]
+shape = SubResource("BoxShape3D_meleehitbox")

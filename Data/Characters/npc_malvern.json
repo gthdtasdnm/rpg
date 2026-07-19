@@ -1,0 +1,11 @@
+{
+  "id": "npc_malvern",
+  "name": "Malvern",
+  "maxHealth": 38,
+  "strength": 12,
+  "dexterity": 7,
+  "dialogueId": "malvern_intro",
+  "shopItemIds": [
+    "skill_onehanded_combo"
+  ]
+}

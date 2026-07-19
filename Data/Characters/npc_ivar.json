@@ -1,0 +1,11 @@
+{
+  "id": "npc_ivar",
+  "name": "Ivar",
+  "maxHealth": 40,
+  "strength": 14,
+  "dexterity": 7,
+  "dialogueId": "ivar_intro",
+  "shopItemIds": [
+    "skill_twohanded_combo"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "npc_curran",
+  "name": "Curran",
+  "maxHealth": 18,
+  "strength": 6,
+  "dexterity": 5,
+  "dialogueId": "curran_intro",
+  "shopItemIds": [
+    "weapon_geflickter_saebel",
+    "weapon_grobe_zweihandklinge",
+    "weapon_soeldnerkeule",
+    "weapon_rostige_axt",
+    "weapon_jagdbogen",
+    "shield_behelfsschild"
+  ]
+}
