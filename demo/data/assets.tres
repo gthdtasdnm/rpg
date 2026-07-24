@@ -9,14 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c1ots7w6i0i1q" path="res://demo/assets/textures/ground037_nrm_rgh.png" id="4_aw5y1"]
 [ext_resource type="PackedScene" uid="uid://ds2na1y7c22fk" path="res://Models/Various_Forest_Assets_Pack/birch_2_21.tscn" id="4_lsry0"]
 [ext_resource type="PackedScene" uid="uid://dsv6fuph14gum" path="res://Models/Various_Forest_Assets_Pack/birch_3_26.tscn" id="5_ovs0q"]
-[ext_resource type="Texture2D" uid="uid://b87tu6fkqd3ma" path="res://Textures/packed_albedo_height.png" id="6_e6edf"]
 [ext_resource type="PackedScene" uid="uid://cvw2x64opcc0m" path="res://Models/Various_Forest_Assets_Pack/birch_orange_1_22.tscn" id="6_xk6cq"]
-[ext_resource type="Texture2D" uid="uid://b25dstrhkaiob" path="res://Textures/packed_normal_roughness.png" id="7_cmr6o"]
 [ext_resource type="PackedScene" uid="uid://ckpiw7a2x0iqp" path="res://Models/Various_Forest_Assets_Pack/birch_orange_2_23.tscn" id="7_nyiou"]
 [ext_resource type="PackedScene" uid="uid://bhxvb0ewf7fmm" path="res://Models/Various_Forest_Assets_Pack/boulder_mossy_large_6.tscn" id="8_tvt4j"]
-[ext_resource type="Texture2D" uid="uid://by6exb0yd1dxb" path="res://packed_albedo_height.png" id="8_uyhyi"]
 [ext_resource type="PackedScene" uid="uid://bpl15bb4wlj1j" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_mossy_large_7.tscn" id="9_7pjv0"]
-[ext_resource type="Texture2D" uid="uid://cvgier0weqkip" path="res://packed_normal_roughness.png" id="9_xlng6"]
 [ext_resource type="PackedScene" uid="uid://cdnepfmm3ni0l" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_mossy_medium_8.tscn" id="10_206xh"]
 [ext_resource type="PackedScene" uid="uid://csclhi3i1fpsa" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_plain_large_9.tscn" id="11_omgd3"]
 [ext_resource type="PackedScene" uid="uid://chcphq3vrjjp4" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_plain_medium_10.tscn" id="12_wq20h"]
@@ -42,6 +38,10 @@
 [ext_resource type="PackedScene" uid="uid://dmwynyqj7w6yt" path="res://Models/Various_Forest_Assets_Pack/pine_tree_19.tscn" id="32_6vs1i"]
 [ext_resource type="PackedScene" uid="uid://ccy1rhbytivju" path="res://Models/Various_Forest_Assets_Pack/plum_tree_3.tscn" id="33_gg3l3"]
 [ext_resource type="PackedScene" uid="uid://cy4bfy3k4rnsd" path="res://Models/Various_Forest_Assets_Pack/raspberry_shrub_5.tscn" id="34_fb0qq"]
+[ext_resource type="Texture2D" uid="uid://tfs5ofvr2xrt" path="res://PackedTextures/Ground085_albedo_height.png" id="39_oq473"]
+[ext_resource type="Texture2D" uid="uid://dly7nns41oktn" path="res://PackedTextures/Ground085_normal_roughness.png" id="40_wpdy7"]
+[ext_resource type="Texture2D" uid="uid://c5weenoov5g00" path="res://PackedTextures/Ground079S_albedo_height.png" id="41_lsry0"]
+[ext_resource type="Texture2D" uid="uid://m5lhd5dg6lk1" path="res://PackedTextures/Ground079S_normal_roughness.png" id="42_ovs0q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eohjv"]
 transparency = 4
@@ -390,14 +390,14 @@ detiling_rotation = 0.161
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uyhyi"]
 name = "packed_albedo_height"
 id = 2
-albedo_texture = ExtResource("6_e6edf")
-normal_texture = ExtResource("7_cmr6o")
+albedo_texture = ExtResource("39_oq473")
+normal_texture = ExtResource("40_wpdy7")
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_3wxcx"]
 name = "packed_albedo_height"
 id = 3
-albedo_texture = ExtResource("8_uyhyi")
-normal_texture = ExtResource("9_xlng6")
+albedo_texture = ExtResource("41_lsry0")
+normal_texture = ExtResource("42_ovs0q")
 
 [resource]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_g06w4"), SubResource("Terrain3DMeshAsset_s7vq2"), SubResource("Terrain3DMeshAsset_tw6mt"), SubResource("Terrain3DMeshAsset_lp87e"), SubResource("Terrain3DMeshAsset_w40rn"), SubResource("Terrain3DMeshAsset_ef5ef"), SubResource("Terrain3DMeshAsset_51ycc"), SubResource("Terrain3DMeshAsset_5hqou"), SubResource("Terrain3DMeshAsset_yiqki"), SubResource("Terrain3DMeshAsset_hcs8k"), SubResource("Terrain3DMeshAsset_4w7n7"), SubResource("Terrain3DMeshAsset_g4oec"), SubResource("Terrain3DMeshAsset_yfcck"), SubResource("Terrain3DMeshAsset_754si"), SubResource("Terrain3DMeshAsset_t6x6i"), SubResource("Terrain3DMeshAsset_5guby"), SubResource("Terrain3DMeshAsset_arwi7"), SubResource("Terrain3DMeshAsset_fytio"), SubResource("Terrain3DMeshAsset_3jwga"), SubResource("Terrain3DMeshAsset_pd6e7"), SubResource("Terrain3DMeshAsset_ve4f6"), SubResource("Terrain3DMeshAsset_k6i7b"), SubResource("Terrain3DMeshAsset_5uyn1"), SubResource("Terrain3DMeshAsset_na8ho"), SubResource("Terrain3DMeshAsset_bp0yk"), SubResource("Terrain3DMeshAsset_dx84b"), SubResource("Terrain3DMeshAsset_v1hwx"), SubResource("Terrain3DMeshAsset_bl7ox"), SubResource("Terrain3DMeshAsset_hw2e3"), SubResource("Terrain3DMeshAsset_sk0o4"), SubResource("Terrain3DMeshAsset_ts7so"), SubResource("Terrain3DMeshAsset_1eeys"), SubResource("Terrain3DMeshAsset_yfrte"), SubResource("Terrain3DMeshAsset_s78ae"), SubResource("Terrain3DMeshAsset_r6xou")])
