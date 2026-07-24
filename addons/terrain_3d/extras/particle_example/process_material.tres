@@ -1,19 +1,11 @@
 [gd_resource type="ShaderMaterial" format=3 uid="uid://el5y10hnh13g"]
 
 [ext_resource type="Shader" uid="uid://dce675i014xcn" path="res://addons/terrain_3d/extras/particle_example/particles.gdshader" id="1_t55me"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_544iv"]
-noise_type = 2
-frequency = 0.0145
-cellular_return_type = 4
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_544iv"]
-noise = SubResource("FastNoiseLite_544iv")
-seamless = true
+[ext_resource type="Texture2D" uid="uid://bgr4ssn0iewtq" path="res://grass_noise.tres" id="2_grassnoise"]
 
 [resource]
 shader = ExtResource("1_t55me")
-shader_parameter/main_noise = SubResource("NoiseTexture2D_544iv")
+shader_parameter/main_noise = ExtResource("2_grassnoise")
 shader_parameter/main_noise_scale = 0.01
 shader_parameter/position_offset = Vector3(0, 0.45, 0)
 shader_parameter/align_to_normal = true

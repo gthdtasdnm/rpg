@@ -19,6 +19,16 @@ public partial class Player : CharacterBody3D, IDamageable
 	[Export] public float MaxPitchDegrees = 80f;
 	[Export] public float JumpVelocity = 4.5f;
 
+	// Schwimmen: sobald der Spieler unter WaterLevel (globale Y-Hoehe) sinkt, haelt er sich an
+	// der Wasseroberflaeche, wippt leicht auf und ab und neigt sich nach vorne. Standard knapp
+	// unter null.
+	[Export] public float WaterLevel = -1.3f;
+	[Export] public float SwimSpeed = 25.0f; // Horizontales Tempo im Wasser (langsamer als an Land)
+	[Export] public float SwimTiltDegrees = 75.0f; // Vorwaerts-Neigung des Koerpers beim Schwimmen
+	[Export] public float SwimBobAmplitude = 0.12f; // Wie weit er auf/ab wippt (Meter)
+	[Export] public float SwimBobSpeed = 2.0f; // Wippfrequenz
+	[Export] public float SwimExitHeight = 0.6f; // Ab dieser Hoehe ueber WaterLevel endet das Schwimmen
+
 	// Kampf-Grundwerte (siehe doc/konzept/Gameplay/Kampfsystem.md). Bewusste Vereinfachung v1:
 	// kein Windup/Aktiv-Fenster (kein Animationssystem), Blocktreffer statt echtem Timing-Parry -
 	// siehe doc/TODO.md. Combo aktuell nur simples Links/Rechts-Abwechseln mit Cooldown-/Schadens-
@@ -38,6 +48,10 @@ public partial class Player : CharacterBody3D, IDamageable
 
 	private float _gravity = ProjectSettings.GetSetting("physics/3d/default_gravity").AsSingle();
 	private Node3D _cameraPivot = null!;
+	private Node3D _mesh = null!;
+	private bool _isSwimming;
+	private float _swimBlend; // 0 = aufrecht an Land, 1 = schwimmend geneigt
+	private float _bobTime;
 	private CharacterStats _stats = null!;
 	private Equipment _equipment = null!;
 	private Area3D _meleeHitbox = null!;
@@ -58,6 +72,7 @@ public partial class Player : CharacterBody3D, IDamageable
 	public override void _Ready()
 	{
 		_cameraPivot = GetNode<Node3D>("CameraPivot");
+		_mesh = GetNode<Node3D>("MeshInstance3D");
 		_stats = GetNode<CharacterStats>("Stats");
 		_equipment = GetNode<Equipment>("Equipment");
 		_meleeHitbox = GetNode<Area3D>("MeleeHitbox");
@@ -125,13 +140,33 @@ public partial class Player : CharacterBody3D, IDamageable
 
 		Vector3 velocity = Velocity;
 
-		// Schwerkraft anwenden
-		if (!IsOnFloor())
-			velocity.Y -= _gravity * dt;
+		// Schwimmen: an der Wasseroberflaeche halten (nicht unter WaterLevel sinken), leicht
+		// auf/ab wippen und den Koerper nach vorne neigen. Hysterese, damit der Zustand am
+		// Wasserrand nicht flackert: rein sobald man unter WaterLevel sinkt, raus erst wenn man
+		// SwimExitHeight darueber liegt (z. B. an flacher Stelle wieder Boden unter den Fuessen).
+		if (!_isSwimming && GlobalPosition.Y < WaterLevel)
+			_isSwimming = true;
+		else if (_isSwimming && GlobalPosition.Y > WaterLevel + SwimExitHeight)
+			_isSwimming = false;
 
-		// Sprung
-		if (Input.IsActionJustPressed("jump") && IsOnFloor())
-			velocity.Y = JumpVelocity;
+		if (_isSwimming)
+		{
+			_bobTime += dt * SwimBobSpeed;
+			// Zielhoehe = Wasseroberflaeche + sanftes Wippen. Weich (Feder) dorthin ziehen und
+			// die Steiggeschwindigkeit deckeln, damit man beim Reinfallen nicht rausgeschossen wird.
+			float targetY = WaterLevel + Mathf.Sin(_bobTime) * SwimBobAmplitude;
+			velocity.Y = Mathf.Clamp((targetY - GlobalPosition.Y) * 6f, -8f, 8f);
+		}
+		else
+		{
+			// Schwerkraft anwenden
+			if (!IsOnFloor())
+				velocity.Y -= _gravity * dt;
+
+			// Sprung
+			if (Input.IsActionJustPressed("jump") && IsOnFloor())
+				velocity.Y = JumpVelocity;
+		}
 
 		if (_attackCooldownTimer > 0f)
 			_attackCooldownTimer -= dt;
@@ -168,7 +203,7 @@ public partial class Player : CharacterBody3D, IDamageable
 		Basis cameraBasis = new Basis(Vector3.Up, _cameraYaw);
 		Vector3 direction = (cameraBasis * new Vector3(inputDir.X, 0, inputDir.Y)).Normalized();
 
-		Vector3 targetVelocity = direction * Speed;
+		Vector3 targetVelocity = direction * (_isSwimming ? SwimSpeed : Speed);
 		velocity.X = Mathf.MoveToward(velocity.X, targetVelocity.X, Acceleration * dt);
 		velocity.Z = Mathf.MoveToward(velocity.Z, targetVelocity.Z, Acceleration * dt);
 
@@ -185,6 +220,11 @@ public partial class Player : CharacterBody3D, IDamageable
 		// Kamera-Rotation erst NACH der Körperdrehung setzen, sonst hinkt sie
 		// bei schnellen Richtungswechseln einen Frame hinterher und "zuckt".
 		_cameraPivot.Rotation = new Vector3(_cameraPitch, _cameraYaw - Rotation.Y, 0f);
+
+		// Koerper beim Schwimmen nach vorne neigen - weich ein-/ausblenden. Nur das Mesh wird
+		// gekippt, damit Kollisionskapsel und Kamera aufrecht bleiben.
+		_swimBlend = Mathf.MoveToward(_swimBlend, _isSwimming ? 1f : 0f, dt * 4f);
+		_mesh.Rotation = new Vector3(Mathf.DegToRad(SwimTiltDegrees) * _swimBlend, 0f, 0f);
 	}
 
 	// Kein Animations-Timing vorhanden (siehe doc/TODO.md) - der Treffer wird beim Tastendruck

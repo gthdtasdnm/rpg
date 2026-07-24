@@ -45,7 +45,7 @@ extends Node3D
 		_set_offsets()
 
 
-## Grid width. Must be odd. 
+## Grid width. Must be odd.
 ## Higher values cull slightly better, draw further out.
 @export_range(1, 15, 2) var grid_width: int = 9:
 	set(value):
@@ -76,6 +76,22 @@ extends Node3D
 
 ## Access to process material parameters
 @export var process_material: ShaderMaterial
+
+## The player node. Grass parts to the sides as it passes.
+## If left empty, a node named "Player" is searched for at runtime.
+@export var player: Node3D
+
+## Horizontal radius (meters) of the parting around the player's path.
+@export var trail_radius: float = 0.9
+
+## How far the grass is pushed to the side.
+@export var trail_push: float = 0.55
+
+## Seconds a parting stays open before the grass springs back.
+@export var trail_lifetime: float = 3.0
+
+## Minimum distance the player must move before a new trail point is recorded.
+@export var trail_point_spacing: float = 0.35
 
 ## The mesh that each particle will render
 @export var mesh: Mesh
@@ -118,13 +134,43 @@ var offsets: Array[Vector3]
 var last_pos: Vector3 = Vector3.ZERO
 var particle_nodes: Array[GPUParticles3D]
 
+# Player trail. Must match TRAIL_SIZE in grass.gdshader.
+const TRAIL_SIZE: int = 16
+var _trail_pos: PackedVector3Array = PackedVector3Array()
+var _trail_dir: PackedVector2Array = PackedVector2Array()
+var _trail_age: PackedFloat32Array = PackedFloat32Array()
+var _trail_strength: PackedFloat32Array = PackedFloat32Array()
+var _trail_head: int = 0
+var _last_trail_pos: Vector3 = Vector3.ZERO
+
 
 func _ready() -> void:
 	if not terrain:
 		var parent: Node = get_parent()
 		if parent is Terrain3D:
 			terrain = parent
+	# Auto-find the player by name at runtime if not assigned in the editor.
+	if not player and not Engine.is_editor_hint():
+		var found: Node = get_tree().get_current_scene().find_child("Player", true, false)
+		if found is Node3D:
+			player = found
+	_init_trail()
 	_create_grid()
+
+
+func _init_trail() -> void:
+	_trail_pos.resize(TRAIL_SIZE)
+	_trail_dir.resize(TRAIL_SIZE)
+	_trail_age.resize(TRAIL_SIZE)
+	_trail_strength.resize(TRAIL_SIZE)
+	for i in TRAIL_SIZE:
+		_trail_pos[i] = Vector3.ZERO
+		_trail_dir[i] = Vector2.ZERO
+		# Start fully faded so no parting shows before the player moves.
+		_trail_age[i] = trail_lifetime + 1.0
+		_trail_strength[i] = 0.0
+	if player:
+		_last_trail_pos = player.global_position
 
 
 func _notification(what: int) -> void:
@@ -142,8 +188,37 @@ func _physics_process(delta: float) -> void:
 				RenderingServer.material_set_param(process_material.get_rid(), "camera_position", pos )
 				last_pos = camera.global_position
 		_update_process_parameters()
+		# Update the player trail and feed it to the grass mesh shader.
+		if player and mesh_material_override is ShaderMaterial:
+			_update_trail(delta)
+			var grass_mat: ShaderMaterial = mesh_material_override as ShaderMaterial
+			grass_mat.set_shader_parameter("trail_positions", _trail_pos)
+			grass_mat.set_shader_parameter("trail_dirs", _trail_dir)
+			grass_mat.set_shader_parameter("trail_strength", _trail_strength)
+			grass_mat.set_shader_parameter("trail_radius", trail_radius)
+			grass_mat.set_shader_parameter("trail_push", trail_push)
 	else:
 		set_physics_process(false)
+
+
+func _update_trail(delta: float) -> void:
+	# Age every point and recompute its strength (1.0 fresh -> 0.0 sprung back).
+	var inv_life: float = 1.0 / maxf(trail_lifetime, 0.001)
+	for i in TRAIL_SIZE:
+		_trail_age[i] += delta
+		_trail_strength[i] = clampf(1.0 - _trail_age[i] * inv_life, 0.0, 1.0)
+	# Record a new point once the player has moved far enough.
+	var ppos: Vector3 = player.global_position
+	var moved: Vector3 = ppos - _last_trail_pos
+	moved.y = 0.0
+	if moved.length() >= trail_point_spacing:
+		var dir: Vector2 = Vector2(moved.x, moved.z).normalized()
+		_trail_head = (_trail_head + 1) % TRAIL_SIZE
+		_trail_pos[_trail_head] = ppos
+		_trail_dir[_trail_head] = dir
+		_trail_age[_trail_head] = 0.0
+		_trail_strength[_trail_head] = 1.0
+		_last_trail_pos = ppos
 
 
 func _create_grid() -> void:

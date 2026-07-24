@@ -239,8 +239,9 @@ void start() {
 	float blend = float(control >> 14u & 0xFFu) * 0.003921568627450; // 1. / 255.
 
 
-	// Filter out hand-painted texture id 2 (Erde), so no grass grows there.
-	if (!auto && ((base == 2 && blend < 0.7) || (over == 2 && blend >= 0.3))) {
+	// Filter out hand-painted texture ids 2..20, so no grass grows there.
+	// Auto-shader areas and ids 0/1 keep their grass.
+	if (!auto && (((base >= 2 && base <= 20) && blend < 0.7) || ((over >= 2 && over <= 20) && blend >= 0.3))) {
 		pos.y = 0. / 0.;
 		pos.xz = vec2(100000.0);
 	}
