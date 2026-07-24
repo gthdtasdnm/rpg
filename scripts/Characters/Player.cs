@@ -11,7 +11,7 @@ namespace RPG.Characters;
 
 public partial class Player : CharacterBody3D, IDamageable
 {
-	[Export] public float Speed = 5.0f;
+	[Export] public float Speed = 50.0f;
 	[Export] public float Acceleration = 20.0f;
 	[Export] public float RotationSpeed = 10.0f;
 	[Export] public float MouseSensitivity = 0.003f;
