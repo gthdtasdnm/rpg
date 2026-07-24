@@ -437,6 +437,28 @@ transform = Transform3D(12.066602, 0, 0, 0, 12.066602, 0, 0, 0, 12.066602, -904.
 transform = Transform3D(5.4161057, 0, 0, 0, 5.4161057, 0, 0, 0, 5.4161057, -876.1684, 4.7889714, -759.77313)
 size = Vector3(1.970581, 2.3398438, 2.1479492)
 
+[node name="FocusSteine" type="CSGCombiner3D" parent="Welt" unique_id=2035144773]
+
+[node name="CSGBox3D" parent="Welt/FocusSteine" unique_id=1210216706 instance=ExtResource("6_riq6j")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -442.09753, 62.391315, -961.56256)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D2" parent="Welt/FocusSteine" unique_id=1884815726 instance=ExtResource("6_riq6j")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -770.5137, 31.187916, -186.95349)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D3" parent="Welt/FocusSteine" unique_id=2075197277 instance=ExtResource("6_riq6j")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -148.12439, 74.581985, -201.9903)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D4" parent="Welt/FocusSteine" unique_id=744992877 instance=ExtResource("6_riq6j")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -92.65198, 43.09486, -636.5243)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D5" parent="Welt/FocusSteine" unique_id=950756486 instance=ExtResource("6_riq6j")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -950.16327, 70.06642, -627.3104)
+size = Vector3(1, 2.4962158, 1)
+
 [node name="Environment" parent="." unique_id=812691920 instance=ExtResource("7_364y2")]
 
 [node name="wasser" type="MeshInstance3D" parent="." unique_id=664896724]

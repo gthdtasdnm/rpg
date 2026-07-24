@@ -75,19 +75,21 @@ lod1_range = 0.0
 name = "ash_tree_1"
 id = 2
 scene_file = ExtResource("2_oq473")
-density = 0.06685074
+density = 0.1
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_lp87e"]
 name = "birch_1_20"
 id = 3
 scene_file = ExtResource("3_wpdy7")
-density = 0.025785133
+density = 0.05
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_w40rn"]
 name = "birch_2_21"
@@ -96,7 +98,8 @@ scene_file = ExtResource("4_lsry0")
 density = 0.015995106
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ef5ef"]
 name = "birch_3_26"
@@ -105,16 +108,18 @@ scene_file = ExtResource("5_ovs0q")
 density = 0.018132256
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_51ycc"]
 name = "birch_orange_1_22"
 id = 6
 scene_file = ExtResource("6_xk6cq")
-density = 0.022573361
+density = 0.05
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5hqou"]
 name = "birch_orange_2_23"
@@ -123,7 +128,8 @@ scene_file = ExtResource("7_nyiou")
 density = 0.026401559
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yiqki"]
 name = "boulder_mossy_large_6"
@@ -186,16 +192,17 @@ scene_file = ExtResource("14_21g8s")
 density = 0.043017007
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5guby"]
 name = "coniferous_dead_log_12"
 id = 15
 scene_file = ExtResource("15_1bq86")
-density = 2.172407
+density = 0.01
 last_lod = 0
 last_shadow_lod = 0
-lod0_range = 128.0
+lod0_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_arwi7"]
 name = "coniferous_dead_tree_2_14"
@@ -213,7 +220,7 @@ scene_file = ExtResource("17_6ersb")
 density = 0.01
 last_lod = 0
 last_shadow_lod = 0
-lod0_range = 128.0
+lod0_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_3jwga"]
 name = "coniferous_sapling_15"
@@ -222,7 +229,8 @@ scene_file = ExtResource("18_c1h2s")
 density = 4.991516
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_pd6e7"]
 name = "coniferous_shrub_16"
@@ -266,7 +274,8 @@ id = 23
 scene_file = ExtResource("23_8gsrx")
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_bp0yk"]
 name = "deciduous_sapling_32"
@@ -283,7 +292,8 @@ scene_file = ExtResource("25_7u0ar")
 density = 0.05263795
 last_lod = 1
 last_shadow_lod = 1
-lod1_range = 128.0
+lod0_range = 0.0
+lod1_range = 0.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_v1hwx"]
 name = "deciduous_shrub_27"
@@ -392,12 +402,21 @@ name = "packed_albedo_height"
 id = 2
 albedo_texture = ExtResource("39_oq473")
 normal_texture = ExtResource("40_wpdy7")
+normal_depth = 1.55
+roughness = 0.2
+uv_scale = 0.283
+detiling_rotation = 0.345
+detiling_shift = 0.13
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_3wxcx"]
 name = "packed_albedo_height"
 id = 3
 albedo_texture = ExtResource("41_lsry0")
 normal_texture = ExtResource("42_ovs0q")
+normal_depth = 1.0
+uv_scale = 0.3
+detiling_rotation = 0.141
+detiling_shift = 0.035
 
 [resource]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_g06w4"), SubResource("Terrain3DMeshAsset_s7vq2"), SubResource("Terrain3DMeshAsset_tw6mt"), SubResource("Terrain3DMeshAsset_lp87e"), SubResource("Terrain3DMeshAsset_w40rn"), SubResource("Terrain3DMeshAsset_ef5ef"), SubResource("Terrain3DMeshAsset_51ycc"), SubResource("Terrain3DMeshAsset_5hqou"), SubResource("Terrain3DMeshAsset_yiqki"), SubResource("Terrain3DMeshAsset_hcs8k"), SubResource("Terrain3DMeshAsset_4w7n7"), SubResource("Terrain3DMeshAsset_g4oec"), SubResource("Terrain3DMeshAsset_yfcck"), SubResource("Terrain3DMeshAsset_754si"), SubResource("Terrain3DMeshAsset_t6x6i"), SubResource("Terrain3DMeshAsset_5guby"), SubResource("Terrain3DMeshAsset_arwi7"), SubResource("Terrain3DMeshAsset_fytio"), SubResource("Terrain3DMeshAsset_3jwga"), SubResource("Terrain3DMeshAsset_pd6e7"), SubResource("Terrain3DMeshAsset_ve4f6"), SubResource("Terrain3DMeshAsset_k6i7b"), SubResource("Terrain3DMeshAsset_5uyn1"), SubResource("Terrain3DMeshAsset_na8ho"), SubResource("Terrain3DMeshAsset_bp0yk"), SubResource("Terrain3DMeshAsset_dx84b"), SubResource("Terrain3DMeshAsset_v1hwx"), SubResource("Terrain3DMeshAsset_bl7ox"), SubResource("Terrain3DMeshAsset_hw2e3"), SubResource("Terrain3DMeshAsset_sk0o4"), SubResource("Terrain3DMeshAsset_ts7so"), SubResource("Terrain3DMeshAsset_1eeys"), SubResource("Terrain3DMeshAsset_yfrte"), SubResource("Terrain3DMeshAsset_s78ae"), SubResource("Terrain3DMeshAsset_r6xou")])
