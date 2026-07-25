@@ -150,6 +150,8 @@ cast_spell_3={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/volumetric_fog/volume_size=256
+environment/volumetric_fog/use_filter=0
 
 [shader_globals]
 

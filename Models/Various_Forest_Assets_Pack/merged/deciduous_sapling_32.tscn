@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bysgia3umsejp" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_NORMAL0000_28.png" id="3_ykuoa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7u1l"]
+specular_mode = 2
 resource_name = "BirchBark"
 cull_mode = 2
 albedo_texture = ExtResource("1_m3mrp")
@@ -12,6 +13,7 @@ roughness = 0.88
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06bcv"]
+specular_mode = 2
 resource_name = "BirchBranchAtlas"
 transparency = 2
 alpha_scissor_threshold = 0.5

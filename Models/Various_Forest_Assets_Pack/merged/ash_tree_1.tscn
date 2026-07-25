@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cdh80bo3y5rdo" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_NORMAL0001_6.png" id="4_u15lw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fho8v"]
+specular_mode = 2
 resource_name = "AshBark"
 cull_mode = 2
 albedo_texture = ExtResource("1_w2ox1")
@@ -15,6 +16,7 @@ normal_texture = ExtResource("2_44pds")
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t54a3"]
+specular_mode = 2
 resource_name = "AshBranchAtlas"
 transparency = 2
 alpha_scissor_threshold = 0.5

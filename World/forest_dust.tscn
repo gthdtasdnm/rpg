@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dvahcx0cklh8s"]
+
+[ext_resource type="Script" path="res://scripts/World/forest_dust.gd" id="1_fd"]
+
+[node name="ForestDust" type="Node3D"]
+script = ExtResource("1_fd")

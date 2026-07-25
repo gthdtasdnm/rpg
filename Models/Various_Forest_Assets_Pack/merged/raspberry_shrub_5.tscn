@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://clpdul654v5yb" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_COLOR0001_17.png" id="3_rhqai"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nvq3s"]
+specular_mode = 2
 resource_name = "RaspberryBark"
 cull_mode = 2
 albedo_texture = ExtResource("1_okyj6")
@@ -14,6 +15,7 @@ normal_texture = ExtResource("2_0kiwb")
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ul7qo"]
+specular_mode = 2
 resource_name = "RaspberryBranchAtlas"
 transparency = 2
 alpha_scissor_threshold = 0.5

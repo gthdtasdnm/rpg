@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0g8lrlwsfb5m" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_NORMAL0001_14.png" id="4_i8epy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg24s"]
+specular_mode = 2
 resource_name = "HollyBark"
 cull_mode = 2
 albedo_texture = ExtResource("1_jqxsy")
@@ -15,6 +16,7 @@ normal_texture = ExtResource("2_rbh24")
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ojq8s"]
+specular_mode = 2
 resource_name = "HollyBranchAtlas"
 transparency = 2
 alpha_scissor_threshold = 0.5

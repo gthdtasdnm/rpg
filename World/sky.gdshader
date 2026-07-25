@@ -14,7 +14,7 @@ group_uniforms sun_moon;
 uniform vec3 sun_direction = vec3(0.3, 0.7, -0.45);   // vom Script gesetzt
 uniform float sun_radius : hint_range(0.005, 0.2, 0.001) = 0.03;
 uniform vec3 sun_color : source_color = vec3(1.0, 0.95, 0.8);
-uniform float halo_strength : hint_range(0.0, 2.0, 0.01) = 0.4;
+uniform float halo_strength : hint_range(0.0, 3.0, 0.01) = 0.5;
 uniform float moon_radius : hint_range(0.005, 0.2, 0.001) = 0.045;
 uniform vec3 moon_color : source_color = vec3(0.85, 0.9, 1.0);
 
@@ -109,8 +109,9 @@ void sky() {
 	float sun_above = smoothstep(-0.08, 0.05, sun_elev);
 	float sa = acos(clamp(dot(dir, sdir), -1.0, 1.0));
 	float sun_disk = 1.0 - smoothstep(sun_radius * 0.7, sun_radius, sa);
-	float halo = exp(-sa * 6.0) * halo_strength;
-	col += sun_color * (sun_disk * 4.0 + halo) * sun_above;
+	// Enger, dezenter Halo, damit die Sonnenscheibe klar bleibt und nicht alles ueberstrahlt.
+	float halo = (exp(-sa * 9.0) * 0.4 + exp(-sa * 3.0) * 0.06) * halo_strength;
+	col += sun_color * (sun_disk * 6.0 + halo) * sun_above;
 
 	// --- Mond (gegenueber der Sonne, nachts) ---
 	vec3 mdir = -sdir;

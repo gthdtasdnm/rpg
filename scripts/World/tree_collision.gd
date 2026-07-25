@@ -24,6 +24,9 @@ extends Node3D
 @export_flags_3d_physics var collision_layer: int = 1
 ## Optionaler Namensfilter: nur MMIs, deren Name diesen Text enthaelt (leer = alle Instanzen).
 @export var include_filter: String = ""
+## Nur Instanzen, die (skaliert!) HOEHER als das sind, bekommen Kollision (m). So kollidieren
+## Baeume, aber niedrige/kleinskalierte Straeucher/Saplings/Steine nicht.
+@export var min_collision_height: float = 4.0
 ## Gibt beim ersten Aufbau die Anzahl gefundener MMIs/Kollider aus (zum Pruefen, danach aus).
 @export var debug: bool = true
 
@@ -78,8 +81,15 @@ func _rebuild(center: Vector3) -> void:
 		_debug_done = true
 		var all: Array[MultiMeshInstance3D] = []
 		_find_mmis(_terrain, all)
-		print("TreeCollision: %d MultiMeshInstance3D gefunden, %d Kollider im Umkreis %.0fm."
-			% [all.size(), points.size(), radius])
+		print("TreeCollision: %d MMIs, %d Kollider im Umkreis %.0fm (min_collision_height=%.1f):"
+			% [all.size(), points.size(), radius, min_collision_height])
+		for m in all:
+			if m.multimesh != null and m.multimesh.mesh != null and m.multimesh.instance_count > 0:
+				var base_h: float = m.multimesh.mesh.get_aabb().size.y
+				var sc: float = (m.global_transform * m.multimesh.get_instance_transform(0)).basis.get_scale().y
+				var h: float = base_h * sc
+				var status: String = "KOLLISION" if h >= min_collision_height else "frei"
+				print("  %s  ~%.2f m (base %.2f x scale %.2f)  -> %s" % [str(m.name), h, base_h, sc, status])
 	while _bodies.size() < points.size():
 		_bodies.append(_make_body())
 	for i in _bodies.size():
@@ -100,8 +110,9 @@ func _gather(center: Vector3) -> Array[Vector3]:
 	_find_mmis(_terrain, mmis)
 	for mmi in mmis:
 		var mm: MultiMesh = mmi.multimesh
-		if mm == null or mm.instance_count == 0:
+		if mm == null or mm.instance_count == 0 or mm.mesh == null:
 			continue
+		var mesh_h: float = mm.mesh.get_aabb().size.y
 		var gx: Transform3D = mmi.global_transform
 		# Grober Regions-Skip: liegt die AABB der MMI ueberhaupt in Reichweite?
 		var aabb: AABB = mmi.get_aabb()
@@ -109,7 +120,11 @@ func _gather(center: Vector3) -> Array[Vector3]:
 		if Vector2(wc.x - center.x, wc.z - center.z).length() > radius + aabb.size.length():
 			continue
 		for i in mm.instance_count:
-			var p: Vector3 = gx * mm.get_instance_transform(i).origin
+			var wt: Transform3D = gx * mm.get_instance_transform(i)
+			# Effektive (skalierte) Hoehe der Instanz - niedrige/kleinskalierte ueberspringen.
+			if mesh_h * wt.basis.get_scale().y < min_collision_height:
+				continue
+			var p: Vector3 = wt.origin
 			var dx: float = p.x - center.x
 			var dz: float = p.z - center.z
 			if dx * dx + dz * dz <= r2:

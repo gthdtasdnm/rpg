@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bqnxpm2k614mk"]
+
+[ext_resource type="Script" path="res://scripts/World/firefly_swarm.gd" id="1_ff"]
+
+[node name="FireflySwarm" type="Node3D"]
+script = ExtResource("1_ff")

@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dvwt5psroj6pf" path="res://Models/Various_Forest_Assets_Pack/textures/Branch_NORMAL0000_35.png" id="4_6lpnh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4oa03"]
+specular_mode = 2
 resource_name = "OakBark"
 cull_mode = 2
 albedo_texture = ExtResource("1_hk82v")
@@ -15,6 +16,7 @@ normal_texture = ExtResource("2_cqr1d")
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d06dw"]
+specular_mode = 2
 resource_name = "OakBranchAtlas"
 transparency = 2
 alpha_scissor_threshold = 0.5

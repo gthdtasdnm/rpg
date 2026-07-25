@@ -22,11 +22,15 @@ extends Node3D
 @export var fog_dawn: Color = Color(0.5, 0.33, 0.26)
 @export var fog_night: Color = Color(0.02, 0.03, 0.07)
 
+## 0 = Tag, 1 = Nacht. Von anderen Systemen abrufbar (z.B. Partikel).
+var night_factor: float = 0.0
+
 var _sun: DirectionalLight3D
 var _we: WorldEnvironment
 
 
 func _ready() -> void:
+	add_to_group("day_night")
 	_resolve()
 	_apply()
 
@@ -65,6 +69,7 @@ func _apply() -> void:
 
 	var day: float = clampf(elev * 4.0, 0.0, 1.0)
 	var dusk: float = clampf(1.0 - abs(elev) * 3.0, 0.0, 1.0)
+	night_factor = clampf(-elev * 4.0 + 0.2, 0.0, 1.0)
 
 	if elev > 0.0:
 		# Tag/Daemmerung: Licht = Sonne.
@@ -81,7 +86,7 @@ func _apply() -> void:
 
 	if _we != null and _we.environment != null:
 		var env: Environment = _we.environment
-		env.ambient_light_energy = lerpf(0.25, 1.0, day)
+		env.ambient_light_energy = lerpf(0.08, 0.5, day)
 		var fog_col: Color = fog_night.lerp(fog_day, day)
 		fog_col = fog_col.lerp(fog_dawn, dusk * 0.6)
 		env.fog_light_color = fog_col
