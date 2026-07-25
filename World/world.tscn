@@ -47,7 +47,6 @@
 [ext_resource type="Texture2D" uid="uid://dly7nns41oktn" path="res://PackedTextures/Ground085_normal_roughness.png" id="39_64ogq"]
 [ext_resource type="Texture2D" uid="uid://c5weenoov5g00" path="res://PackedTextures/Ground079S_albedo_height.png" id="40_nj6lt"]
 [ext_resource type="Texture2D" uid="uid://m5lhd5dg6lk1" path="res://PackedTextures/Ground079S_normal_roughness.png" id="41_17b0c"]
-[ext_resource type="PackedScene" uid="uid://cn50yey3inusa" path="res://World/player.tscn" id="48_6mex8"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -515,7 +514,9 @@ name = "packed_albedo_height"
 id = 3
 albedo_texture = ExtResource("40_nj6lt")
 normal_texture = ExtResource("41_17b0c")
-normal_depth = 1.0
+normal_depth = 1.935
+ao_strength = 2.0
+roughness = 0.239
 uv_scale = 0.3
 detiling_rotation = 0.141
 detiling_shift = 0.035
@@ -548,7 +549,7 @@ shader_parameter/ripple_strength = 3.0
 shader_parameter/ripple_noise_strength = 0.2999999932944
 shader_parameter/ripple_noise_scale = 1.0000000149012
 
-[node name="Demo" type="Node" unique_id=1452635135]
+[node name="World" type="Node" unique_id=1452635135]
 script = SubResource("GDScript_fb61x")
 
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=518248103]
@@ -1032,14 +1033,14 @@ transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -950.
 size = Vector3(1, 2.4962158, 1)
 
 [node name="Environment" parent="." unique_id=812691920 instance=ExtResource("10_k4w7v")]
+time_of_day = 7.5
+dawn_light_color = Color(1, 0.45270926, 0.6161947, 1)
+fog_day = Color(0.6, 0.7, 0.8, 1)
+fog_dawn = Color(0.9, 0.52, 0.38, 1)
+fog_night = Color(0.04, 0.06, 0.11, 1)
 
 [node name="wasser" type="MeshInstance3D" parent="." unique_id=664896724]
 transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, -424.728, -2, -347.174)
 mesh = SubResource("PlaneMesh_0euad")
 surface_material_override/0 = SubResource("ShaderMaterial_33hpn")
 script = ExtResource("13_pl0g3")
-
-[node name="Player" parent="." unique_id=1256384449 instance=ExtResource("48_6mex8")]
-transform = Transform3D(-0.99979585, 0, 0.020204687, 0, 1, 0, -0.020204687, 0, -0.99979585, -668.3362, -0.13817033, -819.0059)
-acceleration = 100.0
-water_level = -3.1

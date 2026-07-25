@@ -92,18 +92,25 @@ void fragment() {
 	ripple_n *= ripple_strength;
 
 	// --- Refraktion: verzerrter Blick auf das, was hinter dem Wasser liegt ---
-	vec2 refr_uv = SCREEN_UV + (raw_grad + ripple_n * 0.004) * refraction_strength;
+	// Nur die sanften Wellen verzerren (NICHT die Ringwellen), sonst flackert es um den Spieler.
+	// UV auf den Bildschirm klemmen, sonst Artefakte am Rand.
+	vec2 refr_uv = clamp(SCREEN_UV + raw_grad * refraction_strength, vec2(0.0), vec2(1.0));
 
-	// --- Wassertiefe aus dem Tiefenpuffer (an der verzerrten Stelle, passt zum Durchblick) ---
+	// --- Wassertiefe aus dem Tiefenpuffer (an der verzerrten Stelle) ---
 	float depth_raw = texture(depth_tex, refr_uv).r;
 	vec3 ndc = vec3(refr_uv * 2.0 - 1.0, depth_raw);
 	vec4 view = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
 	view.xyz /= view.w;
 	float water_depth = (-view.z) - (-VERTEX.z);
-	// Negative Tiefe (Objekt vor dem Wasser) -> keine Verzerrung, sonst leckt der Vordergrund.
+	// Liegt die verzerrte Stelle VOR dem Wasser (Spieler/Vordergrund)? -> unverzerrt nehmen und
+	// die Tiefe dort NEU messen, sonst scheint der Vordergrund durchs Wasser.
 	if (water_depth < 0.0) {
 		refr_uv = SCREEN_UV;
-		water_depth = 0.0;
+		depth_raw = texture(depth_tex, refr_uv).r;
+		ndc = vec3(refr_uv * 2.0 - 1.0, depth_raw);
+		view = INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
+		view.xyz /= view.w;
+		water_depth = max((-view.z) - (-VERTEX.z), 0.0);
 	}
 
 	vec3 background = texture(screen_tex, refr_uv).rgb;

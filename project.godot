@@ -35,6 +35,7 @@ Shortcuts/density_decrement=Object(Shortcut,"resource_local_to_scene":false,"res
 [application]
 
 config/name="RPG"
+run/main_scene="uid://b83o3q3ciqxv4"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
