@@ -155,12 +155,12 @@ Umstellung unberührt — sie hingen nie von `ZoneManager` ab, nur `GameFlags`/`
   Notfall-Basiswerte (bloße Hand).
   - Zwei Tasten (`attack_left`/`attack_right`, Maus links/rechts) statt einer: aufeinanderfolgende
     Treffer müssen die Seite wechseln, um als "flüssig" zu gelten (`Player._lastAttackSide`,
-    `_comboWindowTimer`) — nur dann gibt's kürzeren Folge-Cooldown und einen Combo-Schadensbonus
-    (`_comboCount`, max. `MaxComboStacks`). Zweimal dieselbe Taste oder zu langsam reagiert
-    zurückgesetzt die Combo auf 1 und der nächste Angriff braucht länger (`ChoppyAttackCooldown`).
-    Grundlage für das spätere Timing-/Kombosystem aus `doc/konzept/Gameplay/Kampfsystem.md` —
-    aktuell noch ohne echtes Timing-Fenster. Die Combo selbst ist an Waffentraining gekoppelt
-    (`Player.IsComboUnlocked`, siehe "Training" unten) — ohne das passende `learned_*`-Flag gibt's
+	`_comboWindowTimer`) — nur dann gibt's kürzeren Folge-Cooldown und einen Combo-Schadensbonus
+	(`_comboCount`, max. `MaxComboStacks`). Zweimal dieselbe Taste oder zu langsam reagiert
+	zurückgesetzt die Combo auf 1 und der nächste Angriff braucht länger (`ChoppyAttackCooldown`).
+	Grundlage für das spätere Timing-/Kombosystem aus `doc/konzept/Gameplay/Kampfsystem.md` —
+	aktuell noch ohne echtes Timing-Fenster. Die Combo selbst ist an Waffentraining gekoppelt
+	(`Player.IsComboUnlocked`, siehe "Training" unten) — ohne das passende `learned_*`-Flag gibt's
     nur Basisangriffe, unabhängig vom Klickmuster.
 - Blocken (`block`-Taste, jetzt `B` statt Maus rechts — die ist für `attack_right` belegt)
   reduziert eingehenden Schaden stärker mit Schild als ohne (siehe `Player.TakeDamage`); starke

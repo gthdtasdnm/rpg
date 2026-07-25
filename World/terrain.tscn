@@ -1,0 +1,1045 @@
+[gd_scene format=3 uid="uid://cfixs4o0lhujq"]
+
+[ext_resource type="PackedScene" uid="uid://bg4m1wth7s0to" path="res://Models/Various_Forest_Assets_Pack/merged/apple_tree_0.tscn" id="4_017rf"]
+[ext_resource type="Texture2D" uid="uid://bgr4ssn0iewtq" path="res://grass_noise.tres" id="4_g4xpi"]
+[ext_resource type="PackedScene" uid="uid://dovwjfvwttrqf" path="res://Models/Various_Forest_Assets_Pack/merged/ash_tree_1.tscn" id="5_5aogk"]
+[ext_resource type="Shader" uid="uid://dr4u12dlx8jaj" path="res://World/terrain_shader.gdshader" id="5_6yf64"]
+[ext_resource type="PackedScene" uid="uid://cnfxdxr0p5erl" path="res://Models/Various_Forest_Assets_Pack/merged/birch_1_20.tscn" id="6_njwhq"]
+[ext_resource type="PackedScene" uid="uid://bn4kdca1q1pgl" path="res://Models/Various_Forest_Assets_Pack/merged/birch_2_21.tscn" id="7_1lp6d"]
+[ext_resource type="PackedScene" uid="uid://d3sr0a7dxfkr8" path="res://addons/terrain_3d/extras/particle_example/Terrain3DParticles.tscn" id="7_wjw5m"]
+[ext_resource type="Script" uid="uid://cptcne5j2cjto" path="res://scripts/World/tree_collision.gd" id="8_2uxom"]
+[ext_resource type="PackedScene" uid="uid://dyhohrl81mvtj" path="res://Models/Various_Forest_Assets_Pack/merged/birch_3_26.tscn" id="8_u1hwb"]
+[ext_resource type="PackedScene" uid="uid://br14s1fnw0xo1" path="res://Models/Various_Forest_Assets_Pack/merged/birch_orange_1_22.tscn" id="9_eklv6"]
+[ext_resource type="PackedScene" uid="uid://c4uweru0sb4st" path="res://Objects/CubeBlocking.tscn" id="9_qjfgf"]
+[ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://World/Environment.tscn" id="10_k4w7v"]
+[ext_resource type="PackedScene" uid="uid://bus8ene2e7va0" path="res://Models/Various_Forest_Assets_Pack/merged/birch_orange_2_23.tscn" id="10_utqx3"]
+[ext_resource type="PackedScene" uid="uid://bhxvb0ewf7fmm" path="res://Models/Various_Forest_Assets_Pack/boulder_mossy_large_6.tscn" id="11_8i408"]
+[ext_resource type="Shader" uid="uid://d2qspm521j4fk" path="res://Objects/water.gdshader" id="11_cmaa6"]
+[ext_resource type="Texture2D" uid="uid://fmabixxyb44f" path="res://Textures/Ground061_1K-JPG/Ground061_1K-JPG_Displacement.jpg" id="12_crxo5"]
+[ext_resource type="PackedScene" uid="uid://bpl15bb4wlj1j" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_mossy_large_7.tscn" id="12_xyltf"]
+[ext_resource type="Script" uid="uid://dxaa32rkk3dn4" path="res://Objects/wasser.gd" id="13_pl0g3"]
+[ext_resource type="PackedScene" uid="uid://cdnepfmm3ni0l" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_mossy_medium_8.tscn" id="13_tpuo2"]
+[ext_resource type="PackedScene" uid="uid://csclhi3i1fpsa" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_plain_large_9.tscn" id="14_71xra"]
+[ext_resource type="PackedScene" uid="uid://chcphq3vrjjp4" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_plain_medium_10.tscn" id="15_4gwrr"]
+[ext_resource type="PackedScene" uid="uid://b1qkrct0ufr8c" path="res://Models/Various_Forest_Assets_Pack/boulder_plain_large_11.tscn" id="16_ciivb"]
+[ext_resource type="PackedScene" uid="uid://c0vswtuw11eno" path="res://Models/Various_Forest_Assets_Pack/merged/cherry_tree_2.tscn" id="17_16763"]
+[ext_resource type="PackedScene" uid="uid://cai72fhk18p1r" path="res://Models/Various_Forest_Assets_Pack/coniferous_dead_log_12.tscn" id="18_so08s"]
+[ext_resource type="PackedScene" uid="uid://dv76a0rqtde27" path="res://Models/Various_Forest_Assets_Pack/coniferous_dead_tree_2_14.tscn" id="19_w84xj"]
+[ext_resource type="PackedScene" uid="uid://c38m5p1sq8h73" path="res://Models/Various_Forest_Assets_Pack/coniferous_dead_tree_13.tscn" id="20_bqsmr"]
+[ext_resource type="PackedScene" uid="uid://bfs7k8t7aa5be" path="res://Models/Various_Forest_Assets_Pack/merged/coniferous_sapling_15.tscn" id="21_e560p"]
+[ext_resource type="PackedScene" uid="uid://cni7pisy4bwpw" path="res://Models/Various_Forest_Assets_Pack/merged/coniferous_shrub_16.tscn" id="22_bshvv"]
+[ext_resource type="PackedScene" uid="uid://chyw03umdnetg" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_dead_1_29.tscn" id="23_4qare"]
+[ext_resource type="PackedScene" uid="uid://dk3uy31j8hdxv" path="res://Models/Various_Forest_Assets_Pack/deciduous_dead_2_28.tscn" id="24_bq2v8"]
+[ext_resource type="PackedScene" uid="uid://y8ucvpa1lm2i" path="res://Models/Various_Forest_Assets_Pack/deciduous_log_30.tscn" id="25_3o5xh"]
+[ext_resource type="PackedScene" uid="uid://d1ij27yj3klg3" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_sapling_2_33.tscn" id="26_2c707"]
+[ext_resource type="PackedScene" uid="uid://d0n1ly8r5fx18" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_sapling_32.tscn" id="27_qjbjq"]
+[ext_resource type="PackedScene" uid="uid://cu47us8uc57vr" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_shrub_2_31.tscn" id="28_246vq"]
+[ext_resource type="PackedScene" uid="uid://dwfm8aglmlkyu" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_shrub_27.tscn" id="29_lo6q2"]
+[ext_resource type="PackedScene" uid="uid://lgystf5wirym" path="res://Models/Various_Forest_Assets_Pack/merged/fir_tree_17.tscn" id="30_mocti"]
+[ext_resource type="PackedScene" uid="uid://v147rlyqf2v1" path="res://Models/Various_Forest_Assets_Pack/merged/holly_shrub_4.tscn" id="31_rrn5h"]
+[ext_resource type="PackedScene" uid="uid://csx2hqgso3wx1" path="res://Models/Various_Forest_Assets_Pack/merged/maple_24.tscn" id="32_e7mue"]
+[ext_resource type="PackedScene" uid="uid://hax8kcqp2rnu" path="res://Models/Various_Forest_Assets_Pack/merged/noble_fir_tree_18.tscn" id="33_nfehj"]
+[ext_resource type="PackedScene" uid="uid://bmrb7un0vsee3" path="res://Models/Various_Forest_Assets_Pack/merged/oak_25.tscn" id="34_5m26r"]
+[ext_resource type="PackedScene" uid="uid://mhy3vfm83j0b" path="res://Models/Various_Forest_Assets_Pack/merged/pine_tree_19.tscn" id="35_66w63"]
+[ext_resource type="PackedScene" uid="uid://db75p25dtgqtn" path="res://Models/Various_Forest_Assets_Pack/merged/plum_tree_3.tscn" id="36_m0cbj"]
+[ext_resource type="PackedScene" uid="uid://b0ehvleg58tyd" path="res://Models/Various_Forest_Assets_Pack/merged/raspberry_shrub_5.tscn" id="37_ucd25"]
+[ext_resource type="Texture2D" uid="uid://tfs5ofvr2xrt" path="res://PackedTextures/Ground085_albedo_height.png" id="38_7fqmh"]
+[ext_resource type="Texture2D" uid="uid://dly7nns41oktn" path="res://PackedTextures/Ground085_normal_roughness.png" id="39_64ogq"]
+[ext_resource type="Texture2D" uid="uid://c5weenoov5g00" path="res://PackedTextures/Ground079S_albedo_height.png" id="40_nj6lt"]
+[ext_resource type="Texture2D" uid="uid://m5lhd5dg6lk1" path="res://PackedTextures/Ground079S_normal_roughness.png" id="41_17b0c"]
+[ext_resource type="PackedScene" uid="uid://cn50yey3inusa" path="res://World/player.tscn" id="48_6mex8"]
+
+[sub_resource type="GDScript" id="GDScript_fb61x"]
+script/source = "@tool
+extends Node
+
+@onready var terrain: Terrain3D = find_child(\"Terrain3D\")
+
+
+func _ready():
+	if not Engine.is_editor_hint() and has_node(\"UI\"):
+		$UI.player = $Player
+
+	# Load Sky3D into the demo environment if enabled
+	if Engine.is_editor_hint() and has_node(\"Environment\") and \\
+		Engine.get_singleton(&\"EditorInterface\").is_plugin_enabled(\"sky_3d\"):
+			$Environment.queue_free()
+			var sky3d = load(\"res://addons/sky_3d/src/Sky3D.gd\").new()
+			sky3d.name = \"Sky3D\"
+			add_child(sky3d, true)
+			move_child(sky3d, 1)
+			sky3d.owner = self
+			sky3d.current_time = 10
+			sky3d.enable_editor_time = false
+			
+		
+"
+
+[sub_resource type="Gradient" id="Gradient_vr1m7"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d8lcj"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
+noise = SubResource("FastNoiseLite_d8lcj")
+color_ramp = SubResource("Gradient_vr1m7")
+seamless = true
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jrc01"]
+_shader_parameters = {
+"_mouse_layer": 2147483648,
+"auto_base_texture": 0,
+"auto_height_reduction": 0.05,
+"auto_overlay_texture": 1,
+"auto_slope": 0.45,
+"bias_distance": 512.0,
+"blend_sharpness": 0.5,
+"depth_blur": 0.0,
+&"dual_scale_far": null,
+&"dual_scale_near": null,
+&"dual_scale_reduction": null,
+&"dual_scale_texture": null,
+"enable_macro_variation": true,
+"enable_projection": true,
+&"flat_terrain_normals": false,
+&"grass_clod_max": null,
+&"grass_clod_min": null,
+&"grass_darken_enabled": true,
+&"grass_darken_strength": 0.32999999262384,
+&"grass_darkening": null,
+&"grass_id_max": null,
+&"grass_id_min": null,
+&"grass_noise": ExtResource("4_g4xpi"),
+&"grass_noise_scale": 0.0,
+&"grass_patch_max": null,
+&"grass_patch_min": null,
+&"grass_slope_min": null,
+"macro_variation1": Color(0.855, 0.8625, 0.9, 1),
+"macro_variation2": Color(0.9, 0.885, 0.81, 1),
+"macro_variation_slope": 0.333,
+"mipmap_bias": 1.0,
+"noise1_angle": 0.1,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise_texture": SubResource("NoiseTexture2D_bov7h"),
+"projection_threshold": 0.87,
+&"tri_scale_reduction": null
+}
+auto_shader = true
+dual_scaling = true
+shader_override_enabled = true
+shader_override = ExtResource("5_6yf64")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eohjv"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 128.0
+distance_fade_max_distance = 96.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_g06w4"]
+generated_type = 1
+height_offset = 0.5
+material_override = SubResource("StandardMaterial3D_eohjv")
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_s7vq2"]
+name = "apple_tree_0"
+id = 1
+scene_file = ExtResource("4_017rf")
+density = 0.015169311
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_tw6mt"]
+name = "ash_tree_1"
+id = 2
+scene_file = ExtResource("5_5aogk")
+density = 0.1
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_lp87e"]
+name = "birch_1_20"
+id = 3
+scene_file = ExtResource("6_njwhq")
+density = 0.05
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_w40rn"]
+name = "birch_2_21"
+id = 4
+scene_file = ExtResource("7_1lp6d")
+density = 0.015995106
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ef5ef"]
+name = "birch_3_26"
+id = 5
+scene_file = ExtResource("8_u1hwb")
+density = 0.018132256
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_51ycc"]
+name = "birch_orange_1_22"
+id = 6
+scene_file = ExtResource("9_eklv6")
+density = 0.05
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5hqou"]
+name = "birch_orange_2_23"
+id = 7
+scene_file = ExtResource("10_utqx3")
+density = 0.026401559
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yiqki"]
+name = "boulder_mossy_large_6"
+id = 8
+scene_file = ExtResource("11_8i408")
+density = 0.30396447
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_hcs8k"]
+name = "boulder_outcrop_mossy_large_7"
+id = 9
+scene_file = ExtResource("12_xyltf")
+density = 0.04501196
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_4w7n7"]
+name = "boulder_outcrop_mossy_medium_8"
+id = 10
+scene_file = ExtResource("13_tpuo2")
+density = 0.087242
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_g4oec"]
+name = "boulder_outcrop_plain_large_9"
+id = 11
+scene_file = ExtResource("14_71xra")
+density = 0.04501196
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yfcck"]
+name = "boulder_outcrop_plain_medium_10"
+id = 12
+scene_file = ExtResource("15_4gwrr")
+density = 0.087242
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_754si"]
+name = "boulder_plain_large_11"
+id = 13
+scene_file = ExtResource("16_ciivb")
+density = 0.30396447
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_t6x6i"]
+name = "cherry_tree_2"
+id = 14
+scene_file = ExtResource("17_16763")
+density = 0.043017007
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5guby"]
+name = "coniferous_dead_log_12"
+id = 15
+scene_file = ExtResource("18_so08s")
+density = 0.01
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_arwi7"]
+name = "coniferous_dead_tree_2_14"
+id = 16
+scene_file = ExtResource("19_w84xj")
+density = 0.08205393
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_fytio"]
+name = "coniferous_dead_tree_13"
+id = 17
+scene_file = ExtResource("20_bqsmr")
+density = 0.01
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_3jwga"]
+name = "coniferous_sapling_15"
+id = 18
+scene_file = ExtResource("21_e560p")
+density = 4.991516
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_pd6e7"]
+name = "coniferous_shrub_16"
+id = 19
+scene_file = ExtResource("22_bshvv")
+density = 0.04283924
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ve4f6"]
+name = "deciduous_dead_1_29"
+id = 20
+scene_file = ExtResource("23_4qare")
+density = 0.023184923
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_k6i7b"]
+name = "deciduous_dead_2_28"
+id = 21
+scene_file = ExtResource("24_bq2v8")
+density = 0.39042264
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5uyn1"]
+name = "deciduous_log_30"
+id = 22
+scene_file = ExtResource("25_3o5xh")
+density = 2.4758828
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_na8ho"]
+name = "deciduous_sapling_2_33"
+id = 23
+scene_file = ExtResource("26_2c707")
+density = 0.11994949
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_bp0yk"]
+name = "deciduous_sapling_32"
+id = 24
+scene_file = ExtResource("27_qjbjq")
+density = 0.23899317
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_dx84b"]
+name = "deciduous_shrub_2_31"
+id = 25
+scene_file = ExtResource("28_246vq")
+density = 0.05263795
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_v1hwx"]
+name = "deciduous_shrub_27"
+id = 26
+scene_file = ExtResource("29_lo6q2")
+density = 0.06260056
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_bl7ox"]
+name = "fir_tree_17"
+id = 27
+scene_file = ExtResource("30_mocti")
+density = 0.02516133
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_hw2e3"]
+name = "holly_shrub_4"
+id = 28
+scene_file = ExtResource("31_rrn5h")
+density = 0.19031292
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_sk0o4"]
+name = "maple_24"
+id = 29
+scene_file = ExtResource("32_e7mue")
+density = 0.01
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ts7so"]
+name = "noble_fir_tree_18"
+id = 30
+scene_file = ExtResource("33_nfehj")
+density = 0.1583617
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1eeys"]
+name = "oak_25"
+id = 31
+scene_file = ExtResource("34_5m26r")
+density = 0.01
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yfrte"]
+name = "pine_tree_19"
+id = 32
+scene_file = ExtResource("35_66w63")
+density = 0.01
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_s78ae"]
+name = "plum_tree_3"
+id = 33
+scene_file = ExtResource("36_m0cbj")
+density = 0.03298337
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_r6xou"]
+name = "raspberry_shrub_5"
+id = 34
+scene_file = ExtResource("37_ucd25")
+density = 0.08
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 350.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4175r"]
+load_path = "res://.godot/imported/rock023_alb_ht.png-9c06b8a5f11d940d1c46d8928f6d6a5c.bptc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_q1q4v"]
+load_path = "res://.godot/imported/rock023_nrm_rgh.png-dd524905a15817dac8149681cddc8975.bptc.ctex"
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_lha57"]
+name = "Cliff"
+albedo_texture = SubResource("CompressedTexture2D_4175r")
+normal_texture = SubResource("CompressedTexture2D_q1q4v")
+normal_depth = 1.0
+ao_strength = 2.0
+roughness = -0.05
+detiling_rotation = 0.016
+detiling_shift = 0.121
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_akxds"]
+load_path = "res://.godot/imported/ground037_alb_ht.png-d854c3c88beba9927351b95063edffa2.bptc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_x4clk"]
+load_path = "res://.godot/imported/ground037_nrm_rgh.png-02372c72ee87f1844ee708d952e43e96.bptc.ctex"
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_od0q7"]
+name = "Grass"
+id = 1
+albedo_color = Color(0.67451, 0.74902, 0.686275, 1)
+albedo_texture = SubResource("CompressedTexture2D_akxds")
+normal_texture = SubResource("CompressedTexture2D_x4clk")
+normal_depth = 1.0
+ao_strength = 2.0
+uv_scale = 0.2
+detiling_rotation = 0.161
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uyhyi"]
+name = "packed_albedo_height"
+id = 2
+albedo_texture = ExtResource("38_7fqmh")
+normal_texture = ExtResource("39_64ogq")
+normal_depth = 1.55
+roughness = 0.2
+uv_scale = 0.283
+detiling_rotation = 0.345
+detiling_shift = 0.13
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_3wxcx"]
+name = "packed_albedo_height"
+id = 3
+albedo_texture = ExtResource("40_nj6lt")
+normal_texture = ExtResource("41_17b0c")
+normal_depth = 1.0
+uv_scale = 0.3
+detiling_rotation = 0.141
+detiling_shift = 0.035
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_4grly"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_g06w4"), SubResource("Terrain3DMeshAsset_s7vq2"), SubResource("Terrain3DMeshAsset_tw6mt"), SubResource("Terrain3DMeshAsset_lp87e"), SubResource("Terrain3DMeshAsset_w40rn"), SubResource("Terrain3DMeshAsset_ef5ef"), SubResource("Terrain3DMeshAsset_51ycc"), SubResource("Terrain3DMeshAsset_5hqou"), SubResource("Terrain3DMeshAsset_yiqki"), SubResource("Terrain3DMeshAsset_hcs8k"), SubResource("Terrain3DMeshAsset_4w7n7"), SubResource("Terrain3DMeshAsset_g4oec"), SubResource("Terrain3DMeshAsset_yfcck"), SubResource("Terrain3DMeshAsset_754si"), SubResource("Terrain3DMeshAsset_t6x6i"), SubResource("Terrain3DMeshAsset_5guby"), SubResource("Terrain3DMeshAsset_arwi7"), SubResource("Terrain3DMeshAsset_fytio"), SubResource("Terrain3DMeshAsset_3jwga"), SubResource("Terrain3DMeshAsset_pd6e7"), SubResource("Terrain3DMeshAsset_ve4f6"), SubResource("Terrain3DMeshAsset_k6i7b"), SubResource("Terrain3DMeshAsset_5uyn1"), SubResource("Terrain3DMeshAsset_na8ho"), SubResource("Terrain3DMeshAsset_bp0yk"), SubResource("Terrain3DMeshAsset_dx84b"), SubResource("Terrain3DMeshAsset_v1hwx"), SubResource("Terrain3DMeshAsset_bl7ox"), SubResource("Terrain3DMeshAsset_hw2e3"), SubResource("Terrain3DMeshAsset_sk0o4"), SubResource("Terrain3DMeshAsset_ts7so"), SubResource("Terrain3DMeshAsset_1eeys"), SubResource("Terrain3DMeshAsset_yfrte"), SubResource("Terrain3DMeshAsset_s78ae"), SubResource("Terrain3DMeshAsset_r6xou")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_lha57"), SubResource("Terrain3DTextureAsset_od0q7"), SubResource("Terrain3DTextureAsset_uyhyi"), SubResource("Terrain3DTextureAsset_3wxcx")])
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0euad"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_33hpn"]
+render_priority = 0
+shader = ExtResource("11_cmaa6")
+shader_parameter/shallow_color = Color(0.10321621, 0.37666008, 0.45272285, 0.2627451)
+shader_parameter/deep_color = Color(0.0627451, 0.16078432, 0.2784314, 0.87058824)
+shader_parameter/depth_distance = 17.30000025779076
+shader_parameter/refraction_strength = 0.022000001045
+shader_parameter/wave_texture = ExtResource("12_crxo5")
+shader_parameter/wave_tiling = Vector2(16, 16)
+shader_parameter/wave_speed = Vector2(0.02, 0.01)
+shader_parameter/wave_strength = 0.01999999955296
+shader_parameter/water_roughness = 0.0499999988824
+shader_parameter/ripple_centers = PackedVector2Array(0, 0, 0, 0, 0, 0)
+shader_parameter/ripple_ages = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/ripple_duration = 0.9
+shader_parameter/ripple_start_radius = 1.40000002086168
+shader_parameter/ripple_speed = 2.00000002980239
+shader_parameter/ripple_wavelength = 0.95000001415614
+shader_parameter/ripple_strength = 3.0
+shader_parameter/ripple_noise_strength = 0.2999999932944
+shader_parameter/ripple_noise_scale = 1.0000000149012
+
+[node name="Demo" type="Node" unique_id=1452635135]
+script = SubResource("GDScript_fb61x")
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=518248103]
+data_directory = "res://World/data"
+material = SubResource("Terrain3DMaterial_jrc01")
+assets = SubResource("Terrain3DAssets_4grly")
+collision_mode = 2
+collision_mask = 3
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Terrain3DParticles" parent="Terrain3D" unique_id=167918773 node_paths=PackedStringArray("terrain") instance=ExtResource("7_wjw5m")]
+terrain = NodePath("..")
+cell_width = 48.0
+rows = 192
+amount = 36864
+trail_push = 1.0
+min_draw_distance = 120.0
+particle_count = 921600
+
+[node name="TreeCollision" type="Node3D" parent="." unique_id=969270438]
+script = ExtResource("8_2uxom")
+
+[node name="Welt" type="CSGCombiner3D" parent="." unique_id=1300784285]
+
+[node name="Nethora" type="CSGCombiner3D" parent="Welt" unique_id=118442710]
+
+[node name="InnenburgMauer" type="CSGCombiner3D" parent="Welt/Nethora" unique_id=1215596915]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1365003304]
+transform = Transform3D(0.4812325, 0, -0.876593, 0, 1, 0, 0.876593, 0, 0.4812325, -599.1647, 99.0752, -564.0534)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1914511895]
+transform = Transform3D(0.8118907, 0, -0.5838095, 0, 1, 0, 0.5838095, 0, 0.8118907, -586.5431, 99.0752, -575.24854)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1451275636]
+transform = Transform3D(0.99206483, 0, -0.12572762, 0, 1, 0, 0.12572762, 0, 0.99206483, -580.55414, 99.0752, -590.59515)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=2131654]
+transform = Transform3D(0.77921826, 0, 0.62675273, 0, 1, 0, -0.62675273, 0, 0.77921826, -584.765, 99.0752, -605.7547)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1725209467]
+transform = Transform3D(0.38629198, 0, 0.92237663, 0, 1, 0, -0.92237663, 0, 0.38629198, -597.86584, 99.0752, -615.3931)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1868005803]
+transform = Transform3D(0.20958324, 0, 0.97779083, 0, 1, 0, -0.97779083, 0, 0.20958324, -613.7739, 99.0752, -620.3527)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1924475701]
+transform = Transform3D(-0.061549023, 0, 0.9981041, 0, 1, 0, -0.9981041, 0, -0.061549023, -630.61774, 99.0752, -621.5692)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1491042704]
+transform = Transform3D(-0.7845164, 0, 0.6201081, 0, 1, 0, -0.6201081, 0, -0.7845164, -644.09283, 99.0752, -614.64453)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=128272009]
+transform = Transform3D(-0.9999887, 0, -0.004753977, 0, 1, 0, 0.004753977, 0, -0.9999887, -649.2396, 99.0752, -599.67224)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=2052652199]
+transform = Transform3D(-0.91072893, 0, -0.41300458, 0, 1, 0, 0.41300458, 0, -0.91072893, -645.59015, 99.0752, -583.29626)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1460101610]
+transform = Transform3D(-0.6769148, 0, -0.73606133, 0, 1, 0, 0.73606133, 0, -0.6769148, -635.6711, 99.0752, -569.44684)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="Welt/Nethora/InnenburgMauer" unique_id=1304687533]
+transform = Transform3D(-0.3817208, 0, -0.92427766, 0, 1, 0, 0.92427766, 0, -0.3817208, -625.6569, 99.0752, -562.14703)
+size = Vector3(0.6594391, 10.443481, 7.703369)
+
+[node name="AußernburgMauer" type="CSGCombiner3D" parent="Welt/Nethora" unique_id=887488569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.9262238, 0)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1319166912]
+transform = Transform3D(-0.91072893, 0, -0.41300458, 0, 1, 0, 0.41300458, 0, -0.91072893, -684.5811, 99.0752, -583.90234)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1205403560]
+transform = Transform3D(-0.99928296, 0, -0.037861258, 0, 1, 0, 0.037861258, 0, -0.99928296, -688.2176, 99.0752, -600.2664)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=930950269]
+transform = Transform3D(-0.99872684, 0, -0.050443046, 0, 1, 0, 0.050443046, 0, -0.99872684, -689.0257, 99.0752, -616.0244)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1300362905]
+transform = Transform3D(-0.97549677, 0, 0.22001351, 0, 1, 0, -0.22001351, 0, -0.97549677, -687.6115, 99.0752, -633.1966)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=53146414]
+transform = Transform3D(-0.66172653, 0, 0.74974525, 0, 1, 0, -0.74974525, 0, -0.66172653, -679.12646, 99.0752, -646.9344)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1685509696]
+transform = Transform3D(-0.3061445, 0, 0.951985, 0, 1, 0, -0.951985, 0, -0.3061445, -664.1766, 99.0752, -655.41943)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=799818084]
+transform = Transform3D(-0.24466437, 0, 0.9696078, 0, 1, 0, -0.9696078, 0, -0.24466437, -647.2064, 99.0752, -660.06604)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=705812192]
+transform = Transform3D(-0.07518147, 0, 0.9971698, 0, 1, 0, -0.9971698, 0, -0.07518147, -630.64026, 99.0752, -662.8944)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1545064246]
+transform = Transform3D(0.12323835, 0, 0.992377, 0, 1, 0, -0.992377, 0, 0.12323835, -613.26605, 99.0752, -662.2883)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1536714952]
+transform = Transform3D(0.40192968, 0, 0.91567034, 0, 1, 0, -0.91567034, 0, 0.40192968, -597.50806, 99.0752, -657.6417)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=22029062]
+transform = Transform3D(0.5730666, 0, 0.8195086, 0, 1, 0, -0.8195086, 0, 0.5730666, -582.7602, 99.0752, -649.3587)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1724103714]
+transform = Transform3D(0.695992, 0, 0.71804935, 0, 1, 0, -0.71804935, 0, 0.695992, -570.03253, 99.0752, -638.24725)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=251881610]
+transform = Transform3D(0.8539724, 0, 0.520318, 0, 1, 0, -0.520318, 0, 0.8539724, -560.1333, 99.0752, -624.9135)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1864336481]
+transform = Transform3D(0.92993987, 0, 0.36771113, 0, 1, 0, -0.36771113, 0, 0.92993987, -552.2543, 99.0752, -609.35754)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1392432474]
+transform = Transform3D(0.95838064, 0, 0.28549284, 0, 1, 0, -0.28549284, 0, 0.95838064, -547.00165, 99.0752, -593.8016)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=480778391]
+transform = Transform3D(0.95838064, 0, 0.28549284, 0, 1, 0, -0.28549284, 0, 0.95838064, -542.153, 99.0752, -577.03345)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1768621439]
+transform = Transform3D(0.9740681, 0, -0.22625381, 0, 1, 0, 0.22625381, 0, 0.9740681, -541.74896, 99.0752, -560.26526)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=24151018]
+transform = Transform3D(0.9228958, 0, -0.38504916, 0, 1, 0, 0.38504916, 0, 0.9228958, -547.00165, 99.0752, -543.4971)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=643337687]
+transform = Transform3D(0.8873813, 0, -0.4610357, 0, 1, 0, 0.4610357, 0, 0.8873813, -554.0725, 99.0752, -527.9411)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=263508849]
+transform = Transform3D(0.5664357, 0, -0.8241057, 0, 1, 0, 0.8241057, 0, 0.5664357, -565.58795, 99.0752, -514.6074)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=99113125]
+transform = Transform3D(0.69339466, 0, -0.7205577, 0, 1, 0, 0.7205577, 0, 0.69339466, -578.31555, 99.0752, -504.10208)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1183760130]
+transform = Transform3D(0.69339466, 0, -0.7205577, 0, 1, 0, 0.7205577, 0, 0.69339466, -590.6391, 99.0752, -491.7785)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1675987230]
+transform = Transform3D(0.23325276, 0, -0.9724159, 0, 1, 0, 0.9724159, 0, 0.23325276, -604.37683, 99.0752, -484.3036)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=867650229]
+transform = Transform3D(0.68819004, 0, -0.7255302, 0, 1, 0, 0.7255302, 0, 0.68819004, -618.9227, 99.0752, -476.22256)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1628726990]
+transform = Transform3D(-0.30429196, 0, -0.9525786, 0, 1, 0, 0.9525786, 0, -0.30429196, -633.4686, 99.0752, -472.78812)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1264965190]
+transform = Transform3D(-0.4540611, 0, -0.89097035, 0, 1, 0, 0.89097035, 0, -0.4540611, -648.2165, 99.0752, -479.25293)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1645313267]
+transform = Transform3D(-0.4540611, 0, -0.89097035, 0, 1, 0, 0.89097035, 0, -0.4540611, -663.1664, 99.0752, -486.72787)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=796230394]
+transform = Transform3D(-0.79662544, 0, -0.60447294, 0, 1, 0, 0.60447294, 0, -0.79662544, -675.692, 99.0752, -497.23322)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=675609721]
+transform = Transform3D(-0.9464159, 0, 0.32294965, 0, 1, 0, -0.32294965, 0, -0.9464159, -677.7123, 99.0752, -511.98108)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=1014977380]
+transform = Transform3D(-0.9282352, 0, 0.37199324, 0, 1, 0, -0.37199324, 0, -0.9282352, -671.6515, 99.0752, -527.5371)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="Welt/Nethora/AußernburgMauer" unique_id=672975808]
+transform = Transform3D(-0.9282352, 0, 0.37199324, 0, 1, 0, -0.37199324, 0, -0.9282352, -664.9846, 99.0752, -543.69916)
+size = Vector3(0.6594391, 10.443481, 17.014648)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="Welt/Nethora" unique_id=1082622974]
+transform = Transform3D(0.99206483, 0, -0.12572762, 0, 1, 0, 0.12572762, 0, 0.99206483, -596.1516, 100.56685, -600.24084)
+size = Vector3(21.377901, 13.426788, 16.105011)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="Welt/Nethora" unique_id=1031453299]
+transform = Transform3D(0.99206483, 0, -0.12572762, 0, 1, 0, 0.12572762, 0, 0.99206483, -634.4332, 125.399666, -605.0924)
+size = Vector3(21.377901, 63.092422, 16.105011)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="Welt/Nethora" unique_id=1762442309]
+transform = Transform3D(0.99206483, 0, -0.12572762, 0, 1, 0, 0.12572762, 0, 0.99206483, -675.6473, 111.88315, -620.1422)
+size = Vector3(18.457382, 36.059395, 16.105011)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="Welt/Nethora" unique_id=624767759]
+transform = Transform3D(0.99206483, 0, -0.12572762, 0, 1, 0, 0.12572762, 0, 0.99206483, -614.42206, 111.88315, -653.26263)
+size = Vector3(18.457382, 36.059395, 16.105011)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="Welt/Nethora" unique_id=807514761]
+transform = Transform3D(0.99206483, 0, -0.12572762, 0, 1, 0, 0.12572762, 0, 0.99206483, -635.78815, 111.88315, -484.67163)
+size = Vector3(18.457382, 36.059395, 16.105011)
+
+[node name="umgebung" type="CSGCombiner3D" parent="Welt" unique_id=495350096]
+
+[node name="CSGBox3D" parent="Welt/umgebung" unique_id=291779436 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -724.9544, 6.7565312, -116.31556)
+size = Vector3(12.756348, 7.1469727, 4.317505)
+
+[node name="CSGBox3D2" parent="Welt/umgebung" unique_id=1499966987 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -603.5394, 2.6519108, -912.07385)
+size = Vector3(5.7008057, 2.9038086, 5.1016846)
+
+[node name="CSGBox3D3" parent="Welt/umgebung" unique_id=1566024966 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.77617234, 0, -0.6305208, 0, 1, 0, 0.6305208, 0, 0.77617234, -599.9777, 2.5490394, -947.64166)
+size = Vector3(4.226074, 4.3466187, 5.2194824)
+
+[node name="CSGBox3D4" parent="Welt/umgebung" unique_id=1238365049 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.51018584, 0, -0.8600642, 0, 1, 0, 0.8600642, 0, 0.51018584, -573.07825, 9.394481, -936.18695)
+size = Vector3(5.2841797, 3.7235107, 3.3085938)
+
+[node name="CSGBox3D5" parent="Welt/umgebung" unique_id=450882009 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.92859054, 0, -0.37110594, 0, 1, 0, 0.37110594, 0, 0.92859054, -626.6399, 7.705256, -954.131)
+size = Vector3(11.566406, 12.562012, 43.264923)
+
+[node name="CSGBox3D6" parent="Welt/umgebung" unique_id=1737629526 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.90749794, 0, -0.42005655, 0, 1, 0, 0.42005655, 0, 0.90749794, -614.1682, 9.63559, -966.69745)
+size = Vector3(5.0809326, 4.6397705, 7.421936)
+
+[node name="CSGBox3D7" parent="Welt/umgebung" unique_id=994385117 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.9845837, 0.06236377, -0.16341895, -0.061522104, 0.9980535, 0.010211298, 0.16373767, 0, 0.9865039, -611.47296, 8.563149, -964.832)
+size = Vector3(5.333008, 2.755371, 9.050781)
+
+[node name="CSGBox3D8" parent="Welt/umgebung" unique_id=65487950 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.46891218, 0, -0.8832448, 0, 1, 0, 0.8832448, 0, 0.46891218, -586.8713, 8.777648, -955.8169)
+size = Vector3(11.140503, 5.58667, 4.127075)
+
+[node name="CSGBox3D9" parent="Welt/umgebung" unique_id=446089509 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -622.92175, 10.50826, -868.9432)
+size = Vector3(3.4213867, 22.26123, 3.1445313)
+
+[node name="CSGBox3D10" parent="Welt/umgebung" unique_id=180314437 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -725.75793, 27.456316, -880.42126)
+size = Vector3(7.1054688, 19.912598, 7.124756)
+
+[node name="CSGBox3D11" parent="Welt/umgebung" unique_id=2084646776 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -737.86224, 19.785246, -939.703)
+size = Vector3(10.677887, 4.574707, 7.813904)
+
+[node name="CSGBox3D12" parent="Welt/umgebung" unique_id=1016221414 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -794.0895, 5.4764223, -899.40985)
+size = Vector3(26.963806, 12.066528, 11.370117)
+
+[node name="CSGBox3D13" parent="Welt/umgebung" unique_id=852213461 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -800.2737, 4.659853, -891.13556)
+size = Vector3(13.06958, 7.6308594, 7.980896)
+
+[node name="CSGBox3D14" parent="Welt/umgebung" unique_id=1235707236 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -801.0707, 2.6473408, -886.5218)
+size = Vector3(13.06958, 7.6308594, 7.980896)
+
+[node name="CSGBox3D15" parent="Welt/umgebung" unique_id=1980375970 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -802.2865, -0.21106148, -882.19806)
+size = Vector3(13.06958, 7.6308594, 7.980896)
+
+[node name="CSGBox3D16" parent="Welt/umgebung" unique_id=1140948044 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -792.5954, 7.13235, -857.24396)
+size = Vector3(36.476196, 13.755859, 18.506226)
+
+[node name="CSGBox3D17" parent="Welt/umgebung" unique_id=806634373 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1.7933581, 0, 0, 0, 1.7933581, 0, 0, 0, 1.7933581, -754.4149, 3.0668416, -871.6192)
+size = Vector3(6.1014404, 6.0838623, 7.1602783)
+
+[node name="CSGBox3D18" parent="Welt/umgebung" unique_id=1136073345 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(5.367051, 0, 0, 0, 5.367051, 0, 0, 0, 5.367051, -711.8737, 0.50000894, -813.9728)
+size = Vector3(1.8325195, 1, 1)
+
+[node name="CSGBox3D19" parent="Welt/umgebung" unique_id=861266297 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(5.631166, 0, 0, 0, 5.631166, 0, 0, 0, 5.631166, -638.82996, 0.3813553, -812.97046)
+size = Vector3(1.9404297, 1, 1)
+
+[node name="CSGBox3D20" parent="Welt/umgebung" unique_id=2110964262 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(5.7902336, 0, 0, 0, 5.7902336, 0, 0, 0, 5.7902336, -632.2676, 0.49177063, -728.65106)
+
+[node name="CSGBox3D21" parent="Welt/umgebung" unique_id=444809228 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(35.748837, 0, 0, 0, 35.748837, 0, 0, 0, 35.748837, -553.53455, 2.9271421, -644.5895)
+
+[node name="CSGBox3D22" parent="Welt/umgebung" unique_id=2050632227 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(7.197685, 0, 0, 0, 7.197685, 0, 0, 0, 7.197685, -698.66986, -0.81816447, -891.27313)
+
+[node name="CSGBox3D23" parent="Welt/umgebung" unique_id=222721659 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(10.536658, 0, 0, 0, 10.536658, 0, 0, 0, 10.536658, -702.848, 5.5289145, -935.2423)
+
+[node name="CSGBox3D24" parent="Welt/umgebung" unique_id=1006718759 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(17.583883, 0, 0, 0, 17.583883, 0, 0, 0, 17.583883, -738.8665, 0.6188755, -621.3736)
+
+[node name="CSGBox3D25" parent="Welt/umgebung" unique_id=1678070280 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.78252, 0, 0, 0, 25.78252, 0, 0, 0, 25.78252, -681.0359, 12.731186, -667.6498)
+
+[node name="CSGBox3D26" parent="Welt/umgebung" unique_id=794499818 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.781267, 0, -0.2542844, 0, 25.78252, 0, 0.2542844, 0, 25.781267, -663.7762, 28.894491, -658.3946)
+
+[node name="CSGBox3D27" parent="Welt/umgebung" unique_id=577423533 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(15.0833, 0, 0, 0, 15.0833, 0, 0, 0, 15.0833, -878.25116, 2.3018043, -611.2428)
+
+[node name="CSGBox3D28" parent="Welt/umgebung" unique_id=511800498 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(12.437712, 0, 0, 0, 12.437712, 0, 0, 0, 12.437712, -915.69977, 12.001366, -681.1503)
+
+[node name="CSGBox3D29" parent="Welt/umgebung" unique_id=896897327 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(12.066602, 0, 0, 0, 12.066602, 0, 0, 0, 12.066602, -904.7523, 8.500047, -640.0386)
+
+[node name="CSGBox3D30" parent="Welt/umgebung" unique_id=604299933 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(5.4161057, 0, 0, 0, 5.4161057, 0, 0, 0, 5.4161057, -876.1684, 4.7889714, -759.77313)
+size = Vector3(1.970581, 2.3398438, 2.1479492)
+
+[node name="CSGBox3D31" parent="Welt/umgebung" unique_id=1997317588 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -607.78424, 8.330183, -807.0897)
+size = Vector3(7.196289, 17.005981, 5.1082764)
+
+[node name="CSGBox3D32" parent="Welt/umgebung" unique_id=442190707 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -607.78424, 8.330183, -741.17206)
+size = Vector3(7.196289, 17.005981, 5.1082764)
+
+[node name="CSGBox3D33" parent="Welt/umgebung" unique_id=1324253504 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572.07587, 8.330183, -745.8615)
+size = Vector3(7.196289, 17.005981, 5.1082764)
+
+[node name="CSGBox3D34" parent="Welt/umgebung" unique_id=734750372 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -607.78424, 16.76074, -773.25256)
+size = Vector3(7.196289, 9.407013, 62.54367)
+
+[node name="CSGBox3D35" parent="Welt/umgebung" unique_id=546706005 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(0.8142426, 0, 0.5805248, 0, 1, 0, -0.5805248, 0, 0.8142426, -590.0202, 16.76074, -769.36694)
+size = Vector3(7.196289, 9.407013, 62.54367)
+
+[node name="CSGBox3D36" parent="Welt/umgebung" unique_id=2126763073 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(8.651463, 0, 0, 0, 8.651463, 0, 0, 0, 8.651463, -444.82242, 11.813336, -768.4727)
+size = Vector3(1, 3.6153564, 1)
+
+[node name="CSGBox3D37" parent="Welt/umgebung" unique_id=1328996257 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(3.989319, 0, 0, 0, 3.989319, 0, 0, 0, 3.989319, -401.88907, 0.5000076, -729.63324)
+size = Vector3(1, 1, 10.027466)
+
+[node name="CSGBox3D38" parent="Welt/umgebung" unique_id=840648207 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(3.6850805, 0, 1.5280242, 0, 3.98932, 0, -1.5280242, 0, 3.6850805, -295.49954, 0.5000057, -725.21246)
+size = Vector3(1, 1, 11.673889)
+
+[node name="CSGBox3D39" parent="Welt/umgebung" unique_id=1620985454 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(11.37207, 0, 0, 0, 11.37207, 0, 0, 0, 11.37207, -276.80646, 10.414453, -818.22205)
+
+[node name="CSGBox3D40" parent="Welt/umgebung" unique_id=273642661 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(9.385568, 0, -6.421456, 0, 11.372069, 0, 6.421456, 0, 9.385568, -237.71057, 9.38471, -814.0985)
+
+[node name="CSGBox3D41" parent="Welt/umgebung" unique_id=1303508716 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1.9176586, 0, 0, 0, 1, 0, 0, 0, 1.7800328, -809.5961, 3.2390327, -778.54407)
+size = Vector3(1, 3.597229, 1)
+
+[node name="CSGBox3D42" parent="Welt/umgebung" unique_id=404506430 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -809.44745, 4.2713866, -766.208)
+size = Vector3(1, 4.359253, 1)
+
+[node name="CSGBox3D43" parent="Welt/umgebung" unique_id=1495832696 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(4.5226965, 0, 0, 0, 4.5226965, 0, 0, 0, 4.5226965, -818.58966, 0.5000074, -649.174)
+
+[node name="CSGBox3D44" parent="Welt/umgebung" unique_id=712293514 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(5.468438, 0, 0, 0, 5.468438, 0, 0, 0, 5.468438, -730.28564, 31.132334, -600.595)
+size = Vector3(1, 2.0809326, 1)
+
+[node name="CSGBox3D45" parent="Welt/umgebung" unique_id=942949175 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(5.161475, 0, 0, 0, 5.161475, 0, 0, 0, 5.161475, -703.85834, 65.95294, -502.31354)
+size = Vector3(1, 2.1381836, 1)
+
+[node name="CSGBox3D46" parent="Welt/umgebung" unique_id=193039034 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(4.904505, 0, 0, 0, 4.904505, 0, 0, 0, 4.904505, -793.00745, -0.15765905, -472.54233)
+size = Vector3(5.895996, 1, 1)
+
+[node name="CSGBox3D47" parent="Welt/umgebung" unique_id=2008880332 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(4.1707087, 0, 2.5805738, 1.1903851, 4.351527, -1.9238937, -2.2896166, 2.2623844, 3.7004652, -793.00745, 2.1401877, -465.87405)
+size = Vector3(5.895996, 1, 1)
+
+[node name="CSGBox3D48" parent="Welt/umgebung" unique_id=1851839931 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(3.1393123, -2.5641866, 1.9249835, 2.8386502, 3.4753358, 0, -1.490865, 1.2177367, 4.053435, -792.8489, 15.500158, -409.96796)
+size = Vector3(1, 7.683838, 1)
+
+[node name="CSGBox3D49" parent="Welt/umgebung" unique_id=50228794 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(3.5101428, 2.658489, 0.86442506, -2.709233, 3.5771427, 0, -0.68909407, -0.5219014, 4.403256, -805.0644, 15.500158, -402.7743)
+size = Vector3(1, 7.683838, 1)
+
+[node name="CSGBox3D50" parent="Welt/umgebung" unique_id=1227861102 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(8.910093, 0, 0, 0, 8.910093, 0, 0, 0, 8.910093, -879.65814, 11.576517, -316.72083)
+size = Vector3(1, 3.3164063, 1)
+
+[node name="CSGBox3D51" parent="Welt/umgebung" unique_id=1233526663 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(7.0095854, 0, 5.500498, 0, 8.910093, 0, -5.500498, 0, 7.0095854, -863.14404, 11.576517, -277.66452)
+size = Vector3(1, 3.3164063, 1)
+
+[node name="CSGBox3D52" parent="Welt/umgebung" unique_id=1681963252 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(7.0095854, 0, 5.500498, 0, 8.910093, 0, -5.500498, 0, 7.0095854, -855.7237, 8.245684, -284.97488)
+size = Vector3(1, 2.0756836, 1)
+
+[node name="CSGBox3D53" parent="Welt/umgebung" unique_id=5551037 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(7.0095854, 0, 5.500498, 0, 8.910093, 0, -5.500498, 0, 7.0095854, -867.7948, 8.245684, -313.43253)
+size = Vector3(1, 2.0756836, 1)
+
+[node name="CSGBox3D54" parent="Welt/umgebung" unique_id=1711527419 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -736.4726, 0.5271268, -441.412)
+
+[node name="CSGBox3D55" parent="Welt/umgebung" unique_id=1263967803 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -733.47, 4.135708, -462.50446)
+size = Vector3(0.87890625, 3.8397217, 0.044677734)
+
+[node name="CSGBox3D56" parent="Welt/umgebung" unique_id=763787861 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -712.5485, 4.135708, -446.25253)
+size = Vector3(0.03515625, 3.8397217, 0.7807617)
+
+[node name="CSGBox3D57" parent="Welt/umgebung" unique_id=530623942 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -731.9141, 4.135708, -419.74545)
+size = Vector3(0.8161621, 3.8397217, 0.041625977)
+
+[node name="CSGBox3D58" parent="Welt/umgebung" unique_id=1038316577 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -747.7111, 13.663321, -437.21124)
+size = Vector3(0.17907715, 11.337341, 0.23042297)
+
+[node name="CSGBox3D59" parent="Welt/umgebung" unique_id=638588385 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(15.020416, 0, 0, 0, 15.020416, 0, 0, 0, 15.020416, -628.6202, 30.101664, -428.10312)
+size = Vector3(1.3193359, 0.2319336, 1)
+
+[node name="CSGBox3D60" parent="Welt/umgebung" unique_id=345950391 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(9.852266, 0, 0, 0, 9.852266, 0, 0, 0, 9.852266, -574.24805, 9.071995, -167.05452)
+size = Vector3(1, 2.7088623, 1)
+
+[node name="CSGBox3D61" parent="Welt/umgebung" unique_id=538992649 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(9.852266, 0, 0, 0, 9.852266, 0, 0, 0, 9.852266, -618.49316, 9.071995, -167.05452)
+size = Vector3(1, 2.7088623, 1)
+
+[node name="CSGBox3D62" parent="Welt/umgebung" unique_id=1412460854 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(9.852266, 0, 0, 0, 9.852266, 0, 0, 0, 9.852266, -598.5262, -1.429863, -167.05452)
+size = Vector3(1, 0.57699585, 1)
+
+[node name="FocusSteine" type="CSGCombiner3D" parent="Welt" unique_id=2035144773]
+
+[node name="CSGBox3D" parent="Welt/FocusSteine" unique_id=1210216706 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -442.09753, 62.391315, -961.56256)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D2" parent="Welt/FocusSteine" unique_id=1884815726 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -770.5137, 31.187916, -186.95349)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D3" parent="Welt/FocusSteine" unique_id=2075197277 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -148.12439, 74.581985, -201.9903)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D4" parent="Welt/FocusSteine" unique_id=744992877 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -92.65198, 43.09486, -636.5243)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="CSGBox3D5" parent="Welt/FocusSteine" unique_id=950756486 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -950.16327, 70.06642, -627.3104)
+size = Vector3(1, 2.4962158, 1)
+
+[node name="Environment" parent="." unique_id=812691920 instance=ExtResource("10_k4w7v")]
+
+[node name="wasser" type="MeshInstance3D" parent="." unique_id=664896724]
+transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, -424.728, -2, -347.174)
+mesh = SubResource("PlaneMesh_0euad")
+surface_material_override/0 = SubResource("ShaderMaterial_33hpn")
+script = ExtResource("13_pl0g3")
+
+[node name="Player" parent="." unique_id=1256384449 instance=ExtResource("48_6mex8")]
+transform = Transform3D(-0.99979585, 0, 0.020204687, 0, 1, 0, -0.020204687, 0, -0.99979585, -668.3362, -0.13817033, -819.0059)
+acceleration = 100.0
+water_level = -3.1
