@@ -5,10 +5,11 @@ Zusammenfassung der heute umgesetzten Systeme, mit Dateien und wichtigen Stellsc
 ---
 
 ## Projektstruktur / Aufräumen
-- Terrain-Welt liegt jetzt unter **`World/`** (`World/world.tscn`, `World/data/` = Terrain3D-Daten + `assets.tres`).
+- **Hauptszene: `Main.tscn`** (Wurzel) → lädt `World/world.tscn` + `World/player.tscn`.
+- Terrain-Welt unter **`World/`** (`World/world.tscn`, `World/data/` = Terrain3D-Daten + `assets.tres`).
 - Von der Terrain3D-**Demo entkoppelt** (Player/UI/DemoScene entfernt, Daten/Texturen verschoben). `demo/` ist löschbar.
 - **Gepackte Texturen** in `PackedTextures/` (Albedo+Height / NormalGL+Roughness, 1024², **BPTC**). Roh-Sets in `_zum_loeschen/`.
-- Aufräum-Anleitung: `doc/aufraeumen.md`.
+- ⚠️ Altes C#-RPG-Framework (`scripts/`, `Data/`) ist **verwaist** (Szenen gelöscht) – siehe `CLAUDE.md`.
 
 ## Spieler – `World/player.tscn` + `scripts/World/player.gd`
 Eigenständiger Player (ersetzt den Demo-Player):
@@ -23,7 +24,7 @@ Eigenständiger Player (ersetzt den Demo-Player):
 - Fake-AO am Halmgrund (`base_ao`).
 - Wächst nur auf bestimmten Textur-IDs (nicht 2–20).
 
-## Terrain-Boden – `terrain_shader.gdshader` (Shader-Override)
+## Terrain-Boden – `World/terrain_shader.gdshader` (Shader-Override)
 - Dunkelt den Boden dort ab, wo (hohes) Gras wächst – gleiche `main_noise` wie das Gras (geteilt: `grass_noise.tres`), Hangfilter, Textur-ID-Filter.
 
 ## Wasser – `Objects/water.gdshader` + `Objects/wasser.gd`
