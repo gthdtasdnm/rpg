@@ -33,9 +33,28 @@ Lizenz- und Readme-Dateien des Anbieters.
 **Lizenzdateien liegen in den Paketordnern und bleiben dort.** Mehrere verlangen Namensnennung —
 vor einer Veröffentlichung durchsehen.
 
-⚠️ **Die gekauften Pakete sind nicht im Git-Repo** (siehe `.gitignore`) — zu groß für die
-Historie. `Nature/` und `Terrain/` dagegen schon, weil sie bearbeitet und nicht reproduzierbar
-sind. Auf einem neuen Rechner: Pakete erneut herunterladen und nach obiger Tabelle einsortieren.
+### Was im Git-Repo liegt — und was nicht
+
+| | |
+|---|---|
+| **Im Repo** | `Nature/Forest/` (inkl. der selbst zusammengeführten `merged/`-Bäume), `Terrain/` |
+| **Nicht im Repo** | `Buildings/`, `Props/`, `Weapons/`, `Characters/`, `_Blender/`, **`Nature/Rocks/`** |
+
+Die gekauften Pakete sind jederzeit neu herunterladbar, würden die Git-Historie aber dauerhaft
+aufblähen. **`Nature/Rocks/` muss draußen bleiben**: zwei der Modelle sind über 110 MB und werden
+von GitHub grundsätzlich abgelehnt (hartes Limit: 100 MB).
+
+⚠️ **Folge: Nach einem frischen Klon fehlen die Steine in `World/world.tscn`** (11 Instanzen).
+Sie müssen neu heruntergeladen und nach `Assets/Nature/Rocks/` gelegt werden.
+
+**Besser wäre, das Problem an der Wurzel zu lösen:** die Stein-Texturen sind PNGs mit 78–81 MB
+*pro Stück*, die Modelle 113–118 MB. Das ist nicht nur fürs Repo zu viel, sondern auch für die
+Spielleistung (jede dieser Texturen belegt beim Laden VRAM). Auf 2K-JPEG herunterrechnen und die
+Meshes dezimieren bringt sie auf wenige MB — danach passen sie problemlos ins Repo und das Spiel
+lädt schneller.
+
+Alternative, falls die Rohqualität erhalten bleiben soll: **Git LFS**. Zu beachten ist das
+GitHub-Freikontingent von 1 GB, das `Nature/Rocks/` mit 774 MB fast allein ausschöpft.
 
 ## Warum nicht nach Dateityp (`Models/`, `Textures/` global)?
 
