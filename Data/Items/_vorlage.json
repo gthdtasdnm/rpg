@@ -1,0 +1,22 @@
+{
+  "_hinweis": "Kopiervorlage. Dateien mit _ am Anfang werden von GameData ignoriert. Alle Felder und erlaubten Werte: scripts/Data/ItemDefinition.cs",
+
+  "id": "weapon_beispiel",
+  "name": "Beispielklinge",
+  "type": "weapon",
+  "price": 50,
+  "stackable": false,
+
+  "_ab_hier_nur_fuer_waffen": "type=weapon | scalingStat: strength|dexterity | damageType: slashing|blunt|mixed|ranged | weaponCategory: onehand|twohand|bow",
+  "damage": 10,
+  "scalingStat": "strength",
+  "damageType": "slashing",
+  "weaponCategory": "onehand",
+
+  "_ab_hier_nur_fuer_ruestung_schild": "type=armor|shield",
+  "defense": 0,
+  "staggerResist": 0,
+
+  "_ab_hier_nur_fuer_traenke": "type=consumable",
+  "healAmount": 0
+}

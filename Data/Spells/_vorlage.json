@@ -1,0 +1,18 @@
+{
+  "_hinweis": "Kopiervorlage. Dateien mit _ am Anfang werden von GameData ignoriert. Alle Felder und erlaubten Werte: scripts/Data/SpellDefinition.cs",
+
+  "id": "spell_beispiel",
+  "name": "Beispielzauber",
+
+  "_school": "arcane (alte Kampfmagie) | blood (Blutmagie) | divine (göttliche Magie/Gebete)",
+  "school": "arcane",
+
+  "_healthCost": "Magie kostet Lebenspunkte statt Mana, siehe doc/konzept/Gameplay/Magiesystem.md",
+  "healthCost": 5,
+
+  "damage": 12,
+  "healAmount": 0,
+  "castTime": 0,
+  "range": 8.0,
+  "cooldown": 1.0
+}

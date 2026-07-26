@@ -1,0 +1,116 @@
+~ start
+
+# Beim zweiten Ansprechen nicht nochmal die Begrüßung. Achtung: "talked_npc_halvor" funktioniert
+# dafür NICHT — das setzt Npc.cs schon, bevor der Dialog startet, ist beim ersten Gespräch also
+# bereits gesetzt. Deshalb ein eigenes Flag, das erst am Ende der Begrüßung gesetzt wird.
+if Dialog.HasFlag("halvor_begruessung_gehabt")
+	Halvor: Du schon wieder. Was willst du?
+	=> fragen
+
+Halvor: Haben sie wieder eine arme Sau hier reingeschmissen?
+Halvor: Ich hoffe, du willst hier keinen Ärger machen. Sonst wirst du hier eine sehr schwere Zeit haben.
+do Dialog.SetFlag("halvor_begruessung_gehabt")
+
+=> fragen
+
+
+# Das Frage-Menü. Jedes Thema springt am Ende wieder hierher zurück, damit der Spieler
+# weiterfragen kann. Neues Thema = eine neue "- Zeile" mit eingerücktem Block darunter.
+~ fragen
+
+- Wer bist du?
+	Halvor: Ich bin Halvor, und wahrscheinlich das Beste, was dir hier passieren wird.
+	Halvor: Vigil im Orden der Custodes. Seit elf Jahren.
+	Halvor: Lang genug, um zu wissen, wo man nicht hingeht.
+	do Dialog.SetFlag("weiss_von_halvor")
+	=> fragen
+
+- Wo bin ich hier?
+	Halvor: In Nethora. Oder besser gesagt, in der Barriere, die sie umgibt.
+	=> fragen
+
+- Was ist diese Barriere?
+	Halvor: Vor zwanzig Jahren haben die Magier des Königs draußen sie hochgezogen. Frag mich nicht, warum.
+	do Dialog.SetFlag("weiss_von_barriere")
+	=> fragen
+
+- Wer hat hier das Sagen?
+	Halvor: Der König von Nethora. Lord Aldemar.
+	Halvor: Er ist das Einzige, was zwischen uns und dem absoluten Chaos steht.
+	Halvor: Unter ihm stehen zwei. Ordensmeister Cassian, seine rechte Hand. Und Priester Ansel, die linke.
+	Halvor: Der eine hält die Mauern, der andere die Seelen. Merk dir die Namen.
+	do Dialog.SetFlag("weiss_von_aldemar")
+	=> fraktionen
+
+- Was soll ich jetzt tun? [if not Dialog.IsQuestStarted("quest_nach_nethora")]
+	Halvor: Natürlich nach Nethora gehen.
+	Halvor: Außer, du hast Lust, hier draußen gefressen zu werden.
+	Halvor: Ich komme hier ab und zu her, um zu sehen, ob es Neue gibt, die Hilfe brauchen.
+	Halvor: Ich gehe aber gleich zurück in die Burg. Triff mich da.
+	do Dialog.StartQuest("quest_nach_nethora")
+	=> fragen
+
+# Abgabe der Quest. "IsQuestReady" heißt: alle Ziele erfüllt, aber noch nicht abgegeben — hier
+# also, sobald der Spieler die Burg betreten hat. Gedacht für den Halvor, der später IN der Burg
+# steht; beide können dieselbe Dialogdatei benutzen.
+- Ich bin da. Wie du gesagt hast. [if Dialog.IsQuestReady("quest_nach_nethora")]
+	Halvor: Sieh an. Du hast es tatsächlich hoch geschafft.
+	Halvor: Dann wollen wir mal sehen, was wir aus dir machen.
+	do Dialog.CompleteQuest("quest_nach_nethora")
+	=> fragen
+
+# Zweite Fassung derselben Frage, solange die Quest läuft — Muster für "der NPC weiß, was er
+# dir schon aufgetragen hat".
+- Wo finde ich dich in Nethora? [if Dialog.IsQuestStarted("quest_nach_nethora") and not Dialog.IsQuestCompleted("quest_nach_nethora")]
+	Halvor: In der Burg, hab ich gesagt. Immer den Weg hoch, du kannst sie nicht verfehlen.
+	Halvor: Und trödel nicht. Nachts ist der Weg nichts für Leute wie dich.
+	=> fragen
+
+# Startausrüstung, damit der Spieler überhaupt etwas in der Hand hat. Einmalig über ein Flag —
+# ohne das könnte man die Option beliebig oft wählen und Halvor leerräumen.
+- Hast du irgendwas für mich? [if not Dialog.HasFlag("halvor_starthilfe_bekommen")]
+	Halvor: Wenig. Aber weniger als nichts ist immer noch mehr als nichts.
+	Halvor: Hier. Ein Bier und ein bisschen Silber.
+	Halvor: Und pass auf, wem du das Bier gibst. Es laufen genug Leute rum, die dir dafür das Blaue vom Himmel versprechen.
+	do Dialog.GiveItem("item_bier")
+	do Dialog.GiveSilver(120)
+	do Dialog.SetFlag("halvor_starthilfe_bekommen")
+	=> fragen
+
+- Gibt es noch andere Städte?
+	Halvor: Ich würde sie nicht Städte nennen, aber ja.
+	Halvor: Da wären noch die Freien. Ein Teil, der sich seit der Entstehung der Barriere abgespalten hat.
+	Halvor: Und dann noch diese Spinner in der alten Ruine.
+	do Dialog.SetFlag("weiss_von_fraktionen")
+	=> fragen
+
+- Ich muss weiter.
+	Halvor: Wie du meinst.
+	=> END
+
+
+~ fraktionen
+
+- Erzähl mir von Nethora.
+	Halvor: Die Stadt. König Aldemar sitzt da oben und der Orden der Custodes hält die Mauern.
+	Halvor: Ordnung und Gebete. Wir glauben, wenn wir nur lang genug durchhalten,
+	Halvor: holt uns der König da draußen schon wieder hier raus.
+	do Dialog.SetFlag("weiss_von_fraktionen")
+	=> fraktionen
+
+- Erzähl mir vom Freien Lager.
+	Halvor: Ein dreckiges Pack von Verrätern.
+	Halvor: Wilde, denen nur ihre eigene Haut wichtig ist.
+	Halvor: Ich würde mich von denen fernhalten, wenn ich du wäre.
+	do Dialog.SetFlag("weiss_von_fraktionen")
+	=> fraktionen
+
+- Und das dritte Lager?
+	Halvor: Das ist kein Lager. Das sind ein paar Sektenspinner.
+	Halvor: Heiden, die einen Dämon anbeten.
+	Halvor: Wenn du Glück hast, wirst du bei einem ihrer Rituale nur gehäutet.
+	do Dialog.SetFlag("weiss_von_fraktionen")
+	=> fraktionen
+
+- Zurück.
+	=> fragen

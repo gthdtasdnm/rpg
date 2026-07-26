@@ -9,7 +9,10 @@ public class CharacterDefinition
 	public int MaxHealth { get; set; } = 10;
 	public int Strength { get; set; } = 0;
 	public int Dexterity { get; set; } = 0;
-	public string? DialogueId { get; set; }
+
+	// Kein DialogueId mehr: welcher Dialog zu einem NPC gehoert, steht am Npc-Node im Inspector
+	// (Npc.cs: DialogueFile/DialogueTitle). Ein Charakter kann so in verschiedenen Szenen
+	// unterschiedliche Dialoge fuehren, ohne dass es dafuer mehrere JSON-Eintraege braucht.
 
 	// Gegner-Felder (siehe doc/konzept/Gameplay/Kampfsystem.md, scripts/Combat/Enemy.cs) - bei
 	// Spieler/NPCs ungenutzt (Defaults). Bleiben in CharacterDefinition statt einer eigenen

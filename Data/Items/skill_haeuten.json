@@ -1,0 +1,8 @@
+{
+  "_hinweis": "type 'skill' = kein Inventarobjekt. Wird über Dialog.Learn() gekauft und setzt das Flag 'learned_skill_haeuten'.",
+  "id": "skill_haeuten",
+  "name": "Häuten und Ausweiden",
+  "type": "skill",
+  "price": 100,
+  "stackable": false
+}

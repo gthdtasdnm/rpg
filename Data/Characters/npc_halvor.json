@@ -1,8 +1,7 @@
 {
   "id": "npc_halvor",
   "name": "Halvor",
-  "maxHealth": 18,
-  "strength": 5,
-  "dexterity": 5,
-  "dialogueId": "halvor_intro"
+  "maxHealth": 60,
+  "strength": 12,
+  "dexterity": 8
 }

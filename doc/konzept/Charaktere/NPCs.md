@@ -6,6 +6,14 @@ Kurzcharakterisierung. Technisch landet jeder NPC am Ende als JSON in Data/Chara
 doc/architektur.md.
 -->
 
+> **Ausgearbeitete Figuren** (Charakter, Haltung, Sprechweise) stehen in
+> [Steckbriefe.md](Steckbriefe.md). Diese Liste hier bleibt die Übersicht aller *geplanten* NPCs.
+>
+> **Hierarchie geändert (26.07.)**: Unter König Aldemar stehen jetzt zwei getrennte Säulen —
+> **Ordensmeister Cassian** (rechte Hand, Orden/Kampf) und **Priester Ansel** (linke Hand,
+> Priesterschaft/Magie). Ansel ist damit nicht mehr nur Magielehrer, sondern Oberhaupt des
+> geistlichen Arms. Siehe [Fraktionen.md](../Welt/Fraktionen.md).
+
 Rangsystem siehe [Fraktionen.md](../Welt/Fraktionen.md). König Aldemar, Der Erbauer und
 Vox Aedificares sind bereits unter [Antagonisten.md](Antagonisten.md) beschrieben und hier nur
 verlinkt, nicht doppelt aufgeführt. Namen sind Vorschläge (angelehnt an Gothic 1 in Rollenwahl,

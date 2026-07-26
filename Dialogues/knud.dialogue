@@ -1,0 +1,72 @@
+~ start
+
+if Dialog.HasFlag("knud_begruessung_gehabt")
+	Knud: Was denn noch?
+	=> fragen
+
+Knud: Red mit Falk. Der macht das Reden.
+Knud: Ich mach das Zerlegen.
+do Dialog.SetFlag("knud_begruessung_gehabt")
+
+=> fragen
+
+
+~ fragen
+
+- Wer bist du?
+	Knud: Knud. Mehr musst du nicht wissen.
+	Knud: Ich häute, was Falk umbringt. Läuft seit Jahren so.
+	=> fragen
+
+# Reagiert auf das, was beim anderen NPC passiert ist — das Flag kommt aus falk.dialogue.
+- Dein Freund hat mich übers Ohr gehauen. [if Dialog.HasFlag("falk_bier_betrug")]
+	Knud: Wegen dem Bier?
+	Knud: Hör zu. Das war die billigste Lehrstunde, die du hier kriegen wirst.
+	Knud: Nächstes Mal fragst du zuerst, was du dafür bekommst. Und dann gibst du erst her.
+	Knud: Kostet dich sonst irgendwann mehr als ein Bier.
+	=> fragen
+
+- Warum sollte ich zu euch kommen?
+	Knud: Musst du nicht. Geh nach Nethora, knie vor ihrem König, bete dreimal am Tag.
+	Knud: Oder du kommst zu uns und behältst deinen Rücken gerade.
+	Knud: Bei uns fragt keiner, was du vorher warst.
+	do Dialog.SetFlag("weiss_von_werbung_freies_lager")
+	=> fragen
+
+- Was ist an einem toten Tier so wertvoll?
+	Knud: Alles, wenn du weißt, wo du schneidest.
+	Knud: Das Fell bringt Silber. Die Krallen bringen mehr. Die Zähne am meisten.
+	Knud: Und wer's falsch macht, hat am Ende einen Sack Fetzen und stinkt drei Tage.
+	do Dialog.SetFlag("weiss_von_jagd")
+	=> fragen
+
+- Bring mir bei, wie man ein Tier ausnimmt. [if not Dialog.HasLearned("skill_haeuten")]
+	Knud: Hundert Silber.
+	Knud: Und beschwer dich nicht — das Erste, was du damit häutest, bringt schon mehr ein.
+	=> haeuten_lernen
+
+- Und, mach ich es richtig? [if Dialog.HasLearned("skill_haeuten")]
+	Knud: Du ruinierst weniger, als am Anfang. Das ist schon was.
+	=> fragen
+
+- Ich geh wieder.
+	Knud: Ja.
+	=> END
+
+
+~ haeuten_lernen
+
+- Hier, hundert Silber. [if Dialog.HasSilver(100)]
+	do Dialog.Learn("skill_haeuten")
+	Knud: Pass auf. Vom Bauch her, nicht vom Rücken. Und nicht zu tief.
+	Knud: Wenn du den Magen aufschlitzt, kannst du das Fell wegwerfen.
+	Knud: Krallen kommen zuletzt. Dafür brauchst du Geduld, nicht Kraft.
+	=> fragen
+
+- So viel habe ich nicht. [if not Dialog.HasSilver(100)]
+	Knud: Dann geh Silber verdienen.
+	=> fragen
+
+- Später vielleicht.
+	Knud: Von mir aus.
+	=> fragen

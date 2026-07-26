@@ -17,12 +17,8 @@ public partial class Hud : CanvasLayer
 
 	private ProgressBar _healthBar = null!;
 	private Label _healthValueLabel = null!;
-	private Label _goldLabel = null!;
+	private Label _silverLabel = null!;
 	private Label _interactionPrompt = null!;
-	private Control _dialoguePanel = null!;
-	private Label _dialogueName = null!;
-	private Label _dialogueText = null!;
-	private VBoxContainer _choicesBox = null!;
 
 	private Control _pausePanel = null!;
 	private Label _pauseStatusLabel = null!;
@@ -32,7 +28,7 @@ public partial class Hud : CanvasLayer
 	private VBoxContainer _questLogEntriesBox = null!;
 	private Control _shopPanel = null!;
 	private Label _shopTitleLabel = null!;
-	private Label _shopGoldLabel = null!;
+	private Label _shopSilverLabel = null!;
 	private VBoxContainer _shopBuyBox = null!;
 	private VBoxContainer _shopSellBox = null!;
 
@@ -45,12 +41,10 @@ public partial class Hud : CanvasLayer
 	{
 		_healthBar = GetNode<ProgressBar>("HealthBar");
 		_healthValueLabel = GetNode<Label>("HealthBar/HealthValueLabel");
-		_goldLabel = GetNode<Label>("GoldLabel");
+		// Die Knoten in Hud.tscn heissen noch "GoldLabel" - die Waehrung heisst inzwischen Silber,
+		// die Szene wurde dafuer aber nicht umbenannt (siehe Inventory.cs).
+		_silverLabel = GetNode<Label>("GoldLabel");
 		_interactionPrompt = GetNode<Label>("InteractionPrompt");
-		_dialoguePanel = GetNode<Control>("DialoguePanel");
-		_dialogueName = GetNode<Label>("DialoguePanel/Margin/Box/NameLabel");
-		_dialogueText = GetNode<Label>("DialoguePanel/Margin/Box/TextLabel");
-		_choicesBox = GetNode<VBoxContainer>("DialoguePanel/Margin/Box/ChoicesBox");
 
 		_pausePanel = GetNode<Control>("PausePanel");
 		_pauseStatusLabel = GetNode<Label>("PausePanel/Margin/Box/StatusLabel");
@@ -60,7 +54,7 @@ public partial class Hud : CanvasLayer
 		_questLogEntriesBox = GetNode<VBoxContainer>("QuestLogPanel/Margin/Box/Scroll/EntriesBox");
 		_shopPanel = GetNode<Control>("ShopPanel");
 		_shopTitleLabel = GetNode<Label>("ShopPanel/Margin/Box/TitleLabel");
-		_shopGoldLabel = GetNode<Label>("ShopPanel/Margin/Box/GoldLabel");
+		_shopSilverLabel = GetNode<Label>("ShopPanel/Margin/Box/GoldLabel");
 		_shopBuyBox = GetNode<VBoxContainer>("ShopPanel/Margin/Box/Columns/BuyColumn/BuyScroll/BuyBox");
 		_shopSellBox = GetNode<VBoxContainer>("ShopPanel/Margin/Box/Columns/SellColumn/SellScroll/SellBox");
 
@@ -79,8 +73,8 @@ public partial class Hud : CanvasLayer
 
 			_inventory = player.GetNode<Inventory>("Inventory");
 			_inventory.InventoryChanged += OnInventoryChanged;
-			_inventory.GoldChanged += OnGoldChanged;
-			OnGoldChanged(_inventory.Gold);
+			_inventory.SilverChanged += OnSilverChanged;
+			OnSilverChanged(_inventory.Silver);
 
 			_equipment = player.GetNode<Equipment>("Equipment");
 			_equipment.WeaponChanged += (_) => RefreshInventoryIfOpen();
@@ -88,9 +82,11 @@ public partial class Hud : CanvasLayer
 			_equipment.ArmorChanged += (_) => RefreshInventoryIfOpen();
 		}
 
-		DialogueRunner.Instance.LineChanged += OnLineChanged;
-		DialogueRunner.Instance.DialogueEnded += OnDialogueEnded;
-		DialogueRunner.Instance.ShopRequested += OnShopRequested;
+		// Die Dialogbox selbst gehoert zum Dialogue-Manager-Addon (UI/DialogueBalloon.tscn), nicht
+		// mehr zum HUD. Das HUD muss nur wissen, wann geredet wird - und wann ein Dialog das
+		// Haendlerfenster oeffnen will.
+		DialogueBridge.Instance.DialogueStarted += OnDialogueStarted;
+		DialogueBridge.Instance.ShopRequested += OnShopRequested;
 
 		QuestManager.Instance.QuestStarted += (_, _) => RefreshQuestLogIfOpen();
 		QuestManager.Instance.QuestProgressed += (_, _, _) => RefreshQuestLogIfOpen();
@@ -106,12 +102,12 @@ public partial class Hud : CanvasLayer
 	{
 		if (@event is InputEventKey keyEvent && keyEvent.Pressed && !keyEvent.Echo && keyEvent.Keycode == Key.Escape)
 		{
-			if (!DialogueRunner.Instance.IsActive)
+			if (!DialogueBridge.Instance.IsActive)
 				OnEscape();
 			return;
 		}
 
-		if (DialogueRunner.Instance.IsActive)
+		if (DialogueBridge.Instance.IsActive)
 			return;
 
 		if (@event.IsActionPressed("toggle_inventory"))
@@ -178,9 +174,8 @@ public partial class Hud : CanvasLayer
 		_shopCharacterId = null;
 	}
 
-	// Wird ueber DialogueChoice.OpenShop ausgeloest (siehe DialogueRunner.ShopRequested).
-	// Ein Dialog ist zu diesem Zeitpunkt noch aktiv - das Panel legt sich einfach ueber die
-	// Dialogbox, die beim naechsten OnDialogueEnded ohnehin ausgeblendet wird.
+	// Wird aus einem Dialog ueber `do Dialog.OpenShop("npc_id")` ausgeloest.
+	// Der Dialog laeuft zu diesem Zeitpunkt noch - das Panel legt sich einfach darueber.
 	private void OnShopRequested(string characterId)
 	{
 		_shopCharacterId = characterId;
@@ -210,28 +205,9 @@ public partial class Hud : CanvasLayer
 		_interactionPrompt.Visible = false;
 	}
 
-	private void OnLineChanged(string speaker, string text, string[] choices)
+	private void OnDialogueStarted()
 	{
 		_interactionPrompt.Visible = false;
-		_dialoguePanel.Visible = true;
-		_dialogueName.Text = speaker;
-		_dialogueText.Text = text;
-
-		foreach (Node child in _choicesBox.GetChildren())
-			child.QueueFree();
-
-		for (int i = 0; i < choices.Length; i++)
-		{
-			int index = i;
-			Button button = new() { Text = choices[i] };
-			button.Pressed += () => DialogueRunner.Instance.Choose(index);
-			_choicesBox.AddChild(button);
-		}
-	}
-
-	private void OnDialogueEnded()
-	{
-		_dialoguePanel.Visible = false;
 	}
 
 	private void OnHealthChanged(int currentHealth, int maxHealth)
@@ -294,11 +270,11 @@ public partial class Hud : CanvasLayer
 			_inventoryItemsBox.AddChild(new Label { Text = "(leer)" });
 	}
 
-	private void OnGoldChanged(int totalGold)
+	private void OnSilverChanged(int totalSilver)
 	{
-		_goldLabel.Text = $"Gold: {totalGold}";
+		_silverLabel.Text = $"Silber: {totalSilver}";
 		if (_openPanel == PanelKind.Shop)
-			_shopGoldLabel.Text = $"Gold: {totalGold}";
+			_shopSilverLabel.Text = $"Silber: {totalSilver}";
 	}
 
 	// Kaufen-Spalte = Haendler-Sortiment (CharacterDefinition.ShopItemIds), Verkaufen-Spalte =
@@ -309,7 +285,7 @@ public partial class Hud : CanvasLayer
 	{
 		CharacterDefinition? merchant = _shopCharacterId != null ? GameData.Instance.GetCharacter(_shopCharacterId) : null;
 		_shopTitleLabel.Text = merchant?.Name ?? "Händler";
-		_shopGoldLabel.Text = $"Gold: {_inventory?.Gold ?? 0}";
+		_shopSilverLabel.Text = $"Silber: {_inventory?.Silver ?? 0}";
 
 		foreach (Node child in _shopBuyBox.GetChildren())
 			child.QueueFree();
@@ -325,7 +301,7 @@ public partial class Hud : CanvasLayer
 				bool alreadyLearned = item.Type == "skill" && GameFlags.Instance.HasFlag($"learned_{itemId}");
 
 				HBoxContainer row = new();
-				row.AddChild(new Label { Text = $"{item.Name} — {item.Price} Gold", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill });
+				row.AddChild(new Label { Text = $"{item.Name} — {item.Price} Silber", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill });
 
 				if (alreadyLearned)
 				{
@@ -363,7 +339,7 @@ public partial class Hud : CanvasLayer
 				string itemId = entry.Key;
 
 				HBoxContainer row = new();
-				row.AddChild(new Label { Text = $"{item.Name} ×{entry.Value} — {sellPrice} Gold", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill });
+				row.AddChild(new Label { Text = $"{item.Name} ×{entry.Value} — {sellPrice} Silber", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill });
 
 				Button sellButton = new() { Text = "Verkaufen" };
 				sellButton.Pressed += () => OnSellPressed(itemId, sellPrice);
@@ -379,7 +355,7 @@ public partial class Hud : CanvasLayer
 
 	private void OnBuyPressed(string itemId, ItemDefinition item)
 	{
-		if (_inventory == null || !_inventory.SpendGold(item.Price))
+		if (_inventory == null || !_inventory.SpendSilver(item.Price))
 			return;
 
 		if (item.Type == "skill")
@@ -395,7 +371,7 @@ public partial class Hud : CanvasLayer
 		if (_inventory == null || !_inventory.RemoveItem(itemId, 1))
 			return;
 
-		_inventory.AddGold(sellPrice);
+		_inventory.AddSilver(sellPrice);
 		RefreshShop();
 	}
 

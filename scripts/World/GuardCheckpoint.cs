@@ -11,9 +11,8 @@ namespace RPG.World;
 public partial class GuardCheckpoint : Area3D
 {
 	[Export] public string RequiredFlagId = "";
-	[Export] public string GuardDialogueId = "";
-	[Export] public string GuardName = "";
-	[Export] public string GuardCharacterId = "";
+	[Export(PropertyHint.File, "*.dialogue")] public string GuardDialogueFile = "";
+	[Export] public string GuardDialogueTitle = "start";
 
 	private CollisionShape3D _barrierShape = null!;
 	private MeshInstance3D? _barrierMesh;
@@ -47,6 +46,6 @@ public partial class GuardCheckpoint : Area3D
 		if (!body.IsInGroup("player") || GameFlags.Instance.HasFlag(RequiredFlagId))
 			return;
 
-		DialogueRunner.Instance.Start(GuardDialogueId, GuardName, GuardCharacterId);
+		DialogueBridge.Instance.Show(GuardDialogueFile, GuardDialogueTitle, this);
 	}
 }

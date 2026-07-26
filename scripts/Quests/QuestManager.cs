@@ -31,8 +31,6 @@ public partial class QuestManager : Node
 	public override void _Ready()
 	{
 		Instance = this;
-		DialogueRunner.Instance.QuestStartRequested += StartQuest;
-		DialogueRunner.Instance.QuestCompleteRequested += CompleteQuest;
 	}
 
 	public void StartQuest(string questId)
@@ -189,8 +187,9 @@ public partial class QuestManager : Node
 		GameFlags.Instance.SetFlag($"quest_ready_{questId}");
 	}
 
-	// Wird ueber eine Dialog-Choice ausgeloest (DialogueChoice.CompleteQuest), nicht automatisch.
-	private void CompleteQuest(string questId)
+	// Wird aus einem Dialog ausgeloest (`do Dialog.CompleteQuest("...")`), nicht automatisch:
+	// der Spieler muss die Quest beim Auftraggeber abgeben.
+	public void CompleteQuest(string questId)
 	{
 		if (!_active.TryGetValue(questId, out QuestState? state) || !IsComplete(state))
 			return;
@@ -209,8 +208,8 @@ public partial class QuestManager : Node
 			foreach (string rewardItemId in state.Definition.RewardItemIds)
 				inventory.AddItem(rewardItemId);
 
-			if (state.Definition.RewardGold > 0)
-				inventory.AddGold(state.Definition.RewardGold);
+			if (state.Definition.RewardSilver > 0)
+				inventory.AddSilver(state.Definition.RewardSilver);
 		}
 
 		GameFlags.Instance.SetFlag($"quest_completed_{questId}");

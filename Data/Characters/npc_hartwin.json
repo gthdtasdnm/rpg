@@ -1,8 +1,0 @@
-{
-  "id": "npc_hartwin",
-  "name": "Hartwin",
-  "maxHealth": 15,
-  "strength": 4,
-  "dexterity": 3,
-  "dialogueId": "hartwin_intro"
-}

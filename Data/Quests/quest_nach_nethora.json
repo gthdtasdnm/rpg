@@ -1,0 +1,13 @@
+{
+  "id": "quest_nach_nethora",
+  "title": "Nach Nethora",
+  "giverNpcId": "npc_halvor",
+
+  "_ziel": "Der LocationTrigger an der Burg setzt das Flag 'entered_nethora_burg' und meldet es dem QuestManager. Solange es die Burg noch nicht gibt, bleibt die Quest offen.",
+  "objectives": [
+    { "type": "reach_location", "targetId": "entered_nethora_burg", "amount": 1 }
+  ],
+
+  "rewardItemIds": [],
+  "rewardSilver": 0
+}

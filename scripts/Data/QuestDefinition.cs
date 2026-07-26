@@ -21,5 +21,5 @@ public class QuestDefinition
 	public string? GiverNpcId { get; set; }
 	public List<QuestObjective> Objectives { get; set; } = new();
 	public List<string> RewardItemIds { get; set; } = new();
-	public int RewardGold { get; set; } = 0;
+	public int RewardSilver { get; set; } = 0;
 }

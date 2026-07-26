@@ -1,7 +1,0 @@
-{
-  "id": "potion_ausdauertrank",
-  "name": "Ausdauertrank",
-  "type": "consumable",
-  "stackable": true,
-  "price": 10
-}

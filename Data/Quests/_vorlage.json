@@ -1,0 +1,15 @@
+{
+  "_hinweis": "Kopiervorlage. Dateien mit _ am Anfang werden von GameData ignoriert. Alle Felder und erlaubten Werte: scripts/Data/QuestDefinition.cs",
+
+  "id": "quest_beispiel",
+  "title": "Beispielauftrag",
+  "giverNpcId": "npc_beispiel",
+
+  "_objectives": "type: collect_item (itemId+amount) | talk_to_npc (targetId=CharacterId) | reach_location (targetId=FlagId eines LocationTriggers) | kill_enemy (targetId=CharacterId, amount)",
+  "objectives": [
+    { "type": "collect_item", "itemId": "item_beispiel", "amount": 3 }
+  ],
+
+  "rewardItemIds": ["weapon_beispiel"],
+  "rewardSilver": 25
+}

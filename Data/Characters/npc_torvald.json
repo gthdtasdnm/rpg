@@ -1,8 +1,0 @@
-{
-  "id": "npc_torvald",
-  "name": "Torvald",
-  "maxHealth": 25,
-  "strength": 4,
-  "dexterity": 8,
-  "dialogueId": "torvald_intro"
-}

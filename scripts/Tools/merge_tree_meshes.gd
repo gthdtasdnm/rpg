@@ -9,14 +9,14 @@ extends EditorScript
 # BENUTZUNG:
 #   1. Diese Datei im Godot-Script-Editor oeffnen.
 #   2. Menue "Datei" -> "Ausfuehren" (Strg+Umschalt+X).
-#   3. Ergebnis landet in res://Models/Various_Forest_Assets_Pack/merged/ (Originale bleiben unangetastet).
+#   3. Ergebnis landet in res://Assets/Nature/Forest/merged/ (Originale bleiben unangetastet).
 #   4. Im Terrain3D-Meshes-Dock jedem Baum-Asset die neue Szene aus merged/ zuweisen
 #      (oder Bescheid geben, dann trage ich die Pfade in assets.tres ein).
 #
 # Zum Testen erst EIN Modell: ONLY_FILE unten setzen.
 
-const SRC_DIR := "res://Models/Various_Forest_Assets_Pack/"
-const OUT_DIR := "res://Models/Various_Forest_Assets_Pack/merged/"
+const SRC_DIR := "res://Assets/Nature/Forest/"
+const OUT_DIR := "res://Assets/Nature/Forest/merged/"
 const ONLY_FILE := ""  # z.B. "apple_tree_0.tscn" zum Testen, "" = alle
 
 

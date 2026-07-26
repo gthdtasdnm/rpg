@@ -10,20 +10,54 @@ Jede Fraktion hat einen gemeinsamen Einstiegsrang, danach trennt sich der Weg in
 **Kampf-Seite** und eine **Magie-Seite**. Bei Nethora ist der Aufstieg formell/ordiniert, beim
 Freien Lager informell/rufbasiert, bei den Erleuchteten glaubensbasiert.
 
-## Nethora — Orden der Custodes
+## Nethora
 
 **Ziel**: Ordnung und die Barriere aufrechterhalten, treu zum König, "bis das Böse weg ist".
 
-Der Orden **weiß nicht**, dass der Erbauer real ist. Der Orden befolgt die Befehle des Königs und bekämpft in der Barriere das Böse in der Hoffnung dass es irgendwann zu ende ist. Für Ritter,
+Nethora **weiß nicht**, dass der Erbauer real ist. Man befolgt die Befehle des Königs und bekämpft
+in der Barriere das Böse, in der Hoffnung, dass es irgendwann zu Ende ist.
 
-**Rangsystem**:
+### Zwei Könige (wichtig für die Ausgangssituation)
+
+```
+König des Königreichs — draußen, außerhalb der Barriere
+        │   schickt den Spieler als Boten mit dem Königsbrief
+        ▼
+König Aldemar — Herrscher von Nethora, innerhalb der Barriere
+        ├── rechte Hand: Ordensmeister Cassian → Orden der Custodes
+        └── linke Hand:  Priester Ansel        → Priesterschaft
+```
+
+Das einfache Volk hält an dem Glauben fest, der König draußen werde Nethora eines Tages wieder
+herausholen (siehe Halvor in [Steckbriefe.md](../Charaktere/Steckbriefe.md)). Dass genau dieser
+König Nethora längst aufgegeben hat, steht im Brief, den der Spieler trägt — das ist der
+Wendepunkt am Ende von Kapitel 1.
+
+> **Offen**: Name der Königsstadt draußen (Arbeitsbegriff "Überstadt") und Name des dortigen Königs.
+
+### Die zwei Säulen unter Aldemar
+
+**Orden der Custodes** (Cassian) — der weltliche Arm: Mauern, Wachdienst, Kampf.
+
 ```
 Vigil ("Wache", Anwärter)
-   → Ritter (vollwertiges Ordensmitglied, noch unspezialisiert)
-        → Paladin            [Kampf-Seite]
-        → Mönch → Priester   [Magie-Seite, göttliche Magie/Gebete]
+   → Ritter (vollwertiges Ordensmitglied)
+        → Paladin
 ```
-An der Spitze steht der **Ordensmeister**, formal wie geistlich Oberhaupt aller Custodes.
+
+**Priesterschaft** (Ansel) — der geistliche Arm: göttliche Magie, Gebete, Segnungen.
+
+```
+Novize
+   → Mönch
+        → Priester
+```
+
+> **Geändert am 26.07.**: Vorher waren Mönch/Priester die "Magie-Seite" *innerhalb* des Ordens und
+> der Ordensmeister das Oberhaupt von beidem. Jetzt sind Orden und Priesterschaft **zwei getrennte
+> Säulen**, die beide direkt unter dem König stehen. Wer sich Nethora anschließt, wählt also nach
+> dem Einstieg zwischen **Orden** (Kampf) und **Priesterschaft** (Magie) — das ersetzt die alte
+> Aufspaltung ab dem Ritter-Rang.
 
 ## Freies Lager
 

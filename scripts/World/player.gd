@@ -32,6 +32,7 @@ var _is_swimming: bool = false
 var _swim_blend: float = 0.0
 var _bob_time: float = 0.0
 var _cam_rest: Transform3D
+var _dialogue_active: bool = false
 
 @onready var _pivot: Node3D = $CameraPivot
 @onready var _body: Node3D = $Body
@@ -44,19 +45,58 @@ func _ready() -> void:
 	_yaw = rotation.y
 	_cam_rest = _camera.transform  # Ruhelage der Kamera merken
 
+	# Waehrend eines Gespraechs steht der Spieler still. Das Signal kommt vom Autoload "Dialog"
+	# (scripts/Dialogue/DialogueBridge.cs) - get_node_or_null, damit der Player auch in einer
+	# Testszene ohne die Spielsysteme laeuft.
+	var dialog := get_node_or_null("/root/Dialog")
+	if dialog:
+		dialog.connect("DialogueStarted", _on_dialogue_started)
+		dialog.connect("DialogueEnded", _on_dialogue_ended)
+
+
+func _on_dialogue_started() -> void:
+	_dialogue_active = true
+
+
+func _on_dialogue_ended() -> void:
+	_dialogue_active = false
+
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _dialogue_active:
+		return
+
+	# Escape gehoert dem HUD (Pause-Menue, siehe scripts/UI/Hud.cs) - der Player fasst die
+	# Maussteuerung nicht mehr selbst an. Solange ein Panel offen ist, steht die Maus auf
+	# "sichtbar", und die Abfrage unten sorgt dafuer, dass sich die Kamera dann nicht mitdreht.
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		_yaw -= event.relative.x * mouse_sensitivity
 		_pitch -= event.relative.y * mouse_sensitivity
 		_pitch = clampf(_pitch, deg_to_rad(min_pitch_deg), deg_to_rad(max_pitch_deg))
-	elif event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:
-		Input.mouse_mode = (Input.MOUSE_MODE_VISIBLE
-			if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_CAPTURED)
+
+
+## Wird vom SaveSystem beim Laden aufgerufen: Position und Drehung setzen UND den intern
+## gefuehrten Kamera-Yaw nachziehen - sonst springt die Kamera im naechsten Frame zurueck,
+## weil _yaw noch den alten Wert haelt.
+func apply_save_state(position: Vector3, rotation_y: float) -> void:
+	global_position = position
+	rotation = Vector3(0.0, rotation_y, 0.0)
+	_yaw = rotation_y
 
 
 func _physics_process(delta: float) -> void:
 	var v: Vector3 = velocity
+
+	# Im Gespraech: stehenbleiben, aber weiter der Schwerkraft folgen (sonst bleibt der Spieler
+	# in der Luft haengen, wenn ein Dialog waehrend eines Sprungs startet).
+	if _dialogue_active:
+		v.x = 0.0
+		v.z = 0.0
+		if not is_on_floor():
+			v.y -= gravity * delta
+		velocity = v
+		move_and_slide()
+		return
 
 	# Eingaberichtung relativ zur Kamera-Gierung.
 	var input := Vector2.ZERO

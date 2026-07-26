@@ -1,0 +1,8 @@
+{
+  "id": "item_bier",
+  "name": "Krug Bier",
+  "type": "consumable",
+  "healAmount": 2,
+  "price": 4,
+  "stackable": true
+}

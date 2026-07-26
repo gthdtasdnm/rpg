@@ -2,10 +2,31 @@
 
 [ext_resource type="PackedScene" uid="uid://cfixs4o0lhujq" path="res://World/world.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://cn50yey3inusa" path="res://World/player.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" path="res://World/npc.tscn" id="3_npc"]
+[ext_resource type="PackedScene" path="res://UI/Hud.tscn" id="4_hud"]
 
 [node name="Main" type="Node3D" unique_id=1083142749]
 
 [node name="World" parent="." unique_id=1452635135 instance=ExtResource("1_glv2v")]
 
 [node name="Player" parent="." unique_id=1657340354 instance=ExtResource("2_uu6xs")]
-transform = Transform3D(-0.9937413, 0, 0.11170612, 0, 1, 0, -0.11170612, 0, -0.9937413, -668.53815, -0.27638006, -817.8187)
+transform = Transform3D(-0.9937413, 0, 0.11170612, 0, 1, 0, -0.11170612, 0, -0.9937413, -673.7546, -0.27638006, -913.5879)
+
+[node name="Halvor" parent="." unique_id=408495058 instance=ExtResource("3_npc")]
+transform = Transform3D(0.9937413, 0, 0.11170612, 0, 1, 0, -0.11170612, 0, 0.9937413, -692.7916, -1.9957961, -891.31476)
+CharacterId = "npc_halvor"
+DialogueFile = "res://Dialogues/halvor.dialogue"
+
+[node name="Hud" parent="." unique_id=2095013975 instance=ExtResource("4_hud")]
+
+[node name="Falk" parent="." unique_id=1349109198 instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -665.5, -0.026186943, -842.52594)
+CharacterId = "npc_falk"
+DialogueFile = "res://Dialogues/falk.dialogue"
+GreetOnApproach = true
+GreetRadius = 7.0
+
+[node name="Knud" parent="." unique_id=1288582336 instance=ExtResource("3_npc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -661.3, 0.22350311, -841.8259)
+CharacterId = "npc_knud"
+DialogueFile = "res://Dialogues/knud.dialogue"

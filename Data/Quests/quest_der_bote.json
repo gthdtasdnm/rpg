@@ -1,8 +1,0 @@
-{
-  "id": "quest_der_bote",
-  "title": "Der Bote",
-  "objectives": [
-    { "type": "talk_to_npc", "targetId": "npc_cassian", "amount": 1 }
-  ],
-  "rewardItemIds": []
-}

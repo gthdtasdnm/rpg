@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://csh0wqnxsqgmw"
+path="res://.godot/imported/falk.dialogue-5b43d7d31af20c60bd1ba92df27377e2.tres"
+
+[deps]
+
+source_file="res://Dialogues/falk.dialogue"
+dest_files=["res://.godot/imported/falk.dialogue-5b43d7d31af20c60bd1ba92df27377e2.tres"]
+
+[params]
+
+defaults=true

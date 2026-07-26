@@ -1,0 +1,23 @@
+{
+  "_hinweis": "Kopiervorlage. Dateien mit _ am Anfang werden von GameData ignoriert. Alle Felder und erlaubten Werte: scripts/Data/CharacterDefinition.cs",
+
+  "id": "npc_beispiel",
+  "name": "Beispiel-Person",
+  "maxHealth": 30,
+  "strength": 5,
+  "dexterity": 5,
+
+  "_ab_hier_nur_fuer_gegner": "aggroRadius > 0 schaltet die KI ein, 0 = friedlicher NPC",
+  "aggroRadius": 0,
+  "attackDamage": 0,
+  "attackDamageType": null,
+  "resistantTo": null,
+  "weakTo": null,
+  "attackRange": 1.5,
+  "attackCooldown": 1.5,
+  "moveSpeed": 3.0,
+  "lootItemIds": [],
+
+  "_ab_hier_nur_fuer_haendler": "leer = kein Händler",
+  "shopItemIds": []
+}

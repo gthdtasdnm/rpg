@@ -1,0 +1,106 @@
+~ start
+
+if Dialog.HasFlag("falk_begruessung_gehabt")
+	Falk: Immer noch da.
+	=> fragen
+
+Falk: Halt an, Freundchen. Wo willst du hin?
+Knud: Der hat nicht mal 'n Messer dabei, Falk.
+Falk: Sehe ich. Ist ja auch gleich alles hier draußen — auch der.
+do Dialog.SetFlag("falk_begruessung_gehabt")
+
+=> fragen
+
+
+~ fragen
+
+- Wer seid ihr?
+	Falk: Falk. Der da hinten ist Knud. Wir sind vom Freien Lager.
+	Falk: Und bevor du fragst: nein, wir sind nicht die Netten.
+	=> fragen
+
+- Was wollt ihr von mir?
+	Falk: Von dir? Noch nichts.
+	Falk: Aber du siehst aus wie einer, aus dem die Stadt nie was macht.
+	Falk: Bei uns zählt, was du kannst. Nicht, wen du kennst und wie tief du dich bückst.
+	Knud: Und keiner betet dir was vor.
+	Falk: Denk drüber nach. Wir sind nicht schwer zu finden.
+	do Dialog.SetFlag("weiss_von_werbung_freies_lager")
+	=> fragen
+
+# --- Der Bier-Handel ------------------------------------------------------------------
+# Muster für "NPC nimmt etwas und liefert nicht": HasItem prüfen, TakeItem ausführen, Flag
+# setzen. Das Flag ist die Erinnerung — daran hängen alle späteren Reaktionen.
+- Ich hätte ein Bier dabei. [if Dialog.HasItem("item_bier") and not Dialog.HasFlag("falk_bier_betrug")]
+	Falk: Bier?
+	Falk: Weißt du was — gib her. Dafür kriegst du 'ne Waffe von mir. Ehrenwort.
+	do Dialog.TakeItem("item_bier")
+	do Dialog.SetFlag("falk_bier_betrug")
+	=> bier_weg
+
+- Wo bleibt meine Waffe? [if Dialog.HasFlag("falk_bier_betrug")]
+	Falk: Was für eine Waffe?
+	Falk: Ich schulde dir gar nichts. Und wenn du weiter so blökst, schuldest du mir was.
+	Knud: Lass ihn, Falk. Der lernt das noch.
+	=> fragen
+
+# --- Jagd & Lehre ---------------------------------------------------------------------
+
+- Wie jagt man hier draußen?
+	Falk: Mit Abstand. Alles andere ist Selbstmord.
+	Falk: Du gehst gegen den Wind, du bleibst tief, und du schießt, bevor es dich riecht.
+	Falk: Wer hier mit einem Knüppel auf ein Vieh zurennt, ist Futter.
+	Knud: Und was danach kommt, zeig ich dir. Fell, Krallen, Zähne — dafür zahlt man.
+	do Dialog.SetFlag("weiss_von_jagd")
+	=> fragen
+
+- Kannst du mir den Umgang mit dem Bogen beibringen? [if not Dialog.HasLearned("skill_bogen")]
+	Falk: Kann ich. Mach ich aber nicht umsonst.
+	Falk: Hundert Silber. Vorher fass ich meinen Bogen nicht an.
+	=> bogen_lernen
+
+- Und, taug ich was mit dem Bogen? [if Dialog.HasLearned("skill_bogen")]
+	Falk: Du triffst. Meistens.
+	Falk: Für einen aus der Stadt ist das erstaunlich viel.
+	=> fragen
+
+- Ich geh dann mal.
+	Falk: Tu das.
+	=> END
+
+
+~ bier_weg
+
+Falk: *trinkt aus*
+Falk: Was ist? Steh nicht so rum.
+
+- Meine Waffe. Du hast es versprochen.
+	Falk: Hab ich das?
+	Knud: Hahaha!
+	Falk: Verpiss dich, bevor ich es mir anders überlege.
+	=> fragen
+
+- Schon gut.
+	Falk: Kluger Junge.
+	=> fragen
+
+
+~ bogen_lernen
+
+# Zwei Antworten auf dieselbe Situation, getrennt danach, ob der Spieler zahlen kann.
+# Beide sind nie gleichzeitig sichtbar.
+- Hier, hundert Silber. [if Dialog.HasSilver(100)]
+	do Dialog.Learn("skill_bogen")
+	Falk: Na also.
+	Falk: Stand aufrecht, Ellbogen hoch, und zieh bis zum Kinn. Nicht zum Ohr, das machen nur Idioten.
+	Falk: Der Bogen macht die Arbeit. Nicht dein Arm.
+	=> fragen
+
+- So viel habe ich nicht. [if not Dialog.HasSilver(100)]
+	Falk: Dann komm wieder, wenn du was hast.
+	Falk: Und bettel nicht. Betteln kann ich nicht leiden.
+	=> fragen
+
+- Zu teuer.
+	Falk: Dann eben nicht.
+	=> fragen

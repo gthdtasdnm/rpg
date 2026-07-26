@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://cn50yey3inusa"]
 
 [ext_resource type="Script" uid="uid://ccsr1p632rwr1" path="res://scripts/World/player.gd" id="1_player"]
+[ext_resource type="Script" path="res://scripts/Interaction/Interactor.cs" id="2_interactor"]
+[ext_resource type="Script" path="res://scripts/Items/Inventory.cs" id="3_inventory"]
+[ext_resource type="Script" path="res://scripts/Characters/CharacterStats.cs" id="4_stats"]
+[ext_resource type="Script" path="res://scripts/Combat/Equipment.cs" id="5_equipment"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p"]
 radius = 0.4
@@ -24,3 +28,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1799379899]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81297195, 4.5)
+
+[node name="Interactor" type="RayCast3D" parent="CameraPivot/Camera3D"]
+target_position = Vector3(0, 0, -7.5)
+script = ExtResource("2_interactor")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("3_inventory")
+StartItems = PackedStringArray("item_bier")
+StartSilver = 150
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("4_stats")
+CharacterId = "player"
+
+[node name="Equipment" type="Node" parent="."]
+script = ExtResource("5_equipment")

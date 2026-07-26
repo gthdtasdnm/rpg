@@ -1,0 +1,8 @@
+{
+  "id": "npc_falk",
+  "name": "Falk",
+  "maxHealth": 70,
+  "strength": 14,
+  "dexterity": 16,
+  "shopItemIds": ["skill_bogen"]
+}

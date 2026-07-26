@@ -24,7 +24,10 @@ public partial class SaveSystem : Node
 
 	public bool Save()
 	{
-		Player? player = GetTree().GetFirstNodeInGroup("player") as Player;
+		// Bewusst Node3D statt der C#-Player-Klasse: der aktive Spieler ist ein GDScript-Node
+		// (scripts/World/player.gd). Gebraucht werden nur Position/Drehung und die
+		// Kind-Knoten Stats/Inventory - beides sprachunabhaengig.
+		Node3D? player = GetTree().GetFirstNodeInGroup("player") as Node3D;
 		if (player == null)
 			return false;
 
@@ -38,7 +41,7 @@ public partial class SaveSystem : Node
 			PlayerZ = player.GlobalPosition.Z,
 			PlayerRotationY = player.Rotation.Y,
 			PlayerHealth = stats.CurrentHealth,
-			Gold = inventory.Gold,
+			Silver = inventory.Silver,
 			InventoryItems = new(inventory.GetAllItems()),
 			Flags = new(GameFlags.Instance.GetAllFlags()),
 			ActiveQuestProgress = QuestManager.Instance.GetActiveQuestProgressForSave(),
@@ -62,7 +65,10 @@ public partial class SaveSystem : Node
 		if (!HasSaveGame())
 			return false;
 
-		Player? player = GetTree().GetFirstNodeInGroup("player") as Player;
+		// Bewusst Node3D statt der C#-Player-Klasse: der aktive Spieler ist ein GDScript-Node
+		// (scripts/World/player.gd). Gebraucht werden nur Position/Drehung und die
+		// Kind-Knoten Stats/Inventory - beides sprachunabhaengig.
+		Node3D? player = GetTree().GetFirstNodeInGroup("player") as Node3D;
 		if (player == null)
 			return false;
 
@@ -77,12 +83,23 @@ public partial class SaveSystem : Node
 		if (data == null)
 			return false;
 
-		player.ApplySaveState(new Vector3(data.PlayerX, data.PlayerY, data.PlayerZ), data.PlayerRotationY);
+		// Der Player zieht beim Setzen der Position auch seinen internen Kamera-Yaw nach, sonst
+		// springt die Kamera nach dem Laden zurueck. Fehlt die Methode, wenigstens hart setzen.
+		Vector3 savedPosition = new(data.PlayerX, data.PlayerY, data.PlayerZ);
+		if (player.HasMethod("apply_save_state"))
+		{
+			player.Call("apply_save_state", savedPosition, data.PlayerRotationY);
+		}
+		else
+		{
+			player.GlobalPosition = savedPosition;
+			player.Rotation = new Vector3(0f, data.PlayerRotationY, 0f);
+		}
 
 		player.GetNode<CharacterStats>("Stats").RestoreHealth(data.PlayerHealth);
 		Inventory playerInventory = player.GetNode<Inventory>("Inventory");
 		playerInventory.LoadItems(data.InventoryItems);
-		playerInventory.RestoreGold(data.Gold);
+		playerInventory.RestoreSilver(data.Silver);
 		GameFlags.Instance.LoadFlags(data.Flags);
 		QuestManager.Instance.RestoreActiveQuests(data.ActiveQuestProgress);
 

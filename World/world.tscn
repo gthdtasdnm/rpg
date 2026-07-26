@@ -1,54 +1,65 @@
 [gd_scene format=3 uid="uid://cfixs4o0lhujq"]
 
-[ext_resource type="PackedScene" uid="uid://bg4m1wth7s0to" path="res://Models/Various_Forest_Assets_Pack/merged/apple_tree_0.tscn" id="4_017rf"]
+[ext_resource type="PackedScene" uid="uid://bg4m1wth7s0to" path="res://Assets/Nature/Forest/merged/apple_tree_0.tscn" id="4_017rf"]
 [ext_resource type="Texture2D" uid="uid://bgr4ssn0iewtq" path="res://grass_noise.tres" id="4_g4xpi"]
-[ext_resource type="PackedScene" uid="uid://dovwjfvwttrqf" path="res://Models/Various_Forest_Assets_Pack/merged/ash_tree_1.tscn" id="5_5aogk"]
+[ext_resource type="PackedScene" uid="uid://dovwjfvwttrqf" path="res://Assets/Nature/Forest/merged/ash_tree_1.tscn" id="5_5aogk"]
 [ext_resource type="Shader" uid="uid://dr4u12dlx8jaj" path="res://World/terrain_shader.gdshader" id="5_6yf64"]
-[ext_resource type="PackedScene" uid="uid://cnfxdxr0p5erl" path="res://Models/Various_Forest_Assets_Pack/merged/birch_1_20.tscn" id="6_njwhq"]
-[ext_resource type="PackedScene" uid="uid://bn4kdca1q1pgl" path="res://Models/Various_Forest_Assets_Pack/merged/birch_2_21.tscn" id="7_1lp6d"]
+[ext_resource type="PackedScene" uid="uid://cnfxdxr0p5erl" path="res://Assets/Nature/Forest/merged/birch_1_20.tscn" id="6_njwhq"]
+[ext_resource type="PackedScene" uid="uid://bn4kdca1q1pgl" path="res://Assets/Nature/Forest/merged/birch_2_21.tscn" id="7_1lp6d"]
 [ext_resource type="PackedScene" uid="uid://d3sr0a7dxfkr8" path="res://addons/terrain_3d/extras/particle_example/Terrain3DParticles.tscn" id="7_wjw5m"]
 [ext_resource type="Script" uid="uid://cptcne5j2cjto" path="res://scripts/World/tree_collision.gd" id="8_2uxom"]
-[ext_resource type="PackedScene" uid="uid://dyhohrl81mvtj" path="res://Models/Various_Forest_Assets_Pack/merged/birch_3_26.tscn" id="8_u1hwb"]
-[ext_resource type="PackedScene" uid="uid://br14s1fnw0xo1" path="res://Models/Various_Forest_Assets_Pack/merged/birch_orange_1_22.tscn" id="9_eklv6"]
+[ext_resource type="PackedScene" uid="uid://dyhohrl81mvtj" path="res://Assets/Nature/Forest/merged/birch_3_26.tscn" id="8_u1hwb"]
+[ext_resource type="PackedScene" uid="uid://br14s1fnw0xo1" path="res://Assets/Nature/Forest/merged/birch_orange_1_22.tscn" id="9_eklv6"]
 [ext_resource type="PackedScene" uid="uid://c4uweru0sb4st" path="res://Objects/CubeBlocking.tscn" id="9_qjfgf"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://World/Environment.tscn" id="10_k4w7v"]
-[ext_resource type="PackedScene" uid="uid://bus8ene2e7va0" path="res://Models/Various_Forest_Assets_Pack/merged/birch_orange_2_23.tscn" id="10_utqx3"]
-[ext_resource type="PackedScene" uid="uid://bhxvb0ewf7fmm" path="res://Models/Various_Forest_Assets_Pack/boulder_mossy_large_6.tscn" id="11_8i408"]
+[ext_resource type="PackedScene" uid="uid://bus8ene2e7va0" path="res://Assets/Nature/Forest/merged/birch_orange_2_23.tscn" id="10_utqx3"]
+[ext_resource type="PackedScene" uid="uid://bhxvb0ewf7fmm" path="res://Assets/Nature/Forest/boulder_mossy_large_6.tscn" id="11_8i408"]
 [ext_resource type="Shader" uid="uid://d2qspm521j4fk" path="res://Objects/water.gdshader" id="11_cmaa6"]
-[ext_resource type="Texture2D" uid="uid://fmabixxyb44f" path="res://Textures/Ground061_1K-JPG/Ground061_1K-JPG_Displacement.jpg" id="12_crxo5"]
-[ext_resource type="PackedScene" uid="uid://bpl15bb4wlj1j" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_mossy_large_7.tscn" id="12_xyltf"]
+[ext_resource type="Texture2D" uid="uid://fmabixxyb44f" path="res://Assets/Terrain/Source/Ground061_1K-JPG/Ground061_1K-JPG_Displacement.jpg" id="12_crxo5"]
+[ext_resource type="PackedScene" uid="uid://bpl15bb4wlj1j" path="res://Assets/Nature/Forest/boulder_outcrop_mossy_large_7.tscn" id="12_xyltf"]
 [ext_resource type="Script" uid="uid://dxaa32rkk3dn4" path="res://Objects/wasser.gd" id="13_pl0g3"]
-[ext_resource type="PackedScene" uid="uid://cdnepfmm3ni0l" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_mossy_medium_8.tscn" id="13_tpuo2"]
-[ext_resource type="PackedScene" uid="uid://csclhi3i1fpsa" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_plain_large_9.tscn" id="14_71xra"]
-[ext_resource type="PackedScene" uid="uid://chcphq3vrjjp4" path="res://Models/Various_Forest_Assets_Pack/boulder_outcrop_plain_medium_10.tscn" id="15_4gwrr"]
-[ext_resource type="PackedScene" uid="uid://b1qkrct0ufr8c" path="res://Models/Various_Forest_Assets_Pack/boulder_plain_large_11.tscn" id="16_ciivb"]
-[ext_resource type="PackedScene" uid="uid://c0vswtuw11eno" path="res://Models/Various_Forest_Assets_Pack/merged/cherry_tree_2.tscn" id="17_16763"]
-[ext_resource type="PackedScene" uid="uid://cai72fhk18p1r" path="res://Models/Various_Forest_Assets_Pack/coniferous_dead_log_12.tscn" id="18_so08s"]
-[ext_resource type="PackedScene" uid="uid://dv76a0rqtde27" path="res://Models/Various_Forest_Assets_Pack/coniferous_dead_tree_2_14.tscn" id="19_w84xj"]
-[ext_resource type="PackedScene" uid="uid://c38m5p1sq8h73" path="res://Models/Various_Forest_Assets_Pack/coniferous_dead_tree_13.tscn" id="20_bqsmr"]
-[ext_resource type="PackedScene" uid="uid://bfs7k8t7aa5be" path="res://Models/Various_Forest_Assets_Pack/merged/coniferous_sapling_15.tscn" id="21_e560p"]
-[ext_resource type="PackedScene" uid="uid://cni7pisy4bwpw" path="res://Models/Various_Forest_Assets_Pack/merged/coniferous_shrub_16.tscn" id="22_bshvv"]
-[ext_resource type="PackedScene" uid="uid://chyw03umdnetg" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_dead_1_29.tscn" id="23_4qare"]
-[ext_resource type="PackedScene" uid="uid://dk3uy31j8hdxv" path="res://Models/Various_Forest_Assets_Pack/deciduous_dead_2_28.tscn" id="24_bq2v8"]
-[ext_resource type="PackedScene" uid="uid://y8ucvpa1lm2i" path="res://Models/Various_Forest_Assets_Pack/deciduous_log_30.tscn" id="25_3o5xh"]
-[ext_resource type="PackedScene" uid="uid://d1ij27yj3klg3" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_sapling_2_33.tscn" id="26_2c707"]
-[ext_resource type="PackedScene" uid="uid://d0n1ly8r5fx18" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_sapling_32.tscn" id="27_qjbjq"]
-[ext_resource type="PackedScene" uid="uid://cu47us8uc57vr" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_shrub_2_31.tscn" id="28_246vq"]
-[ext_resource type="PackedScene" uid="uid://dwfm8aglmlkyu" path="res://Models/Various_Forest_Assets_Pack/merged/deciduous_shrub_27.tscn" id="29_lo6q2"]
-[ext_resource type="PackedScene" uid="uid://lgystf5wirym" path="res://Models/Various_Forest_Assets_Pack/merged/fir_tree_17.tscn" id="30_mocti"]
-[ext_resource type="PackedScene" uid="uid://v147rlyqf2v1" path="res://Models/Various_Forest_Assets_Pack/merged/holly_shrub_4.tscn" id="31_rrn5h"]
-[ext_resource type="PackedScene" uid="uid://csx2hqgso3wx1" path="res://Models/Various_Forest_Assets_Pack/merged/maple_24.tscn" id="32_e7mue"]
-[ext_resource type="PackedScene" uid="uid://hax8kcqp2rnu" path="res://Models/Various_Forest_Assets_Pack/merged/noble_fir_tree_18.tscn" id="33_nfehj"]
-[ext_resource type="PackedScene" uid="uid://bmrb7un0vsee3" path="res://Models/Various_Forest_Assets_Pack/merged/oak_25.tscn" id="34_5m26r"]
-[ext_resource type="PackedScene" uid="uid://mhy3vfm83j0b" path="res://Models/Various_Forest_Assets_Pack/merged/pine_tree_19.tscn" id="35_66w63"]
-[ext_resource type="PackedScene" uid="uid://db75p25dtgqtn" path="res://Models/Various_Forest_Assets_Pack/merged/plum_tree_3.tscn" id="36_m0cbj"]
-[ext_resource type="PackedScene" uid="uid://b0ehvleg58tyd" path="res://Models/Various_Forest_Assets_Pack/merged/raspberry_shrub_5.tscn" id="37_ucd25"]
-[ext_resource type="Texture2D" uid="uid://tfs5ofvr2xrt" path="res://PackedTextures/Ground085_albedo_height.png" id="38_7fqmh"]
-[ext_resource type="Texture2D" uid="uid://dly7nns41oktn" path="res://PackedTextures/Ground085_normal_roughness.png" id="39_64ogq"]
-[ext_resource type="Texture2D" uid="uid://c5weenoov5g00" path="res://PackedTextures/Ground079S_albedo_height.png" id="40_nj6lt"]
-[ext_resource type="Texture2D" uid="uid://m5lhd5dg6lk1" path="res://PackedTextures/Ground079S_normal_roughness.png" id="41_17b0c"]
+[ext_resource type="PackedScene" uid="uid://cdnepfmm3ni0l" path="res://Assets/Nature/Forest/boulder_outcrop_mossy_medium_8.tscn" id="13_tpuo2"]
+[ext_resource type="PackedScene" uid="uid://csclhi3i1fpsa" path="res://Assets/Nature/Forest/boulder_outcrop_plain_large_9.tscn" id="14_71xra"]
+[ext_resource type="PackedScene" uid="uid://chcphq3vrjjp4" path="res://Assets/Nature/Forest/boulder_outcrop_plain_medium_10.tscn" id="15_4gwrr"]
+[ext_resource type="PackedScene" uid="uid://b1qkrct0ufr8c" path="res://Assets/Nature/Forest/boulder_plain_large_11.tscn" id="16_ciivb"]
+[ext_resource type="PackedScene" uid="uid://c0vswtuw11eno" path="res://Assets/Nature/Forest/merged/cherry_tree_2.tscn" id="17_16763"]
+[ext_resource type="PackedScene" uid="uid://cai72fhk18p1r" path="res://Assets/Nature/Forest/coniferous_dead_log_12.tscn" id="18_so08s"]
+[ext_resource type="PackedScene" uid="uid://dv76a0rqtde27" path="res://Assets/Nature/Forest/coniferous_dead_tree_2_14.tscn" id="19_w84xj"]
+[ext_resource type="PackedScene" uid="uid://c38m5p1sq8h73" path="res://Assets/Nature/Forest/coniferous_dead_tree_13.tscn" id="20_bqsmr"]
+[ext_resource type="PackedScene" uid="uid://bfs7k8t7aa5be" path="res://Assets/Nature/Forest/merged/coniferous_sapling_15.tscn" id="21_e560p"]
+[ext_resource type="PackedScene" uid="uid://cni7pisy4bwpw" path="res://Assets/Nature/Forest/merged/coniferous_shrub_16.tscn" id="22_bshvv"]
+[ext_resource type="PackedScene" uid="uid://chyw03umdnetg" path="res://Assets/Nature/Forest/merged/deciduous_dead_1_29.tscn" id="23_4qare"]
+[ext_resource type="PackedScene" uid="uid://dk3uy31j8hdxv" path="res://Assets/Nature/Forest/deciduous_dead_2_28.tscn" id="24_bq2v8"]
+[ext_resource type="PackedScene" uid="uid://y8ucvpa1lm2i" path="res://Assets/Nature/Forest/deciduous_log_30.tscn" id="25_3o5xh"]
+[ext_resource type="PackedScene" uid="uid://d1ij27yj3klg3" path="res://Assets/Nature/Forest/merged/deciduous_sapling_2_33.tscn" id="26_2c707"]
+[ext_resource type="PackedScene" uid="uid://d0n1ly8r5fx18" path="res://Assets/Nature/Forest/merged/deciduous_sapling_32.tscn" id="27_qjbjq"]
+[ext_resource type="PackedScene" uid="uid://cu47us8uc57vr" path="res://Assets/Nature/Forest/merged/deciduous_shrub_2_31.tscn" id="28_246vq"]
+[ext_resource type="PackedScene" uid="uid://dwfm8aglmlkyu" path="res://Assets/Nature/Forest/merged/deciduous_shrub_27.tscn" id="29_lo6q2"]
+[ext_resource type="PackedScene" uid="uid://lgystf5wirym" path="res://Assets/Nature/Forest/merged/fir_tree_17.tscn" id="30_mocti"]
+[ext_resource type="PackedScene" uid="uid://v147rlyqf2v1" path="res://Assets/Nature/Forest/merged/holly_shrub_4.tscn" id="31_rrn5h"]
+[ext_resource type="PackedScene" uid="uid://csx2hqgso3wx1" path="res://Assets/Nature/Forest/merged/maple_24.tscn" id="32_e7mue"]
+[ext_resource type="PackedScene" uid="uid://hax8kcqp2rnu" path="res://Assets/Nature/Forest/merged/noble_fir_tree_18.tscn" id="33_nfehj"]
+[ext_resource type="PackedScene" uid="uid://bmrb7un0vsee3" path="res://Assets/Nature/Forest/merged/oak_25.tscn" id="34_5m26r"]
+[ext_resource type="PackedScene" uid="uid://mhy3vfm83j0b" path="res://Assets/Nature/Forest/merged/pine_tree_19.tscn" id="35_66w63"]
+[ext_resource type="PackedScene" uid="uid://db75p25dtgqtn" path="res://Assets/Nature/Forest/merged/plum_tree_3.tscn" id="36_m0cbj"]
+[ext_resource type="PackedScene" uid="uid://b0ehvleg58tyd" path="res://Assets/Nature/Forest/merged/raspberry_shrub_5.tscn" id="37_ucd25"]
+[ext_resource type="Texture2D" uid="uid://tfs5ofvr2xrt" path="res://Assets/Terrain/Packed/Ground085_albedo_height.png" id="38_7fqmh"]
+[ext_resource type="Texture2D" uid="uid://dly7nns41oktn" path="res://Assets/Terrain/Packed/Ground085_normal_roughness.png" id="39_64ogq"]
+[ext_resource type="Texture2D" uid="uid://c5weenoov5g00" path="res://Assets/Terrain/Packed/Ground079S_albedo_height.png" id="40_nj6lt"]
+[ext_resource type="Texture2D" uid="uid://m5lhd5dg6lk1" path="res://Assets/Terrain/Packed/Ground079S_normal_roughness.png" id="41_17b0c"]
+[ext_resource type="PackedScene" uid="uid://bve4ueifkbgpb" path="res://Assets/Nature/Rocks/big_flat_rock.glb" id="48_i5ake"]
 [ext_resource type="PackedScene" uid="uid://bqnxpm2k614mk" path="res://World/firefly_swarm.tscn" id="48_n40p1"]
 [ext_resource type="PackedScene" uid="uid://dvahcx0cklh8s" path="res://World/forest_dust.tscn" id="49_dlis5"]
+[ext_resource type="PackedScene" uid="uid://dpjb7h1cscf5d" path="res://Assets/Nature/Rocks/Rock_tor.glb" id="49_dmovf"]
+[ext_resource type="PackedScene" uid="uid://bqxhofbn0bsqt" path="res://Assets/Nature/Rocks/rock_tor2.glb" id="50_m1472"]
+[ext_resource type="PackedScene" uid="uid://d27owjcuy63vt" path="res://Assets/Nature/Rocks/beach_rocks.glb" id="50_o2cvn"]
+[ext_resource type="PackedScene" uid="uid://dp5ia7nl2dkmu" path="res://Assets/Nature/Rocks/big_long_rock.glb" id="51_4giqt"]
+[ext_resource type="PackedScene" uid="uid://cy8d8fxx6jmkg" path="res://Assets/Nature/Rocks/big_flat_beach_rock.glb" id="52_8iv6r"]
+[ext_resource type="PackedScene" uid="uid://cwkt6lglvsaxt" path="res://Assets/Nature/Rocks/beach_rocks2.glb" id="53_3gnva"]
+[ext_resource type="PackedScene" uid="uid://bm71pg6e6ier6" path="res://Assets/Nature/Rocks/small_rock.glb" id="54_eyejc"]
+[ext_resource type="PackedScene" uid="uid://dl70sitama8g5" path="res://Assets/Nature/Rocks/rock_formation2.glb" id="57_eyejc"]
+[ext_resource type="PackedScene" uid="uid://do514w58e7odp" path="res://Assets/Nature/Rocks/mossy_rock.glb" id="58_m1472"]
+[ext_resource type="PackedScene" uid="uid://03evjuuuafq3" path="res://Assets/Nature/Rocks/mossy_rock2.glb" id="59_eyejc"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -477,9 +488,10 @@ load_path = "res://.godot/imported/rock023_nrm_rgh.png-dd524905a15817dac8149681c
 name = "Cliff"
 albedo_texture = SubResource("CompressedTexture2D_4175r")
 normal_texture = SubResource("CompressedTexture2D_q1q4v")
-normal_depth = 1.0
+normal_depth = 2.0
 ao_strength = 2.0
-roughness = -0.05
+roughness = 0.05
+uv_scale = 0.2
 detiling_rotation = 0.016
 detiling_shift = 0.121
 
@@ -571,6 +583,10 @@ amount = 36864
 trail_push = 1.0
 min_draw_distance = 120.0
 particle_count = 921600
+
+[node name="Jägerhütte" parent="Terrain3D" unique_id=291779436 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(9.648061, 0, 0, 0, 9.648061, 0, 0, 0, 9.648061, -663.51575, 2.1233609, -846.2697)
+size = Vector3(1, 0.6645508, 0.50683594)
 
 [node name="TreeCollision" type="Node3D" parent="." unique_id=969270438]
 script = ExtResource("8_2uxom")
@@ -778,7 +794,7 @@ size = Vector3(18.457382, 36.059395, 16.105011)
 
 [node name="umgebung" type="CSGCombiner3D" parent="Welt" unique_id=495350096]
 
-[node name="CSGBox3D" parent="Welt/umgebung" unique_id=291779436 instance=ExtResource("9_qjfgf")]
+[node name="CSGBox3D" parent="Welt/umgebung" unique_id=967997402 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -724.9544, 6.7565312, -116.31556)
 size = Vector3(12.756348, 7.1469727, 4.317505)
 
@@ -846,14 +862,6 @@ size = Vector3(36.476196, 13.755859, 18.506226)
 transform = Transform3D(1.7933581, 0, 0, 0, 1.7933581, 0, 0, 0, 1.7933581, -754.4149, 3.0668416, -871.6192)
 size = Vector3(6.1014404, 6.0838623, 7.1602783)
 
-[node name="CSGBox3D18" parent="Welt/umgebung" unique_id=1136073345 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(5.367051, 0, 0, 0, 5.367051, 0, 0, 0, 5.367051, -711.8737, 0.50000894, -813.9728)
-size = Vector3(1.8325195, 1, 1)
-
-[node name="CSGBox3D19" parent="Welt/umgebung" unique_id=861266297 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(5.631166, 0, 0, 0, 5.631166, 0, 0, 0, 5.631166, -638.82996, 0.3813553, -812.97046)
-size = Vector3(1.9404297, 1, 1)
-
 [node name="CSGBox3D20" parent="Welt/umgebung" unique_id=2110964262 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(5.7902336, 0, 0, 0, 5.7902336, 0, 0, 0, 5.7902336, -632.2676, 0.49177063, -728.65106)
 
@@ -887,26 +895,6 @@ transform = Transform3D(12.066602, 0, 0, 0, 12.066602, 0, 0, 0, 12.066602, -904.
 [node name="CSGBox3D30" parent="Welt/umgebung" unique_id=604299933 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(5.4161057, 0, 0, 0, 5.4161057, 0, 0, 0, 5.4161057, -876.1684, 4.7889714, -759.77313)
 size = Vector3(1.970581, 2.3398438, 2.1479492)
-
-[node name="CSGBox3D31" parent="Welt/umgebung" unique_id=1997317588 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -607.78424, 8.330183, -807.0897)
-size = Vector3(7.196289, 17.005981, 5.1082764)
-
-[node name="CSGBox3D32" parent="Welt/umgebung" unique_id=442190707 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -607.78424, 8.330183, -741.17206)
-size = Vector3(7.196289, 17.005981, 5.1082764)
-
-[node name="CSGBox3D33" parent="Welt/umgebung" unique_id=1324253504 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -572.07587, 8.330183, -745.8615)
-size = Vector3(7.196289, 17.005981, 5.1082764)
-
-[node name="CSGBox3D34" parent="Welt/umgebung" unique_id=734750372 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -607.78424, 16.76074, -773.25256)
-size = Vector3(7.196289, 9.407013, 62.54367)
-
-[node name="CSGBox3D35" parent="Welt/umgebung" unique_id=546706005 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(0.8142426, 0, 0.5805248, 0, 1, 0, -0.5805248, 0, 0.8142426, -590.0202, 16.76074, -769.36694)
-size = Vector3(7.196289, 9.407013, 62.54367)
 
 [node name="CSGBox3D36" parent="Welt/umgebung" unique_id=2126763073 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(8.651463, 0, 0, 0, 8.651463, 0, 0, 0, 8.651463, -444.82242, 11.813336, -768.4727)
@@ -1034,8 +1022,85 @@ size = Vector3(1, 2.4962158, 1)
 transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -950.16327, 70.06642, -627.3104)
 size = Vector3(1, 2.4962158, 1)
 
+[node name="rocks_umgebung" type="Node3D" parent="Welt" unique_id=779699496]
+
+[node name="beach_rocks" parent="Welt/rocks_umgebung" unique_id=1074319634 instance=ExtResource("50_o2cvn")]
+transform = Transform3D(0.80454475, 0, 0.5938921, 0, 1, 0, -0.5938921, 0, 0.80454475, -742.53485, 0.0025554672, -763.79596)
+
+[node name="big_long_rock" parent="Welt/rocks_umgebung" unique_id=606580266 instance=ExtResource("51_4giqt")]
+transform = Transform3D(-0.378288, 0, 0.92568797, 0, 1, 0, -0.92568797, 0, -0.378288, -712.87683, 0.2146785, -815.7766)
+
+[node name="beach_rocks2" parent="Welt/rocks_umgebung" unique_id=489140509 instance=ExtResource("50_o2cvn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -694.21594, 0.37018389, -822.4924)
+
+[node name="big_flat_beach_rock" parent="Welt/rocks_umgebung" unique_id=864863346 instance=ExtResource("52_8iv6r")]
+transform = Transform3D(4.385758, 0, 0, 0, 4.385758, 0, 0, 0, 4.385758, -704.64465, -13.412979, -796.696)
+
+[node name="big_flat_beach_rock2" parent="Welt/rocks_umgebung" unique_id=684717996 instance=ExtResource("52_8iv6r")]
+transform = Transform3D(5.46585, 0.91327655, 2.41682, -0.973989, 5.9665117, -0.051885247, -2.392998, -0.34245092, 5.5413804, -714.2019, -11.856682, -760.95123)
+
+[node name="big_flat_beach_rock3" parent="Welt/rocks_umgebung" unique_id=1015074361 instance=ExtResource("52_8iv6r")]
+transform = Transform3D(5.154816, 0, 0, 0, 11.887752, 0, 0, 0, 5.154816, -657.69366, -13.258338, -747.8564)
+
+[node name="big_flat_beach_rock4" parent="Welt/rocks_umgebung" unique_id=2014105240 instance=ExtResource("52_8iv6r")]
+transform = Transform3D(2.2898138, 0, -0.9849147, 0, 9.259544, 0, 0.9849147, 0, 2.2898138, -680.6646, -14.514961, -785.65576)
+
+[node name="beach_rocks3" parent="Welt/rocks_umgebung" unique_id=315620990 instance=ExtResource("53_3gnva")]
+transform = Transform3D(7.502364, 0, -2.5332227, 0, 7.918503, 0, 2.5332227, 0, 7.502364, -642.9959, -13.042829, -791.6009)
+
+[node name="big_flat_rock" parent="Welt/rocks_umgebung" unique_id=1513503252 instance=ExtResource("48_i5ake")]
+transform = Transform3D(-0.91806513, 0, -3.8126693, 0, 3.921644, 0, 3.8126693, 0, -0.91806513, -658.09753, 0.66461575, -817.6114)
+
+[node name="big_flat_rock2" parent="Welt/rocks_umgebung" unique_id=221625857 instance=ExtResource("48_i5ake")]
+transform = Transform3D(-4.622619, 0, -3.7849438, 0, 5.9744797, 0, 3.7849438, 0, -4.622619, -637.06177, 0.66461575, -821.0298)
+
+[node name="Rock_tor" parent="Welt/rocks_umgebung" unique_id=1692418128 instance=ExtResource("49_dmovf")]
+transform = Transform3D(-0.48288566, 0, -5.1172833, 0, 4.9208293, 0, 4.8992677, 0, -0.50437397, -585.13885, -4.3345823, -773.3613)
+
+[node name="rock_tor2" parent="Welt/rocks_umgebung" unique_id=459986291 instance=ExtResource("50_m1472")]
+transform = Transform3D(1.5219768, 0, -0.38707197, 0, 1.6038272, 0, 0.25596124, 0, 2.3015773, -486.92953, -0.88221216, -737.11633)
+
+[node name="rock_formation2" parent="Welt/rocks_umgebung" unique_id=1098646734 instance=ExtResource("57_eyejc")]
+transform = Transform3D(4.7040224, 1.4003112, -3.0732543, 0, 5.2695837, 2.4010565, 3.3772423, -1.9504362, 4.28061, -590.63165, 7.0723877, -672.727)
+
+[node name="rock_formation3" parent="Welt/rocks_umgebung" unique_id=2094612826 instance=ExtResource("57_eyejc")]
+transform = Transform3D(4.7173758, 0, -0.9794722, 0, 4.817987, 0, 0.9794722, 0, 4.7173758, -659.3464, -1.7595807, -959.6749)
+
+[node name="Rock_tor2" parent="Welt/rocks_umgebung" unique_id=528123151 instance=ExtResource("49_dmovf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -656.8676, -4.702011, -904.43756)
+
+[node name="big_flat_rock3" parent="Welt/rocks_umgebung" unique_id=627209525 instance=ExtResource("48_i5ake")]
+transform = Transform3D(5.5266232, 0, -4.0152774, 0, 6.831253, 0, 4.0152774, 0, 5.5266232, -693.52075, -0.010341406, -917.3153)
+
+[node name="big_long_rock2" parent="Welt/rocks_umgebung" unique_id=2102832777 instance=ExtResource("51_4giqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -667.23846, 0.064686306, -865.60034)
+
+[node name="beach_rocks4" parent="Welt/rocks_umgebung" unique_id=2090585637 instance=ExtResource("53_3gnva")]
+transform = Transform3D(1.7741286, 0, 0, 0, 1.7741286, 0, 0, 0, 1.7741286, -654.4388, 0.37923953, -873.3814)
+
+[node name="mossy_rock" parent="Welt/rocks_umgebung" unique_id=316387771 instance=ExtResource("58_m1472")]
+transform = Transform3D(5.3745046, 0, 0, 0, 5.3745046, 0, 0, 0, 5.3745046, -704.7044, -1.9614251, -848.19965)
+
+[node name="mossy_rock2" parent="Welt/rocks_umgebung" unique_id=933366348 instance=ExtResource("58_m1472")]
+transform = Transform3D(6.3668714, 0, -4.538981, 0, 7.819169, 0, 4.538981, 0, 6.3668714, -700.7121, -1.9614251, -848.19965)
+
+[node name="mossy_rock3" parent="Welt/rocks_umgebung" unique_id=2119260430 instance=ExtResource("59_eyejc")]
+transform = Transform3D(-1.6865659, 0, -0.88485533, 0, 1.9045926, 0, 0.88485533, 0, -1.6865659, -702.65906, -1.9038365, -851.4777)
+
+[node name="big_long_rock3" parent="Welt/rocks_umgebung" unique_id=337422909 instance=ExtResource("51_4giqt")]
+transform = Transform3D(-1.35662, 4.732208, -0.94963527, 2.489516, 3.241724, 0.6604024, 1.4341886, -1.150837, -2.0446239, -705.987, 13.95005, -967.0525)
+
+[node name="small_rock" parent="Welt/rocks_umgebung" unique_id=2110242786 instance=ExtResource("54_eyejc")]
+transform = Transform3D(-3.5529013, 0, -3.5783641, 0, 5.0425982, 0, 3.5783641, 0, -3.5529013, -699.57855, -1.9951438, -993.15753)
+
+[node name="small_rock2" parent="Welt/rocks_umgebung" unique_id=1622256300 instance=ExtResource("54_eyejc")]
+transform = Transform3D(-6.0211077, 0, -6.0642595, 0, 8.5457, 0, 6.0642595, 0, -6.0211077, -696.0554, -1.9951438, -985.44275)
+
+[node name="small_rock3" parent="Welt/rocks_umgebung" unique_id=90744768 instance=ExtResource("54_eyejc")]
+transform = Transform3D(-6.0211077, 0, -6.0642595, 0, 8.5457, 0, 6.0642595, 0, -6.0211077, -686.4197, -1.9951438, -946.1154)
+
 [node name="Environment" parent="." unique_id=812691920 instance=ExtResource("10_k4w7v")]
-time_of_day = 8.05
+time_of_day = 13.2
 dawn_light_color = Color(1, 0.45270926, 0.6161947, 1)
 fog_day = Color(0.6, 0.7, 0.8, 1)
 fog_dawn = Color(0.9, 0.52, 0.38, 1)

@@ -1,8 +1,0 @@
-{
-  "id": "npc_cassian",
-  "name": "Cassian",
-  "maxHealth": 40,
-  "strength": 8,
-  "dexterity": 6,
-  "dialogueId": "cassian_intro"
-}

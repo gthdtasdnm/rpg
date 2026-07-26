@@ -19,3 +19,24 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 *.blend
+
+# Gekaufte/heruntergeladene Asset-Pakete (~800 MB).
+# Bewusst NICHT im Repo: jederzeit neu herunterladbar, würden die Historie aber dauerhaft
+# aufblähen (Git speichert große Binärdateien nicht dedupliziert - einmal drin, immer drin).
+# Herkunft und Lizenz jedes Pakets stehen in Assets/README.md; auf einem neuen Rechner die
+# Pakete erneut laden und danach einsortieren.
+# Assets/Nature/ und Assets/Terrain/ sind bewusst NICHT ausgeschlossen - die sind bearbeitet
+# (zusammengeführte Baum-Meshes, gepackte Terrain-Texturen) und nicht reproduzierbar.
+Assets/Buildings/
+Assets/Props/
+Assets/Weapons/
+Assets/Characters/
+Assets/_Blender/
+
+# Photogrammetrie-Steine (~770 MB). Zwei der .glb sind über 100 MB und werden von GitHub
+# grundsätzlich abgelehnt - sie können nicht ins Repo, auch nicht mit gutem Willen.
+# ⚠️ Diese Modelle stehen in World/world.tscn: nach einem frischen Klon fehlen sie in der Welt
+#    und müssen neu heruntergeladen werden.
+# Besser wäre, die Texturen zu verkleinern (78 MB PNG pro Stein ist auch fürs Spiel zu viel) -
+# danach passen sie problemlos ins Repo. Siehe Assets/README.md.
+Assets/Nature/Rocks/

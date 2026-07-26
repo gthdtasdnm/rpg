@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bqys30sfkctc6"
+path="res://.godot/imported/knud.dialogue-9c7249839d7aa7c59dd8677074b5dddf.tres"
+
+[deps]
+
+source_file="res://Dialogues/knud.dialogue"
+dest_files=["res://.godot/imported/knud.dialogue-9c7249839d7aa7c59dd8677074b5dddf.tres"]
+
+[params]
+
+defaults=true

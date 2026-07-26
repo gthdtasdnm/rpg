@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://f7d52y21e8c3"
+path="res://.godot/imported/halvor.dialogue-1a0c61ea5ee5f60466e6485f8157cca6.tres"
+
+[deps]
+
+source_file="res://Dialogues/halvor.dialogue"
+dest_files=["res://.godot/imported/halvor.dialogue-1a0c61ea5ee5f60466e6485f8157cca6.tres"]
+
+[params]
+
+defaults=true

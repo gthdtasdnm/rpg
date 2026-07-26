@@ -4,8 +4,9 @@ using System.Text.Json;
 
 namespace RPG.Data;
 
-// Autoload: lädt beim Start alle JSON-Dateien aus Data/Characters|Items|Quests|Dialogues.
-// Neue Inhalte hinzufügen = neue JSON-Datei ablegen, kein Code-Änderung nötig.
+// Autoload: lädt beim Start alle JSON-Dateien aus Data/Characters|Items|Quests|Spells.
+// Neue Inhalte hinzufügen = neue JSON-Datei ablegen, keine Code-Änderung nötig (siehe Data/README.md).
+// Dialoge liegen NICHT hier, sondern als .dialogue-Dateien in Dialogues/ (Dialogue-Manager-Addon).
 public partial class GameData : Node
 {
 	public static GameData Instance { get; private set; } = null!;
@@ -18,7 +19,6 @@ public partial class GameData : Node
 	private readonly Dictionary<string, CharacterDefinition> _characters = new();
 	private readonly Dictionary<string, ItemDefinition> _items = new();
 	private readonly Dictionary<string, QuestDefinition> _quests = new();
-	private readonly Dictionary<string, DialogueDefinition> _dialogues = new();
 	private readonly Dictionary<string, SpellDefinition> _spells = new();
 
 	public override void _Ready()
@@ -28,14 +28,12 @@ public partial class GameData : Node
 		LoadAll("res://Data/Characters", _characters, d => d.Id);
 		LoadAll("res://Data/Items", _items, d => d.Id);
 		LoadAll("res://Data/Quests", _quests, d => d.Id);
-		LoadAll("res://Data/Dialogues", _dialogues, d => d.Id);
 		LoadAll("res://Data/Spells", _spells, d => d.Id);
 	}
 
 	public CharacterDefinition? GetCharacter(string id) => _characters.GetValueOrDefault(id);
 	public ItemDefinition? GetItem(string id) => _items.GetValueOrDefault(id);
 	public QuestDefinition? GetQuest(string id) => _quests.GetValueOrDefault(id);
-	public DialogueDefinition? GetDialogue(string id) => _dialogues.GetValueOrDefault(id);
 	public SpellDefinition? GetSpell(string id) => _spells.GetValueOrDefault(id);
 
 	public IEnumerable<ItemDefinition> GetAllItems() => _items.Values;
@@ -45,7 +43,9 @@ public partial class GameData : Node
 	{
 		foreach (string fileName in DirAccess.GetFilesAt(folder))
 		{
-			if (!fileName.EndsWith(".json"))
+			// Dateien mit "_" am Anfang sind Vorlagen/Entwuerfe (siehe Data/README.md) und
+			// gehoeren bewusst nicht ins Spiel.
+			if (!fileName.EndsWith(".json") || fileName.StartsWith("_"))
 				continue;
 
 			string path = $"{folder}/{fileName}";

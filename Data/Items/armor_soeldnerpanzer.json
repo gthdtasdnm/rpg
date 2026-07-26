@@ -1,9 +1,0 @@
-{
-  "id": "armor_soeldnerpanzer",
-  "name": "Söldnerpanzer",
-  "type": "armor",
-  "stackable": false,
-  "defense": 7,
-  "staggerResist": 3,
-  "price": 37
-}

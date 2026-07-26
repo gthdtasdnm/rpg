@@ -83,22 +83,17 @@ public partial class Player : CharacterBody3D, IDamageable
 
 		AddToGroup("player");
 
-		DialogueRunner.Instance.DialogueEnded += () => Input.MouseMode = Input.MouseModeEnum.Captured;
-
 		GetNode<Inventory>("Inventory").ItemAdded += (itemId, totalCount) =>
 			QuestManager.Instance.NotifyItemCollected(itemId, totalCount);
 
-		// Ausgangssituation laut Konzept (doc/konzept/Story/Haupthandlung.md): der Spieler startet
-		// bereits als Bote mit einem Auftrag, nicht erst durch ein NPC-Gespraech. StartQuest ist
-		// selbst idempotent (siehe QuestManager), ein erneuter Aufruf nach dem Laden eines
-		// Spielstands ist daher unschaedlich - RestoreActiveQuests ueberschreibt den Zustand ohnehin.
-		if (!GameFlags.Instance.HasFlag("quest_started_quest_der_bote"))
-			QuestManager.Instance.StartQuest("quest_der_bote");
+		// Hier startete frueher automatisch die Auftakt-Quest "quest_der_bote". Die Questdaten
+		// wurden mit den uebrigen Inhalten geleert (siehe Data/README.md) - sobald die
+		// Hauptquestreihe neu geschrieben ist, kommt der Startauftrag wieder hierher.
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
 	{
-		if (DialogueRunner.Instance.IsActive)
+		if (DialogueBridge.Instance.IsActive)
 			return;
 
 		if (@event is InputEventMouseMotion mouseMotion && Input.MouseMode == Input.MouseModeEnum.Captured)
@@ -123,7 +118,7 @@ public partial class Player : CharacterBody3D, IDamageable
 	{
 		float dt = (float)delta;
 
-		if (DialogueRunner.Instance.IsActive)
+		if (DialogueBridge.Instance.IsActive)
 		{
 			Input.MouseMode = Input.MouseModeEnum.Visible;
 			Velocity = Vector3.Zero;
