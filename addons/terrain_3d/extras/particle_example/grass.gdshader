@@ -2,9 +2,24 @@
 
 shader_type spatial;
 
-render_mode skip_vertex_transform, cull_disabled, blend_mix;
+// WICHTIG: kein blend_mix. Das Gras hat gar kein Alpha - ALPHA wird unten nirgends gesetzt,
+// die Farbe wird komplett gerechnet, es gibt keine Textur. Als "transparent" gerendert kostete
+// es trotzdem den vollen Transparenz-Preis: kein Early-Z (jedes Pixel wird gezeichnet, auch
+// wenn ein Halm davor es gleich wieder überdeckt) und Sortierung der Instanzen auf der CPU.
+// Opak gerendert sieht es identisch aus, spart aber genau dieses Overdraw.
+render_mode skip_vertex_transform, cull_disabled;
 
 uniform vec2 wind_direction = vec2(1.0, 1.0);
+
+group_uniforms detail_distance;
+// Ab welcher Entfernung (in Metern) sich der Aufwand nicht mehr lohnt.
+// Der Trail-Test unten läuft für JEDEN Halm-Vertex 16x - bei Millionen Vertices ist das der
+// teuerste Posten im Vertex-Shader. Weit weg sieht man die Spur ohnehin nicht.
+uniform float trail_max_distance : hint_range(2.0, 60.0, 1.0) = 14.0;
+// Wind blendet über diese Strecke aus. In der Ferne ist die Bewegung nicht mehr zu erkennen,
+// die Halme stehen dann einfach still.
+uniform float wind_fade_start : hint_range(5.0, 200.0, 5.0) = 45.0;
+uniform float wind_fade_end : hint_range(10.0, 400.0, 5.0) = 90.0;
 
 group_uniforms shading;
 // Fake-AO: verdunkelt den Halmgrund. Dichtes Gras liest sich dadurch als dunklerer Boden,
@@ -47,6 +62,9 @@ void vertex() {
 	// World space vertex
 	vec3 w_vertex = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 
+	// Entfernung zur Kamera - steuert unten, wie viel Aufwand dieser Halm noch wert ist.
+	float cam_dist = distance(w_vertex, CAMERA_POSITION_WORLD);
+
 	// --- Player trail ---
 	// Evaluate the parting at the blade ROOT (the instance origin), not per vertex.
 	// This keeps the whole blade rigid: every vertex shares the same direction and
@@ -54,19 +72,23 @@ void vertex() {
 	vec2 root_xz = MODEL_MATRIX[3].xz;
 	float trail_infl = 0.0;
 	vec2 trail_side = vec2(0.0);
-	for (int i = 0; i < TRAIL_SIZE; i++) {
-		float s = trail_strength[i];
-		if (s <= 0.0) {
-			continue;
-		}
-		vec2 d = root_xz - trail_positions[i].xz;
-		float infl = s * (1.0 - smoothstep(0.0, trail_radius, length(d)));
-		if (infl > trail_infl) {
-			trail_infl = infl;
-			// Perpendicular to the player's movement = the left/right axis.
-			vec2 side = vec2(-trail_dirs[i].y, trail_dirs[i].x);
-			// Push this blade toward whichever side of the path it is on.
-			trail_side = side * sign(dot(d, side));
+	// Nur in Spielernähe prüfen: die Schleife läuft sonst für jeden Vertex der ganzen Wiese
+	// 16 Mal durch, obwohl der Spieler dort gar nicht ist.
+	if (cam_dist < trail_max_distance) {
+		for (int i = 0; i < TRAIL_SIZE; i++) {
+			float s = trail_strength[i];
+			if (s <= 0.0) {
+				continue;
+			}
+			vec2 d = root_xz - trail_positions[i].xz;
+			float infl = s * (1.0 - smoothstep(0.0, trail_radius, length(d)));
+			if (infl > trail_infl) {
+				trail_infl = infl;
+				// Perpendicular to the player's movement = the left/right axis.
+				vec2 side = vec2(-trail_dirs[i].y, trail_dirs[i].x);
+				// Push this blade toward whichever side of the path it is on.
+				trail_side = side * sign(dot(d, side));
+			}
 		}
 	}
 
@@ -80,6 +102,9 @@ void vertex() {
 	// Suppress the wind where the player has parted the grass, so it isn't blown
 	// back into the player.
 	force *= (1.0 - trail_infl);
+	// In der Ferne die Animation ausblenden - dort ist die Bewegung nicht mehr zu sehen,
+	// die Rechnung aber genauso teuer. Weich, damit keine sichtbare Grenze entsteht.
+	force *= 1.0 - smoothstep(wind_fade_start, wind_fade_end, cam_dist);
 
 	// These 2 combined result in a decent bend without resorting to matrices or pivot data.
 	// Lateral move and wobble
