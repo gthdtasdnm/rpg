@@ -60,6 +60,7 @@
 [ext_resource type="PackedScene" uid="uid://dl70sitama8g5" path="res://Assets/Nature/Rocks/rock_formation2.glb" id="57_eyejc"]
 [ext_resource type="PackedScene" uid="uid://do514w58e7odp" path="res://Assets/Nature/Rocks/mossy_rock.glb" id="58_m1472"]
 [ext_resource type="PackedScene" uid="uid://03evjuuuafq3" path="res://Assets/Nature/Rocks/mossy_rock2.glb" id="59_eyejc"]
+[ext_resource type="Script" uid="uid://b7t1utlbkgesh" path="res://scripts/World/rock_collision.gd" id="60_rockcol"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -1023,6 +1024,8 @@ transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -950.
 size = Vector3(1, 2.4962158, 1)
 
 [node name="rocks_umgebung" type="Node3D" parent="Welt" unique_id=779699496]
+script = ExtResource("60_rockcol")
+print_summary = true
 
 [node name="beach_rocks" parent="Welt/rocks_umgebung" unique_id=1074319634 instance=ExtResource("50_o2cvn")]
 transform = Transform3D(0.80454475, 0, 0.5938921, 0, 1, 0, -0.5938921, 0, 0.80454475, -742.53485, 0.0025554672, -763.79596)

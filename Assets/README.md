@@ -37,24 +37,37 @@ vor einer Veröffentlichung durchsehen.
 
 | | |
 |---|---|
-| **Im Repo** | `Nature/Forest/` (inkl. der selbst zusammengeführten `merged/`-Bäume), `Terrain/` |
-| **Nicht im Repo** | `Buildings/`, `Props/`, `Weapons/`, `Characters/`, `_Blender/`, **`Nature/Rocks/`** |
+| **Im Repo** | `Nature/` (Bäume und Steine), `Terrain/` — bearbeitet, nicht reproduzierbar |
+| **Nicht im Repo** | `Buildings/`, `Props/`, `Weapons/`, `Characters/`, `_Blender/` und `Nature/Rocks/_original/` |
 
-Die gekauften Pakete sind jederzeit neu herunterladbar, würden die Git-Historie aber dauerhaft
-aufblähen. **`Nature/Rocks/` muss draußen bleiben**: zwei der Modelle sind über 110 MB und werden
-von GitHub grundsätzlich abgelehnt (hartes Limit: 100 MB).
+Die gekauften Pakete sind jederzeit neu herunterladbar, würden die Historie aber dauerhaft
+aufblähen. Auf einem neuen Rechner: erneut laden und nach der Tabelle oben einsortieren.
 
-⚠️ **Folge: Nach einem frischen Klon fehlen die Steine in `World/world.tscn`** (11 Instanzen).
-Sie müssen neu heruntergeladen und nach `Assets/Nature/Rocks/` gelegt werden.
+## Die Steine (`Nature/Rocks/`) — aufbereitet am 26.07.
 
-**Besser wäre, das Problem an der Wurzel zu lösen:** die Stein-Texturen sind PNGs mit 78–81 MB
-*pro Stück*, die Modelle 113–118 MB. Das ist nicht nur fürs Repo zu viel, sondern auch für die
-Spielleistung (jede dieser Texturen belegt beim Laden VRAM). Auf 2K-JPEG herunterrechnen und die
-Meshes dezimieren bringt sie auf wenige MB — danach passen sie problemlos ins Repo und das Spiel
-lädt schneller.
+Die Rohdaten waren für ein Spiel unbrauchbar: bis zu **450.000 Dreiecke** und **drei
+8192×8192-Texturen pro Stein**, einzelne Dateien über 110 MB. Das belastete Renderleistung,
+Kollision, Ladezeit und sprengte GitHubs 100-MB-Grenze.
 
-Alternative, falls die Rohqualität erhalten bleiben soll: **Git LFS**. Zu beachten ist das
-GitHub-Freikontingent von 1 GB, das `Nature/Rocks/` mit 774 MB fast allein ausschöpft.
+| | vorher | nachher |
+|---|---|---|
+| Dreiecke gesamt (17 Modelle) | 2.675.982 | 192.978 |
+| Texturauflösung | 8192² | 2048² |
+| Ordnergröße | 431 MB | 105 MB |
+| Kollision in der Szene (25 Steine) | 3,9 Mio Dreiecke / 3.438 ms | 300.000 / 260 ms |
+
+Erzeugt mit Blender: Vertices verschweißen → Decimate (Collapse) auf 12.000 → Texturen auf 2048.
+
+⚠️ **Immer aus `_original/` neu erzeugen, nie aus den bereits bearbeiteten Dateien** — sonst
+stapeln sich die Qualitätsverluste. Der Ordner liegt bewusst außerhalb des Repos und trägt eine
+`.gdignore`, damit Godot ihn nicht importiert.
+
+**Warum Vertices verschweißen?** Photogrammetrie-Meshes haben an jeder UV-Naht doppelte Vertices.
+Decimate behandelt die als getrennte Flächen und reißt beim Zusammenfalten Löcher in die
+Oberfläche — man sieht dann von außen ins Innere des Steins. Ein Weld-Schritt davor verhindert
+das. (Erkennbar auch daran, dass zerrissene Meshes ihre Ziel-Dreieckszahl nicht mehr erreichen.)
+
+Falls ein einzelner Stein zu unscharf wirkt: nur diesen mit 4096 statt 2048 neu erzeugen.
 
 ## Warum nicht nach Dateityp (`Models/`, `Textures/` global)?
 
