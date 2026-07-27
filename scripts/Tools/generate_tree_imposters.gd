@@ -34,6 +34,13 @@ const TEXTURE_SIZE := 512
 const VARIANTS := 4
 
 const SHADER_PATH := IMPOSTER_DIR + "imposter.gdshader"
+const SHADOW_SHADER_PATH := IMPOSTER_DIR + "imposter_shadow.gdshader"
+
+## Groesse des angedeuteten Bodenschattens, im Verhaeltnis zur Kronenbreite.
+const SHADOW_SIZE := 1.15
+
+## Wie dunkel der Bodenschatten in der Mitte ist (0 = aus).
+const SHADOW_STRENGTH := 0.0  # 0 = kein Blob-Schatten (kollidierte mit der Überblendung)
 
 ## true = vorhandene Imposter werden neu erzeugt. Beim Einstellen der Bildlage noetig, sonst
 ## ueberspringt das Script den Baum und man sieht weiterhin das alte Bild.
@@ -278,11 +285,36 @@ func _assemble(old_root: Node, mesh: Mesh, casts: int, texture: Texture2D,
 	mat.set_shader_parameter("albedo_texture", texture)
 	mat.set_shader_parameter("grid", grid)
 	mat.set_shader_parameter("alpha_cut", 0.35)
-	quad.material = mat
+
+	# Waagerechte Flaeche am Boden als angedeuteter Schatten (siehe imposter_shadow.gdshader).
+	# Ohne sie haetten alle Baeume jenseits der LOD-Grenze keinen Schatten, waehrend das
+	# Terrain noch beschattet wird - die sichtbare Kante im Wald.
+	var ground := PlaneMesh.new()
+	ground.size = Vector2(quad_size.x, quad_size.x) * SHADOW_SIZE
+	# Knapp ueber den Boden, sonst kaempfen Boden und Schatten um dieselbe Tiefe und es flackert.
+	ground.center_offset = Vector3(0, 0.35, 0)
+
+	var shadow_mat := ShaderMaterial.new()
+	var shadow_shader := load(SHADOW_SHADER_PATH) as Shader
+	if shadow_shader != null:
+		shadow_mat.shader = shadow_shader
+		shadow_mat.set_shader_parameter("strength", SHADOW_STRENGTH)
+	else:
+		push_warning("Schatten-Shader nicht gefunden: " + SHADOW_SHADER_PATH)
+
+	# Beides in EIN Mesh mit zwei Flaechen: Terrain3D uebernimmt pro LOD-Stufe nur ein Mesh.
+	# Jede Flaeche behaelt ihr eigenes Material, das Billboard betrifft also nur den Baum
+	# und nicht den Bodenschatten.
+	var combined := ArrayMesh.new()
+	combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, quad.get_mesh_arrays())
+	combined.surface_set_material(0, mat)
+	if shadow_shader != null:
+		combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, ground.get_mesh_arrays())
+		combined.surface_set_material(1, shadow_mat)
 
 	var lod3 := MeshInstance3D.new()
 	lod3.name = "LOD1"
-	lod3.mesh = quad
+	lod3.mesh = combined
 	# Knoten bleibt im Ursprung - die Hoehe steckt ausschliesslich im Mesh (center_offset oben).
 	# Beides zusammen hiesse doppelte Verschiebung, und die Baeume schwebten.
 	lod3.position = Vector3.ZERO

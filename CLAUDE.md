@@ -138,6 +138,23 @@ Details, Herkunft und Lizenzen: **`Assets/README.md`**.
 ## Aufräum-Reste (dürfen weg)
 `_zum_loeschen/`, `demo/` (falls noch da), `World/forest_particles.tscn` (ersetzt).
 
+## ⚠️ Terrain3D-Fallstricke (haben schon Stunden gekostet)
+- **`World/data/assets.tres` wird NICHT gelesen.** Die Asset-Liste liegt eingebettet in
+  `World/world.tscn` (`assets = SubResource(...)`). Änderungen an `assets.tres` bleiben wirkungslos.
+- **Godot lädt extern geänderte Scripts nicht neu**, solange sie im Script-Editor offen sind —
+  beim Ausführen läuft dann die alte Fassung. Tab schließen und neu öffnen.
+- **Godot schreibt beim Speichern Werte in `project.godot` zurück** (gelöschte Autoloads tauchen
+  wieder auf). Nach Datei-Edits kontrollieren.
+- **Terrain3D verwirft die Position von LOD-Knoten** → Höhenversatz gehört über
+  `PrimitiveMesh.center_offset` ins Mesh.
+- **Baum-LODs**: Terrain3D sucht MeshInstance3D-Kinder namens `LOD0`, `LOD1`, … (nicht Godots
+  eingebaute Mesh-LODs). Erzeugt von `scripts/Tools/generate_tree_imposters.gd`.
+
+## 🔴 Offenes Problem
+`doc/offen-blattschatten.md` — Blattschatten reichen nur ~20 m statt ~100 m, Stammschatten dagegen
+weiter. Mehrere Lösungsversuche dokumentiert, alle erfolglos. **Vor eigenen Versuchen dort lesen**,
+damit nicht dasselbe nochmal probiert wird.
+
 ## Doku-Wegweiser
 - `doc/roadmap.md` – **Gesamtplan**: Meilensteine M1–M8, Story-Kapitelstruktur (verbindlich),
   Mengengerüst der Inhalte. Erste Anlaufstelle bei „was als Nächstes?".
