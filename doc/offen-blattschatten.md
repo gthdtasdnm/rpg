@@ -59,8 +59,49 @@ fade_margin = 20.0
 lod0_range = 65.0      ; volles Mesh
 lod1_range = 1200.0    ; Imposter
 ```
-Die Imposter-Knoten (`LOD1`) haben `cast_shadow = 0`, werfen also bewusst keinen Schatten.
-Die `LOD0`-Knoten haben keine `cast_shadow`-Zeile, stehen also auf dem Standard (Schatten an).
+**Überholt seit 27.07. (siehe unten):** `last_shadow_lod` steht jetzt bei allen 23 Baum-Assets
+auf `1`, und die `cast_shadow`-Zeile an den `LOD1`-Knoten ist entfernt (Standard = Schatten an).
+
+## Änderung 27.07.: Imposter werfen Schatten
+
+Der Imposter ist kein zur Kamera gedrehtes Billboard mehr, sondern ein **festes Kreuz aus zwei
+Ebenen mit zufälliger Drehung** pro Baum. Damit fällt der Grund weg, warum er keinen Schatten
+werfen durfte (ein mitdrehender Schatten fällt sofort auf).
+
+Der eigentliche Deckel für die Schattenreichweite der Bäume war **nicht** eine Distanz, sondern
+`last_shadow_lod = 0` am `Terrain3DMeshAsset`: nur LOD0 durfte Schatten werfen, und LOD0 endet
+bei `lod0_range = 95 m`. Terrain3D hat keinen eigenen Zahlenwert für Schattenreichweite — sie
+ergibt sich aus *welche* LODs werfen dürfen mal *deren* Range.
+
+Jetzt: `last_shadow_lod = 1` → LOD1 (Imposter, `lod1_range = 1200 m`) wirft mit. Damit ist die
+Terrain3D-Seite ausgereizt; begrenzend ist ab jetzt nur noch
+`directional_shadow_max_distance = 160` in `World/Environment.tscn`.
+
+**Danach beobachtet:** Schatten von 0–30 m, dann eine große Lücke, ab ~65 m wieder Schatten
+(die Imposter). Die Lücke ist der alte, unerklärte 30-m-Effekt — er war vorher nur nicht als
+Lücke sichtbar, weil dahinter überhaupt nichts mehr kam.
+
+Gegenmittel: **`shadow_impostor = 1`** (ebenfalls bei allen 23 Baum-Assets gesetzt). Laut
+Terrain3D-Doku: *„Uses this lower quality LOD to calculate shadows (as an impostor) instead of
+the visible mesh."* Damit wirft **immer** das Imposter-Kreuz den Schatten, auch für die nahen
+echten Bäume — ein einziger Schattenwerfer über die ganze Distanz, also kein Umschaltpunkt und
+keine Lücke. Preis: nah sieht man die Kreuz-Silhouette statt echter Blattschatten.
+
+## Regler zum Ausprobieren
+
+`scripts/World/ShadowTuner.cs`, hängt als Knoten `ShadowTuner` in `World/world.tscn`. Im
+Inspector live verstellbar (Editor und Spiel), schreibt direkt auf Licht und alle Baum-Assets:
+
+| Regler | schreibt auf |
+|---|---|
+| `Shadow Distance` | `directional_shadow_max_distance` am `DirectionalLight3D` |
+| `Tree Lod0 Range` | `lod0_range` aller Baum-Assets (Umschaltpunkt echter Baum → Kreuz) |
+| `Imposter Casts Shadows` | `last_shadow_lod` (1/0) |
+| `Shadows From Imposter Only` | `shadow_impostor` (1/0) |
+
+Assets mit `last_lod = 0` (Steine, Stümpfe, Gras-Karte) werden übersprungen — dort wäre
+`last_shadow_lod > last_lod` ungültig. Gefundene Werte bleiben nur erhalten, wenn `world.tscn`
+gespeichert wird.
 
 ## ⚠️ Fallstricke, die Zeit gekostet haben
 
@@ -80,9 +121,9 @@ Die `LOD0`-Knoten haben keine `cast_shadow`-Zeile, stehen also auf dem Standard 
 
 Erzeugt von `scripts/Tools/generate_tree_imposters.gd` (im Script-Editor öffnen, Strg+Umschalt+X):
 - rendert je Baum 4 Ansichten in einen Atlas (`Assets/Nature/Forest/imposters/*.png`)
-- baut daraus einen `LOD1`-Knoten mit Billboard-Ebene in jede Baumszene
-- `imposter.gdshader` dreht die Ebene zur Kamera und streut Ansicht, Farbton, Helligkeit und
-  Rauschen pro Baum anhand der Weltposition
+- baut daraus einen `LOD1`-Knoten in jede Baumszene: **zwei überkreuzte Ebenen** (von oben ein X)
+- `imposter.gdshader` dreht jeden Baum fest und zufällig um die Hochachse (kein Billboard mehr)
+  und streut Ansicht, Farbton, Helligkeit und Rauschen pro Baum anhand der Weltposition
 
 Ergebnis: Baum-Dreiecke von 9,3 Mio auf ~540.000, Sichtweite 500 m → 1200 m. Der User hat das
 Aussehen als „perfekt" bewertet — **einziger offener Punkt ist der Blattschatten**.

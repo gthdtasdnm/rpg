@@ -2,10 +2,12 @@ shader_type spatial;
 
 // Angedeuteter Bodenschatten unter den Imposter-Baeumen.
 //
-// WARUM: Ein Imposter ist eine Flaeche, die sich zur Kamera dreht - er kann keinen echten
-// Schatten werfen, der wuerde sich beim Umsehen mitdrehen. Ohne Ersatz haben aber alle Baeume
-// jenseits der LOD-Grenze keinen Schatten, waehrend das Terrain noch beschattet wird. Genau
-// diese Kante faellt auf.
+// VERALTET, steht ueber SHADOW_STRENGTH = 0.0 im Generator auf aus.
+// Der Ersatzschatten war noetig, solange der Imposter ein Billboard war: eine Flaeche, die sich
+// zur Kamera dreht, kann keinen echten Schatten werfen - der wuerde sich beim Umsehen mitdrehen.
+// Seit dem festen Kreuz (27.07.) wirft der Imposter einen echten Schatten, siehe
+// generate_tree_imposters.gd und last_shadow_lod in World/world.tscn. Der Code bleibt nur als
+// Rueckfalloption stehen.
 //
 // Statt echter Schattenberechnung wird hier einfach der Boden abgedunkelt: eine waagerechte
 // Flaeche mit weichem, runden Verlauf. Kostet zwei Dreiecke und keine Schattenkarte.

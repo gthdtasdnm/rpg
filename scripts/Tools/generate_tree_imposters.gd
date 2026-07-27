@@ -2,18 +2,24 @@
 extends EditorScript
 
 # Erzeugt fuer jeden Baum einen "Imposter": ein Bild des Baums, das in der Ferne anstelle des
-# echten Modells angezeigt wird und sich immer zur Kamera dreht.
+# echten Modells angezeigt wird. Das Bild haengt auf ZWEI ueberkreuzten Flaechen (X von oben
+# gesehen), die fest im Boden stehen und pro Baum zufaellig um die Hochachse gedreht sind -
+# kein Billboard mehr, das sich zur Kamera dreht.
 #
 # WARUM NICHT EINFACH VEREINFACHEN:
 # Ein vereinfachtes Blattwerk hat WENIGER Blaetter - der Wald wird in der Ferne noch duenner,
 # genau das Gegenteil vom Ziel. Ein Imposter ist dagegen eine geschlossene Flaeche: aus der
-# Entfernung volle Baumkronen statt einzelner Aeste, und er kostet zwei Dreiecke.
+# Entfernung volle Baumkronen statt einzelner Aeste, und er kostet vier Dreiecke.
 #
 # BENUTZUNG:
 #   1. Datei im Godot-Script-Editor oeffnen.
 #   2. Menue "Datei" -> "Ausfuehren" (Strg+Umschalt+X).
 #   3. Erst mit ONLY_FILE einen einzelnen Baum testen, Bild anschauen, dann alle.
 #   4. Danach in World/data/assets.tres "last_lod = 3" setzen (mache ich auf Zuruf).
+#
+# WICHTIG: Die Geometrie (Kreuz statt einzelner Ebene) steckt in den .tscn-Dateien unter merged/.
+# Wer nur den Shader aendert, sieht weiterhin die alte, einzelne Ebene - nach jeder Aenderung an
+# der Geometrie muessen ALLE Baeume neu erzeugt werden (ONLY_FILE leer, OVERWRITE = true).
 #
 # HINWEIS: Hier wird bewusst KEIN "await" benutzt. Ein EditorScript bricht beim ersten await
 # ab und tut dann gar nichts. Stattdessen zeichnet RenderingServer.force_draw() sofort.
@@ -264,15 +270,14 @@ func _assemble(old_root: Node, mesh: Mesh, casts: int, texture: Texture2D,
 
 	# Groesse und Hoehe kommen aus dem zugeschnittenen Bild - dadurch passt der Imposter
 	# exakt auf den echten Baum, unabhaengig von der Bounding Box des Meshes.
-	var quad := QuadMesh.new()
-	quad.size = quad_size
 	# Die Hoehe MUSS ins Mesh selbst: Terrain3D uebernimmt aus der Szene nur das Mesh und
-	# setzt es an die Instanzposition - die Position des Knotens wird verworfen. Ohne
-	# center_offset sitzt die Ebene mittig auf dem Boden und der Baum steckt halb darin.
-	quad.center_offset = Vector3(0, center_y, 0)
+	# setzt es an die Instanzposition - die Position des Knotens wird verworfen. Ohne die
+	# Verschiebung nach oben saesse die Flaeche mittig auf dem Boden und der Baum steckte
+	# halb darin.
+	var cross_arrays := _cross_mesh_arrays(quad_size, center_y)
 
-	# Eigener Shader statt StandardMaterial3D: er macht das Billboard UND waehlt pro Instanz
-	# eine der Ansichten aus dem Atlas (siehe imposter.gdshader).
+	# Eigener Shader statt StandardMaterial3D: er dreht jeden Baum zufaellig um die Hochachse
+	# UND waehlt pro Instanz eine der Ansichten aus dem Atlas (siehe imposter.gdshader).
 	var shader := load(SHADER_PATH) as Shader
 	if shader == null:
 		push_error("Shader nicht gefunden: " + SHADER_PATH)
@@ -302,23 +307,38 @@ func _assemble(old_root: Node, mesh: Mesh, casts: int, texture: Texture2D,
 	else:
 		push_warning("Schatten-Shader nicht gefunden: " + SHADOW_SHADER_PATH)
 
-	# Beides in EIN Mesh mit zwei Flaechen: Terrain3D uebernimmt pro LOD-Stufe nur ein Mesh.
-	# Jede Flaeche behaelt ihr eigenes Material, das Billboard betrifft also nur den Baum
-	# und nicht den Bodenschatten.
+	# Beides in EIN Mesh mit zwei Oberflaechen: Terrain3D uebernimmt pro LOD-Stufe nur ein Mesh.
+	# Jede Oberflaeche behaelt ihr eigenes Material, die Zufallsdrehung betrifft also nur den
+	# Baum und nicht den Bodenschatten. Die beiden gekreuzten Ebenen liegen zusammen in
+	# Oberflaeche 0 (ein Zeichenaufruf), unterschieden ueber UV2 (siehe _cross_mesh_arrays).
 	var combined := ArrayMesh.new()
-	combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, quad.get_mesh_arrays())
+	combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, cross_arrays)
 	combined.surface_set_material(0, mat)
 	if shadow_shader != null:
 		combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, ground.get_mesh_arrays())
 		combined.surface_set_material(1, shadow_mat)
 
+	# Die Zufallsdrehung passiert im Shader, davon weiss die automatisch berechnete Bounding Box
+	# nichts - gedreht ragen die Ecken bis zu 41 % weiter hinaus als im Ruhezustand. Ohne eigene
+	# Box verschwinden Baeume am Bildrand zu frueh. Radius = halbe Breite (Ecken auf dem
+	# Umkreis), mindestens aber die Bodenschatten-Flaeche.
+	var radius: float = maxf(quad_size.x * 0.5, quad_size.x * SHADOW_SIZE * 0.5)
+	combined.custom_aabb = AABB(
+		Vector3(-radius, 0.0, -radius),
+		Vector3(radius * 2.0, center_y + quad_size.y * 0.5, radius * 2.0))
+
 	var lod3 := MeshInstance3D.new()
 	lod3.name = "LOD1"
 	lod3.mesh = combined
-	# Knoten bleibt im Ursprung - die Hoehe steckt ausschliesslich im Mesh (center_offset oben).
-	# Beides zusammen hiesse doppelte Verschiebung, und die Baeume schwebten.
+	# Knoten bleibt im Ursprung - die Hoehe steckt ausschliesslich im Mesh (Ecken sind schon
+	# nach oben verschoben). Beides zusammen hiesse doppelte Verschiebung, und die Baeume
+	# schwebten.
 	lod3.position = Vector3.ZERO
-	lod3.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	# Das Kreuz WIRFT Schatten. Beim alten Billboard war das ausgeschaltet - ein Schatten, der
+	# sich beim Umsehen mitdreht, faellt sofort auf. Das feste Kreuz hat dieses Problem nicht,
+	# und nur so reichen Baumschatten ueber die LOD0-Grenze hinaus (dazu am Terrain3DMeshAsset
+	# "last_shadow_lod = 1" setzen, steht in World/world.tscn).
+	lod3.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	new_root.add_child(lod3)
 	lod3.owner = new_root
 
@@ -332,8 +352,71 @@ func _assemble(old_root: Node, mesh: Mesh, casts: int, texture: Texture2D,
 		push_error("Konnte %s nicht speichern (Fehler %d)" % [file_name, err])
 		return
 
-	print("%s: %d Ansichten, %.1f x %.1f m, Mitte auf y=%.1f"
+	print("%s: %d Ansichten, Kreuz aus 2 Ebenen, %.1f x %.1f m, Mitte auf y=%.1f"
 		% [file_name, grid * grid, quad_size.x, quad_size.y, center_y])
+
+
+## Baut die Imposter-Geometrie: ZWEI senkrechte Flaechen, um 90 Grad gegeneinander verdreht
+## (von oben ein X). Gegenueber einer einzelnen Flaeche kostet das zwei Dreiecke mehr, dafuer
+## hat der Baum aus jeder Richtung Ausdehnung - und genau deshalb muss er sich nicht mehr zur
+## Kamera drehen, sondern darf fest und zufaellig gedreht stehen (siehe imposter.gdshader).
+##
+## Beide Ebenen liegen in EINER Oberflaeche. Zu welcher Ebene ein Dreieck gehoert, steht in UV2.x
+## (0 oder 1) - der Shader nimmt fuer die zweite Ebene die um 90 Grad gedrehte Ansicht aus dem
+## Atlas, damit das Kreuz nicht zweimal dasselbe Bild zeigt.
+##
+## NORMALEN: nicht flach aus der Ebene heraus, sondern von der Stammachse nach aussen und oben,
+## wie bei einer Kugelkrone. Beim Billboard zeigte die Flaeche immer zur Kamera, jetzt steht sie
+## fest - mit flachen Normalen waeren alle Baeume, deren Ebene zufaellig von der Sonne wegzeigt,
+## komplett dunkel. Die runden Normalen geben stattdessen eine weiche Hell/Dunkel-Verteilung.
+func _cross_mesh_arrays(size: Vector2, center_y: float) -> Array:
+	var half_w: float = size.x * 0.5
+	var top: float = center_y + size.y * 0.5
+	var bottom: float = center_y - size.y * 0.5
+	# Wie stark die Normalen nach oben zeigen. In der Groessenordnung der halben Breite, damit
+	# sie etwa 45 Grad schraeg stehen.
+	var up_bias: float = half_w * 0.9
+
+	var verts := PackedVector3Array()
+	var norms := PackedVector3Array()
+	var uvs := PackedVector2Array()
+	var uv2s := PackedVector2Array()
+	var indices := PackedInt32Array()
+
+	var corner_uv := [Vector2(0, 0), Vector2(1, 0), Vector2(1, 1), Vector2(0, 1)]
+
+	for plane in 2:
+		# 45 Grad und 135 Grad: das Kreuz steht symmetrisch, keine der beiden Ebenen faellt
+		# durch eine Achsenrichtung auf.
+		var angle: float = PI * 0.25 + PI * 0.5 * float(plane)
+		var dir := Vector3(cos(angle), 0.0, sin(angle)) * half_w
+		var base: int = verts.size()
+
+		var corners := [
+			Vector3(0.0, top, 0.0) - dir,
+			Vector3(0.0, top, 0.0) + dir,
+			Vector3(0.0, bottom, 0.0) + dir,
+			Vector3(0.0, bottom, 0.0) - dir,
+		]
+
+		for i in 4:
+			var p: Vector3 = corners[i]
+			verts.append(p)
+			norms.append(Vector3(p.x, up_bias, p.z).normalized())
+			uvs.append(corner_uv[i])
+			uv2s.append(Vector2(float(plane), 0.0))
+
+		indices.append_array(PackedInt32Array(
+			[base, base + 1, base + 2, base, base + 2, base + 3]))
+
+	var arrays := []
+	arrays.resize(Mesh.ARRAY_MAX)
+	arrays[Mesh.ARRAY_VERTEX] = verts
+	arrays[Mesh.ARRAY_NORMAL] = norms
+	arrays[Mesh.ARRAY_TEX_UV] = uvs
+	arrays[Mesh.ARRAY_TEX_UV2] = uv2s
+	arrays[Mesh.ARRAY_INDEX] = indices
+	return arrays
 
 
 ## Ermittelt die tatsaechliche Ausdehnung aus den Eckpunkten.
