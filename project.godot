@@ -155,6 +155,7 @@ locale/translations_pot_files=PackedStringArray("res://Dialogues/halvor.dialogue
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+lights_and_shadows/directional_shadow/size=8192
 environment/volumetric_fog/volume_size=256
 environment/volumetric_fog/use_filter=0
 

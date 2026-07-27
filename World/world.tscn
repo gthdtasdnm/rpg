@@ -181,10 +181,8 @@ scene_file = ExtResource("4_017rf")
 density = 0.015169311
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_tw6mt"]
 name = "ash_tree_1"
@@ -193,10 +191,8 @@ scene_file = ExtResource("5_5aogk")
 density = 0.1
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_lp87e"]
 name = "birch_1_20"
@@ -205,10 +201,8 @@ scene_file = ExtResource("6_njwhq")
 density = 0.05
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_w40rn"]
 name = "birch_2_21"
@@ -217,10 +211,8 @@ scene_file = ExtResource("7_1lp6d")
 density = 0.015995106
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ef5ef"]
 name = "birch_3_26"
@@ -229,10 +221,8 @@ scene_file = ExtResource("8_u1hwb")
 density = 0.018132256
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_51ycc"]
 name = "birch_orange_1_22"
@@ -241,10 +231,8 @@ scene_file = ExtResource("9_eklv6")
 density = 0.05
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5hqou"]
 name = "birch_orange_2_23"
@@ -253,10 +241,8 @@ scene_file = ExtResource("10_utqx3")
 density = 0.026401559
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yiqki"]
 name = "boulder_mossy_large_6"
@@ -319,10 +305,8 @@ scene_file = ExtResource("17_16763")
 density = 0.043017007
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_5guby"]
 name = "coniferous_dead_log_12"
@@ -358,10 +342,8 @@ scene_file = ExtResource("21_e560p")
 density = 4.991516
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_pd6e7"]
 name = "coniferous_shrub_16"
@@ -370,10 +352,8 @@ scene_file = ExtResource("22_bshvv")
 density = 0.04283924
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ve4f6"]
 name = "deciduous_dead_1_29"
@@ -382,10 +362,8 @@ scene_file = ExtResource("23_4qare")
 density = 0.023184923
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_k6i7b"]
 name = "deciduous_dead_2_28"
@@ -412,10 +390,8 @@ scene_file = ExtResource("26_2c707")
 density = 0.11994949
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_bp0yk"]
 name = "deciduous_sapling_32"
@@ -424,10 +400,8 @@ scene_file = ExtResource("27_qjbjq")
 density = 0.23899317
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_dx84b"]
 name = "deciduous_shrub_2_31"
@@ -436,10 +410,8 @@ scene_file = ExtResource("28_246vq")
 density = 0.05263795
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_v1hwx"]
 name = "deciduous_shrub_27"
@@ -448,10 +420,8 @@ scene_file = ExtResource("29_lo6q2")
 density = 0.06260056
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_bl7ox"]
 name = "fir_tree_17"
@@ -460,10 +430,8 @@ scene_file = ExtResource("30_mocti")
 density = 0.02516133
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_hw2e3"]
 name = "holly_shrub_4"
@@ -472,10 +440,8 @@ scene_file = ExtResource("31_rrn5h")
 density = 0.19031292
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_sk0o4"]
 name = "maple_24"
@@ -484,10 +450,8 @@ scene_file = ExtResource("32_e7mue")
 density = 0.01
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ts7so"]
 name = "noble_fir_tree_18"
@@ -496,10 +460,8 @@ scene_file = ExtResource("33_nfehj")
 density = 0.1583617
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_1eeys"]
 name = "oak_25"
@@ -508,10 +470,8 @@ scene_file = ExtResource("34_5m26r")
 density = 0.01
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_yfrte"]
 name = "pine_tree_19"
@@ -520,10 +480,8 @@ scene_file = ExtResource("35_66w63")
 density = 0.01
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_s78ae"]
 name = "plum_tree_3"
@@ -532,10 +490,8 @@ scene_file = ExtResource("36_m0cbj")
 density = 0.03298337
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_r6xou"]
 name = "raspberry_shrub_5"
@@ -544,10 +500,8 @@ scene_file = ExtResource("37_ucd25")
 density = 0.08
 last_lod = 1
 last_shadow_lod = 1
-shadow_impostor = 1
-lod0_range = 95.0
-lod1_range = 1200.0
-fade_margin = 5.0
+lod0_range = 80.0
+lod1_range = 600.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4175r"]
 load_path = "res://.godot/imported/rock023_alb_ht.png-9c06b8a5f11d940d1c46d8928f6d6a5c.bptc.ctex"

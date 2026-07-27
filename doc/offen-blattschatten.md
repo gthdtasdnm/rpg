@@ -87,21 +87,62 @@ the visible mesh."* Damit wirft **immer** das Imposter-Kreuz den Schatten, auch 
 echten Bäume — ein einziger Schattenwerfer über die ganze Distanz, also kein Umschaltpunkt und
 keine Lücke. Preis: nah sieht man die Kreuz-Silhouette statt echter Blattschatten.
 
-## Regler zum Ausprobieren
+## 🎯 Festgelegtes Ziel (nicht mehr zur Diskussion)
 
-`scripts/World/ShadowTuner.cs`, hängt als Knoten `ShadowTuner` in `World/world.tscn`. Im
-Inspector live verstellbar (Editor und Spiel), schreibt direkt auf Licht und alle Baum-Assets:
+> **0–30 m: echter Baum, echter Schatten. 30–600 m: Imposter-Kreuz, Imposter-Schatten.**
+> Keine Zwischen-LOD-Stufe, kein `shadow_impostor`, keine Ersatzschatten.
 
-| Regler | schreibt auf |
-|---|---|
-| `Shadow Distance` | `directional_shadow_max_distance` am `DirectionalLight3D` |
-| `Tree Lod0 Range` | `lod0_range` aller Baum-Assets (Umschaltpunkt echter Baum → Kreuz) |
-| `Imposter Casts Shadows` | `last_shadow_lod` (1/0) |
-| `Shadows From Imposter Only` | `shadow_impostor` (1/0) |
+Daraus folgt die feste Einstellung in allen 23 Baum-Assets (`World/world.tscn`):
 
-Assets mit `last_lod = 0` (Steine, Stümpfe, Gras-Karte) werden übersprungen — dort wäre
-`last_shadow_lod > last_lod` ungültig. Gefundene Werte bleiben nur erhalten, wenn `world.tscn`
-gespeichert wird.
+```
+last_lod = 1
+last_shadow_lod = 1     ; beide Stufen duerfen Schatten werfen
+lod0_range = 80.0       ; echter Baum
+lod1_range = 600.0      ; Imposter
+                        ; fade_margin ENTFERNT (= 0)
+```
+`shadow_impostor` ist **entfernt** (= 0): jede Stufe wirft ihren eigenen Schatten.
+`World/Environment.tscn`: `directional_shadow_max_distance = 200.0`.
+`project.godot`: `lights_and_shadows/directional_shadow/size=8192`.
+
+### Warum genau diese drei Zahlen (teuer erkauft, nicht ändern ohne Grund)
+
+- **`fade_margin = 0`** — mit `fade_margin > 0` setzt Terrain3D `fade_mode = SELF` und laesst
+  beide Stufen im Randbereich **gleichzeitig** laufen (Dither-Ueberblendung). Bei aehnlichen
+  Meshes unsichtbar, bei „echter Baum vs. 4-Dreieck-Kreuz" sieht man beide uebereinander stehen.
+  Der Preis ist ein harter Wechsel, aber ein Doppelbild ist schlimmer.
+- **`lod0_range = 80`** — Terrain3D schaltet **pro 32-m-Zelle**, gemessen zur Mitte der Zell-AABB
+  (Godot: *„when the camera is closer to the center of the instance's AABB"*). Die halbe
+  Zelldiagonale ist ~23 m. Bei `lod0_range = 30` passiert der Wechsel real irgendwo zwischen 7
+  und 53 m — man steht neben einem Baum und sieht das Kreuz. **Der Umschaltpunkt muss deutlich
+  ueber ~50 m liegen**, sonst ist er Zufall.
+- **`size = 8192` + Distanz 200 statt 600** — Godot verteilt EINE Schattenkarte ueber die ganze
+  Distanz. Damit die echten Bäume bis 80 m ueberhaupt Blattschatten werfen, muss die Aufloesung
+  in den Nahbereich, nicht auf 600 m. Das ist auch die vermutete Ursache des alten
+  30-m-Raetsels: die Blattluecken fielen unter Texel-Groesse.
+
+Assets mit `last_lod = 0` (Steine, Stümpfe, Gras-Karte) bleiben unberührt — dort wäre
+`last_shadow_lod > last_lod` ungültig.
+
+Der Regler `ShadowTuner` (`scripts/World/ShadowTuner.cs`, Knoten in `world.tscn`) hat **nur noch
+einen Wert**: `Shadow Distance` → `directional_shadow_max_distance`. Die früheren vier Regler
+haben sich gegenseitig verschoben und waren dadurch unbrauchbar; die anderen drei Werte stehen
+jetzt fest in der Szene.
+
+## Wenn die Lücke bleibt: messen statt probieren
+
+`scripts/Tools/debug_tree_lod.gd` im Editor ausführen (Strg+Umschalt+X). Der Abschnitt
+**„Schatten pro Sorte"** zeigt, was der Instancer tatsächlich erzeugt hat. Erwartet werden genau
+zwei Sorten Knoten:
+
+```
+  viele Dreiecke  begin=0     end=30    cast_shadow=an
+       4 Dreiecke begin=30    end=600   cast_shadow=an
+```
+
+Weicht das ab — `cast_shadow=AUS` bei einer Sorte, oder eine Lücke zwischen `end` der einen und
+`begin` der anderen — ist das die Ursache, schwarz auf weiß. Vorher keine weiteren
+Kombinationen ausprobieren.
 
 ## ⚠️ Fallstricke, die Zeit gekostet haben
 

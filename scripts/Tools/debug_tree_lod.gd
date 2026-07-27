@@ -86,6 +86,34 @@ func _run() -> void:
 	for mode in mode_count:
 		print("  %-22s : %d Knoten" % [_fade_name(int(mode)), mode_count[mode]])
 
+	# --- Schatten: wirft jede LOD-Stufe wirklich einen? ---
+	# Das ist der Kern der offenen Frage. Erwartet wird bei den Baeumen GENAU zwei Sorten Knoten:
+	#   viele Dreiecke, end=30   -> echter Baum, cast_shadow muss AN sein
+	#   4 Dreiecke,     begin=30 -> Imposter-Kreuz, cast_shadow muss AN sein
+	# Steht bei einer der beiden Sorten AUS, oder passen begin und end nicht luecklos aneinander,
+	# ist genau das die Luecke im Wald - und man sieht es hier statt es zu erraten.
+	print("")
+	print("=== Schatten pro Sorte (Dreiecke/Instanz + Sichtbereich + cast_shadow) ===")
+	var shadow_groups := {}
+	for m in mmis:
+		var tris := 0
+		if m.multimesh != null and m.multimesh.mesh != null:
+			tris = m.multimesh.mesh.get_faces().size() / 3
+		var instances := 0
+		if m.multimesh != null:
+			instances = m.multimesh.instance_count
+		var key: String = "%6d Dreiecke  begin=%-5.0f end=%-6.0f cast_shadow=%s" % [
+			tris, m.visibility_range_begin, m.visibility_range_end,
+			_shadow_name(m.cast_shadow),
+		]
+		var entry: Array = shadow_groups.get(key, [0, 0])
+		shadow_groups[key] = [int(entry[0]) + 1, int(entry[1]) + instances]
+	var shadow_keys := shadow_groups.keys()
+	shadow_keys.sort()
+	for k in shadow_keys:
+		var e: Array = shadow_groups[k]
+		print("  %s : %d Knoten, %d Instanzen" % [k, e[0], e[1]])
+
 	# Der entscheidende Teil: WELCHE Knoten stehen auf DISABLED?
 	# Ein Knoten mit begin > 0 ist eine Fern-Stufe (Imposter). Steht der auf DISABLED, poppt der
 	# Imposter hart herein, waehrend der Baum darunter weich ausblendet - genau das Symptom.
@@ -133,6 +161,15 @@ func _run() -> void:
 			m.visibility_range_end, m.visibility_range_end_margin,
 			tris, str(m.get_path()).right(60),
 		])
+
+
+func _shadow_name(mode: int) -> String:
+	match mode:
+		GeometryInstance3D.SHADOW_CASTING_SETTING_OFF: return "AUS"
+		GeometryInstance3D.SHADOW_CASTING_SETTING_ON: return "an"
+		GeometryInstance3D.SHADOW_CASTING_SETTING_DOUBLE_SIDED: return "an(2seitig)"
+		GeometryInstance3D.SHADOW_CASTING_SETTING_SHADOWS_ONLY: return "nur Schatten"
+		_: return "unbekannt(%d)" % mode
 
 
 func _fade_name(mode: int) -> String:
