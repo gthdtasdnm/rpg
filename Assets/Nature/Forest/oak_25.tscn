@@ -97,4 +97,5 @@ shadow_mesh = SubResource("ArrayMesh_j0d8j")
 mesh = SubResource("ArrayMesh_10ulb")
 
 [node name="_gltfNode_67" type="MeshInstance3D" parent="." unique_id=713429937]
+visible = false
 mesh = SubResource("ArrayMesh_cwoth")
