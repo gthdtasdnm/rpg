@@ -73,6 +73,8 @@
 [ext_resource type="PackedScene" uid="uid://bhf1kohbp3uxs" path="res://Objects/trees/deciduous_sapling_2_33.tscn" id="71_o8btu"]
 [ext_resource type="PackedScene" uid="uid://pfp85g82li4c" path="res://Objects/trees/raspberry_shrub_5.tscn" id="72_2j1j3"]
 [ext_resource type="PackedScene" uid="uid://e7jpsrwjd0i" path="res://Assets/Buildings/MedievalVillage/Models/Corner_ExteriorWide_Brick.gltf" id="73_2j1j3"]
+[ext_resource type="PackedScene" path="res://World/bewuchs.tscn" id="80_bewu"]
+[ext_resource type="PackedScene" path="res://World/orte.tscn" id="81_orte"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -1225,3 +1227,7 @@ transform = Transform3D(-0.85536426, 7.477832e-08, 0.51802695, -8.742278e-08, -1
 
 [node name="Corner_ExteriorWide_Brick3" parent="." unique_id=853452503 instance=ExtResource("73_2j1j3")]
 transform = Transform3D(-0.5408796, 0, 0.84109986, 0, 1, 0, -0.84110004, 0, -0.5408795, -692.5992, -0.7801192, -960.2165)
+
+[node name="Bewuchs" parent="." instance=ExtResource("80_bewu")]
+
+[node name="Orte" parent="." instance=ExtResource("81_orte")]
