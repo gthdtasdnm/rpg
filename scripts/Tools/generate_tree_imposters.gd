@@ -292,20 +292,26 @@ func _assemble(old_root: Node, mesh: Mesh, casts: int, texture: Texture2D,
 	mat.set_shader_parameter("alpha_cut", 0.35)
 
 	# Waagerechte Flaeche am Boden als angedeuteter Schatten (siehe imposter_shadow.gdshader).
-	# Ohne sie haetten alle Baeume jenseits der LOD-Grenze keinen Schatten, waehrend das
-	# Terrain noch beschattet wird - die sichtbare Kante im Wald.
-	var ground := PlaneMesh.new()
-	ground.size = Vector2(quad_size.x, quad_size.x) * SHADOW_SIZE
-	# Knapp ueber den Boden, sonst kaempfen Boden und Schatten um dieselbe Tiefe und es flackert.
-	ground.center_offset = Vector3(0, 0.35, 0)
+	# Wird nur noch erzeugt, wenn SHADOW_STRENGTH > 0 ist. Bei 0 war sie zwar unsichtbar, aber
+	# vorhanden - und sobald Nebel dazukam, multiplizierte sie dessen Farbe in den Hintergrund
+	# und wurde als eckiger Fleck um jeden Baum sichtbar. Tote Geometrie bleibt nicht liegen.
+	var ground: PlaneMesh = null
+	var shadow_mat: ShaderMaterial = null
 
-	var shadow_mat := ShaderMaterial.new()
-	var shadow_shader := load(SHADOW_SHADER_PATH) as Shader
-	if shadow_shader != null:
-		shadow_mat.shader = shadow_shader
-		shadow_mat.set_shader_parameter("strength", SHADOW_STRENGTH)
-	else:
-		push_warning("Schatten-Shader nicht gefunden: " + SHADOW_SHADER_PATH)
+	if SHADOW_STRENGTH > 0.0:
+		ground = PlaneMesh.new()
+		ground.size = Vector2(quad_size.x, quad_size.x) * SHADOW_SIZE
+		# Knapp ueber den Boden, sonst kaempfen Boden und Schatten um dieselbe Tiefe und es flackert.
+		ground.center_offset = Vector3(0, 0.35, 0)
+
+		var shadow_shader := load(SHADOW_SHADER_PATH) as Shader
+		if shadow_shader != null:
+			shadow_mat = ShaderMaterial.new()
+			shadow_mat.shader = shadow_shader
+			shadow_mat.set_shader_parameter("strength", SHADOW_STRENGTH)
+		else:
+			push_warning("Schatten-Shader nicht gefunden: " + SHADOW_SHADER_PATH)
+			ground = null
 
 	# Beides in EIN Mesh mit zwei Oberflaechen: Terrain3D uebernimmt pro LOD-Stufe nur ein Mesh.
 	# Jede Oberflaeche behaelt ihr eigenes Material, die Zufallsdrehung betrifft also nur den
@@ -314,7 +320,7 @@ func _assemble(old_root: Node, mesh: Mesh, casts: int, texture: Texture2D,
 	var combined := ArrayMesh.new()
 	combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, cross_arrays)
 	combined.surface_set_material(0, mat)
-	if shadow_shader != null:
+	if ground != null and shadow_mat != null:
 		combined.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, ground.get_mesh_arrays())
 		combined.surface_set_material(1, shadow_mat)
 

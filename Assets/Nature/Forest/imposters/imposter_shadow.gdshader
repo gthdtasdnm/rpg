@@ -15,7 +15,11 @@ shader_type spatial;
 // blend_mul = multiplizieren statt ueberlagern: die Bodentextur bleibt sichtbar und wird nur
 // dunkler. Ein halbtransparentes graues Rechteck wuerde die Farben stattdessen ausbleichen.
 
-render_mode blend_mul, unshaded, cull_disabled, depth_draw_never, shadows_disabled;
+// fog_disabled ist PFLICHT: Godot legt den Nebel auch auf transparente Flaechen, und bei
+// blend_mul wird die Nebelfarbe dann in den Hintergrund multipliziert. Die Flaeche ist dann
+// nicht mehr unsichtbar, sondern ein quadratischer Fleck, der mit der Nebeldichte staerker
+// wird - in der Ferne deutlich sichtbar als "eckiger Schatten" um jeden Baum.
+render_mode blend_mul, unshaded, cull_disabled, depth_draw_never, shadows_disabled, fog_disabled;
 
 // Wie dunkel in der Mitte. 0 = unsichtbar, 1 = schwarz.
 uniform float strength : hint_range(0.0, 1.0, 0.01) = 0.4;

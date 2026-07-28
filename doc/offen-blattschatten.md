@@ -1,6 +1,30 @@
-# Offenes Problem: Blattschatten reichen nicht weit genug
+# Blattschatten reichen nicht weit genug — GELÖST am 27.07.2026
 
-Stand: 27.07.2026, ungelöst. Übergabe an die nächste Sitzung.
+## 🔑 Die Ursache: `fade_margin` + Alpha-Clip = Godot-Fehler
+
+`fade_margin > 0` lässt Terrain3D `visibility_range_fade_mode = SELF` setzen. In Godot 4 zerstört
+das die Schatten von Materialien mit **Alpha Clip / Alpha Hash** — und genau das sind unsere
+Blattmaterialien (`transparency = 2`, `alpha_scissor_threshold`) und der Imposter-Shader
+(`ALPHA_SCISSOR_THRESHOLD`, `depth_prepass_alpha`).
+
+- [godot#91671 — Visibility Range „Fade Self" hides shadows unexpectedly in Depth Pre-Pass](https://github.com/godotengine/godot/issues/91671)
+- [godot#88854 — Visibility Range Fade does not work correctly with Alpha Clip and Alpha Hash Materials](https://github.com/godotengine/godot/issues/88854)
+
+`fade_margin` stand von Anfang an auf 5. **Deshalb** reichten die Blattschatten nur ~30 m,
+während die Stammschatten (Material ohne Alpha, also nicht betroffen) weiter reichten. Es war
+nie eine falsch eingestellte Distanz.
+
+**Workaround, der gilt: `fade_margin = 0` bei allen Baum-Assets.** Nicht wieder hochsetzen —
+A/B nachgewiesen: `fade_margin = 0` → durchgehender Schatten + hartes Popping,
+`fade_margin = 6` → weicher Übergang + Schattenlücke. Es gibt bei diesem Engine-Fehler kein
+Beides.
+
+**Offen bleibt nur noch:** ein weicher LOD-Übergang ohne Godots kaputte Fade-Funktion, siehe
+Abschnitt „Weicher Übergang" unten.
+
+---
+
+Stand vor der Lösung (Verlauf, zur Nachvollziehbarkeit):
 
 ## Das Problem (Beschreibung des Users, unverändert)
 
@@ -87,47 +111,32 @@ the visible mesh."* Damit wirft **immer** das Imposter-Kreuz den Schatten, auch 
 echten Bäume — ein einziger Schattenwerfer über die ganze Distanz, also kein Umschaltpunkt und
 keine Lücke. Preis: nah sieht man die Kreuz-Silhouette statt echter Blattschatten.
 
-## 🎯 Festgelegtes Ziel (nicht mehr zur Diskussion)
+## 🎯 Festgelegte Priorität: Popping schlägt Schatten
 
-> **0–30 m: echter Baum, echter Schatten. 30–600 m: Imposter-Kreuz, Imposter-Schatten.**
-> Keine Zwischen-LOD-Stufe, kein `shadow_impostor`, keine Ersatzschatten.
-
-Daraus folgt die feste Einstellung in allen 23 Baum-Assets (`World/world.tscn`):
+Nach zwei Tagen A/B-Tests hat der User entschieden: **wenn zwischen weichem Übergang und
+Schattenreichweite gewählt werden muss, gewinnt der weiche Übergang.** Daraus folgt die
+Einstellung in allen 23 Baum-Assets (`World/world.tscn`):
 
 ```
 last_lod = 1
-last_shadow_lod = 1     ; beide Stufen duerfen Schatten werfen
-lod0_range = 80.0       ; echter Baum
+last_shadow_lod = 0     ; NUR der echte Baum wirft Schatten, der Imposter nicht
+lod0_range = 140..160   ; echter Baum, pro Baumart leicht anders (CRC32 aus dem Namen)
 lod1_range = 600.0      ; Imposter
-                        ; fade_margin ENTFERNT (= 0)
+fade_margin = 40.0      ; langer Übergang, weit weg
 ```
-`shadow_impostor` ist **entfernt** (= 0): jede Stufe wirft ihren eigenen Schatten.
 `World/Environment.tscn`: `directional_shadow_max_distance = 200.0`.
 `project.godot`: `lights_and_shadows/directional_shadow/size=8192`.
 
-### Warum genau diese drei Zahlen (teuer erkauft, nicht ändern ohne Grund)
+Begründung der Werte:
 
-- **`fade_margin = 0`** — mit `fade_margin > 0` setzt Terrain3D `fade_mode = SELF` und laesst
-  beide Stufen im Randbereich **gleichzeitig** laufen (Dither-Ueberblendung). Bei aehnlichen
-  Meshes unsichtbar, bei „echter Baum vs. 4-Dreieck-Kreuz" sieht man beide uebereinander stehen.
-  Der Preis ist ein harter Wechsel, aber ein Doppelbild ist schlimmer.
-- **`lod0_range = 80`** — Terrain3D schaltet **pro 32-m-Zelle**, gemessen zur Mitte der Zell-AABB
-  (Godot: *„when the camera is closer to the center of the instance's AABB"*). Die halbe
-  Zelldiagonale ist ~23 m. Bei `lod0_range = 30` passiert der Wechsel real irgendwo zwischen 7
-  und 53 m — man steht neben einem Baum und sieht das Kreuz. **Der Umschaltpunkt muss deutlich
-  ueber ~50 m liegen**, sonst ist er Zufall.
-- **`size = 8192` + Distanz 200 statt 600** — Godot verteilt EINE Schattenkarte ueber die ganze
-  Distanz. Damit die echten Bäume bis 80 m ueberhaupt Blattschatten werfen, muss die Aufloesung
-  in den Nahbereich, nicht auf 600 m. Das ist auch die vermutete Ursache des alten
-  30-m-Raetsels: die Blattluecken fielen unter Texel-Groesse.
-
-Assets mit `last_lod = 0` (Steine, Stümpfe, Gras-Karte) bleiben unberührt — dort wäre
-`last_shadow_lod > last_lod` ungültig.
-
-Der Regler `ShadowTuner` (`scripts/World/ShadowTuner.cs`, Knoten in `world.tscn`) hat **nur noch
-einen Wert**: `Shadow Distance` → `directional_shadow_max_distance`. Die früheren vier Regler
-haben sich gegenseitig verschoben und waren dadurch unbrauchbar; die anderen drei Werte stehen
-jetzt fest in der Szene.
+- **`fade_margin = 40`** — langer Überblendbereich, damit das Popping verschwindet. Der
+  Godot-Fehler (ganz oben) verkürzt dafür die Blattschatten; das ist die bewusst akzeptierte
+  Gegenleistung. Terrain3D kappt `fade_margin` bei 64 m bzw. der halben LOD0–LOD1-Distanz.
+- **`lod0_range = 140…160`** — der Wechsel soll weit weg passieren, und die echten Bäume sollen
+  ihre Schatten so weit wie möglich mitnehmen. ⚠️ **Das ist der teuerste Wert im ganzen Wald**:
+  volle Meshes (5.000–26.000 Dreiecke, ~2.000 Instanzen) bis 150 m statt bis 80 m. Bei
+  FPS-Problemen ist das die erste Zahl, die runter geht.
+- **`last_shadow_lod = 0`** — Imposter-Schatten sind ausdrücklich nicht gewünscht.
 
 ## Wenn die Lücke bleibt: messen statt probieren
 
@@ -184,3 +193,20 @@ Gemessen mit dem Overlay (F3; F4 V-Sync, F5 Gras, F6 Bäume):
 gebündelte Büschel-Meshes statt einzelner Halme — weniger Instanzen bei gleicher Dichte.
 
 Außerdem offen: gelegentlicher Hänger von ~145 ms (`min 1 FPS` im Overlay).
+
+## Weicher Übergang — der einzige verbleibende Weg
+
+Godots eingebaute Überblendung ist für uns unbrauchbar (Fehler oben). Ein weicher Übergang geht
+nur noch selbst gebaut, und zwar so:
+
+1. Die Sichtbereiche der MMIs nach dem Aufbau durch Terrain3D **überlappend** setzen
+   (`visibility_range_begin/end` direkt am Knoten, `fade_mode = DISABLED`) — ein Script, das
+   den MMI-Baum durchläuft. Über die Terrain3D-Einstellungen geht es nicht: dort erzeugt nur
+   `fade_margin` eine Überlappung, und das schaltet zwangsläufig `SELF` mit ein.
+2. Das Ausblenden **in den eigenen Shadern** per Dither-Rauschen über die Kameradistanz. Der
+   Imposter-Shader hat den Zufallswert pro Baum bereits (`imposter.gdshader`) — damit wäre die
+   gewünschte Streuung *pro einzelnem Baum* möglich, die über Terrain3D-Einstellungen nicht geht.
+3. Dafür müssen die 23 Baum-Materialsätze (Rinde + Blatt, aktuell `StandardMaterial3D`) auf
+   Shader umgestellt werden, sonst lässt sich LOD0 nicht ausblenden.
+
+Aufwand: der teure Teil ist Punkt 3. Vorher abwägen, ob das Popping bei 70–90 m überhaupt stört.
