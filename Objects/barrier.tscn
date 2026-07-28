@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Shader" path="res://Objects/barrier.gdshader" id="1_barrier"]
+[ext_resource type="Script" path="res://Objects/barrier.gd" id="2_barrier"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_barrier"]
+shader = ExtResource("1_barrier")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_barrier"]
+top_radius = 1450.0
+bottom_radius = 1450.0
+height = 500.0
+radial_segments = 128
+rings = 16
+cap_top = false
+cap_bottom = false
+
+[node name="Barriere" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
+cast_shadow = 0
+gi_mode = 0
+mesh = SubResource("CylinderMesh_barrier")
+surface_material_override/0 = SubResource("ShaderMaterial_barrier")
+script = ExtResource("2_barrier")
