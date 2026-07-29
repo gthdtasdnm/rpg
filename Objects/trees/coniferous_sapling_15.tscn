@@ -55,4 +55,6 @@ _surfaces = [{
 [node name="Coniferous Sapling_15" type="Node3D" unique_id=2052370798]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=240129997]
+visibility_range_end = 155.0
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_pp2i8")

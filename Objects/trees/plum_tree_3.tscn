@@ -59,6 +59,7 @@ radius = 0.157137
 [node name="PlumTree_3" type="StaticBody3D" unique_id=772464240]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1921432876]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_flapd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=639317840]

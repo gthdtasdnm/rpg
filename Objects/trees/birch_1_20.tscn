@@ -56,6 +56,7 @@ radius = 0.19344729
 [node name="Birch1_20" type="StaticBody3D" unique_id=964805269]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1443812677]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_e0wu7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1842647694]

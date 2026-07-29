@@ -103,13 +103,35 @@ JUNG   = [T%n for n in ["deciduous_sapling_32","deciduous_sapling_2_33","conifer
 TOT    = [T%n for n in ["deciduous_dead_1_29"]]
 BUSCH  = [T%n for n in ["deciduous_shrub_27","deciduous_shrub_2_31","holly_shrub_4",
                         "raspberry_shrub_5","coniferous_shrub_16"]]
-FELS_L = [R%n for n in ["rock_16m_field","rock_09m_outcrop","rock_09m_scree","rock_09m_ridge","rock_17m_arch"]]
-FELS_M = [R%n for n in ["rock_08m_slab_flat","rock_06m_slabs_a","rock_06m_slabs_b",
-                        "rock_05m_wall","rock_05m_slab_mossy","rock_04m_block"]]
-FELS_S = [R%n for n in ["rock_02m_shard","rock_02m_slab_mossy","rock_01m_stone",
-                        "rock_01m_stone_mossy","rock_01m_pebbles"]]
+# Nur massige, geschlossene 3D-Brocken. Gemessen ueber Y/Grundflaeche und den Anteil
+# Vertices auf der Unterseite - flache Platten und Wandstuecke sind bewusst NICHT dabei
+# (rock_05m_wall, rock_08m_slab_flat, rock_06m_slabs_*, rock_09m_ridge/scree,
+#  rock_16m_field, rock_*_slab_mossy). Die haben keine Wucht und liegen offen auf.
+#
+# Die kleinen Steine haben 12000 Dreiecke auf 0,7 m - sie vertragen starke Skalierung
+# und sind deshalb die Hauptquelle fuer Findlinge.
+#   Eintrag: (Pfad, echte Laenge in m, min Skalierung, max Skalierung)
+BROCKEN = [
+    (R % "rock_01m_stone",        1.0,  4.0, 12.0),
+    (R % "rock_01m_stone_mossy",  0.7,  5.0, 15.0),
+    (R % "rock_01m_pebbles",      0.6,  6.0, 18.0),
+    (R % "rock_02m_shard",        1.8,  3.0,  9.0),
+    (R % "rock_04m_block",        3.9,  2.0,  5.5),
+]
+# Grosse Formationen, nur maessig skaliert - das sind Landmarken.
+FORMATION = [
+    (R % "rock_09m_outcrop",      9.5,  1.2,  3.0),
+    (R % "rock_17m_arch",        16.8,  0.8,  2.0),
+    (R % "rock_20m_arch",        20.5,  0.8,  1.8),
+]
 
 def pick(lst): return lst[rng.integers(len(lst))]
+
+def brocken(lst):
+    """Waehlt einen Fels und eine Skalierung; gibt (Pfad, Skalierung, Endgroesse m)."""
+    pfad, laenge, smin, smax = lst[rng.integers(len(lst))]
+    sk = float(rng.uniform(smin, smax))
+    return pfad, sk, laenge * sk
 
 # ---------------------------------------------------------------- Poisson-Ausduennung
 class Thinner:
@@ -133,6 +155,7 @@ sc = Scene()
 occ  = Thinner(6.0)   # Einzelobjekte
 occ_c = Thinner(40.0)  # Cluster-Mittelpunkte
 occ_l = Thinner(70.0)  # Landmarken
+occ_f = Thinner(30.0)  # Findlinge untereinander
 counts = {"fels":0, "baum":0, "busch":0}
 
 # --- Arbeitsgebiet: der bearbeitete Kessel
@@ -151,14 +174,16 @@ EXIST = json.load(open(SP+"/existing.json"))
 for ex, ez in EXIST:
     BLOCK |= ((WX-ex)**2 + (WZ-ez)**2) < 7.5**2
 
-# Meine Orte aus gen_orte.py - Radius nach Groesse des Ortes
-ORTE = [(-676,-917,22),(-364,-807,26),(-431,-787,34),(-605,-165,58),
-        (-592,-269,40),(-106,-399,48),(-862,-306,42),(-312,-626,32)]
+# Orte aus place_orte.py - Positionen und Radien kommen aus der JSON,
+# die dieses Skript dort schreibt. Erst place_orte.py laufen lassen.
+try:
+    ORTE = json.load(open(SP+"/orte_positions.json"))
+except FileNotFoundError:
+    ORTE = []
+    print("WARNUNG: orte_positions.json fehlt - erst place_orte.py ausfuehren")
 for ox, oz, orad in ORTE:
     BLOCK |= ((WX-ox)**2 + (WZ-oz)**2) < orad**2
 
-# Der Strassenkorridor gehoert immer dazu - auch wo das Gelaende noch flach
-# und unbemalt ist, sonst faellt die halbe Route durchs Raster.
 AREA = (AREA | (road_wide > 0.0015)) & ~BLOCK
 print("Ausschlusszonen: %.2f %% der Karte gesperrt" % (100*BLOCK.mean()))
 
@@ -195,20 +220,28 @@ for i in range(1, len(chain)):
     stellen += 1
     hgt = hq(px, pz)
 
-    if rng.random() < 0.45:
-        # Felsgruppe: 1 grosser + Begleiter
-        s0 = rng.uniform(1.0, 1.9)
-        sc.add(pick(FELS_L), "Rahmen_%d" % rahmen, px, hgt-rng.uniform(0.2,0.4)*6*s0, pz,
-               s0, rng.uniform(0,6.283), rng.normal(0,0.06), rng.normal(0,0.06), parent="Felsen")
-        rahmen += 1
-        for _ in range(int(rng.integers(5,11))):
-            a2 = rng.uniform(0,6.283); d2 = rng.uniform(4,13)
-            qx, qz = px+math.cos(a2)*d2, pz+math.sin(a2)*d2
-            if at(road_near, qx, qz) > 0.05: continue
-            sc.add(pick(FELS_M+FELS_S), "Rahmen_%d" % rahmen, qx,
-                   hq(qx,qz)-rng.uniform(0.15,0.35)*3, qz, rng.uniform(0.7,1.4),
-                   rng.uniform(0,6.283), rng.normal(0,0.12), rng.normal(0,0.12), parent="Felsen")
+    if rng.random() < 0.40:
+        # EIN wuchtiger Brocken am Wegrand, dazu hoechstens zwei kleinere.
+        # Am Weg zaehlt die Silhouette, nicht die Menge.
+        pfad, sk, gross = brocken(BROCKEN)
+        if occ_f.ok(px, pz, gross*0.9):
+            occ_f.put(px, pz, gross*0.9)
+            sc.add(pfad, "Rahmen_%d" % rahmen, px, hgt-rng.uniform(0.22,0.45)*gross, pz,
+                   sk, rng.uniform(0,6.283), rng.normal(0,0.05), rng.normal(0,0.05),
+                   parent="Felsen")
             rahmen += 1
+            for _ in range(int(rng.integers(1,3))):
+                a2 = rng.uniform(0,6.283); d2 = gross*rng.uniform(0.6,1.1)
+                qx, qz = px+math.cos(a2)*d2, pz+math.sin(a2)*d2
+                if at(road_near, qx, qz) > 0.02: continue
+                pfad2, sk2, gross2 = brocken(BROCKEN)
+                sk2 *= 0.4; gross2 *= 0.4
+                if gross2 < 2.5: continue
+                sc.add(pfad2, "Rahmen_%d" % rahmen, qx,
+                       hq(qx,qz)-rng.uniform(0.25,0.5)*gross2, qz, sk2,
+                       rng.uniform(0,6.283), rng.normal(0,0.09), rng.normal(0,0.09),
+                       parent="Felsen")
+                rahmen += 1
     else:
         pool = NADEL if hgt > 30 else (LAUB + BIRKE)
         gesetzt = 0
@@ -234,39 +267,57 @@ for i in range(1, len(chain)):
             rahmen += 1
 print("   Strassenrahmung: %d Objekte an %d Stellen" % (rahmen, stellen))
 
-# ---- 1) Geroell am Fuss der Felswaende ---------------------------------
-cand = AREA & (SLOPE > 12) & (SLOPE < 42) & (steep_near > 0.05) & (H > -0.2) & ~RIVERB
+# ---- 1) FINDLINGE - wenige, sehr grosse Brocken -------------------------
+# Keine Feinheiten: jeder gesetzte Stein soll Wucht haben und als Landmarke lesbar
+# sein. Deshalb grosse Mindestabstaende und Skalierungen von 3 bis 18.
+cand = AREA & (SLOPE < 40) & (H > -0.2) & ~RIVERB
 rr, cc = np.where(cand)
 order = rng.permutation(len(rr))
+
+# Stellen am Fuss von Felswaenden bevorzugen, aber auch freie Felder zulassen
 for k in order:
-    if counts["fels"] >= 2100: break
+    if counts["fels"] >= 340: break
     x, z = float(cc[k]-1024), float(rr[k]-1024)
     if at(road_near, x, z) > 0.001: continue
-    if not occ.ok(x, z, 5.5): continue
-    occ.put(x, z, 5.5)
-    # Gruppe: 1 grosser + 2-4 mittlere + 3-6 kleine
-    yaw = rng.uniform(0, 6.283)
-    s = rng.uniform(0.8, 1.5)
-    y = hq(x, z) - rng.uniform(0.20, 0.42) * 6.0 * s
-    sc.add(pick(FELS_L), "Fels_%d" % counts["fels"], x, y, z, s, yaw,
-           rng.normal(0, 0.07), rng.normal(0, 0.07), parent="Felsen")
+    am_hang = at(steep_near, x, z) > 0.04
+    # Auf freier Flaeche seltener setzen, damit es Findlinge bleiben und kein Feld
+    if not am_hang and rng.random() > 0.25: continue
+
+    # Grosse Formationen nur am Hang und selten
+    if am_hang and rng.random() < 0.12:
+        pfad, sk, gross = brocken(FORMATION)
+    else:
+        pfad, sk, gross = brocken(BROCKEN)
+
+    # Mindestabstand richtet sich nach der tatsaechlichen Groesse
+    platz = gross * 1.5 + 14.0
+    if not occ.ok(x, z, platz): continue
+    if not occ_f.ok(x, z, gross * 0.9): continue
+    occ.put(x, z, platz); occ_f.put(x, z, gross * 0.9)
+
+    # Tief einsenken - grosse Bloecke sitzen nie obenauf
+    einsenkung = rng.uniform(0.22, 0.45) * gross
+    sc.add(pfad, "Findling_%d" % counts["fels"], x, hq(x, z) - einsenkung, z,
+           sk, rng.uniform(0, 6.283), rng.normal(0, 0.05), rng.normal(0, 0.05),
+           parent="Felsen")
     counts["fels"] += 1
-    for _ in range(rng.integers(3, 8)):
-        a = rng.uniform(0, 6.283); d = rng.uniform(3, 15)
-        px, pz = x+math.cos(a)*d, z+math.sin(a)*d
-        if at(SLOPE, px, pz) > 55: continue
-        s2 = rng.uniform(0.6, 1.2)
-        sc.add(pick(FELS_M), "Fels_%d" % counts["fels"], px,
-               hq(px,pz) - rng.uniform(0.18,0.40)*3.0*s2, pz, s2,
-               rng.uniform(0,6.283), rng.normal(0,0.10), rng.normal(0,0.10), parent="Felsen")
-        counts["fels"] += 1
-    for _ in range(rng.integers(5, 13)):
-        a = rng.uniform(0, 6.283); d = rng.uniform(2, 19)
-        px, pz = x+math.cos(a)*d, z+math.sin(a)*d
-        s2 = rng.uniform(0.7, 1.6)
-        sc.add(pick(FELS_S), "Fels_%d" % counts["fels"], px,
-               hq(px,pz) - rng.uniform(0.10,0.30)*1.0*s2, pz, s2,
-               rng.uniform(0,6.283), rng.normal(0,0.16), rng.normal(0,0.16), parent="Felsen")
+
+    # 1-3 Begleiter, deutlich kleiner, angelehnt - eine Gruppe statt Einzelstueck
+    for _ in range(int(rng.integers(1, 4))):
+        a2 = rng.uniform(0, 6.283)
+        d2 = gross * rng.uniform(0.55, 1.05)
+        px, pz = x + math.cos(a2)*d2, z + math.sin(a2)*d2
+        if not (-1015 < px < 1015 and -1015 < pz < 1015): continue
+        if at(SLOPE, px, pz) > 52: continue
+        if at(road_near, px, pz) > 0.002: continue
+        pfad2, sk2, gross2 = brocken(BROCKEN)
+        sk2 *= 0.45          # Begleiter bleiben deutlich unter dem Hauptbrocken
+        gross2 *= 0.45
+        if gross2 < 2.5: continue
+        sc.add(pfad2, "Findling_%d" % counts["fels"], px,
+               hq(px, pz) - rng.uniform(0.25, 0.5)*gross2, pz, sk2,
+               rng.uniform(0, 6.283), rng.normal(0, 0.09), rng.normal(0, 0.09),
+               parent="Felsen")
         counts["fels"] += 1
 
 # ---- 2) Baumgruppen ----------------------------------------------------

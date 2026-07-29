@@ -52,6 +52,8 @@ data = PackedVector3Array(-3.6399999, -0.091, 2.1118, -3.6388, -0.0861, 2.0338, 
 [node name="rock_09m_outcrop" type="StaticBody3D" unique_id=114681831]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=2081650911]
+lod_bias = 0.25
+visibility_range_end = 175.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13634187, 0)
 mesh = SubResource("ArrayMesh_b8pyq")
 

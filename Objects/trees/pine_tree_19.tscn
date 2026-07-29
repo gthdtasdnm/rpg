@@ -59,6 +59,7 @@ radius = 0.23857489
 [node name="PineTree_19" type="StaticBody3D" unique_id=1531886604]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1828530053]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_elrte")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=284850955]

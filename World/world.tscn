@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cfixs4o0lhujq"]
 
 [ext_resource type="PackedScene" uid="uid://bg4m1wth7s0to" path="res://Assets/Nature/Forest/imposters/apple_tree_0.tscn" id="4_017rf"]
-[ext_resource type="Texture2D" uid="uid://bgr4ssn0iewtq" path="res://grass_noise.tres" id="4_g4xpi"]
 [ext_resource type="PackedScene" uid="uid://dovwjfvwttrqf" path="res://Assets/Nature/Forest/imposters/ash_tree_1.tscn" id="5_5aogk"]
 [ext_resource type="Shader" uid="uid://dr4u12dlx8jaj" path="res://World/terrain_shader.gdshader" id="5_6yf64"]
 [ext_resource type="PackedScene" uid="uid://cnfxdxr0p5erl" path="res://Assets/Nature/Forest/imposters/birch_1_20.tscn" id="6_njwhq"]
@@ -64,7 +63,7 @@
 [ext_resource type="Script" uid="uid://cf65l2rra8t8n" path="res://scripts/World/ShadowTuner.cs" id="61_shdtn"]
 [ext_resource type="PackedScene" uid="uid://c6idwpnuhitjg" path="res://Objects/trees/apple_tree_0.tscn" id="63_1ex6t"]
 [ext_resource type="PackedScene" uid="uid://cn50yey3inusa" path="res://World/player.tscn" id="64_32rkg"]
-[ext_resource type="PackedScene" path="res://Objects/barrier.tscn" id="65_a5wjk"]
+[ext_resource type="PackedScene" uid="uid://bkfkjx6msfa57" path="res://Objects/barrier.tscn" id="65_a5wjk"]
 [ext_resource type="PackedScene" uid="uid://chehqv2utpwcl" path="res://Assets/Buildings/MedievalVillage/Models/DoorFrame_Flat_WoodDark.gltf" id="66_h4nnu"]
 [ext_resource type="PackedScene" uid="uid://dh4xoimhk1vgj" path="res://Assets/Buildings/MedievalVillage/Models/DoorFrame_Flat_Brick.gltf" id="67_houwb"]
 [ext_resource type="PackedScene" uid="uid://c6uvap56i8qwu" path="res://Assets/Buildings/MedievalVillage/Models/Prop_MetalFence_Simple.gltf" id="68_o8btu"]
@@ -73,7 +72,7 @@
 [ext_resource type="PackedScene" uid="uid://bhf1kohbp3uxs" path="res://Objects/trees/deciduous_sapling_2_33.tscn" id="71_o8btu"]
 [ext_resource type="PackedScene" uid="uid://pfp85g82li4c" path="res://Objects/trees/raspberry_shrub_5.tscn" id="72_2j1j3"]
 [ext_resource type="PackedScene" uid="uid://e7jpsrwjd0i" path="res://Assets/Buildings/MedievalVillage/Models/Corner_ExteriorWide_Brick.gltf" id="73_2j1j3"]
-[ext_resource type="PackedScene" path="res://World/bewuchs.tscn" id="80_bewu"]
+[ext_resource type="PackedScene" uid="uid://bi3pjss17rgye" path="res://World/bewuchs.tscn" id="80_bewu"]
 [ext_resource type="PackedScene" path="res://World/orte.tscn" id="81_orte"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
@@ -102,11 +101,11 @@ func _ready():
 		
 "
 
-[sub_resource type="Gradient" id="Gradient_vr1m7"]
+[sub_resource type="Gradient" id="Gradient_ejvch"]
 offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_d8lcj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_x8ccd"]
 noise_type = 2
 frequency = 0.03
 cellular_jitter = 3.0
@@ -118,51 +117,50 @@ domain_warp_fractal_type = 2
 domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bov7h"]
-noise = SubResource("FastNoiseLite_d8lcj")
-color_ramp = SubResource("Gradient_vr1m7")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pekso"]
+noise = SubResource("FastNoiseLite_x8ccd")
+color_ramp = SubResource("Gradient_ejvch")
 seamless = true
 
 [sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_jrc01"]
 _shader_parameters = {
-"_mouse_layer": 2147483648,
-"auto_base_texture": 0,
-"auto_height_reduction": 0.05,
-"auto_overlay_texture": 1,
-"auto_slope": 0.45,
-"bias_distance": 512.0,
-"blend_sharpness": 0.5,
-"depth_blur": 0.0,
-&"dual_scale_far": null,
-&"dual_scale_near": null,
-&"dual_scale_reduction": null,
-&"dual_scale_texture": null,
-"enable_macro_variation": true,
-"enable_projection": true,
+&"auto_base_texture": 0,
+&"auto_height_reduction": 0.1,
+&"auto_overlay_texture": 1,
+&"auto_slope": 1.0,
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.5,
+&"depth_blur": 0.0,
+&"dual_scale_far": 170.0,
+&"dual_scale_near": 100.0,
+&"dual_scale_reduction": 0.3,
+&"dual_scale_texture": 0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
 &"flat_terrain_normals": false,
-&"grass_clod_max": null,
-&"grass_clod_min": null,
+&"grass_clod_max": 0.8,
+&"grass_clod_min": 0.2,
 &"grass_darken_enabled": true,
-&"grass_darken_strength": 0.32999999262384,
+&"grass_darken_strength": 0.3,
 &"grass_darkening": null,
-&"grass_id_max": null,
-&"grass_id_min": null,
-&"grass_noise": ExtResource("4_g4xpi"),
-&"grass_noise_scale": 0.0,
-&"grass_patch_max": null,
-&"grass_patch_min": null,
-&"grass_slope_min": null,
-"macro_variation1": Color(0.855, 0.8625, 0.9, 1),
-"macro_variation2": Color(0.9, 0.885, 0.81, 1),
-"macro_variation_slope": 0.333,
-"mipmap_bias": 1.0,
-"noise1_angle": 0.1,
-"noise1_offset": Vector2(0.5, 0.5),
-"noise1_scale": 0.04,
-"noise2_scale": 0.076,
-"noise_texture": SubResource("NoiseTexture2D_bov7h"),
-"projection_threshold": 0.87,
-&"tri_scale_reduction": null
+&"grass_id_max": 20,
+&"grass_id_min": 2,
+&"grass_noise": null,
+&"grass_noise_scale": 0.01,
+&"grass_patch_max": 0.2,
+&"grass_patch_min": 0.025,
+&"grass_slope_min": 0.87,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise_texture": SubResource("NoiseTexture2D_pekso"),
+&"projection_threshold": 0.8,
+&"tri_scale_reduction": 0.3
 }
 auto_shader = true
 dual_scaling = true
@@ -1093,9 +1091,6 @@ transform = Transform3D(0.80454475, 0, 0.5938921, 0, 1, 0, -0.5938921, 0, 0.8045
 [node name="big_long_rock" parent="Welt/rocks_umgebung" unique_id=606580266 instance=ExtResource("51_4giqt")]
 transform = Transform3D(-0.378288, 0, 0.92568797, 0, 1, 0, -0.92568797, 0, -0.378288, -712.87683, 0.2146785, -815.7766)
 
-[node name="beach_rocks2" parent="Welt/rocks_umgebung" unique_id=489140509 instance=ExtResource("50_o2cvn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -694.21594, 0.37018389, -822.4924)
-
 [node name="big_flat_beach_rock" parent="Welt/rocks_umgebung" unique_id=864863346 instance=ExtResource("52_8iv6r")]
 transform = Transform3D(4.385758, 0, 0, 0, 4.385758, 0, 0, 0, 4.385758, -704.64465, -13.412979, -796.696)
 
@@ -1148,8 +1143,12 @@ transform = Transform3D(-6.0211077, 0, -6.0642595, 0, 8.5457, 0, 6.0642595, 0, -
 
 [node name="anfang" type="Node3D" parent="Welt" unique_id=1693919156]
 
+[node name="CSGBox3D" parent="Welt" unique_id=222407700 instance=ExtResource("9_qjfgf")]
+transform = Transform3D(8.915136, 0, 0, 0, 8.915136, 0, 0, 0, 8.915136, -707.4933, 1.4712975, -818.57874)
+size = Vector3(2.1293945, 1.2163086, 1)
+
 [node name="Environment" parent="." unique_id=812691920 instance=ExtResource("10_k4w7v")]
-time_of_day = 14.5
+time_of_day = 12.0
 dawn_light_color = Color(1, 0.45270926, 0.6161947, 1)
 fog_day = Color(0.6, 0.7, 0.8, 1)
 fog_dawn = Color(0.9, 0.52, 0.38, 1)
@@ -1175,7 +1174,7 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -694.80695, -1.8666744,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -698.08746, -1.9939103, -861.0423)
 
 [node name="Barriere" parent="." unique_id=770862745 instance=ExtResource("65_a5wjk")]
-transform = Transform3D(0.36994365, 0, 0.0064573903, 0, 0.37, 0, -0.0064573903, 0, 0.36994365, -491.86243, 70.35065, -513.7287)
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -510.15857, 70.35065, -513.7287)
 
 [node name="DoorFrame_Flat_WoodDark2" parent="." unique_id=1149063375 instance=ExtResource("66_h4nnu")]
 transform = Transform3D(7.400299, 0, 2.3813965, 0, 4.6035037, 0, -4.4732, 0, 3.9396951, -684.9298, -4.648111, -959.7953)
@@ -1228,6 +1227,6 @@ transform = Transform3D(-0.85536426, 7.477832e-08, 0.51802695, -8.742278e-08, -1
 [node name="Corner_ExteriorWide_Brick3" parent="." unique_id=853452503 instance=ExtResource("73_2j1j3")]
 transform = Transform3D(-0.5408796, 0, 0.84109986, 0, 1, 0, -0.84110004, 0, -0.5408795, -692.5992, -0.7801192, -960.2165)
 
-[node name="Bewuchs" parent="." instance=ExtResource("80_bewu")]
+[node name="Bewuchs" parent="." unique_id=1417839915 instance=ExtResource("80_bewu")]
 
-[node name="Orte" parent="." instance=ExtResource("81_orte")]
+[node name="Orte" parent="." unique_id=457434217 instance=ExtResource("81_orte")]

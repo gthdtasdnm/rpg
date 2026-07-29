@@ -59,6 +59,7 @@ radius = 0.4437815
 [node name="FirTree_17" type="StaticBody3D" unique_id=547663399]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=879563352]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_eu27a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1861153240]

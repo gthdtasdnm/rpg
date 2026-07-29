@@ -59,6 +59,7 @@ radius = 0.1935629
 [node name="DeciduousDead1_29" type="StaticBody3D" unique_id=827319001]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=400072380]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_ky1v3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1864567751]

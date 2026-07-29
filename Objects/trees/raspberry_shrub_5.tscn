@@ -56,6 +56,8 @@ radius = 1.0881045
 [node name="RaspberryShrub_5" type="StaticBody3D" unique_id=573294101]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1967712550]
+visibility_range_end = 155.0
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_8fnk5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1176635105]

@@ -56,6 +56,7 @@ radius = 0.15
 [node name="CherryTree_2" type="StaticBody3D" unique_id=833979251]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=5980546]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_38sab")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1710940282]

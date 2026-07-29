@@ -59,6 +59,8 @@ radius = 1.8054067
 [node name="ConiferousShrub_16" type="StaticBody3D" unique_id=1315732907]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1109047345]
+visibility_range_end = 155.0
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_anc16")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1617098193]

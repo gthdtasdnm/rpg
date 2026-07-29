@@ -59,6 +59,7 @@ radius = 0.386165
 [node name="Oak_25" type="StaticBody3D" unique_id=409068849]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1257477552]
+visibility_range_end = 165.0
 mesh = SubResource("ArrayMesh_dff0x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=872855335]

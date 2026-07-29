@@ -48,6 +48,8 @@ points = PackedVector3Array(-0.25351897, 0.040254757, 0.051515695, 0.076351695, 
 [node name="rock_02m_shard" type="StaticBody3D" unique_id=770122006]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=2026878606]
+lod_bias = 0.25
+visibility_range_end = 175.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0011538359, 0)
 mesh = SubResource("ArrayMesh_ejivo")
 

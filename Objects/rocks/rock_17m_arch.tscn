@@ -56,6 +56,8 @@ data = PackedVector3Array(6.9631, 7.6071, -0.75799996, 7.1847, 7.6257997, -0.628
 [node name="rock_17m_arch" type="StaticBody3D" unique_id=1095524472]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1810483443]
+lod_bias = 0.25
+visibility_range_end = 175.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011997554, 0)
 mesh = SubResource("ArrayMesh_hgn3q")
 

@@ -59,6 +59,8 @@ radius = 1.3685486
 [node name="DeciduousShrub2_31" type="StaticBody3D" unique_id=1472811404]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1539480421]
+visibility_range_end = 155.0
+cast_shadow = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8273497, 0)
 mesh = SubResource("ArrayMesh_wn7c7")
 

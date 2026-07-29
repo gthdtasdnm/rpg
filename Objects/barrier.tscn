@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene format=3 uid="uid://bkfkjx6msfa57"]
 
-[ext_resource type="Shader" path="res://Objects/barrier.gdshader" id="1_barrier"]
-[ext_resource type="Script" path="res://Objects/barrier.gd" id="2_barrier"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_barrier"]
-shader = ExtResource("1_barrier")
+[ext_resource type="Shader" uid="uid://dmnfpfkyced8g" path="res://Objects/barrier.gdshader" id="1_barrier"]
+[ext_resource type="Script" uid="uid://b0yq8u1j8bgcl" path="res://Objects/barrier.gd" id="2_barrier"]
+[ext_resource type="Texture2D" uid="uid://bhk07vd6e5agu" path="res://Objects/barriere/kreuz.png" id="3_kreuz"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_barrier"]
 top_radius = 1450.0
@@ -15,7 +13,69 @@ rings = 16
 cap_top = false
 cap_bottom = false
 
-[node name="Barriere" type="MeshInstance3D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_barrier"]
+render_priority = 0
+shader = ExtResource("1_barrier")
+shader_parameter/haze_color = Color(0.3, 0.52, 0.95, 1)
+shader_parameter/cross_color = Color(0.72, 0.88, 1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/base_haze = 0.08
+shader_parameter/flip_v = true
+shader_parameter/big_columns = 28.0
+shader_parameter/big_rows = 2.0
+shader_parameter/big_row_offset = 0.5
+shader_parameter/big_band_center = 0.74
+shader_parameter/big_band_width = 0.42
+shader_parameter/big_cell_aspect = 1.0
+shader_parameter/big_fill = 0.85
+shader_parameter/big_core = 2.4
+shader_parameter/big_glow = 1.1
+shader_parameter/big_glow_lod = 4.0
+shader_parameter/big_curve = 0.055
+shader_parameter/big_curve_freq = 5.0
+shader_parameter/big_bob = 0.045
+shader_parameter/big_bob_speed = 0.35
+shader_parameter/small_columns = 260.0
+shader_parameter/small_rows = 26.0
+shader_parameter/small_row_offset = 0.5
+shader_parameter/small_cell_aspect = 1.0
+shader_parameter/small_fill = 0.8
+shader_parameter/small_core = 2.8
+shader_parameter/small_glow = 0.9
+shader_parameter/small_glow_lod = 3.0
+shader_parameter/small_curve = 0.04
+shader_parameter/small_bob = 0.03
+shader_parameter/small_bob_speed = 1.4
+shader_parameter/player_position = Vector3(0, 0, 0)
+shader_parameter/react_radius = 90.0
+shader_parameter/react_distance = 160.0
+shader_parameter/react_pulse_speed = 2.5
+shader_parameter/react_pulse_amount = 0.25
+shader_parameter/react_haze_boost = 0.8
+shader_parameter/scroll_speed = 0.02
+shader_parameter/noise_scale = 6.0
+shader_parameter/noise_amount = 0.35
+shader_parameter/flicker_speed = 1.1
+shader_parameter/aurora_enabled = true
+shader_parameter/aurora_color = Color(0.647782, 0.99032634, 0.88209903, 1)
+shader_parameter/aurora_tip_color = Color(0.8537991, 0.8548902, 0.99478465, 1)
+shader_parameter/aurora_strength = 2.4499999452376002
+shader_parameter/aurora_base = 0.51999998837696
+shader_parameter/aurora_height = 0.37999999150624997
+shader_parameter/aurora_falloff = 2.80000003427276
+shader_parameter/aurora_streaks = 487.0
+shader_parameter/aurora_wave = 0.3499999921768
+shader_parameter/aurora_speed = 0.08499999810008
+shader_parameter/aurora_thickness = 1.99999995715866
+shader_parameter/aurora_fill = 0.999999977648
+shader_parameter/fresnel_power = 2.0
+shader_parameter/fresnel_amount = 1.2
+shader_parameter/fade_bottom = 0.1
+shader_parameter/fade_top = 0.3
+shader_parameter/soft_depth = 40.0
+shader_parameter/cross_tex = ExtResource("3_kreuz")
+
+[node name="Barriere" type="MeshInstance3D" unique_id=77452938]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 200, 0)
 cast_shadow = 0
 gi_mode = 0

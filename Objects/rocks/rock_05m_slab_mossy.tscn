@@ -57,6 +57,8 @@ data = PackedVector3Array(-0.90849996, 0.3559, 1.7035999, -0.8359, 0.2775, 1.942
 [node name="rock_05m_slab_mossy" type="StaticBody3D" unique_id=183924601]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=1324844109]
+lod_bias = 0.25
+visibility_range_end = 175.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18395923, 0)
 mesh = SubResource("ArrayMesh_51s71")
 

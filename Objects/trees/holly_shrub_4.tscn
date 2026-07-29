@@ -59,6 +59,8 @@ radius = 1.7723408
 [node name="HollyShrub_4" type="StaticBody3D" unique_id=1058679204]
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=824541430]
+visibility_range_end = 155.0
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_sdtws")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2127031354]
