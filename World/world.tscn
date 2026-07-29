@@ -74,7 +74,9 @@
 [ext_resource type="PackedScene" uid="uid://e7jpsrwjd0i" path="res://Assets/Buildings/MedievalVillage/Models/Corner_ExteriorWide_Brick.gltf" id="73_2j1j3"]
 [ext_resource type="PackedScene" uid="uid://bi3pjss17rgye" path="res://World/bewuchs.tscn" id="80_bewu"]
 [ext_resource type="PackedScene" path="res://World/orte.tscn" id="81_orte"]
-[ext_resource type="PackedScene" path="res://World/flaechen.tscn" id="82_flae"]
+[ext_resource type="PackedScene" uid="uid://d17e3olqjq1l4" path="res://World/flaechen.tscn" id="82_flae"]
+[ext_resource type="ArrayMesh" path="res://World/grass_tuft_mesh.tres" id="83_gmesh"]
+[ext_resource type="Material" path="res://World/grass_card_material.tres" id="84_gmat"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -637,12 +639,17 @@ metadata/_edit_lock_ = true
 
 [node name="Terrain3DParticles" parent="Terrain3D" unique_id=167918773 node_paths=PackedStringArray("terrain") instance=ExtResource("7_wjw5m")]
 terrain = NodePath("..")
-cell_width = 48.0
-rows = 192
-amount = 36864
+instance_spacing = 0.5
+cell_width = 47.0
+grid_width = 7
+rows = 94
+amount = 8836
+process_fixed_fps = 38
 trail_push = 1.0
-min_draw_distance = 120.0
-particle_count = 921600
+mesh = ExtResource("83_gmesh")
+mesh_material_override = ExtResource("84_gmat")
+min_draw_distance = 164.5
+particle_count = 432964
 
 [node name="Jägerhütte" parent="Terrain3D" unique_id=291779436 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(9.648061, 0, 0, 0, 9.648061, 0, 0, 0, 9.648061, -663.51575, 2.1233609, -846.2697)
@@ -1232,4 +1239,4 @@ transform = Transform3D(-0.5408796, 0, 0.84109986, 0, 1, 0, -0.84110004, 0, -0.5
 
 [node name="Orte" parent="." unique_id=457434217 instance=ExtResource("81_orte")]
 
-[node name="Flaechen" parent="." instance=ExtResource("82_flae")]
+[node name="Flaechen" parent="." unique_id=836420499 instance=ExtResource("82_flae")]

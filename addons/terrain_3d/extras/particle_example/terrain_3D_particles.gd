@@ -16,12 +16,18 @@ extends Node3D
 		_create_grid()
 
 
-## Distance between instances
-@export_range(0.125, 2.0, 0.015625) var instance_spacing: float = 0.5:
+## Rasterweite zwischen den Instanzen. Bestimmt die PARTIKELZAHL
+## (amount = (cell_width / instance_spacing)^2) - der Regler fuer die Leistung.
+## Zum Ausduennen der Optik NICHT hier drehen, sondern "dichte" im Prozess-Material:
+## ein grobes Raster sieht man als Reihen, weil die Streuung nur ein Vielfaches der
+## Rasterweite ist.
+@export_range(0.125, 4.0, 0.015625) var instance_spacing: float = 0.5:
 	set(value):
-		instance_spacing = clamp(round(value * 64.0) * 0.015625, 0.125, 2.0)
+		instance_spacing = clamp(round(value * 64.0) * 0.015625, 0.125, 4.0)
 		rows = maxi(int(cell_width / instance_spacing), 1)
 		amount = rows * rows
+		_aktualisiere_aabb()
+		_sync_raster()
 		_set_offsets()
 
 
@@ -32,16 +38,8 @@ extends Node3D
 		rows = maxi(int(cell_width / instance_spacing), 1)
 		amount = rows * rows
 		min_draw_distance = 1.0
-		# Have to update aabb
-		if terrain and terrain.data:
-			var height_range: Vector2 = terrain.data.get_height_range()
-			var height: float = height_range[0] - height_range[1]
-			var aabb: AABB = AABB()
-			aabb.size = Vector3(cell_width, height, cell_width)
-			aabb.position = aabb.size * -0.5
-			aabb.position.y = height_range[1]
-			for p in particle_nodes:
-				p.custom_aabb = aabb
+		_aktualisiere_aabb()
+		_sync_raster()
 		_set_offsets()
 
 
@@ -156,6 +154,37 @@ func _ready() -> void:
 			player = found
 	_init_trail()
 	_create_grid()
+	# Beim Laden der Szene laufen die Setter, bevor Terrain-Daten und Partikelknoten
+	# bereitstehen. Hier nochmal, mit echten Werten.
+	_aktualisiere_aabb()
+	_sync_raster()
+	# Beim Wiedereinblenden muss das Raster neu geschrieben werden - solange der Knoten
+	# unsichtbar war, hat er das Material nicht angefasst (siehe _physics_process).
+	if not visibility_changed.is_connected(_sync_raster):
+		visibility_changed.connect(_sync_raster)
+	_pruefe_geteiltes_material()
+
+
+## Das Prozess-Material traegt das Raster EINES Knotens (instance_amount, instance_rows,
+## instance_spacing). Zwei aktive Terrain3DParticles mit derselben Material-Ressource
+## ueberschreiben sich deshalb gegenseitig jeden Frame - der Verlierer legt seine
+## Partikel in ein fremdes Raster und malt statt einer Zelle nur einen Streifen davon.
+## Das ist stundenlang als "Dichte laesst sich nicht einstellen" missverstanden worden,
+## deshalb hier eine Warnung statt eines stillen Fehlers.
+func _pruefe_geteiltes_material() -> void:
+	if not process_material:
+		return
+	var wurzel: Node = get_tree().get_current_scene() if get_tree() else null
+	if not wurzel:
+		return
+	for anderer in wurzel.find_children("*", "Node3D", true, false):
+		if anderer == self or anderer.get_script() != get_script():
+			continue
+		if anderer.process_material == process_material and anderer.is_visible_in_tree():
+			push_warning("Terrain3DParticles: %s und %s teilen sich dasselbe " %
+					[get_path(), anderer.get_path()] +
+					"process_material. Das Raster beider Knoten kollidiert - " +
+					"eine Kopie des Materials zuweisen oder einen Knoten entfernen.")
 
 
 func _init_trail() -> void:
@@ -179,6 +208,11 @@ func _notification(what: int) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	# Unsichtbar heisst hier auch "haende weg vom Prozess-Material": ein ausgeblendeter
+	# Knoten hat sonst weiter sein Raster hineingeschrieben und damit das Gras eines
+	# ANDEREN Knotens zerlegt, ohne selbst etwas zu zeichnen.
+	if not is_visible_in_tree():
+		return
 	if terrain:
 		var camera: Camera3D = terrain.get_camera()
 		if camera:
@@ -227,12 +261,9 @@ func _create_grid() -> void:
 		return
 	set_physics_process(true)
 	_set_offsets()
-	var hr: Vector2 = terrain.data.get_height_range()
-	var height: float = hr.x - hr.y
-	var aabb: AABB = AABB()
-	aabb.size = Vector3(cell_width, height, cell_width)
-	aabb.position = aabb.size * -0.5
-	aabb.position.y = hr.y
+	# Gleiche Berechnung wie oben - stand hier urspruenglich ein zweites Mal mit
+	# demselben Vorzeichenfehler.
+	var aabb: AABB = _berechne_aabb()
 	var half_grid: int = grid_width / 2
 	# Iterating the array like this allows identifying grid position, in case setting
 	# different mesh or materials is desired for LODs etc.
@@ -263,17 +294,93 @@ func _create_grid() -> void:
 	last_pos = Vector3.ZERO
 
 
+## Sichtbarkeitskoerper je Zelle. Muss die volle Gelaendehoehe umfassen, sonst
+## verwirft Godot ganze Zellen und es entstehen Streifen.
+##
+## Die urspruengliche Fassung rechnete height_range[0] - height_range[1]. Da
+## get_height_range() (min, max) liefert, war das NEGATIV, und der Ursprung lag
+## zusaetzlich am oberen Rand statt am unteren - heraus kam ein entarteter Koerper
+## der Hoehe 0.
+## Schreibt das Partikelraster SOFORT ins Prozess-Material.
+##
+## Der Prozess-Shader legt die Instanzen als vec3(INDEX % instance_rows, 0,
+## INDEX / instance_rows) an. Das ergibt nur dann ein Quadrat, wenn
+## instance_rows == rows == cell_width / instance_spacing gilt.
+##
+## Vorher wurde das nur in _physics_process nachgezogen, waehrend im .tres ein
+## alter Wert gespeichert blieb - beim Aendern der Dichte entstanden dadurch
+## rechteckige Raster und damit leere Streifen. Jetzt haengt es direkt am Regler
+## und wird mitgespeichert.
+func _sync_raster() -> void:
+	# Partikelzahl gehoert dem Knoten, das Raster dem (moeglicherweise geteilten)
+	# Material - deshalb erst die Knoten, und ins Material nur, wenn wir auch zeichnen.
+	for p in particle_nodes:
+		p.amount = amount
+	if not process_material or not is_visible_in_tree():
+		return
+	process_material.set_shader_parameter("instance_amount", amount)
+	process_material.set_shader_parameter("instance_rows", rows)
+	process_material.set_shader_parameter("instance_spacing", instance_spacing)
+	var rid: RID = process_material.get_rid()
+	if rid.is_valid():
+		RenderingServer.material_set_param(rid, "instance_amount", amount)
+		RenderingServer.material_set_param(rid, "instance_rows", rows)
+		RenderingServer.material_set_param(rid, "instance_spacing", instance_spacing)
+	# Die Partikel legen ihre Position beim Entstehen fest - ohne Neustart
+	# behalten sie das alte Raster.
+	for p in particle_nodes:
+		p.amount = amount
+		p.restart(true)
+	# Zellen sofort neu ausrichten. _position_grid laeuft sonst erst, wenn sich die
+	# Kamera um mehr als einen Meter bewegt hat - bis dahin stehen die Zellen noch
+	# im alten Abstand und es klaffen Luecken.
+	last_pos = Vector3(1e9, 1e9, 1e9)
+	if terrain:
+		var kamera: Camera3D = terrain.get_camera()
+		if kamera:
+			_position_grid(kamera.global_position.snapped(Vector3.ONE))
+
+
+func _berechne_aabb() -> AABB:
+	var unten: float = -50.0
+	var hoehe: float = 400.0
+	if terrain and terrain.data:
+		var hr: Vector2 = terrain.data.get_height_range()
+		var lo: float = minf(hr.x, hr.y)
+		var hi: float = maxf(hr.x, hr.y)
+		if hi - lo > 1.0:
+			unten = lo - 5.0
+			hoehe = (hi - lo) + 10.0      # Rand fuer Grashoehe und Windauslenkung
+	# Rand fuer die Streuung: random_spacing = 1.0 schiebt einen Partikel bis zu einer
+	# vollen Rasterweite aus seiner Zelle heraus. Ohne den Rand verschwindet die
+	# Zelle am Bildrand, waehrend ihre aeussersten Bueschel noch sichtbar waeren.
+	var zugabe: float = instance_spacing
+	var breite: float = cell_width + zugabe * 2.0
+	var aabb: AABB = AABB()
+	aabb.size = Vector3(breite, hoehe, breite)
+	aabb.position = Vector3(-breite * 0.5, unten, -breite * 0.5)
+	return aabb
+
+
+func _aktualisiere_aabb() -> void:
+	var aabb: AABB = _berechne_aabb()
+	for p in particle_nodes:
+		p.custom_aabb = aabb
+
+
 func _set_offsets() -> void:
+	# Der Zellabstand MUSS exakt der Flaeche entsprechen, die eine Zelle bemalt.
+	# Der Prozess-Shader legt sqrt(instance_amount) Reihen an - also muss hier
+	# dieselbe Zahl stehen. Vorher stand hier "rows", das ist eine zweite,
+	# getrennt gepflegte Groesse: lief sie auseinander, rueckten die Zellen weiter
+	# auseinander als sie malten, und es entstanden leere Stellen dazwischen.
+	var reihen: int = maxi(int(round(sqrt(float(amount)))), 1)
+	var schritt: float = float(reihen) * instance_spacing
 	var half_grid: int = grid_width / 2
 	offsets.clear()
 	for x in range(-half_grid, half_grid + 1):
 		for z in range(-half_grid, half_grid + 1):
-			var offset := Vector3(
-				float(x * rows) * instance_spacing,
-				0.0,
-				float(z * rows) * instance_spacing
-			)
-			offsets.append(offset)
+			offsets.append(Vector3(float(x) * schritt, 0.0, float(z) * schritt))
 
 
 func _destroy_grid() -> void:
@@ -308,5 +415,6 @@ func _update_process_parameters() -> void:
 			RenderingServer.material_set_param(process_rid, "_control_maps", terrain.data.get_control_maps_rid())
 			RenderingServer.material_set_param(process_rid, "_color_maps", terrain.data.get_color_maps_rid())
 			RenderingServer.material_set_param(process_rid, "instance_spacing", instance_spacing)
+			RenderingServer.material_set_param(process_rid, "instance_amount", amount)
 			RenderingServer.material_set_param(process_rid, "instance_rows", rows)
 			RenderingServer.material_set_param(process_rid, "max_dist", min_draw_distance)

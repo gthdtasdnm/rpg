@@ -16,6 +16,13 @@ uniform bool align_to_normal = true;
 uniform float normal_strength : hint_range(0.01, 1.0, 0.01) = 0.3;
 uniform bool random_rotation = true;
 uniform float random_spacing : hint_range(0.0, 1.0, 0.01) = 0.5;
+// Anteil der Rasterpunkte, auf denen ueberhaupt etwas steht (1.0 = alle).
+// Zum Ausduennen IMMER diesen Regler nehmen, nicht instance_spacing: das Raster
+// bleibt fein und unregelmaessig, es fallen nur zufaellige Punkte weg. Ueber
+// instance_spacing ausgeduennt wird stattdessen das Raster grob, und man sieht
+// Reihen. (Spart keine GPU-Zeit - der Partikel wird trotzdem verarbeitet, nur
+// nicht gezeichnet. Fuer echte Ersparnis instance_spacing erhoehen.)
+uniform float dichte : hint_range(0.05, 1.0, 0.01) = 1.0;
 uniform vec3 min_scale = vec3(1.0);
 uniform vec3 max_scale = vec3(1.0);
 
@@ -41,7 +48,12 @@ uniform float distance_fade_ammount : hint_range(0.0, 1.0, 0.01) = 0.5;
 group_uniforms private;
 uniform float max_dist = 1.;
 uniform vec3 camera_position = vec3(0.);
-uniform uint instance_rows = 1;
+// Anzahl der Partikel je Zelle. Die Reihenzahl wird daraus GERECHNET, nicht
+// getrennt uebergeben - so koennen Raster und Partikelzahl nicht mehr
+// auseinanderlaufen. Genau das erzeugte vorher leere Streifen: stand
+// instance_rows nicht auf sqrt(amount), wurde aus dem Quadrat ein Rechteck.
+uniform uint instance_amount = 1u;
+uniform uint instance_rows = 1;   // nur noch Rueckfall, falls amount fehlt
 uniform float instance_spacing = 0.5;
 uniform uint _background_mode = 0u;
 uniform float _vertex_spacing = 1.0;
@@ -114,7 +126,9 @@ mat3 align_to_vector(vec3 normal) {
 
 void start() {
 	// Create centered a grid
-	vec3 pos = vec3(float(INDEX % instance_rows), 0.0, float(INDEX / instance_rows)) - float(instance_rows >> 1u);
+	uint reihen = uint(max(round(sqrt(float(instance_amount))), 1.0));
+	if (instance_amount <= 1u) { reihen = max(instance_rows, 1u); }
+	vec3 pos = vec3(float(INDEX % reihen), 0.0, float(INDEX / reihen)) - float(reihen >> 1u);
 
 	// Apply spcaing
 	pos *= instance_spacing;
@@ -212,6 +226,13 @@ void start() {
 	// For compatibility it seems we must shift as well.
 	// Surface slope filtering
 	if (surface_slope_min > w_normal.y + (r.y - 0.5) * condition_dither_range) {
+		pos.y = 0. / 0.;
+		pos.xz = vec2(100000.0);
+	}
+
+	// Ausduennen. Eigener Zufallswert - r.x/y/z haengen an Drehung und Groesse,
+	// daran gekoppelt wuerden bevorzugt die kleinen (oder die gedrehten) verschwinden.
+	if (dichte < 1.0 && fract(random(pos.zx * 1.7) + seed) > dichte) {
 		pos.y = 0. / 0.;
 		pos.xz = vec2(100000.0);
 	}

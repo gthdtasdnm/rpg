@@ -7659,17 +7659,6 @@ collision_mask = 3
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="Terrain3DParticles" parent="Terrain3D" unique_id=1116155989 node_paths=PackedStringArray("terrain") instance=ExtResource("79_8pwle")]
-visible = false
-terrain = NodePath("..")
-cell_width = 48.0
-rows = 192
-amount = 36864
-trail_push = 1.0
-mesh = SubResource("RibbonTrailMesh_sjefn")
-min_draw_distance = 120.0
-particle_count = 921600
-
 [node name="Jägerhütte" parent="Terrain3D" unique_id=291779436 instance=ExtResource("80_bum5r")]
 transform = Transform3D(9.648061, 0, 0, 0, 9.648061, 0, 0, 0, 9.648061, -663.51575, 2.1233609, -846.2697)
 size = Vector3(1, 0.6645508, 0.50683594)
