@@ -13,6 +13,13 @@ group_uniforms textur;
 // 2x2-Atlas mit vier Bueschel-Varianten.
 uniform sampler2D gras_atlas : source_color, filter_linear_mipmap, repeat_disable;
 uniform float alpha_schwelle : hint_range(0.05, 0.9, 0.01) = 0.35;
+// Ein paar Pixel Rand um jedes Atlasfeld, oben und an den Seiten. Zwei Gruende:
+// Feld 2 hat ab Zeile 3 abgeschnittene Halmspitzen stehen, und beim Verkleinern
+// mischen die Mipmaps ueber die Kachelgrenze - die dichte Wurzelzone des Feldes
+// DARUEBER landet dann als Streifen auf der Oberkante. Unten wird nicht
+// beschnitten, da sitzen die Wurzeln.
+uniform float atlas_rand : hint_range(0.0, 16.0, 1.0) = 3.0;
+uniform float atlas_groesse = 1024.0;
 // Groesse einer Karte in Metern (Breite, Hoehe) vor der Instanz-Skalierung.
 uniform vec2 karten_groesse = vec2(1.10, 0.90);
 // Obergrenze der Instanz-Skalierung. Der Prozess-Shader addiert fuer "Clods"
@@ -217,7 +224,11 @@ void vertex() {
 	vec2 feld_uv = vec2(mod(feld, 2.0), floor(feld * 0.5)) * 0.5;
 	vec2 lokal = UV;
 	if (hash12(wurzel.zx * 5.11 + UV2.x) > 0.5) { lokal.x = 1.0 - lokal.x; }
-	atlas_uv = feld_uv + lokal * 0.5;
+	// UV.y = 0 ist die Kartenspitze, also die OBERE Kante des Feldes - dort der Rand,
+	// unten bleibt das Feld bis zur Kante erhalten.
+	float rd = atlas_rand / max(atlas_groesse, 1.0);
+	atlas_uv = feld_uv + vec2(lokal.x * (0.5 - 2.0 * rd) + rd,
+							  lokal.y * (0.5 - rd) + rd);
 	hoehe = 1.0 - UV.y;
 
 	// --- Feste Ausrichtung, KEIN Billboard ---
