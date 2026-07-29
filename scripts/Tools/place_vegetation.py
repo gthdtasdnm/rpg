@@ -92,6 +92,24 @@ class Scene:
             f.write("".join(head) + "\n".join(self.body))
         print("geschrieben: %s  (%d Knoten)" % (out_path, len(self.body)))
 
+
+# --- Barrieren-Grenze: nichts ausserhalb der Weltgrenze platzieren -----------
+# Radius und Mitte kommen aus dem Barriere-Knoten in world.tscn, damit sie
+# automatisch stimmen, wenn die Barriere verschoben oder skaliert wird.
+def barriere_grenze(zugabe=10.0):
+    import re as _re, math as _m
+    _s = open(PROJ + "/World/world.tscn", encoding="utf-8", errors="surrogateescape").read()
+    _m2 = _re.search(r'\[node name="Barriere"[^\]]*\]\ntransform = Transform3D\(([^)]*)\)', _s)
+    if _m2 is None:
+        print("WARNUNG: kein Barriere-Knoten gefunden - keine Grenze aktiv")
+        return None
+    _v = [float(x) for x in _m2.group(1).split(",")]
+    _r = 1450.0 * _m.hypot(_v[0], _v[2]) + zugabe
+    print("Barrieren-Grenze: Mitte (%.0f, %.0f), Radius %.0f m" % (_v[9], _v[11], _r))
+    return (_v[9], _v[11], _r)
+
+BARRIERE = barriere_grenze()
+
 # ---------------------------------------------------------------- Kataloge
 T = "Objects/trees/%s.tscn"
 R = "Objects/rocks/%s.tscn"
@@ -185,6 +203,9 @@ for ox, oz, orad in ORTE:
     BLOCK |= ((WX-ox)**2 + (WZ-oz)**2) < orad**2
 
 AREA = (AREA | (road_wide > 0.0015)) & ~BLOCK
+if BARRIERE is not None:
+    _bx, _bz, _br = BARRIERE
+    AREA = AREA & (((WX - _bx)**2 + (WZ - _bz)**2) <= _br*_br)
 print("Ausschlusszonen: %.2f %% der Karte gesperrt" % (100*BLOCK.mean()))
 
 # ---- 2b) Strassenrahmung: Gruppen im WECHSEL links/rechts ---------------

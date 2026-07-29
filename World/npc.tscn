@@ -1,6 +1,6 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://06y03ggtxbcd"]
 
-[ext_resource type="Script" path="res://scripts/Characters/Npc.cs" id="1_npc"]
+[ext_resource type="Script" uid="uid://c7s088p463ggq" path="res://scripts/Characters/Npc.cs" id="1_npc"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_npc"]
 radius = 0.4
@@ -17,22 +17,22 @@ height = 1.8
 [sub_resource type="SphereShape3D" id="SphereShape3D_greet"]
 radius = 6.0
 
-[node name="Npc" type="StaticBody3D"]
+[node name="Npc" type="StaticBody3D" unique_id=1498464521]
 script = ExtResource("1_npc")
 
-[node name="Body" type="MeshInstance3D" parent="."]
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1885793574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 mesh = SubResource("CapsuleMesh_npc")
 surface_material_override/0 = SubResource("Material_npc")
 
-[node name="Collision" type="CollisionShape3D" parent="."]
+[node name="Collision" type="CollisionShape3D" parent="." unique_id=1583006962]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CapsuleShape3D_npc")
 
-[node name="GreetArea" type="Area3D" parent="."]
-monitorable = false
+[node name="GreetArea" type="Area3D" parent="." unique_id=320452760]
 monitoring = false
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GreetArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GreetArea" unique_id=2025935026]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("SphereShape3D_greet")

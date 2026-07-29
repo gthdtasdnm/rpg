@@ -46,6 +46,24 @@ d_neth = np.hypot(WX-NETH[0], WZ-NETH[1])
 tm = touch > 0.5
 CX, CZ = float(WX[tm].mean()), float(WZ[tm].mean())
 
+
+# --- Barrieren-Grenze: nichts ausserhalb der Weltgrenze platzieren -----------
+# Radius und Mitte kommen aus dem Barriere-Knoten in world.tscn, damit sie
+# automatisch stimmen, wenn die Barriere verschoben oder skaliert wird.
+def barriere_grenze(zugabe=10.0):
+    import re as _re, math as _m
+    _s = open(PROJ + "/World/world.tscn", encoding="utf-8", errors="surrogateescape").read()
+    _m2 = _re.search(r'\[node name="Barriere"[^\]]*\]\ntransform = Transform3D\(([^)]*)\)', _s)
+    if _m2 is None:
+        print("WARNUNG: kein Barriere-Knoten gefunden - keine Grenze aktiv")
+        return None
+    _v = [float(x) for x in _m2.group(1).split(",")]
+    _r = 1450.0 * _m.hypot(_v[0], _v[2]) + zugabe
+    print("Barrieren-Grenze: Mitte (%.0f, %.0f), Radius %.0f m" % (_v[9], _v[11], _r))
+    return (_v[9], _v[11], _r)
+
+BARRIERE = barriere_grenze()
+
 out = ['[node name="Orte" type="Node3D"]\n']
 belegt = []
 EXPORT = []   # (x, z, Freihalteradius) fuer place_vegetation.py
@@ -89,6 +107,9 @@ GESPERRT = (np.hypot(WX-START[0], WZ-START[1]) < 150) \
          | ((WX > -720) & (WX < -510) & (WZ > -700) & (WZ < -440))
 
 BASIS = (touch > 0.55) & (~ROAD) & (~RIVERB) & (H > 0.1) & (~GESPERRT)
+if BARRIERE is not None:
+    _bx, _bz, _br = BARRIERE
+    BASIS = BASIS & (((WX - _bx)**2 + (WZ - _bz)**2) <= _br*_br)
 
 # =============================================================== feste Orte
 gruppe("Lore_Orte")

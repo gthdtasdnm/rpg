@@ -42,14 +42,6 @@ size = Vector3(4.0, 6.0, 4.0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -575, 84.84, -500)
 size = Vector3(34.0, 20.0, 34.0)
 
-[node name="Tempel_1" type="CSGBox3D" parent="Erbauer_Pentagramm"]
-transform = Transform3D(-0.99, 0, 0.16, 0, 1, 0, -0.16, 0, -0.99, -166, 9.13, 56)
-size = Vector3(34.0, 22.0, 34.0)
-
-[node name="Tempel_2" type="CSGBox3D" parent="Erbauer_Pentagramm"]
-transform = Transform3D(-0.37, 0, 0.93, 0, 1, 0, -0.93, 0, -0.37, -740, 9.67, 91)
-size = Vector3(34.0, 22.0, 34.0)
-
 [node name="Tempel_3" type="CSGBox3D" parent="Erbauer_Pentagramm"]
 transform = Transform3D(0.4, 0, 0.92, 0, 1, 0, -0.92, 0, 0.4, -852, 9.17, -386)
 size = Vector3(34.0, 22.0, 34.0)
@@ -78,121 +70,9 @@ size = Vector3(3.5, 5.5, 3.5)
 
 [node name="Ruinen" type="Node3D" parent="."]
 
-[node name="Ruine_1" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.99, 0, -0.15, 0, 1, 0, 0.15, 0, -0.99, -516, 5.92, 212)
-size = Vector3(16.4, 9.6, 17.0)
-
-[node name="Ruine_2" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.29, 0, 0.96, 0, 1, 0, -0.96, 0, -0.29, -588, 2.87, 406)
-size = Vector3(12.3, 8.6, 12.5)
-
-[node name="Ruine_3" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.71, 0, 0.7, 0, 1, 0, -0.7, 0, 0.71, -15, 3.12, 87)
-size = Vector3(10.9, 9.2, 17.3)
-
-[node name="Ruine_4" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.15, 0, -0.99, 0, 1, 0, 0.99, 0, 0.15, -269, 4.82, 121)
-size = Vector3(14.3, 8.8, 16.9)
-
-[node name="Ruine_5" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.36, 0, -0.93, 0, 1, 0, 0.93, 0, -0.36, -836, 3.98, 265)
-size = Vector3(12.6, 7.8, 12.3)
-
-[node name="Ruine_6" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.55, 0, -0.83, 0, 1, 0, 0.83, 0, 0.55, -950, 2.7, 363)
-size = Vector3(12.5, 7.1, 12.1)
-
-[node name="Ruine_7" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.96, 0, 0.29, 0, 1, 0, -0.29, 0, -0.96, 154, 3.4, -374)
-size = Vector3(18.4, 7.1, 15.0)
-
-[node name="Ruine_8" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.99, 0, 0.11, 0, 1, 0, -0.11, 0, 0.99, -961, 1.76, 516)
-size = Vector3(15.5, 5.1, 12.3)
-
-[node name="Ruine_9" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.53, 0, -0.85, 0, 1, 0, 0.85, 0, -0.53, -339, 2.55, 228)
-size = Vector3(14.8, 7.4, 16.7)
-
-[node name="Ruine_10" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.53, 0, -0.85, 0, 1, 0, 0.85, 0, -0.53, 152, 3.83, -527)
-size = Vector3(17.1, 7.3, 11.8)
-
-[node name="Ruine_11" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.85, 0, -0.52, 0, 1, 0, 0.52, 0, -0.85, 130, 3.75, -647)
-size = Vector3(19.0, 7.0, 13.1)
-
-[node name="Ruine_12" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.49, 0, 0.87, 0, 1, 0, -0.87, 0, -0.49, -659, 2.76, 502)
-size = Vector3(13.4, 4.2, 17.5)
-
-[node name="Ruine_13" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.55, 0, 0.84, 0, 1, 0, -0.84, 0, -0.55, -732, 3.49, 410)
-size = Vector3(11.6, 9.6, 16.6)
-
-[node name="Ruine_14" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.25, 0, 0.97, 0, 1, 0, -0.97, 0, 0.25, -722, 3.2, 269)
-size = Vector3(15.8, 5.3, 15.6)
-
-[node name="Ruine_15" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.99, 0, -0.11, 0, 1, 0, 0.11, 0, 0.99, -620, 3.93, 162)
-size = Vector3(14.9, 7.6, 16.6)
-
-[node name="Ruine_16" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.98, 0, 0.19, 0, 1, 0, -0.19, 0, -0.98, -534, 2.31, 314)
-size = Vector3(18.1, 6.4, 11.7)
-
-[node name="Ruine_17" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.25, 0, -0.97, 0, 1, 0, 0.97, 0, 0.25, -835, 2.95, 502)
-size = Vector3(19.0, 4.5, 11.4)
-
-[node name="Ruine_18" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.23, 0, 0.97, 0, 1, 0, -0.97, 0, -0.23, 88, 4.26, -271)
-size = Vector3(13.8, 8.6, 12.0)
-
-[node name="Ruine_19" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.69, 0, 0.73, 0, 1, 0, -0.73, 0, -0.69, -469, 2.32, 399)
-size = Vector3(15.1, 6.5, 16.6)
-
-[node name="Ruine_20" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.96, 0, 0.29, 0, 1, 0, -0.29, 0, -0.96, 130, 3.44, -757)
-size = Vector3(16.4, 9.3, 10.9)
-
-[node name="Ruine_21" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(1, 0, 0.04, 0, 1, 0, -0.04, 0, 1, -928, 3.74, 202)
-size = Vector3(14.7, 7.0, 15.0)
-
-[node name="Ruine_22" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.94, 0, -0.33, 0, 1, 0, 0.33, 0, -0.94, -104, 1.67, 41)
-size = Vector3(17.3, 4.8, 12.9)
-
-[node name="Ruine_23" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.4, 0, 0.92, 0, 1, 0, -0.92, 0, -0.4, 59, 2.57, -166)
-size = Vector3(11.9, 5.4, 14.7)
-
-[node name="Ruine_24" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.79, 0, 0.62, 0, 1, 0, -0.62, 0, -0.79, -534, 1.56, 492)
-size = Vector3(11.8, 4.2, 9.8)
-
 [node name="Ruine_25" type="CSGBox3D" parent="Ruinen"]
 transform = Transform3D(0.64, 0, 0.77, 0, 1, 0, -0.77, 0, 0.64, -472, 2.53, -693)
 size = Vector3(16.7, 4.4, 12.3)
-
-[node name="Ruine_26" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(-0.97, 0, 0.25, 0, 1, 0, -0.25, 0, -0.97, -433, 1.62, 281)
-size = Vector3(12.1, 4.5, 12.4)
-
-[node name="Ruine_27" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.97, 0, 0.25, 0, 1, 0, -0.25, 0, 0.97, -853, 2.36, 388)
-size = Vector3(19.4, 6.7, 10.1)
-
-[node name="Ruine_28" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.87, 0, 0.49, 0, 1, 0, -0.49, 0, 0.87, -473, 3.72, 121)
-size = Vector3(11.1, 6.9, 15.7)
-
-[node name="Ruine_29" type="CSGBox3D" parent="Ruinen"]
-transform = Transform3D(0.9, 0, -0.44, 0, 1, 0, 0.44, 0, 0.9, -941, 2.26, -994)
-size = Vector3(19.6, 6.7, 15.5)
 
 [node name="Ruine_30" type="CSGBox3D" parent="Ruinen"]
 transform = Transform3D(0.97, 0, -0.26, 0, 1, 0, 0.26, 0, 0.97, -226, 2.61, -291)
@@ -220,10 +100,6 @@ size = Vector3(11.0, 8.0, 9.0)
 transform = Transform3D(0.88, 0, -0.47, 0, 1, 0, 0.47, 0, 0.88, -944, 43.66, -636)
 size = Vector3(11.0, 8.0, 9.0)
 
-[node name="Hoehle_6" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(0.6, 0, -0.8, 0, 1, 0, 0.8, 0, 0.6, -557, 4.47, 111)
-size = Vector3(11.0, 8.0, 9.0)
-
 [node name="Hoehle_7" type="CSGBox3D" parent="Hoehlen"]
 transform = Transform3D(0.8, 0, 0.6, 0, 1, 0, -0.6, 0, 0.8, -207, 36.92, -407)
 size = Vector3(11.0, 8.0, 9.0)
@@ -248,18 +124,6 @@ size = Vector3(11.0, 8.0, 9.0)
 transform = Transform3D(-0.98, 0, -0.2, 0, 1, 0, 0.2, 0, -0.98, -715, 2.95, -440)
 size = Vector3(11.0, 8.0, 9.0)
 
-[node name="Hoehle_13" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(0.69, 0, -0.72, 0, 1, 0, 0.72, 0, 0.69, 28, 19.66, -532)
-size = Vector3(11.0, 8.0, 9.0)
-
-[node name="Hoehle_14" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(0.23, 0, 0.97, 0, 1, 0, -0.97, 0, 0.23, -903, 6.38, -71)
-size = Vector3(11.0, 8.0, 9.0)
-
-[node name="Hoehle_15" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(-0.24, 0, 0.97, 0, 1, 0, -0.97, 0, -0.24, -259, 5.78, 64)
-size = Vector3(11.0, 8.0, 9.0)
-
 [node name="Hoehle_16" type="CSGBox3D" parent="Hoehlen"]
 transform = Transform3D(-0.99, 0, 0.16, 0, 1, 0, -0.16, 0, -0.99, -489, 3.02, -316)
 size = Vector3(11.0, 8.0, 9.0)
@@ -272,14 +136,6 @@ size = Vector3(11.0, 8.0, 9.0)
 transform = Transform3D(-0.57, 0, 0.82, 0, 1, 0, -0.82, 0, -0.57, -736, 2.7, -640)
 size = Vector3(11.0, 8.0, 9.0)
 
-[node name="Hoehle_19" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(0.8, 0, -0.59, 0, 1, 0, 0.59, 0, 0.8, -68, 18.62, -792)
-size = Vector3(11.0, 8.0, 9.0)
-
-[node name="Hoehle_20" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(1, 0, 0.02, 0, 1, 0, -0.02, 0, 1, -96, 19.53, -882)
-size = Vector3(11.0, 8.0, 9.0)
-
 [node name="Hoehle_21" type="CSGBox3D" parent="Hoehlen"]
 transform = Transform3D(0.84, 0, -0.54, 0, 1, 0, 0.54, 0, 0.84, -510, 3.13, -625)
 size = Vector3(11.0, 8.0, 9.0)
@@ -288,114 +144,14 @@ size = Vector3(11.0, 8.0, 9.0)
 transform = Transform3D(0.54, 0, -0.84, 0, 1, 0, 0.84, 0, 0.54, -863, 3.47, -681)
 size = Vector3(11.0, 8.0, 9.0)
 
-[node name="Hoehle_23" type="CSGBox3D" parent="Hoehlen"]
-transform = Transform3D(0.35, 0, -0.94, 0, 1, 0, 0.94, 0, 0.35, -770, 3.83, 32)
-size = Vector3(11.0, 8.0, 9.0)
-
 [node name="Hoehle_24" type="CSGBox3D" parent="Hoehlen"]
 transform = Transform3D(-0.89, 0, -0.45, 0, 1, 0, 0.45, 0, -0.89, -401, 3.07, -834)
 size = Vector3(11.0, 8.0, 9.0)
 
 [node name="Lagerplaetze" type="Node3D" parent="."]
 
-[node name="Lager_1" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.68, 0, -0.74, 0, 1, 0, 0.74, 0, -0.68, -875, 3.67, 166)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_2" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.49, 0, -0.87, 0, 1, 0, 0.87, 0, 0.49, 95, 2.78, -408)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_3" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.64, 0, 0.77, 0, 1, 0, -0.77, 0, 0.64, -673, 2.69, 311)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_4" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.99, 0, -0.13, 0, 1, 0, 0.13, 0, -0.99, -770, 2.78, 253)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_5" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.25, 0, 0.97, 0, 1, 0, -0.97, 0, -0.25, -970, 2.77, 397)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_6" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.89, 0, -0.45, 0, 1, 0, 0.45, 0, -0.89, -713, 2.66, 514)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_7" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.55, 0, 0.84, 0, 1, 0, -0.84, 0, 0.55, -696, 3.79, 211)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_8" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.54, 0, -0.84, 0, 1, 0, 0.84, 0, 0.54, -804, 2.31, 426)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_9" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.96, 0, -0.28, 0, 1, 0, 0.28, 0, 0.96, 94, 2.78, -510)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_10" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(1, 0, -0.02, 0, 1, 0, 0.02, 0, 1, -603, 3.63, 231)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_11" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.71, 0, -0.71, 0, 1, 0, 0.71, 0, 0.71, -382, 4.28, 149)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_12" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.7, 0, 0.72, 0, 1, 0, -0.72, 0, -0.7, -835, 2.61, 85)
-size = Vector3(12.0, 4.0, 12.0)
-
 [node name="Lager_13" type="CSGBox3D" parent="Lagerplaetze"]
 transform = Transform3D(0.68, 0, 0.74, 0, 1, 0, -0.74, 0, 0.68, -413, 5.45, -706)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_14" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.31, 0, -0.95, 0, 1, 0, 0.95, 0, -0.31, -568, 1.49, 504)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_15" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.31, 0, 0.95, 0, 1, 0, -0.95, 0, -0.31, 179, 1.85, -477)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_16" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.27, 0, -0.96, 0, 1, 0, 0.96, 0, -0.27, 70, 2.81, -675)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_17" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.51, 0, -0.86, 0, 1, 0, 0.86, 0, -0.51, 40, 2.41, -839)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_18" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.54, 0, 0.84, 0, 1, 0, -0.84, 0, -0.54, -985, 2.78, 185)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_19" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(1, 0, 0.06, 0, 1, 0, -0.06, 0, 1, -939, 1.72, 267)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_20" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(-0.3, 0, 0.95, 0, 1, 0, -0.95, 0, -0.3, 102, 2.78, -594)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_21" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.09, 0, 1, 0, 1, 0, -1, 0, 0.09, 178, 1.41, -632)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_22" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.47, 0, 0.88, 0, 1, 0, -0.88, 0, 0.47, -572, 1.41, 326)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_23" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.2, 0, 0.98, 0, 1, 0, -0.98, 0, 0.2, -399, 1.79, 256)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_24" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.76, 0, -0.66, 0, 1, 0, 0.66, 0, 0.76, -474, 1.63, 293)
-size = Vector3(12.0, 4.0, 12.0)
-
-[node name="Lager_25" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(1, 0, 0.05, 0, 1, 0, -0.05, 0, 1, -902, 2.78, 454)
 size = Vector3(12.0, 4.0, 12.0)
 
 [node name="Lager_26" type="CSGBox3D" parent="Lagerplaetze"]
@@ -414,10 +170,6 @@ size = Vector3(12.0, 4.0, 12.0)
 transform = Transform3D(-0.68, 0, 0.74, 0, 1, 0, -0.74, 0, -0.68, -845, 1.97, -595)
 size = Vector3(12.0, 4.0, 12.0)
 
-[node name="Lager_30" type="CSGBox3D" parent="Lagerplaetze"]
-transform = Transform3D(0.25, 0, -0.97, 0, 1, 0, 0.97, 0, 0.25, -52, 1.4, -15)
-size = Vector3(12.0, 4.0, 12.0)
-
 [node name="Wachtuerme" type="Node3D" parent="."]
 
 [node name="Turm_1" type="CSGBox3D" parent="Wachtuerme"]
@@ -430,14 +182,6 @@ size = Vector3(7.0, 16.0, 7.0)
 
 [node name="Turm_3" type="CSGBox3D" parent="Wachtuerme"]
 transform = Transform3D(0.96, 0, 0.29, 0, 1, 0, -0.29, 0, 0.96, -866, 34.2, -157)
-size = Vector3(7.0, 16.0, 7.0)
-
-[node name="Turm_4" type="CSGBox3D" parent="Wachtuerme"]
-transform = Transform3D(-0.05, 0, -1, 0, 1, 0, 1, 0, -0.05, 22, 28.9, -611)
-size = Vector3(7.0, 16.0, 7.0)
-
-[node name="Turm_5" type="CSGBox3D" parent="Wachtuerme"]
-transform = Transform3D(-0.28, 0, 0.96, 0, 1, 0, -0.96, 0, -0.28, 26, 24.92, -338)
 size = Vector3(7.0, 16.0, 7.0)
 
 [node name="Turm_6" type="CSGBox3D" parent="Wachtuerme"]
@@ -472,19 +216,7 @@ size = Vector3(8.0, 3.0, 22.0)
 transform = Transform3D(-0.63, 0, -0.77, 0, 1, 0, 0.77, 0, -0.63, -176, 3.78, -740)
 size = Vector3(8.0, 3.0, 22.0)
 
-[node name="Furt_5" type="CSGBox3D" parent="Furten"]
-transform = Transform3D(-0.72, 0, 0.69, 0, 1, 0, -0.69, 0, -0.72, -994, -1.04, 25)
-size = Vector3(8.0, 3.0, 22.0)
-
-[node name="Furt_6" type="CSGBox3D" parent="Furten"]
-transform = Transform3D(-0.16, 0, 0.99, 0, 1, 0, -0.99, 0, -0.16, -1, -1.04, -977)
-size = Vector3(8.0, 3.0, 22.0)
-
 [node name="Kultplaetze" type="Node3D" parent="."]
-
-[node name="Steinkreis_1" type="CSGBox3D" parent="Kultplaetze"]
-transform = Transform3D(-0.94, 0, -0.35, 0, 1, 0, 0.35, 0, -0.94, 60, 2.78, -757)
-size = Vector3(18.0, 4.0, 18.0)
 
 [node name="Steinkreis_2" type="CSGBox3D" parent="Kultplaetze"]
 transform = Transform3D(-0.96, 0, -0.3, 0, 1, 0, 0.3, 0, -0.96, -281, 2.55, -436)
