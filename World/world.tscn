@@ -75,8 +75,8 @@
 [ext_resource type="PackedScene" uid="uid://bi3pjss17rgye" path="res://World/bewuchs.tscn" id="80_bewu"]
 [ext_resource type="PackedScene" path="res://World/orte.tscn" id="81_orte"]
 [ext_resource type="PackedScene" uid="uid://d17e3olqjq1l4" path="res://World/flaechen.tscn" id="82_flae"]
-[ext_resource type="ArrayMesh" path="res://World/grass_tuft_mesh.tres" id="83_gmesh"]
-[ext_resource type="Material" path="res://World/grass_card_material.tres" id="84_gmat"]
+[ext_resource type="ArrayMesh" uid="uid://ca5a3xo4a5ams" path="res://World/grass_tuft_mesh.tres" id="83_gmesh"]
+[ext_resource type="Material" uid="uid://dr1ik08heffwd" path="res://World/grass_card_material.tres" id="84_gmat"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -1156,7 +1156,7 @@ transform = Transform3D(8.915136, 0, 0, 0, 8.915136, 0, 0, 0, 8.915136, -707.493
 size = Vector3(2.1293945, 1.2163086, 1)
 
 [node name="Environment" parent="." unique_id=812691920 instance=ExtResource("10_k4w7v")]
-time_of_day = 12.0
+time_of_day = 17.25
 dawn_light_color = Color(1, 0.45270926, 0.6161947, 1)
 fog_day = Color(0.6, 0.7, 0.8, 1)
 fog_dawn = Color(0.9, 0.52, 0.38, 1)

@@ -1,20 +1,53 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dr1ik08heffwd"]
 
-[ext_resource type="Shader" path="res://World/grass_card.gdshader" id="1_gcs"]
-[ext_resource type="Texture2D" path="res://Assets/Nature/Grass/gras_atlas.png" id="2_gat"]
+[ext_resource type="Shader" uid="uid://b7vfh0fc66pfe" path="res://World/grass_card.gdshader" id="1_gcs"]
+[ext_resource type="Texture2D" uid="uid://co6f4floc0gfw" path="res://Assets/Nature/Grass/gras_atlas.png" id="2_gat"]
 [ext_resource type="Texture2D" path="res://World/sorten_noise.tres" id="3_sorten"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_gcs")
 shader_parameter/gras_atlas = ExtResource("2_gat")
+shader_parameter/alpha_schwelle = 0.35
+shader_parameter/karten_groesse = Vector2(1.1, 0.9)
+shader_parameter/sk_bereich = Vector2(0.75, 1.35)
+shader_parameter/wachstum_schwelle = Vector2(0, 0.02)
+shader_parameter/wurzel_versatz = 0.45
+shader_parameter/wachstum_referenz = 0.75
+shader_parameter/wachstum_hoehe = Vector2(0.7, 1.9)
+shader_parameter/hoehe_streuung = 0.25
+shader_parameter/hoehe_in_breite = 0.35
 shader_parameter/sorten_karte = ExtResource("3_sorten")
 shader_parameter/sorten_scale = 0.004
+shader_parameter/sorten_versatz = Vector2(0, 0)
+shader_parameter/sorten_aus_kanaelen = false
 shader_parameter/sorten_kontrast = 0.5
 shader_parameter/sorten_gewicht = Vector4(1, 1, 1, 1)
 shader_parameter/sorten_dichte = Vector4(1, 1, 1, 1)
 shader_parameter/sorten_hoehe = Vector4(1, 1, 1, 1)
 shader_parameter/sorten_breite = Vector4(1, 1, 1, 1)
+shader_parameter/neigung = 0.3
+shader_parameter/neigung_von_oben = 0.45
+shader_parameter/blickwinkel_bereich = Vector2(0.4, 0.9)
+shader_parameter/bodenkarte = true
+shader_parameter/bodenkarte_index = 3.0
+shader_parameter/boden_hoehe = 0.05
+shader_parameter/boden_laenge = 1.15
+shader_parameter/boden_feld = -1.0
 shader_parameter/wind_direction = Vector2(1, 1)
+shader_parameter/wind_fade_start = 45.0
+shader_parameter/wind_fade_end = 90.0
+shader_parameter/trail_max_distance = 14.0
+shader_parameter/thin_start = 28.0
+shader_parameter/thin_end = 95.0
+shader_parameter/thin_rest = 0.22
+shader_parameter/thin_groesser = 1.7
+shader_parameter/gras_farbe = Color(0.42, 0.52, 0.22, 1)
+shader_parameter/base_ao = 0.55
+shader_parameter/base_ao_height = 0.55
+shader_parameter/normale_aufrecht = 0.75
+shader_parameter/trail_positions = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/trail_dirs = PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/trail_strength = PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/trail_radius = 0.9
 shader_parameter/trail_push = 1.0

@@ -32,6 +32,23 @@ uniform vec2 wachstum_schwelle = vec2(0.0, 0.02);
 // mit Fusspunkt unten wuerde dadurch schweben.
 uniform float wurzel_versatz : hint_range(0.0, 1.5, 0.01) = 0.45;
 
+group_uniforms groesse;
+// Der Prozess-Shader legt je Instanz einen Wachstumswert ab (CUSTOM[3] =
+// (Grundhoehe + Clods) * patch). Die "Clods" sind grossflaechige Nester aus dem
+// main_noise - beim Halmgras waren genau das die Stellen mit hohem Gras. Der Wert
+// diente hier bisher nur als Schalter "waechst hier ueberhaupt was", die Hoehe war
+// fest. Damit war jede Flaeche gleich hoch.
+// Wachstumswert, der der normalen Kartenhoehe entspricht. Der Prozess-Shader liefert
+// ueblicherweise 0.5 bis 0.5 + clod_scale_boost.
+uniform float wachstum_referenz : hint_range(0.1, 3.0, 0.05) = 0.75;
+// Untere/obere Grenze des Hoehenfaktors. y hoch = auffaellige Hochgras-Inseln.
+uniform vec2 wachstum_hoehe = vec2(0.7, 1.9);
+// Streuung von Bueschel zu Bueschel, unabhaengig von der Flaeche.
+uniform float hoehe_streuung : hint_range(0.0, 0.8, 0.01) = 0.25;
+// Wieviel der Hoehenaenderung auch in die Breite geht. 0 = hohes Gras wird zum
+// schmalen Streifen, 1 = es waechst gleichmaessig in alle Richtungen.
+uniform float hoehe_in_breite : hint_range(0.0, 1.0, 0.01) = 0.35;
+
 group_uniforms sorten;
 // Welche Grasart wo waechst. Der Atlas enthaelt VIER Sorten (Feld 0..3), frueher hat
 // sich jedes Bueschel aus allen vieren zusammengesetzt - ein Feld je Plane. Deshalb
@@ -180,6 +197,18 @@ void vertex() {
 	// Sortenabhaengige Dichte und Groesse.
 	sk *= hash12(wurzel.zx * 4.41) <= dot(maske, sorten_dichte) ? 1.0 : 0.0;
 	vec2 kg = karten_groesse * vec2(dot(maske, sorten_breite), dot(maske, sorten_hoehe));
+
+	// --- Hoehenvariation ---
+	// Flaechig aus dem Wachstumswert (Clod-Nester des Prozess-Shaders) und dazu eine
+	// Streuung je Bueschel, damit auch innerhalb einer Flaeche nicht alles gleich
+	// hoch steht.
+	float aus_flaeche = clamp(wachstum / max(wachstum_referenz, 0.001),
+			wachstum_hoehe.x, wachstum_hoehe.y);
+	float je_bueschel = mix(1.0 - hoehe_streuung, 1.0 + hoehe_streuung,
+			hash12(wurzel.xz * 2.13));
+	float h_faktor = aus_flaeche * je_bueschel;
+	kg.y *= h_faktor;
+	kg.x *= mix(1.0, h_faktor, hoehe_in_breite);
 
 	// Die liegende Karte zeigt ein Bueschel von der SEITE, flach hingelegt. Das geht
 	// durch, ist aber nicht dasselbe wie eine Aufsicht. Sobald ein von oben
