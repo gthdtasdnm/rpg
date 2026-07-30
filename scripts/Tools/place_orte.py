@@ -1,7 +1,7 @@
 """Erzeugt World/orte.tscn - eine Blocking-Box je Ort, als Platzhalter/Zeichen.
 
 Kein Nachbau von Gebaeuden: jede Box sagt nur "hier steht spaeter etwas, ungefaehr
-so gross". Die festen Orte kommen aus doc/konzept/ (Lore), die uebrigen findet das
+so gross". Die festen Orte kommen aus doc/welt.md (Lore), die uebrigen findet das
 Skript selbst nach Gelaendekriterien.
 """
 import numpy as np, os, math

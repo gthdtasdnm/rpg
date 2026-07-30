@@ -3,7 +3,7 @@ using RPG.Dialogue;
 
 namespace RPG.World;
 
-// Area3D + physische Barriere fuer Zugangskontrollen (siehe doc/TODO.md Milestone 11): ohne
+// Area3D + physische Barriere fuer Zugangskontrollen (siehe doc/spielsysteme.md, Abschnitt 5): ohne
 // RequiredFlagId bleibt eine CollisionShape3D aktiv und blockiert den Weg physisch. Betritt der
 // Spieler die Checkpoint-Area3D trotzdem (z.B. laeuft dagegen), startet ein erzwungener Dialog
 // mit der Wache, die erklaert, warum kein Zutritt ist. Sobald das Flag gesetzt wird (z.B. durch

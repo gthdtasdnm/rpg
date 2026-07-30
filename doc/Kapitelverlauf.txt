@@ -1,3 +1,15 @@
+=============================================================================
+DIESE DATEI IST VOM PROJEKTINHABER GESCHRIEBEN UND STEHT UEBER ALLEM ANDEREN.
+
+Sie ist die verbindliche Vorgabe fuer den Spielablauf - die "Gebote".
+Bei jedem Widerspruch zwischen dieser Datei und irgendeinem anderen Dokument
+(doc/welt.md, doc/spielsysteme.md, CLAUDE.md, Data/*.json, Dialoge) gilt
+DIESE Datei. Das andere Dokument ist dann falsch und wird angepasst.
+
+Inhalt und Schreibweise nicht aendern. Wer etwas ergaenzen will, schreibt es
+woanders hin und richtet es hiernach aus.
+=============================================================================
+
 Kapitel 1
 man kommt an.
 Ziel ist es in die Burg zu kommen und einen brief an den könig zu liefern

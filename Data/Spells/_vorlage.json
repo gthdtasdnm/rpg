@@ -7,7 +7,7 @@
   "_school": "arcane (alte Kampfmagie) | blood (Blutmagie) | divine (göttliche Magie/Gebete)",
   "school": "arcane",
 
-  "_healthCost": "Magie kostet Lebenspunkte statt Mana, siehe doc/konzept/Gameplay/Magiesystem.md",
+  "_healthCost": "Magie kostet Lebenspunkte statt Mana, siehe doc/spielsysteme.md",
   "healthCost": 5,
 
   "damage": 12,

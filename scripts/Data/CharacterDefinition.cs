@@ -14,7 +14,7 @@ public class CharacterDefinition
 	// (Npc.cs: DialogueFile/DialogueTitle). Ein Charakter kann so in verschiedenen Szenen
 	// unterschiedliche Dialoge fuehren, ohne dass es dafuer mehrere JSON-Eintraege braucht.
 
-	// Gegner-Felder (siehe doc/konzept/Gameplay/Kampfsystem.md, scripts/Combat/Enemy.cs) - bei
+	// Gegner-Felder (siehe doc/spielsysteme.md, scripts/Combat/Enemy.cs) - bei
 	// Spieler/NPCs ungenutzt (Defaults). Bleiben in CharacterDefinition statt einer eigenen
 	// EnemyDefinition, weil Gegner dieselbe Health/Strength/Dexterity-Basis wie jeder Charakter
 	// brauchen und sonst zwei parallele Datenquellen fuer denselben Zweck entstuenden.
@@ -28,7 +28,7 @@ public class CharacterDefinition
 	public float MoveSpeed { get; set; } = 3.0f;
 	public List<string> LootItemIds { get; set; } = new();
 
-	// Händler-Sortiment (siehe doc/TODO.md Milestone 9) - leer = kein Händler, Dialog kann trotzdem
+	// Händler-Sortiment (siehe doc/spielsysteme.md, Abschnitt 5) - leer = kein Händler, Dialog kann trotzdem
 	// eine "Handeln"-Choice haben, das Shop-Panel zeigt dann einfach nichts zum Kaufen an.
 	public List<string> ShopItemIds { get; set; } = new();
 }

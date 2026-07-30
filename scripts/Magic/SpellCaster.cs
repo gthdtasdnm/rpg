@@ -7,9 +7,9 @@ using System.Collections.Generic;
 namespace RPG.Magic;
 
 // Kanalisiert Zauber ueber CharacterStats.CurrentHealth als gemeinsame Ressource (siehe
-// doc/architektur.md "Stats & Magie"). Sitzt als Sibling von Stats/Inventory/Equipment (Player).
+// doc/spielsysteme.md, Abschnitt 2). Sitzt als Sibling von Stats/Inventory/Equipment (Player).
 //
-// Bewusste Vereinfachungen v1 (siehe doc/TODO.md Milestone 3): feste 3 Zauber-Slots statt
+// Bewusste Vereinfachungen v1 (siehe doc/spielsysteme.md, Abschnitt 5): feste 3 Zauber-Slots statt
 // Zauberbuch/Lern-UI, kein echtes Projektil (arkane Zauber treffen sofort den naechsten Gegner
 // in Reichweite), Blutmagie erlaubt nur einen aktiven Fluch gleichzeitig, goettliche Heilung wird
 // nach der Kanalzeit auf einmal angewendet statt tatsaechlich ueber Zeit tropfenweise.

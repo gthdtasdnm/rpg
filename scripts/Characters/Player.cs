@@ -29,9 +29,9 @@ public partial class Player : CharacterBody3D, IDamageable
 	[Export] public float SwimBobSpeed = 2.0f; // Wippfrequenz
 	[Export] public float SwimExitHeight = 0.6f; // Ab dieser Hoehe ueber WaterLevel endet das Schwimmen
 
-	// Kampf-Grundwerte (siehe doc/konzept/Gameplay/Kampfsystem.md). Bewusste Vereinfachung v1:
+	// Kampf-Grundwerte (siehe doc/spielsysteme.md). Bewusste Vereinfachung v1:
 	// kein Windup/Aktiv-Fenster (kein Animationssystem), Blocktreffer statt echtem Timing-Parry -
-	// siehe doc/TODO.md. Combo aktuell nur simples Links/Rechts-Abwechseln mit Cooldown-/Schadens-
+	// siehe doc/spielsysteme.md. Combo aktuell nur simples Links/Rechts-Abwechseln mit Cooldown-/Schadens-
 	// bonus; echtes Timing-Fenster + waffentraining-abhaengige Freischaltung ist spaetere Arbeit.
 	private const int BareHandDamage = 3;
 	private const string BareHandDamageType = "blunt";
@@ -126,7 +126,7 @@ public partial class Player : CharacterBody3D, IDamageable
 		}
 
 		// Goettliche Magie braucht eine Kanalzeit mit Bewegungssperre (siehe
-		// doc/konzept/Gameplay/Magiesystem.md) - gleiches Einfrieren wie waehrend eines Dialogs.
+		// doc/spielsysteme.md) - gleiches Einfrieren wie waehrend eines Dialogs.
 		if (_spellCaster.IsChanneling)
 		{
 			Velocity = Vector3.Zero;
@@ -222,12 +222,12 @@ public partial class Player : CharacterBody3D, IDamageable
 		_mesh.Rotation = new Vector3(Mathf.DegToRad(SwimTiltDegrees) * _swimBlend, 0f, 0f);
 	}
 
-	// Kein Animations-Timing vorhanden (siehe doc/TODO.md) - der Treffer wird beim Tastendruck
+	// Kein Animations-Timing vorhanden (siehe doc/spielsysteme.md) - der Treffer wird beim Tastendruck
 	// sofort anhand der aktuellen Ueberlappung von MeleeHitbox ausgewertet statt eines
 	// Windup/Aktiv-Fensters. Linksklick/Rechtsklick muessen abgewechselt werden, um den vollen
 	// Combo-Bonus + kuerzeren Folge-Cooldown zu bekommen ("fluessig schlagen") - zweimal dieselbe
 	// Seite (oder zu langsam) setzt die Combo zurueck und ist spuerbar traeger.
-	// Die Combo selbst muss aber erst bei einem Lehrer erlernt werden (siehe doc/TODO.md
+	// Die Combo selbst muss aber erst bei einem Lehrer erlernt werden (siehe doc/spielsysteme.md
 	// Milestone 10) - ohne das passende Flag gibt's nur Basisangriffe, egal wie man klickt.
 	private void PerformAttack(AttackSide side)
 	{

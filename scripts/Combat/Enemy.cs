@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 namespace RPG.Combat;
 
-// Einfacher Nahkampfgegner (siehe doc/konzept/Gameplay/Kampfsystem.md): verfolgt den Spieler
+// Einfacher Nahkampfgegner (siehe doc/spielsysteme.md): verfolgt den Spieler
 // innerhalb AggroRadius, greift in AttackRange direkt an (kein eigenes Hitbox-Timing wie beim
-// Spieler - vereinfachte Gegner-KI fuer v1, siehe doc/TODO.md Milestone 2).
+// Spieler - vereinfachte Gegner-KI fuer v1, siehe doc/spielsysteme.md, Abschnitt 5).
 // Nutzt dieselbe Datenquelle wie Npc (CharacterDefinition/CharacterStats aus Data/Characters/),
 // nur mit den Gegner-Feldern befuellt statt DialogueId.
 public partial class Enemy : CharacterBody3D, IDamageable

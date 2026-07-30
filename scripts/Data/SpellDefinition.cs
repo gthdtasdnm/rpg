@@ -1,7 +1,7 @@
 namespace RPG.Data;
 
 // School: "arcane" (alte Kampfmagie) | "blood" (Blutmagie) | "divine" (göttliche Magie/Gebete)
-// siehe doc/konzept/Gameplay/Magiesystem.md und doc/architektur.md ("Stats & Magie").
+// siehe doc/spielsysteme.md, Abschnitt 2 ("Magie").
 // CastTime > 0 => Kanalzeit mit Bewegungssperre (nur bei "divine" sinnvoll genutzt).
 public class SpellDefinition
 {

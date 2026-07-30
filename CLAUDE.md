@@ -1,166 +1,106 @@
-# CLAUDE.md – Schnelleinstieg für KI-Assistenten
+# CLAUDE.md – Schnelleinstieg
 
-Godot-Projekt (RPG). Diese Datei zuerst lesen, dann bei Bedarf `doc/roadmap.md` (was noch zu tun
-ist) und `doc/fortschritt-2026-07-25.md` (Detailstand der Weltsysteme). Ziel: schnell orientiert,
-keine Inkonsistenzen, wenig Token verbrannt.
+Godot-RPG. **Sprache mit dem User: Deutsch.**
+
+## Die vier Dokumente
+
+| Datei | Inhalt |
+|---|---|
+| **`doc/Kapitelverlauf.txt`** | 🔴 **Vom Projektinhaber geschrieben, steht über allem.** Der verbindliche Spielablauf. Bei jedem Widerspruch gilt diese Datei, alles andere wird angepasst. Nicht ändern. |
+| `doc/welt.md` | Lore, Fraktionen, Orte, Figuren, Ton, Stil |
+| `doc/spielsysteme.md` | Kampf, Magie, Progression, Items — **fast alles noch Konzept** |
+| `doc/technik.md` | Weltsysteme, Stellschrauben, Fallstricke, Leistung |
+
+Mehr gibt es nicht. Alte Konzeptdateien (`doc/konzept/`, `roadmap.md`, `architektur.md`,
+`backlog/`) wurden am 30.07. gelöscht — sie widersprachen dem Kapitelverlauf. Frühere Doku, die
+sie nennt, ist veraltet; Git hat sie.
+
+## Story in Kurzform
+
+**Azazel** ist ein gefallener Engel, das manifestierte Böse. Vor 1000 Jahren band ihn der Erzengel
+**Raphael** und warf ihn in den Abgrund unter Nethora — Engel lassen sich nicht töten, nur
+verwahren. Über ihm liegt das **Siegel**: fünf **Türme** im Pentagramm, in jedem ein Engel, der
+seinen Teil hält. Der **Orden der Custodes Profundi** („Wächter der Tiefe") bewacht das seit
+tausend Jahren — inzwischen als leere Tradition, an die niemand mehr glaubt. **Nethora handelt im
+Sinne Gottes, ohne es zu wissen.**
+
+Die Sekte **Die Erleuchteten** betet Azazel als **„Aedificares", den Erbauer**, an und stärkt ihn
+damit. Sein Einfluss verrohrt Menschen und Tiere. Seit 20 Jahren steht die **Barriere**. Zu
+Spielbeginn gibt der König draußen auf und schickt den Spieler — einen **Verurteilten** — mit
+einem Brief hinein, der das mitteilt.
+
+Fünf Kapitel: **1** Ankunft, Brief, Fraktionswahl über ein Heiliges Buch · **2** **Abaddon**
+(Skelett mit Krone, Engel des Abgrunds, König der Heuschrecken) in seiner Höhle töten und sein
+Manuskript holen · **3** dadurch fließen die Plagen unkontrolliert, die fünf Turmengel werden
+feindselig — man **heilt sie mit einem Gebet statt sie zu töten** und erhält je ein
+Teleportstein-Fragment · **4** der Eremit **Salomo** setzt sie zusammen, braucht dafür einen Segen
+· **5** mit dem Stein zu Azazel, dessen Ketten gelöst sind — **ihn wieder versiegeln.**
+
+Zwei lateinische Formeln (Wortlaut in `doc/welt.md` §6): **„Satis est. Contine manum tuam."**
+hält die Engel an, **„Quod fractum est, integrum fiat."** macht Zerbrochenes ganz.
+
+Ton: düster, trist, Gothic 1. Ambivalenz statt klarer Fronten — jede Fraktion hat recht und blinde
+Flecken. Magie kostet **Leben**, nicht Mana.
 
 ## Engine / Stack
-- **Godot 4.7**, **.NET/C#** aktiviert, **Forward+**.
-- Addons: **Terrain3D** (GDExtension, macOS/Win/Linux-Binaries dabei), limboai, dialogue_manager.
-- Sprache mit dem User: **Deutsch**.
+
+**Godot 4.7**, .NET/C#, Forward+. Addons: **Terrain3D** (GDExtension), limboai, dialogue_manager.
 
 ## 🔧 Sprachregel: C# oder GDScript?
-> **Spiel-Logik = C#.** GDScript nur für zwei Ausnahmen: **(1)** laufende, shader-nahe
-> Weltsysteme, die schon fertig sind (`player.gd`, `day_night.gd`, `tree_collision.gd`,
-> Partikel), **(2)** Addon-Kleber, der zwingend GDScript sein muss.
 
-Grund: `dotnet build` ist ein Verifikationsschritt, den ein Agent selbst ausführen kann —
-Tippfehler und falsche Signaturen fallen sofort auf statt erst im laufenden Spiel.
-**Nach jeder C#-Änderung `dotnet build` laufen lassen** (muss 0 Fehler zeigen; die ~23 Warnungen
-kommen alle aus `addons/` und sind normal).
+> **Spiel-Logik = C#.** GDScript nur für **(1)** fertige, shader-nahe Weltsysteme (`player.gd`,
+> `day_night.gd`, `tree_collision.gd`, `rock_collision.gd`, Partikel) und **(2)** Addon-Kleber, der
+> zwingend GDScript sein muss.
 
-Der Player bleibt vorerst GDScript (fertig, eng mit Gras/Wasser/Kamera verzahnt). Neue Logik
-hängt sich als C#-Kind-Node an. Neubewertung beim Kampfsystem (M2), nicht vorher.
+Grund: `dotnet build` ist ein Verifikationsschritt, den ein Agent selbst ausführen kann.
+**Nach jeder C#-Änderung `dotnet build` laufen lassen** — muss 0 Fehler zeigen; die ~23 Warnungen
+kommen alle aus `addons/` und sind normal.
 
-## ⚠️ Wichtigste Sache zuerst: es gibt ZWEI Ebenen, sie sind noch nicht verbunden
-1. **Welt-Ebene (GDScript), läuft**: `World/`-Sandbox — Terrain, Himmel, Wasser, Gras, Bäume,
-   Partikel, und der **GDScript-Player**.
-2. **Spiel-Ebene (C#), fertig aber abgekoppelt**: `scripts/` (Characters, Combat, Dialogue,
-   Quests, Magic, Items, …) + `Data/` (JSON) + `UI/Hud.tscn`.
-   **Nicht „tot" oder wegwerfbar** — die Autoloads sind in `project.godot` **weiterhin
-   registriert** (`GameFlags`, `GameData`, `DialogueRunner`, `QuestManager`, `SaveSystem`), das
-   HUD (Leben, Dialogbox, Questlog `L`, Inventar `I`, Pause `Esc`, Speichern/Laden) existiert, und
-   `Data/` enthält bereits **30 NPCs, 27 Dialoge, 47 Items, 7 Quests, 4 Zauber** passend zum
-   Konzept.
-   Was fehlt, sind nur die **Szenen dazwischen**: `Characters/Npc.tscn` (gelöscht), das HUD in
-   `Main.tscn`, und `CharacterStats`/`Inventory`/`Interactor` am GDScript-Player.
-   → **Das Wiederanschließen ist Verkabelung, keine Neuentwicklung** — laufender Sprint,
-   siehe `doc/sprint-2026-08-02.md`. **Nie vorschlagen, das C#-Framework in GDScript neu zu
-   schreiben.**
-   → **`scripts/Characters/Player.cs` ist NICHT der aktive Player.** Aktiv ist
-   **`scripts/World/player.gd`** (GDScript). Player bleibt GDScript, der Rest bleibt C#.
-   → `doc/architektur.md` beschreibt noch die **gelöschte** Szenenstruktur (JSON-Schemas und
-   Konventionen darin stimmen aber weiterhin). `doc/konzept/Story/Haupthandlung.md` +
-   `Quests/Hauptquestreihe.md` sind **inhaltlich veraltet** — verbindlich ist die Kapitel-Struktur
-   in `doc/roadmap.md` (Abschnitt 2).
+**Der Player bleibt GDScript** (`scripts/World/player.gd`, fertig, eng mit Gras/Wasser/Kamera
+verzahnt). Neue Logik hängt sich als C#-Kind-Node an. `scripts/Characters/Player.cs` ist **nicht**
+der aktive Player. **Nie vorschlagen, das C#-Framework in GDScript neu zu schreiben.**
 
-## Einstieg / Szenen
-- **Hauptszene: `Main.tscn`** (Wurzel) → instanziert `World/world.tscn` (Terrain-Welt) +
-  `World/player.tscn` (Player).
-- `World/world.tscn` = Terrain3D + Gras + Wasser + Bäume/Instancer + Kollision + Partikel + Environment.
+## Szenen
 
-## Aktive Systeme (World/) und ihre Dateien
-- **Player**: `World/player.tscn` + `scripts/World/player.gd` (WASD, Maus-3rd-Person, Shift=rennen,
-  Springen, Schwimmen, Kamera-Clamp über Wasser). In Gruppe `player`.
-- **Tag/Nacht + Himmel**: `World/Environment.tscn`, `scripts/World/day_night.gd` (Regler `Time Of Day`,
-  stellt `night_factor` bereit), `World/sky.gdshader` (Sonne/Mond/Sterne/Wolken).
-- **Wasser**: `Objects/water.gdshader` + `Objects/wasser.gd` (Tiefe/Refraktion/Reflexion + Kielwellen).
-- **Gras**: `addons/terrain_3d/extras/particle_example/` (`grass.gdshader`, `terrain_3D_particles.gd`).
-- **Terrain-Boden-Shader**: `World/terrain_shader.gdshader` (als `shader_override` am Terrain3D-Material;
-  dunkelt Boden unter Gras ab, teilt `grass_noise.tres` mit dem Gras).
-- **Bäume**: Assets `World/data/assets.tres` (Instancer). Modelle zu Einzel-Mesh zusammengeführt in
-  `Models/Various_Forest_Assets_Pack/merged/` (Tool: `scripts/Tools/merge_tree_meshes.gd`).
-  Kollision: `scripts/World/tree_collision.gd` (Laufzeit-Pool, filtert nach skalierter Höhe).
-- **Partikel**: `scripts/World/firefly_swarm.gd` (Glühwürmchen = echte OmniLights, nachts),
-  `scripts/World/forest_dust.gd` (grüner Staub bei Sträuchern, distanz-basiert).
-  (`World/forest_particles.tscn` = alte GPU-Variante, ersetzt.)
+**Hauptszene `Main.tscn`** → `World/world.tscn` + `World/player.tscn` + `UI/Hud.tscn` + NPCs.
 
-## Spiel-Ebene (C#) – wo was liegt
-- **Autoloads** (`project.godot`, Reihenfolge zählt): `GameFlags` (globale Flags, Konvention
-  `talked_<Id>`, `quest_started_<Id>`, `quest_completed_<Id>`, `entered_<x>`, `learned_<Id>`),
-  `GameData` (lädt `Data/**.json`), `DialogueManager` (Addon), **`Dialog`**
-  (`scripts/Dialogue/DialogueBridge.cs`), `QuestManager`, `SaveSystem` (`user://savegame.json`).
-- **Inhalte = Daten, kein Code**: neuer NPC/Item/Quest → JSON unter `Data/` (siehe
-  `Data/README.md`); neuer Dialog → `.dialogue` unter `Dialogues/` (siehe `Dialogues/README.md`).
-  Dateien mit `_` am Anfang werden von `GameData` ignoriert (Vorlagen/Entwürfe).
-- **Dialoge laufen über das dialogue_manager-Addon**, nicht mehr über eigenen Code. Einziger
-  Einstieg: `Dialog.Show(datei, titel, sprecher)`. Was Dialoge im Spiel auslösen dürfen, steht
-  als öffentliche Methode in `DialogueBridge.cs` (`SetFlag`, `HasFlag`, `StartQuest`,
-  `CompleteQuest`, `OpenShop`) — neue Möglichkeit = dort eine neue Methode.
-  Dialogbox: `UI/DialogueBalloon.tscn` + `scripts/UI/DialogueBalloon.cs` (Kopien des
-  Addon-Beispiels, damit Addon-Updates sie nicht überschreiben; eingestellt über
-  `runtime/balloon_path`).
-- **NPC**: `World/npc.tscn` instanzieren, im Inspector `CharacterId` + `DialogueFile` setzen.
-  `SnapToGround` zieht ihn beim Start auf die Terrainhöhe — Position grob setzen reicht.
-  `GreetOnApproach` = NPC hält den Spieler von selbst an (Gothic-Stil, `GreetArea` im NPC,
-  Flag `greeted_<id>`), `TurnToPlayer` = dreht sich beim Ansprechen weich zum Spieler.
-  Für echte Wegsperren: `Objects/GuardCheckpoint.tscn` (Barriere verschwindet, sobald das
-  hinterlegte Flag gesetzt ist). `ProximityDialogue.cs` wurde dafür gelöscht — machte dasselbe
-  schlechter.
-- **Währung ist Silber** (`Inventory.Silver`, `price` in den Item-JSONs). Fähigkeiten sind Items
-  vom Typ `skill`; gelernt wird als Flag `learned_<id>`, nicht ins Inventar.
-- **Interaktion**: `Interactor` (RayCast3D an der Kamera, Taste `E`) + `IInteractable`
-  (`Npc`, `ItemPickup`). ⚠️ Bekannte Falle: die Kamera sitzt **4,5 m hinter** dem Spieler, deshalb
-  ist `target_position.z = -7.5` (≈3 m echte Reichweite). Der Spieler ist als Ausnahme
-  eingetragen, sonst trifft der Strahl ihn selbst.
-- **HUD**: `UI/Hud.tscn` + `scripts/UI/Hud.cs` — Lebensbalken, Silber, Interaktions-Hinweis,
-  Inventar (`I`), Questlog (`L`), Pause/Speichern/Laden (`Esc`), Händlerfenster. Läuft mit
-  `process_mode = Always`, alle Panels nutzen `GetTree().Paused`.
-  Hängt in `Main.tscn` und erwartet am Spieler die Kind-Knoten **`Stats`** (`CharacterStats`,
-  `CharacterId = "player"`), **`Inventory`**, **`Equipment`** sowie
-  `CameraPivot/Camera3D/Interactor` — fehlt einer davon, stürzt `Hud._Ready()` ab.
-- **Escape gehört dem HUD.** `player.gd` fasst den Mausmodus nicht mehr an; die Kamera dreht sich
-  nur, solange `Input.mouse_mode == CAPTURED` ist.
-- **`SaveSystem` ist sprachneutral**: sucht den Spieler als `Node3D` in der Gruppe `player` und
-  ruft beim Laden `apply_save_state(position, rotation_y)` auf, falls vorhanden (in `player.gd`
-  definiert — zieht den Kamera-Yaw nach, sonst springt die Kamera).
-- **Noch nicht implementiert**: Kampf/Animationen, Trainer, Ausrüstungswirkung,
-  Zonenwechsel/Teleport. Siehe `doc/roadmap.md`.
+`world.tscn` enthält seit 30.07. **alles in einer Datei** (3265 Nodes): Terrain3D + Gras, Systeme,
+Wasser, Blockout (CSG), Bauten, Orte, und `Bewuchs/` mit ~2400 handplatzierten Bäumen/Felsen/
+Sträuchern in **28 Sektoren à 200 m**. Details in `doc/technik.md`.
 
-## Terrain3D-Eigenheiten (oft gebraucht)
-- Instancer erzeugt **nur Optik (MultiMesh), keine Kollision** → daher `tree_collision.gd`.
-- **Kein Getter** für Instanz-Transforms → wir lesen die `MultiMeshInstance3D` unter dem Terrain-Node.
-- Baummodelle waren Stamm+Blätter als **getrennte Meshes** (Terrain3D las sie als LODs) → deshalb `merged/`.
-- Textur-Slots/LOD-Ranges: über das **Meshes-Asset-Dock** bzw. `World/data/assets.tres`.
+## Inhalte = Daten, kein Code
 
-## Arbeits-/Workflow-Hinweise (Zeit sparen, Fehler vermeiden)
-- **Godot überschreibt `.tscn` beim Speichern.** Nach Datei-Edits den User **neu laden** lassen.
-  Bei großen `.tscn` vorsichtig editieren (vorher lesen). Shader/`.gd` sind unkritisch.
-- **Editor-RAM ≠ Spiel-Performance.** Für Perf immer FPS/ms im **laufenden Spiel** messen, nicht %.
-- **Git**: Der lokale Stand divergiert oft vom Remote (User rebast/reset lokal). Etablierter Weg:
-  `git push --force-with-lease origin main` (nach Absprache – der User bestätigt "einfach pushen").
-- **Commits/Push nur auf Anweisung.** Commit-Message-Footer: `Co-Authored-By: Claude Opus 4.8 …`.
-- **Leistung ist Thema**: GPU-Last hoch (~86 % auf RTX 2080 Ti), Ziel u. a. Laptops. Teuerste Posten:
-  volumetrischer Nebel, Anzahl OmniLights (Glühwürmchen), Gras, Wasser-Shader, Schatten-/Baumdistanz.
+Neuer NPC/Item/Quest → JSON unter `Data/`. Neuer Dialog → `.dialogue` unter `Dialogues/`. Dateien
+mit `_` am Anfang ignoriert `GameData`. Dialoge laufen über das dialogue_manager-Addon, einziger
+Einstieg `Dialog.Show(datei, titel, sprecher)`; was sie auslösen dürfen, steht in
+`scripts/Dialogue/DialogueBridge.cs`.
 
-## Ordnerstruktur (Stand 26.07.)
-`Assets/` = alles Sichtbare (Modelle + Texturen, **nach Domäne** sortiert, nicht nach Dateityp):
-`Nature/Forest|Rocks`, `Terrain/Packed|Source`, `Buildings/`, `Props/`, `Weapons/`, `Characters/`.
-Details, Herkunft und Lizenzen: **`Assets/README.md`**.
-- **`Models/`, `Textures/`, `PackedTextures/` gibt es nicht mehr** — alles unter `Assets/`.
-  Alte Doku, die diese Pfade nennt, ist veraltet.
-- Die **gekauften Pakete sind nicht im Git-Repo** (`.gitignore`, ~800 MB); `Assets/Nature` und
-  `Assets/Terrain` schon, weil bearbeitet/nicht reproduzierbar.
-- ⚠️ **Assets verschieben**: nur im **Godot-Editor** (zieht Verweise automatisch nach). Per
-  Terminal nur, wenn die `.import`-Datei mitwandert (hält die UID) **und** alle Pfade in
-  `.tscn`/`.tres` ersetzt werden — danach prüfen, dass jeder `res://`-Pfad existiert.
+**Ist-Stand:** 3 NPCs, 3 Dialoge, 4 Items, 1 Quest, 1 Zauber. Die früher genannten „30 NPCs,
+27 Dialoge, 47 Items" wurden am 26.07. geleert — Inhalte müssen nach `doc/welt.md` neu geschrieben
+werden. Währung ist **Silber**.
 
-## Aufräum-Reste (dürfen weg)
-`_zum_loeschen/`, `demo/` (falls noch da), `World/forest_particles.tscn` (ersetzt).
+## Die wichtigsten Fallstricke
 
-## ⚠️ Terrain3D-Fallstricke (haben schon Stunden gekostet)
-- **`World/data/assets.tres` wird NICHT gelesen.** Die Asset-Liste liegt eingebettet in
-  `World/world.tscn` (`assets = SubResource(...)`). Änderungen an `assets.tres` bleiben wirkungslos.
-- **Godot lädt extern geänderte Scripts nicht neu**, solange sie im Script-Editor offen sind —
-  beim Ausführen läuft dann die alte Fassung. Tab schließen und neu öffnen.
-- **Godot schreibt beim Speichern Werte in `project.godot` zurück** (gelöschte Autoloads tauchen
-  wieder auf). Nach Datei-Edits kontrollieren.
-- **Terrain3D verwirft die Position von LOD-Knoten** → Höhenversatz gehört über
-  `PrimitiveMesh.center_offset` ins Mesh.
-- **Baum-LODs**: Terrain3D sucht MeshInstance3D-Kinder namens `LOD0`, `LOD1`, … (nicht Godots
-  eingebaute Mesh-LODs). Erzeugt von `scripts/Tools/generate_tree_imposters.gd`.
+- 🔴 **`world.tscn` enthält einen zweiten Player.** `Main.tscn` lädt beide → zwei Kameras, zwei
+  Körper, beide in Gruppe `player`. Sollte gelöscht werden.
+- **Nur ein Terrain3D-Node pro Szene.** Zwei auf dasselbe `data_directory` = Bemalen funktioniert
+  nicht mehr.
+- **`World/data/assets.tres` wird nicht gelesen** — die Asset-Liste liegt eingebettet in
+  `world.tscn`.
+- **`Bewuchs/rocks_umgebung` nicht auflösen** — der Knoten gibt seinen 18 Kindern per Script die
+  Kollision.
+- **Godot überschreibt `.tscn` beim Speichern** und lädt extern geänderte Scripts nicht neu,
+  solange sie im Editor offen sind. Nach Datei-Edits neu laden lassen.
+- **Blattschatten: `fade_margin = 0` lassen.** Godot-Bug mit Alpha-Clip, gelöst am 27.07. — die
+  vergeblichen Versuche stehen in `doc/technik.md` §6, nicht wiederholen.
+- **`scripts/Tools/place_vegetation.py` / `place_orte.py` nicht ausführen** — sie würden die
+  Handarbeit im Bewuchs überschreiben.
+- **Leistung ist Thema:** ~86 % GPU auf einer 2080 Ti, Ziel auch Laptops. Teuerste Posten: Gras,
+  volumetrischer Nebel, OmniLights, Wasser, Schatten-/Baumdistanz, Draw Calls.
 
-## 🔴 Offenes Problem
-`doc/offen-blattschatten.md` — Blattschatten reichen nur ~20 m statt ~100 m, Stammschatten dagegen
-weiter. Mehrere Lösungsversuche dokumentiert, alle erfolglos. **Vor eigenen Versuchen dort lesen**,
-damit nicht dasselbe nochmal probiert wird.
+## Arbeitsweise
 
-## Doku-Wegweiser
-- `doc/roadmap.md` – **Gesamtplan**: Meilensteine M1–M8, Story-Kapitelstruktur (verbindlich),
-  Mengengerüst der Inhalte. Erste Anlaufstelle bei „was als Nächstes?".
-- `doc/sprint-2026-08-02.md` – **aktueller Sprint** (M1: Framework anschließen) mit Abnahmetest.
-- `doc/fortschritt-2026-07-25.md` – Detailbeschreibung aller Weltsysteme + Stellschrauben.
-- `doc/backlog/` – was in vergangenen Sitzungen gebaut wurde (inkl. bereits gelöster Bugs —
-  vor dem Debuggen kurz reinschauen).
-- `doc/konzept/` – Spieldesign (Welt, Fraktionen, Items, Gameplay). Gut ausgearbeitet und gültig,
-  **außer** Story/Haupthandlung + Quests/Hauptquestreihe (siehe Warnung oben).
+- **Commits und Push nur auf Anweisung.** Footer: `Co-Authored-By: Claude Opus 4.8 …`
+- Lokaler Stand divergiert oft vom Remote (User rebast/reset lokal). Etablierter Weg nach
+  Absprache: `git push --force-with-lease origin main`
+- Für Performance immer FPS/ms im **laufenden Spiel** messen, nicht Editor-RAM.
