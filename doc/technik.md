@@ -15,22 +15,20 @@ Main.tscn                       Hauptszene
 └── Halvor / Falk / Knud        NPCs (npc.tscn, CharacterId + DialogueFile)
 ```
 
-⚠️ **`world.tscn` enthält einen zweiten Player** (Stand 30.07.). Da `Main.tscn` beide lädt, laufen
-zwei Spieler gleichzeitig: zwei Kameras, zwei Körper, beide in Gruppe `player`. `SaveSystem` und
-`tree_collision.gd` nehmen den, der zuerst gefunden wird. **Sollte aus `world.tscn` gelöscht
-werden.**
+**Der Player steht nur in `Main.tscn`.** In `world.tscn` gab es bis 30.07. einen zweiten — beide
+liefen gleichzeitig, zwei Kameras, zwei Körper, beide in Gruppe `player`. Ist gelöscht. Wer
+`world.tscn` einzeln testen will, startet über `Main.tscn`.
 
 ### Aufbau von `world.tscn`
 
 Seit 30.07. ist alles in einer Datei — `bewuchs.tscn`, `orte.tscn` und `flaechen.tscn` sind
-aufgelöst (vorher instanziert, jetzt direkte Kinder). 3265 Nodes, 754 KB.
+aufgelöst (vorher instanziert, jetzt direkte Kinder) und gelöscht. 3263 Nodes, 754 KB.
 
 ```
 World/
 ├── Terrain3D/          Terrain3DParticles (Gras) — MUSS hier bleiben, NodePath("..")
-├── Systeme/            Environment, TreeCollision, ShadowTuner, FireflySwarm, ForestDust
+├── Systeme/            Environment, ShadowTuner, FireflySwarm, ForestDust
 ├── wasser              MeshInstance3D + wasser.gd
-├── Player              ⚠️ Duplikat, siehe oben
 ├── Barriere
 ├── Blockout/           CSGCombiner3D — Nethora (50), umgebung (55), FocusSteine (5)
 ├── Bauten/             12 Gebäudeteile + Jägerhütte
@@ -64,7 +62,7 @@ positionsneutral.
 | **Gras** | `addons/terrain_3d/extras/particle_example/` — Spieler-Trail (Gras teilt sich, Spur bleibt kurz offen), Wind im Pfad ausgeblendet, Fake-AO am Halmgrund. Wächst nur auf bestimmten Textur-IDs |
 | **Terrain-Boden** | `World/terrain_shader.gdshader` als `shader_override` — dunkelt den Boden ab, wo Gras wächst; teilt `grass_noise.tres` mit dem Gras |
 | **Bäume** | Handplatziert als Nodes in `world.tscn`. Modelle in `Assets/Nature/Forest/merged/`, Kollision aus den `.tscn` selbst |
-| **Baumkollision (Instancer)** | `scripts/World/tree_collision.gd` — Zylinder nur im Umkreis des Spielers, wandernder Pool. **Inzwischen wirkungslos**, da keine Instancer-Bäume mehr da sind. Kann weg |
+| **Baumkollision** | Kommt aus den Baum-`.tscn` selbst (`CollisionShape3D` je Modell). Das frühere `tree_collision.gd`, das Zylinder um den Spieler herum erzeugte, war nur für Instancer-Bäume nötig und ist gelöscht |
 | **Felskollision** | `scripts/World/rock_collision.gd` — TRIMESH/CONVEX/DECOMPOSED wählbar, `print_summary` misst Formen/Dreiecke/ms |
 | **Partikel** | `scripts/World/firefly_swarm.gd` (Glühwürmchen = echte `OmniLight3D`, nur nachts) · `scripts/World/forest_dust.gd` (grüner Staub bei Sträuchern, distanzbasiert) |
 
@@ -128,8 +126,9 @@ nach, sonst springt die Kamera).
 
 Alle haben schon Zeit gekostet.
 
-- **`World/data/assets.tres` wird NICHT gelesen.** Die Asset-Liste liegt eingebettet in
-  `world.tscn` (`assets = SubResource(...)`). Änderungen an `assets.tres` bleiben wirkungslos.
+- **Die Asset-Liste liegt eingebettet in `world.tscn`** (`assets = SubResource(...)`), nicht als
+  eigene Datei. Es gab mal ein `World/data/assets.tres`, das nie gelesen wurde und mehrfach für
+  Verwirrung sorgte — gelöscht. Textur-Slots und Mesh-Assets ändert man über das Asset-Dock.
 - **Nur ein Terrain3D-Node pro Szene.** Zwei Terrain3D auf dasselbe `data_directory` heißt: beide
   lesen und schreiben dieselben Regionsdateien, Bemalen landet ins Nichts oder wird überschrieben.
   Genau das war am 30.07. der Grund, warum sich das Terrain nicht bemalen ließ.
@@ -209,14 +208,12 @@ Später ein **Grafik-Menü**, das diese Werte zusammen regelt.
 
 ## 8. Offene technische Punkte
 
-- **Zweiter Player in `world.tscn`** löschen (siehe Abschnitt 1)
 - **`visibility_range_end`** an den Baumszenen setzen
 - **Eingebettete Meshes:** `Objects/rocks/` (18 MB) und `Objects/trees/` (5 MB) enthalten die
   Geometrie als **Textarrays in den `.tscn`**, obwohl die `.glb`-Quellen in `Assets/Nature/`
   liegen. Godot muss das als Text parsen — der größte verbleibende Ladezeit-Posten. Fix: `.glb`
   verlinken statt einkopieren, Kollision über *Advanced Import Settings* → „Physics Body
   generieren"
-- **`TreeCollision`** ist wirkungslos und kann weg
 - **`ItemPickup`** in der Terrain-Welt noch nicht getestet
 - **„Benutzen"-Knopf** für Verbrauchsgüter im Inventar fehlt
 - **Maßstabsfrage:** `player.gd` hat `speed = 12.0` (720 m/min), das Tal ist auf Spielerhöhe ~180 m
@@ -242,19 +239,31 @@ Lizenzen in `Assets/README.md`.
 
 ---
 
-## 10. Die Bewuchs-Generierungsskripte
+## 10. Werkzeuge in `scripts/Tools/`
 
-`scripts/Tools/place_vegetation.py` und `place_orte.py` haben den ursprünglichen Bewuchs
-regelbasiert aus den Terrain3D-Höhendaten erzeugt (Felsen am Fuß von Steilhängen, Baumgruppen mit
+| Werkzeug | Zweck |
+|---|---|
+| `merge_tree_meshes.gd` | führt Stamm + Blätter zu einem Mesh zusammen (erzeugte `Assets/Nature/Forest/merged/`) |
+| `generate_tree_imposters.gd` | rendert je Baum 4 Ansichten in einen Atlas und baut daraus `LOD1`-Knoten (zwei überkreuzte Ebenen) |
+| `terrain3d_read.py` | entpackt Terrain3D-`.res` (ZSTD-blockkomprimiert, Magic `RSCC`, Blockgröße 4096) |
+| `terrain3d_maps.py` | liest Höhe, Control und Farbe als NumPy-Arrays |
+
+Die beiden Python-Skripte sind nützlich, wenn man das Terrain von außen auswerten will. Jede Region
+enthält drei 1024×1024-Bilder: Höhe (`RFloat`), Control (`uint32`), Farbe (`RGBA8`).
+**Textur 2 = Straßen, Textur 3 = Flussbett.**
+
+### Gelöscht am 30.07.: die Bewuchs-Generatoren
+
+`place_vegetation.py`, `place_orte.py` und `place_flaechen.py` haben den ursprünglichen Bewuchs
+regelbasiert aus den Höhendaten erzeugt — Felsen am Fuß von Steilhängen, Baumgruppen mit
 gaußförmiger Streuung, Artenwahl nach Höhenlage, Straßenrahmung abwechselnd links und rechts,
-Freihaltezonen für Straße, Flussbett, Nethora und Startkorridor).
+Freihaltezonen für Straße, Flussbett, Nethora und Startkorridor.
 
-🔴 **Nicht mehr ausführen.** Sie schreiben `World/bewuchs.tscn` und `World/orte.tscn` — beide
-Dateien existieren nicht mehr, ihr Inhalt liegt seit 30.07. handbearbeitet in `world.tscn`. Ein
-Lauf würde verwaiste Dateien erzeugen und, falls wieder eingebunden, die gesamte Handarbeit
-überschreiben.
+Sie sind **gelöscht, weil sie den Bewuchs jetzt zerstören würden statt ihn zu erzeugen**: Sie
+schrieben `World/bewuchs.tscn` und `World/orte.tscn` vollständig neu, und dieser Inhalt liegt seit
+30.07. handbearbeitet in `world.tscn`. Ebenfalls weg ist `ForestPainter.cs` (C#-Editor-Tool, das
+Bäume per Maske verteilte und als MultiMesh festbackte) — dieselbe Aufgabe, dieselbe Gefahr, und es
+war nie als Plugin registriert.
 
-Nützlich bleiben die Leseskripte, falls man das Terrain nochmal von außen auswerten will:
-`terrain3d_read.py` (entpackt die ZSTD-blockkomprimierten `.res`) und `terrain3d_maps.py` (Höhe,
-Control, Farbe als NumPy-Arrays). Jede Region enthält drei 1024×1024-Bilder: Höhe (`RFloat`),
-Control (`uint32`), Farbe (`RGBA8`). Textur 2 = Straßen, Textur 3 = Flussbett.
+Falls die Welt doch einmal neu generiert werden soll: Git hat sie (Stand vor dem 30.07.), aber der
+Bewuchs müsste danach wieder von Hand nachgearbeitet werden.

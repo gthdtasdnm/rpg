@@ -49,7 +49,7 @@ Flecken. Magie kostet **Leben**, nicht Mana.
 ## 🔧 Sprachregel: C# oder GDScript?
 
 > **Spiel-Logik = C#.** GDScript nur für **(1)** fertige, shader-nahe Weltsysteme (`player.gd`,
-> `day_night.gd`, `tree_collision.gd`, `rock_collision.gd`, Partikel) und **(2)** Addon-Kleber, der
+> `day_night.gd`, `rock_collision.gd`, `wasser.gd`, Partikel) und **(2)** Addon-Kleber, der
 > zwingend GDScript sein muss.
 
 Grund: `dotnet build` ist ein Verifikationsschritt, den ein Agent selbst ausführen kann.
@@ -81,20 +81,22 @@ werden. Währung ist **Silber**.
 
 ## Die wichtigsten Fallstricke
 
-- 🔴 **`world.tscn` enthält einen zweiten Player.** `Main.tscn` lädt beide → zwei Kameras, zwei
-  Körper, beide in Gruppe `player`. Sollte gelöscht werden.
+- **Der Player steht nur in `Main.tscn`.** Nicht wieder einen in `world.tscn` einbauen — es gab
+  bis 30.07. einen zweiten, dadurch liefen zwei Kameras und zwei Körper gleichzeitig. Zum Testen
+  über `Main.tscn` starten.
 - **Nur ein Terrain3D-Node pro Szene.** Zwei auf dasselbe `data_directory` = Bemalen funktioniert
   nicht mehr.
-- **`World/data/assets.tres` wird nicht gelesen** — die Asset-Liste liegt eingebettet in
-  `world.tscn`.
+- **Die Terrain-Asset-Liste liegt eingebettet in `world.tscn`**, nicht als Datei. Textur-Slots und
+  Mesh-Assets über das Asset-Dock ändern.
 - **`Bewuchs/rocks_umgebung` nicht auflösen** — der Knoten gibt seinen 18 Kindern per Script die
   Kollision.
 - **Godot überschreibt `.tscn` beim Speichern** und lädt extern geänderte Scripts nicht neu,
   solange sie im Editor offen sind. Nach Datei-Edits neu laden lassen.
 - **Blattschatten: `fade_margin = 0` lassen.** Godot-Bug mit Alpha-Clip, gelöst am 27.07. — die
   vergeblichen Versuche stehen in `doc/technik.md` §6, nicht wiederholen.
-- **`scripts/Tools/place_vegetation.py` / `place_orte.py` nicht ausführen** — sie würden die
-  Handarbeit im Bewuchs überschreiben.
+- **Bewuchs nie generieren lassen.** Die Generatoren (`place_vegetation.py`, `place_orte.py`,
+  `ForestPainter.cs`) sind am 30.07. gelöscht worden, weil sie die Handarbeit in `world.tscn`
+  überschreiben würden. Nicht aus Git zurückholen und laufen lassen.
 - **Leistung ist Thema:** ~86 % GPU auf einer 2080 Ti, Ziel auch Laptops. Teuerste Posten: Gras,
   volumetrischer Nebel, OmniLights, Wasser, Schatten-/Baumdistanz, Draw Calls.
 

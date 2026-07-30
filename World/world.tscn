@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cnfxdxr0p5erl" path="res://Assets/Nature/Forest/imposters/birch_1_20.tscn" id="6_njwhq"]
 [ext_resource type="PackedScene" uid="uid://bn4kdca1q1pgl" path="res://Assets/Nature/Forest/imposters/birch_2_21.tscn" id="7_1lp6d"]
 [ext_resource type="PackedScene" uid="uid://d3sr0a7dxfkr8" path="res://addons/terrain_3d/extras/particle_example/Terrain3DParticles.tscn" id="7_wjw5m"]
-[ext_resource type="Script" uid="uid://cptcne5j2cjto" path="res://scripts/World/tree_collision.gd" id="8_2uxom"]
 [ext_resource type="PackedScene" uid="uid://dyhohrl81mvtj" path="res://Assets/Nature/Forest/imposters/birch_3_26.tscn" id="8_u1hwb"]
 [ext_resource type="PackedScene" uid="uid://br14s1fnw0xo1" path="res://Assets/Nature/Forest/imposters/birch_orange_1_22.tscn" id="9_eklv6"]
 [ext_resource type="PackedScene" uid="uid://c4uweru0sb4st" path="res://Objects/CubeBlocking.tscn" id="9_qjfgf"]
@@ -62,7 +61,6 @@
 [ext_resource type="Script" uid="uid://b7t1utlbkgesh" path="res://scripts/World/rock_collision.gd" id="60_rockcol"]
 [ext_resource type="Script" uid="uid://cf65l2rra8t8n" path="res://scripts/World/ShadowTuner.cs" id="61_shdtn"]
 [ext_resource type="PackedScene" uid="uid://c6idwpnuhitjg" path="res://Objects/trees/apple_tree_0.tscn" id="63_1ex6t"]
-[ext_resource type="PackedScene" uid="uid://cn50yey3inusa" path="res://World/player.tscn" id="64_32rkg"]
 [ext_resource type="PackedScene" uid="uid://bkfkjx6msfa57" path="res://Objects/barrier.tscn" id="65_a5wjk"]
 [ext_resource type="PackedScene" uid="uid://chehqv2utpwcl" path="res://Assets/Buildings/MedievalVillage/Models/DoorFrame_Flat_WoodDark.gltf" id="66_h4nnu"]
 [ext_resource type="PackedScene" uid="uid://dh4xoimhk1vgj" path="res://Assets/Buildings/MedievalVillage/Models/DoorFrame_Flat_Brick.gltf" id="67_houwb"]
@@ -681,9 +679,6 @@ particle_count = 432964
 
 [node name="Systeme" type="Node" parent="." unique_id=2147421186]
 
-[node name="TreeCollision" type="Node3D" parent="Systeme" unique_id=969270438]
-script = ExtResource("8_2uxom")
-
 [node name="Environment" parent="Systeme" unique_id=812691920 instance=ExtResource("10_k4w7v")]
 time_of_day = 9.8
 dawn_light_color = Color(1, 0.45270926, 0.6161947, 1)
@@ -703,9 +698,6 @@ transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, -424.728, -2, -347.174)
 mesh = SubResource("PlaneMesh_0euad")
 surface_material_override/0 = SubResource("ShaderMaterial_33hpn")
 script = ExtResource("13_pl0g3")
-
-[node name="Player" parent="." unique_id=1657340354 instance=ExtResource("64_32rkg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -698.08746, -1.9939103, -861.0423)
 
 [node name="Barriere" parent="." unique_id=770862745 instance=ExtResource("65_a5wjk")]
 transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, -510.15857, 70.35065, -513.7287)
