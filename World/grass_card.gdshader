@@ -82,11 +82,61 @@ uniform vec4 sorten_dichte = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec4 sorten_hoehe = vec4(1.0, 1.0, 1.0, 1.0);
 uniform vec4 sorten_breite = vec4(1.0, 1.0, 1.0, 1.0);
 
+group_uniforms instancer;
+// Der Prozessshader von Terrain3DParticles legt je Partikel Werte in INSTANCE_CUSTOM
+// ab: [3] Wachstum, [2] Windstaerke, [0]/[1] Farbstreuung. Der Instancer hinter dem
+// Mesh-Pinsel tut das nicht - dort ist INSTANCE_CUSTOM null. Weil das Wachstum als
+// Schalter "waechst hier ueberhaupt was" dient (sk wird damit multipliziert), waere
+// von Hand gemaltes Gras sonst schlicht unsichtbar. Dieser Schalter ersetzt die
+// fehlenden Werte durch eigene aus Position und Zeit.
+// Fuer den Pinsel eine eigene Kopie des Materials anlegen und hier true setzen -
+// ein Material kann nicht beides gleichzeitig sein.
+uniform bool instancer_modus = false;
+uniform float instancer_wind_tempo : hint_range(0.0, 3.0, 0.05) = 0.6;
+uniform float instancer_wind_staerke : hint_range(0.0, 1.0, 0.01) = 0.5;
+
+group_uniforms klumpen;
+// Gras waechst nicht als gleichmaessiger Teppich, sondern in Nestern. Wird die
+// Dichte ueber instance_spacing oder sorten_dichte gesenkt, duennt das ueberall
+// gleichmaessig aus - uebrig bleiben einzeln stehende Bueschel auf kahlem Boden.
+// Hier stattdessen: eine Rauschmaske ueber die Weltposition entscheidet, WO Gras
+// steht. Innerhalb eines Klumpens bleibt es voll dicht, dazwischen faellt es ganz
+// weg. Dadurch kann instance_spacing dicht bleiben und die Flaeche trotzdem offen
+// wirken - weggeschnittene Partikel entarten zu Nulldreiecken und kosten kein Pixel.
+uniform float klumpen_staerke : hint_range(0.0, 1.0, 0.01) = 0.0;
+// Weltmeter -> Rauschen. 0.08 = Nester von gut 12 m, 0.3 = kleine Flecken.
+uniform float klumpen_groesse : hint_range(0.01, 1.0, 0.01) = 0.12;
+// Anteil der Flaeche, auf dem ueberhaupt Gras steht.
+uniform float klumpen_deckung : hint_range(0.05, 1.0, 0.01) = 0.55;
+// Breite des Randes. Klein = scharf abgegrenzte Inseln, gross = ausgefranst.
+uniform float klumpen_kanten : hint_range(0.01, 0.5, 0.01) = 0.18;
+// Bueschel im Kern eines Klumpens groesser werden lassen - laesst die Nester
+// voller wirken und die Raender natuerlich auslaufen.
+uniform float klumpen_groesse_boost : hint_range(0.0, 1.5, 0.05) = 0.35;
+
+group_uniforms bodenuebergang;
+// Damit die Karten nicht wie ausgestanzte Rechtecke aus der Erde ragen, loesen sie
+// sich zum Fuss hin auf. Zwei Mittel, beide ohne Alpha-Blending - der Shader
+// arbeitet mit Alpha-Clip, echtes Blending haette bei hunderttausenden Karten
+// Sortierprobleme:
+// 1. Der Clip-Schwellwert steigt nach unten an. Dadurch faellt zuerst der weiche
+//    Rand der Textur weg, dann die duenneren Halme - die Karte franst aus, statt
+//    an einer geraden Kante abzureissen.
+uniform float uebergang_hoehe : hint_range(0.0, 0.6, 0.01) = 0.22;
+uniform float uebergang_alpha : hint_range(0.0, 1.0, 0.01) = 0.5;
+// 2. Abdunkeln. Anders als base_ao (breiter Verlauf ueber die halbe Karte, macht
+//    das Bueschel insgesamt plastisch) wirkt das hier nur auf den untersten Rand
+//    und laesst ihn in den Boden laufen.
+uniform float uebergang_dunkel : hint_range(0.0, 1.0, 0.01) = 0.3;
+
 group_uniforms draufsicht;
 // Senkrechte Karten sind von oben unsichtbar (Flaeche = 0) - man sieht nur die Kanten.
 // Dagegen helfen drei Dinge, alle ohne zusaetzliche Geometrie:
 // 1. Karten dauerhaft nach aussen kippen: aus dem Kreuz wird ein Buschel/Faecher.
-uniform float neigung : hint_range(0.0, 1.0, 0.01) = 0.3;
+//    Steht auf 0, seit die Karten ihre Schraeglage aus dem Mesh mitbringen
+//    (grass_tuft_mesh.tres: vier Karten, versetzt, gedreht, verschieden gross).
+//    Hier draufgesetzte Neigung kippt das ganze Bueschel zusaetzlich.
+uniform float neigung : hint_range(0.0, 1.0, 0.01) = 0.0;
 // 2. Beim Blick von oben staerker kippen. Erlaubt, weil man dann die Silhouette
 //    ohnehin nicht sieht - und liefert genau dort Flaeche, wo sie fehlt.
 uniform float neigung_von_oben : hint_range(0.0, 1.0, 0.01) = 0.45;
@@ -94,7 +144,10 @@ uniform float neigung_von_oben : hint_range(0.0, 1.0, 0.01) = 0.45;
 // y = ab wann voll. (0.4 ~ 24 Grad ueber dem Boden, 0.9 ~ fast senkrecht drueber.)
 uniform vec2 blickwinkel_bereich = vec2(0.4, 0.9);
 // 3. Eine der vier Karten flach auf den Boden legen (Bodendecker).
-uniform bool bodenkarte = true;
+//    Aus, seit das Mesh vier eigenstaendig ausgerichtete Karten liefert - eine davon
+//    flachzulegen nimmt dem Bueschel eine seiner vier Silhouetten. Wer von oben mehr
+//    Deckung braucht, dreht besser neigung_von_oben hoch.
+uniform bool bodenkarte = false;
 uniform float bodenkarte_index : hint_range(0.0, 3.0, 1.0) = 3.0;
 uniform float boden_hoehe : hint_range(0.0, 0.3, 0.005) = 0.05;
 uniform float boden_laenge : hint_range(0.5, 2.0, 0.05) = 1.15;
@@ -125,6 +178,11 @@ uniform float base_ao_height : hint_range(0.0, 1.0, 0.01) = 0.55;
 // Wie stark die Normale zur Senkrechten gezogen wird. Karten mit echter Flaechennormale
 // werden je nach Blickwinkel dunkel; Gras sieht mit "nach oben" gerichteter Normale besser aus.
 uniform float normale_aufrecht : hint_range(0.0, 1.0, 0.01) = 0.75;
+// Im Vollschatten traegt nur noch das Umgebungslicht. Reicht das nicht, saeuft das
+// Gras ins Schwarze ab, waehrend der Boden daneben noch Zeichnung hat. Eine kleine
+// Eigenhelligkeit haelt den Schwarzpunkt oben; im direkten Licht geht sie unter.
+// Zu hoch gesetzt leuchtet das Gras nachts.
+uniform float schatten_hebung : hint_range(0.0, 0.3, 0.005) = 0.05;
 
 group_uniforms player_interaction;
 const int TRAIL_SIZE = 16;
@@ -146,6 +204,27 @@ float hash12(vec2 p) {
 	return fract((p3.x + p3.y) * p3.z);
 }
 
+// Drehung um eine beliebige Achse (Rodrigues). Wird zum Kippen der Karten gebraucht:
+// die alte Fassung hat die Hoehe direkt neu gesetzt (lokal_pos.y = y * cos(winkel)),
+// was die Schraeglage aus dem Mesh wieder eingeebnet hat. Eine echte Rotation legt
+// sich stattdessen obendrauf.
+vec3 rotiere(vec3 v, vec3 achse, float winkel) {
+	float c = cos(winkel);
+	float s = sin(winkel);
+	return v * c + cross(achse, v) * s + achse * dot(achse, v) * (1.0 - c);
+}
+
+// Weiches Wertrauschen aus hash12. Als Funktion statt als Textur, weil der
+// Vertexshader ohnehin schon zwei Texturproben fuer die Sortenkarte zieht und
+// die Klumpen keine von Hand malbare Karte brauchen.
+float noise12(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	f = f * f * (3.0 - 2.0 * f);
+	return mix(mix(hash12(i), hash12(i + vec2(1.0, 0.0)), f.x),
+			   mix(hash12(i + vec2(0.0, 1.0)), hash12(i + vec2(1.0, 1.0)), f.x), f.y);
+}
+
 void vertex() {
 	vec3 wurzel = MODEL_MATRIX[3].xyz;
 	// Die Skalierung des Prozess-Shaders ist komplett auf duenne Ribbons ausgelegt:
@@ -155,10 +234,26 @@ void vertex() {
 	// Deshalb hier: eigene, entfernungsunabhaengige Kartengroesse. CUSTOM[3] dient
 	// nur noch als Schalter "waechst hier ueberhaupt Gras" (patch/Randausblendung).
 	float wachstum = INSTANCE_CUSTOM[3];
+	float wind_wert = INSTANCE_CUSTOM[2];
+	// Der Prozessshader hebt jeden Partikel um position_offset.y * scale an, was hier
+	// wieder abgezogen wird. Der Instancer setzt die Meshes direkt auf den Boden -
+	// dort darf nichts abgezogen werden, sonst versinkt das gemalte Gras.
+	float hebung = INSTANCE_CUSTOM[3];
+	vec2 welt_xz = MODEL_MATRIX[3].xz;
+	if (instancer_modus) {
+		// Ersatz fuer das fehlende Wachstum: um die Referenz streuen, damit die
+		// Hoehenvariation (wachstum_hoehe) auch beim Pinselgras arbeitet.
+		wachstum = wachstum_referenz * mix(0.8, 1.25, hash12(welt_xz * 3.77));
+		// Ersatz fuer den Wind aus dem Prozessshader. Eine wandernde Welle ueber die
+		// Weltposition - grob genug, um neben dem Partikelgras nicht aufzufallen.
+		wind_wert = (sin(TIME * instancer_wind_tempo + (welt_xz.x + welt_xz.y) * 0.15)
+				* 0.5 + 0.5) * instancer_wind_staerke;
+		hebung = 0.0;
+	}
 	float da = smoothstep(wachstum_schwelle.x, wachstum_schwelle.y, wachstum);
 	float sk = mix(sk_bereich.x, sk_bereich.y, hash12(MODEL_MATRIX[3].xz * 1.93)) * da;
 	// Partikel sitzt bereits angehoben - die Karte wieder auf den Boden setzen.
-	wurzel.y -= wurzel_versatz * INSTANCE_CUSTOM[3];
+	wurzel.y -= wurzel_versatz * hebung;
 
 	float cam_dist = distance(wurzel, CAMERA_POSITION_WORLD);
 	float rnd = hash12(wurzel.xz * 7.31);
@@ -201,8 +296,22 @@ void vertex() {
 	else if (wahl < gewicht.x + gewicht.y + gewicht.z) { maske = vec4(0.0, 0.0, 1.0, 0.0); }
 	float feld = dot(maske, vec4(0.0, 1.0, 2.0, 3.0));
 
-	// Sortenabhaengige Dichte und Groesse.
-	sk *= hash12(wurzel.zx * 4.41) <= dot(maske, sorten_dichte) ? 1.0 : 0.0;
+	// --- Klumpen ---
+	// Zwei Oktaven: die grobe legt die Nester an, die feine franst deren Raender aus,
+	// damit keine runden Noise-Blasen entstehen.
+	float kl = noise12(wurzel.xz * klumpen_groesse);
+	kl = mix(kl, noise12(wurzel.xz * klumpen_groesse * 2.7 + vec2(31.7, 11.3)), 0.35);
+	// Ueber der Schwelle voll bewachsen, darunter leer. klumpen_deckung gibt an,
+	// wieviel Flaeche uebrig bleibt - deshalb die Schwelle von oben her.
+	float grenze = 1.0 - klumpen_deckung;
+	float im_klumpen = smoothstep(grenze - klumpen_kanten, grenze + klumpen_kanten, kl);
+	// Bei klumpen_staerke = 0 bleibt es beim alten Verhalten (ueberall gleich dicht).
+	float dichte_hier = mix(1.0, im_klumpen, klumpen_staerke);
+
+	// Sortenabhaengige Dichte, kombiniert mit der Klumpenmaske.
+	sk *= hash12(wurzel.zx * 4.41) <= dot(maske, sorten_dichte) * dichte_hier ? 1.0 : 0.0;
+	// Im Kern des Klumpens groesser, zum Rand hin kleiner.
+	sk *= 1.0 + klumpen_groesse_boost * im_klumpen * klumpen_staerke;
 	vec2 kg = karten_groesse * vec2(dot(maske, sorten_breite), dot(maske, sorten_hoehe));
 
 	// --- Hoehenvariation ---
@@ -276,13 +385,19 @@ void vertex() {
 		// Beim Blick von oben wird zusaetzlich gekippt: dann sieht man die
 		// Silhouette ohnehin nicht, und die Flaeche zeigt zur Kamera.
 		float winkel = clamp(neigung + von_oben * neigung_von_oben, 0.0, 1.0) * 1.35;
-		float y = lokal_pos.y;
-		lokal_pos += n_l * (y * sin(winkel) * kipp_seite);
-		lokal_pos.y = y * cos(winkel);
+		// Um die Waagerechte senkrecht zu n_l drehen, damit die Karte in Richtung
+		// ihrer eigenen Normalen nach aussen faellt. Als Rotation, nicht als
+		// Neuberechnung - so bleibt erhalten, dass die Karte im Mesh schon schief,
+		// versetzt und am Fuss verjuengt steht.
+		vec3 achse = vec3(n_l.z, 0.0, -n_l.x);
+		lokal_pos = rotiere(lokal_pos, achse, winkel * kipp_seite);
 		// Die Normale kippt mit - sonst bleibt eine fast liegende Karte waagerecht
 		// beleuchtet wie eine senkrechte und wird von oben dunkel. Von den beiden
 		// Seiten der Flaeche (cull_disabled) nehmen wir die nach oben zeigende.
-		n_lokal = normalize(n_l * cos(winkel) - vec3(0.0, 1.0, 0.0) * sin(winkel) * kipp_seite);
+		// NORMAL statt n_l: n_l ist auf die Waagerechte projiziert und nur als
+		// Kipprichtung gedacht - die echte Mesh-Normale traegt die Schraeglage der
+		// Karte, die sonst in der Beleuchtung verloren ginge.
+		n_lokal = normalize(rotiere(normalize(NORMAL), achse, winkel * kipp_seite));
 		n_lokal = n_lokal.y < 0.0 ? -n_lokal : n_lokal;
 	}
 
@@ -307,14 +422,14 @@ void vertex() {
 	}
 
 	// --- Wind ---
-	float force = INSTANCE_CUSTOM[2] * hoehe * hoehe;
+	float force = wind_wert * hoehe * hoehe;
 	force = pow(max(force, 0.0), 0.707);
 	// Die liegende Karte hat keinen Hoehenverlauf mehr, ueber den sich die Auslenkung
 	// verteilen koennte - voller Wind wuerde sie als Ganzes ueber den Boden schieben.
 	force *= ist_boden ? 0.15 : 1.0;
 	force *= (1.0 - trail_infl);
 	force *= 1.0 - smoothstep(wind_fade_start, wind_fade_end, cam_dist);
-	float wobble = sin(TIME * 2.0 * (1.0 + rnd * 2.0)) * 0.22 * (1.0 - INSTANCE_CUSTOM[2]);
+	float wobble = sin(TIME * 2.0 * (1.0 + rnd * 2.0)) * 0.22 * (1.0 - wind_wert);
 	vec2 richtung = normalize(wind_direction);
 	w_vertex.xz -= (vec2(-richtung.y, richtung.x) * wobble + richtung) * force * 0.45 * sk;
 	w_vertex.y -= force * hoehe * 0.20 * sk;
@@ -326,24 +441,54 @@ void vertex() {
 	}
 
 	wind_kraft = force;
-	farb_schub = vec3(INSTANCE_CUSTOM.r * 0.3 + 0.9, INSTANCE_CUSTOM.g * 0.3 + 0.9, 1.0);
+	// Ohne Prozessshader ist INSTANCE_CUSTOM.rg null und alle Bueschel haetten
+	// denselben Farbstich - hier stattdessen aus der Position gewuerfelt.
+	vec2 fs = instancer_modus
+			? vec2(hash12(welt_xz * 8.13), hash12(welt_xz * 6.29 + 4.1))
+			: INSTANCE_CUSTOM.rg;
+	farb_schub = vec3(fs.r * 0.3 + 0.9, fs.g * 0.3 + 0.9, 1.0);
 
 	VERTEX = (VIEW_MATRIX * vec4(w_vertex, 1.0)).xyz;
-	// Normale zwischen Planeflaeche und Senkrechter mischen. Reine Flaechennormalen
-	// lassen Gras je nach Sonnenstand schwarz werden.
-	vec3 n = normalize(mix(plane_n, vec3(0.0, 1.0, 0.0), normale_aufrecht));
-	NORMAL = (VIEW_MATRIX * vec4(n, 0.0)).xyz;
+	// Nur die reine Flaechennormale weitergeben. Frueher wurde hier schon zur
+	// Senkrechten gemischt - dann laesst sich im Fragmentshader nicht mehr
+	// unterscheiden, welche Seite der Karte man sieht, und die Rueckseiten werden
+	// schwarz. Das Mischen passiert jetzt dort, nach dem Seitenwechsel.
+	NORMAL = (VIEW_MATRIX * vec4(plane_n, 0.0)).xyz;
 }
 
 void fragment() {
 	vec4 tex = texture(gras_atlas, atlas_uv);
 	ALPHA = tex.a;
-	ALPHA_SCISSOR_THRESHOLD = alpha_schwelle;
+
+	// --- Normale ---
+	// Die Karten sind cull_disabled, man sieht also beide Seiten. Ohne den Wechsel
+	// nach FRONT_FACING behaelt die Rueckseite die Normale der Vorderseite: das Licht
+	// kommt dann rechnerisch von hinten, N dot L wird negativ und die Karte ist
+	// schwarz - waehrend die Nachbarkarte mit anderem Yaw normal beleuchtet ist.
+	// Genau das ergibt das Bild aus einzelnen schwarzen und normalen Buescheln.
+	vec3 fn = normalize(NORMAL);
+	fn = FRONT_FACING ? fn : -fn;
+	// Erst jetzt zur Senkrechten ziehen. Gras sieht mit weitgehend aufrechter
+	// Normale besser aus, aber das Mischen darf erst nach dem Seitenwechsel
+	// passieren - sonst zeigt die gemischte Normale auf der Rueckseite nach unten.
+	vec3 hoch = normalize((VIEW_MATRIX * vec4(0.0, 1.0, 0.0, 0.0)).xyz);
+	NORMAL = normalize(mix(fn, hoch, normale_aufrecht));
+
+	// --- Uebergang zum Boden ---
+	// 1 an der Wurzel, 0 ab uebergang_hoehe.
+	float am_boden = 1.0 - smoothstep(0.0, uebergang_hoehe, hoehe);
+	// Clip-Schwelle nach unten anheben: erst faellt der weiche Texturrand weg, dann
+	// die duennen Halme. Die Karte franst aus, statt an einer Kante abzureissen -
+	// mit Alpha-Clip der einzige Weg zu einem Verlauf, ohne auf Blending zu gehen.
+	ALPHA_SCISSOR_THRESHOLD = mix(alpha_schwelle, 0.98, am_boden * uebergang_alpha);
 
 	vec3 col = tex.rgb * gras_farbe * 2.0;
 	col *= farb_schub;
 	// Fake-AO am Bueschelgrund - dichtes Gras liest sich als dunklerer Boden
 	col *= mix(base_ao, 1.0, smoothstep(0.0, base_ao_height, hoehe));
+	// Der letzte Rand laeuft zusaetzlich dunkel aus, damit der Ansatz im Boden
+	// verschwindet statt auf ihm aufzusitzen.
+	col *= mix(1.0, uebergang_dunkel, am_boden);
 	// Spitzen leicht aufhellen
 	col = mix(col, col * 1.25, smoothstep(0.75, 1.0, hoehe));
 	ALBEDO = col;
@@ -352,4 +497,7 @@ void fragment() {
 	ROUGHNESS = 1.0 - spec_rough * 0.6;
 	SPECULAR = clamp(spec_rough * 0.2, 0.0, 0.12);
 	BACKLIGHT = vec3(0.38);
+	// Nicht am Fuss - dort soll es dunkel bleiben, sonst leuchtet der Uebergang,
+	// den uebergang_dunkel gerade abgedunkelt hat.
+	EMISSION = col * schatten_hebung * smoothstep(0.0, uebergang_hoehe, hoehe);
 }

@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://bckabhtnph02m"]
+
+[ext_resource type="PackedScene" uid="uid://j5oixho7wsbv" path="res://Assets/Buildings/MedievalVillage/Models/Corner_Exterior_Wood.gltf" id="1_8fb2e"]
+[ext_resource type="PackedScene" uid="uid://d3xxcoybq707m" path="res://Assets/Buildings/MedievalVillage/Models/roof_Wooden_simple.gltf" id="2_8fb2e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0euad"]
+size = Vector3(0.20678711, 3.0019226, 0.23242188)
+
+[node name="Hütte_start" type="Node3D" unique_id=1737789835]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1316750851]
+
+[node name="Corner_Exterior_Wood2" parent="StaticBody3D" unique_id=871225328 instance=ExtResource("1_8fb2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4758117, -1.0015029, 2.706967)
+
+[node name="Corner_Exterior_Wood3" parent="StaticBody3D" unique_id=1515935517 instance=ExtResource("1_8fb2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5242133, 0, 2.706967)
+
+[node name="Corner_Exterior_Wood4" parent="StaticBody3D" unique_id=1877580339 instance=ExtResource("1_8fb2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4758117, -1.0015029, -2.7926176)
+
+[node name="Corner_Exterior_Wood5" parent="StaticBody3D" unique_id=464703476 instance=ExtResource("1_8fb2e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5242133, 0, -2.7926176)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=416213515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5262799, 1.4940643, 2.707466)
+shape = SubResource("BoxShape3D_0euad")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D" unique_id=245828242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4744797, 0.4450847, 2.707466)
+shape = SubResource("BoxShape3D_0euad")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=449437561]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5262799, 1.4940643, -2.782315)
+shape = SubResource("BoxShape3D_0euad")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D" unique_id=2000174443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4744797, 0.4450847, -2.782315)
+shape = SubResource("BoxShape3D_0euad")
+
+[node name="roof_Wooden_simple" parent="." unique_id=528073553 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, -1.250312, 1.510125, -2.0085506)
+
+[node name="roof_Wooden_simple2" parent="." unique_id=1887571071 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, 0.3208704, 1.9035487, -2.0085506)
+
+[node name="roof_Wooden_simple3" parent="." unique_id=1496132207 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, 1.9641728, 2.315031, -2.0085506)
+
+[node name="roof_Wooden_simple4" parent="." unique_id=1273729861 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, -1.250312, 1.510125, -0.01248312)
+
+[node name="roof_Wooden_simple5" parent="." unique_id=659183391 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, 0.3208704, 1.9035487, -0.01248312)
+
+[node name="roof_Wooden_simple6" parent="." unique_id=1474773531 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, 1.9641728, 2.315031, -0.01248312)
+
+[node name="roof_Wooden_simple7" parent="." unique_id=315748171 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, -1.250312, 1.510125, 1.9737554)
+
+[node name="roof_Wooden_simple8" parent="." unique_id=1668719253 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, 0.3208704, 1.9035487, 1.9737554)
+
+[node name="roof_Wooden_simple9" parent="." unique_id=771215446 instance=ExtResource("2_8fb2e")]
+transform = Transform3D(-4.2402284e-08, 0.37852257, -0.9255919, -1.061752e-08, 0.9255919, 0.37852257, 1, 2.5877718e-08, -3.522824e-08, 1.9641728, 2.315031, 1.9737554)

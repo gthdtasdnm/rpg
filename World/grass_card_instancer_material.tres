@@ -1,4 +1,13 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://dr1ik08heffwd"]
+; Kopie von grass_card_material.tres fuer von Hand gemaltes Gras (Terrain3D-Instancer,
+; "Instance Meshes"-Pinsel). Unterschiede zum Original:
+;   instancer_modus = true   - ersetzt die Werte, die sonst der Partikel-Prozessshader
+;                              in INSTANCE_CUSTOM legt. Ohne das waere gemaltes Gras
+;                              unsichtbar, weil das Wachstum als Sichtbarkeitsschalter
+;                              dient.
+;   klumpen_staerke = 0      - beim Pinsel bestimmst du selbst, wo Gras steht.
+; Die Spieler-Spur bleibt hier wirkungslos: die trail_*-Uniforms setzt das Script von
+; Terrain3DParticles, und das kennt nur sein eigenes Material.
+[gd_resource type="ShaderMaterial" format=3]
 
 [ext_resource type="Shader" uid="uid://b7vfh0fc66pfe" path="res://World/grass_card.gdshader" id="1_gcs"]
 [ext_resource type="Texture2D" uid="uid://co6f4floc0gfw" path="res://Assets/Nature/Grass/gras_atlas.png" id="2_gat"]
@@ -28,10 +37,10 @@ shader_parameter/sorten_gewicht = Vector4(1, 0.9, 0.85, 1)
 shader_parameter/sorten_dichte = Vector4(1, 1, 1, 1)
 shader_parameter/sorten_hoehe = Vector4(1, 0.95, 1.3, 0.9)
 shader_parameter/sorten_breite = Vector4(1, 1, 1, 1)
-shader_parameter/instancer_modus = false
+shader_parameter/instancer_modus = true
 shader_parameter/instancer_wind_tempo = 0.6
 shader_parameter/instancer_wind_staerke = 0.5
-shader_parameter/klumpen_staerke = 1.0
+shader_parameter/klumpen_staerke = 0.0
 shader_parameter/klumpen_groesse = 0.12
 shader_parameter/klumpen_deckung = 0.29999999515706
 shader_parameter/klumpen_kanten = 0.13999999687072

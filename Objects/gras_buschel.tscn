@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="ArrayMesh" uid="uid://ca5a3xo4a5ams" path="res://World/grass_tuft_mesh.tres" id="1_mesh"]
+[ext_resource type="Material" path="res://World/grass_card_instancer_material.tres" id="2_mat"]
+
+[node name="GrasBueschel" type="MeshInstance3D"]
+mesh = ExtResource("1_mesh")
+surface_material_override/0 = ExtResource("2_mat")

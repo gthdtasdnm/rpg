@@ -1,50 +1,84 @@
-[gd_scene format=3 uid="uid://cfixs4o0lhujq"]
+[gd_scene format=4 uid="uid://cfixs4o0lhujq"]
 
+[ext_resource type="PackedScene" uid="uid://ryv1cime6y8t" path="res://Objects/rocks/rock_02m_shard.tscn" id="1_r"]
+[ext_resource type="PackedScene" uid="uid://buy5y46c3nujm" path="res://Objects/rocks/rock_04m_block.tscn" id="2_r"]
+[ext_resource type="PackedScene" uid="uid://cjpjc0rvm54j2" path="res://Objects/rocks/rock_01m_stone.tscn" id="3_r"]
 [ext_resource type="PackedScene" uid="uid://bg4m1wth7s0to" path="res://Assets/Nature/Forest/imposters/apple_tree_0.tscn" id="4_017rf"]
+[ext_resource type="PackedScene" uid="uid://c5cxdwn65c67v" path="res://Objects/rocks/rock_08m_slab_flat.tscn" id="4_r"]
 [ext_resource type="PackedScene" uid="uid://dovwjfvwttrqf" path="res://Assets/Nature/Forest/imposters/ash_tree_1.tscn" id="5_5aogk"]
 [ext_resource type="Shader" uid="uid://dr4u12dlx8jaj" path="res://World/terrain_shader.gdshader" id="5_6yf64"]
+[ext_resource type="PackedScene" uid="uid://cj52lyjecwj74" path="res://Objects/rocks/rock_06m_slabs_a.tscn" id="5_r"]
 [ext_resource type="PackedScene" uid="uid://cnfxdxr0p5erl" path="res://Assets/Nature/Forest/imposters/birch_1_20.tscn" id="6_njwhq"]
+[ext_resource type="PackedScene" uid="uid://xnlgety4ytj1" path="res://Objects/trees/noble_fir_tree_18.tscn" id="6_r"]
 [ext_resource type="PackedScene" uid="uid://bn4kdca1q1pgl" path="res://Assets/Nature/Forest/imposters/birch_2_21.tscn" id="7_1lp6d"]
+[ext_resource type="PackedScene" uid="uid://owa1vbsn8res" path="res://Objects/trees/coniferous_shrub_16.tscn" id="7_r"]
 [ext_resource type="PackedScene" uid="uid://d3sr0a7dxfkr8" path="res://addons/terrain_3d/extras/particle_example/Terrain3DParticles.tscn" id="7_wjw5m"]
 [ext_resource type="PackedScene" uid="uid://dyhohrl81mvtj" path="res://Assets/Nature/Forest/imposters/birch_3_26.tscn" id="8_u1hwb"]
 [ext_resource type="PackedScene" uid="uid://br14s1fnw0xo1" path="res://Assets/Nature/Forest/imposters/birch_orange_1_22.tscn" id="9_eklv6"]
 [ext_resource type="PackedScene" uid="uid://c4uweru0sb4st" path="res://Objects/CubeBlocking.tscn" id="9_qjfgf"]
+[ext_resource type="PackedScene" uid="uid://bhe0mcbcedyk6" path="res://Objects/trees/deciduous_shrub_27.tscn" id="9_r"]
 [ext_resource type="PackedScene" uid="uid://bb2lp50sjndus" path="res://World/Environment.tscn" id="10_k4w7v"]
+[ext_resource type="PackedScene" uid="uid://drjrflwunst8u" path="res://Objects/trees/oak_25.tscn" id="10_r"]
 [ext_resource type="PackedScene" uid="uid://bus8ene2e7va0" path="res://Assets/Nature/Forest/imposters/birch_orange_2_23.tscn" id="10_utqx3"]
 [ext_resource type="PackedScene" uid="uid://bhxvb0ewf7fmm" path="res://Assets/Nature/Forest/boulder_mossy_large_6.tscn" id="11_8i408"]
 [ext_resource type="Shader" uid="uid://d2qspm521j4fk" path="res://Objects/water.gdshader" id="11_cmaa6"]
+[ext_resource type="PackedScene" uid="uid://tvad0wi4xf3p" path="res://Objects/trees/plum_tree_3.tscn" id="11_r"]
 [ext_resource type="Texture2D" uid="uid://fmabixxyb44f" path="res://Assets/Terrain/Source/Ground061_1K-JPG/Ground061_1K-JPG_Displacement.jpg" id="12_crxo5"]
+[ext_resource type="PackedScene" uid="uid://dldhish54wo2o" path="res://Objects/trees/birch_orange_2_23.tscn" id="12_r"]
 [ext_resource type="PackedScene" uid="uid://bpl15bb4wlj1j" path="res://Assets/Nature/Forest/boulder_outcrop_mossy_large_7.tscn" id="12_xyltf"]
 [ext_resource type="Script" uid="uid://dxaa32rkk3dn4" path="res://Objects/wasser.gd" id="13_pl0g3"]
+[ext_resource type="PackedScene" uid="uid://bixt4qh1hma2i" path="res://Objects/trees/holly_shrub_4.tscn" id="13_r"]
 [ext_resource type="PackedScene" uid="uid://cdnepfmm3ni0l" path="res://Assets/Nature/Forest/boulder_outcrop_mossy_medium_8.tscn" id="13_tpuo2"]
+[ext_resource type="PackedScene" uid="uid://bqa06631kiu0" path="res://Objects/trees/fir_tree_17.tscn" id="13_x8ccd"]
 [ext_resource type="PackedScene" uid="uid://csclhi3i1fpsa" path="res://Assets/Nature/Forest/boulder_outcrop_plain_large_9.tscn" id="14_71xra"]
+[ext_resource type="PackedScene" uid="uid://60ubc5fkadp1" path="res://Objects/trees/pine_tree_19.tscn" id="14_pekso"]
+[ext_resource type="PackedScene" uid="uid://dwurfej1g18wd" path="res://Objects/rocks/rock_01m_stone_mossy.tscn" id="14_r"]
 [ext_resource type="PackedScene" uid="uid://chcphq3vrjjp4" path="res://Assets/Nature/Forest/boulder_outcrop_plain_medium_10.tscn" id="15_4gwrr"]
+[ext_resource type="PackedScene" uid="uid://t4hr6x117kj2" path="res://Objects/trees/birch_2_21.tscn" id="15_r"]
 [ext_resource type="PackedScene" uid="uid://b1qkrct0ufr8c" path="res://Assets/Nature/Forest/boulder_plain_large_11.tscn" id="16_ciivb"]
+[ext_resource type="PackedScene" uid="uid://brdkkxbsgw6y6" path="res://Objects/trees/cherry_tree_2.tscn" id="16_r"]
 [ext_resource type="PackedScene" uid="uid://c0vswtuw11eno" path="res://Assets/Nature/Forest/imposters/cherry_tree_2.tscn" id="17_16763"]
+[ext_resource type="PackedScene" uid="uid://drqer23cj5bw5" path="res://Objects/trees/ash_tree_1.tscn" id="17_r"]
+[ext_resource type="PackedScene" uid="uid://80g43b8aqdef" path="res://Objects/trees/birch_orange_1_22.tscn" id="18_r"]
 [ext_resource type="PackedScene" uid="uid://cai72fhk18p1r" path="res://Assets/Nature/Forest/coniferous_dead_log_12.tscn" id="18_so08s"]
+[ext_resource type="PackedScene" uid="uid://dmhhowxhti47r" path="res://Objects/trees/deciduous_shrub_2_31.tscn" id="19_r"]
 [ext_resource type="PackedScene" uid="uid://dv76a0rqtde27" path="res://Assets/Nature/Forest/coniferous_dead_tree_2_14.tscn" id="19_w84xj"]
 [ext_resource type="PackedScene" uid="uid://c38m5p1sq8h73" path="res://Assets/Nature/Forest/coniferous_dead_tree_13.tscn" id="20_bqsmr"]
+[ext_resource type="PackedScene" uid="uid://cyudml7vxmbws" path="res://Objects/trees/maple_24.tscn" id="20_r"]
 [ext_resource type="PackedScene" uid="uid://bfs7k8t7aa5be" path="res://Assets/Nature/Forest/imposters/coniferous_sapling_15.tscn" id="21_e560p"]
 [ext_resource type="PackedScene" uid="uid://cni7pisy4bwpw" path="res://Assets/Nature/Forest/imposters/coniferous_shrub_16.tscn" id="22_bshvv"]
+[ext_resource type="PackedScene" uid="uid://iu73l6c6m7gm" path="res://Objects/trees/birch_3_26.tscn" id="22_r"]
 [ext_resource type="PackedScene" uid="uid://chyw03umdnetg" path="res://Assets/Nature/Forest/imposters/deciduous_dead_1_29.tscn" id="23_4qare"]
+[ext_resource type="PackedScene" uid="uid://4w31cgoxyfmr" path="res://Objects/trees/birch_1_20.tscn" id="23_r"]
 [ext_resource type="PackedScene" uid="uid://dk3uy31j8hdxv" path="res://Assets/Nature/Forest/deciduous_dead_2_28.tscn" id="24_bq2v8"]
+[ext_resource type="PackedScene" uid="uid://doqfrvypw1rs4" path="res://Objects/rocks/rock_01m_pebbles.tscn" id="24_r"]
 [ext_resource type="PackedScene" uid="uid://y8ucvpa1lm2i" path="res://Assets/Nature/Forest/deciduous_log_30.tscn" id="25_3o5xh"]
 [ext_resource type="PackedScene" uid="uid://d1ij27yj3klg3" path="res://Assets/Nature/Forest/imposters/deciduous_sapling_2_33.tscn" id="26_2c707"]
+[ext_resource type="PackedScene" uid="uid://bj48wsiq8s21e" path="res://Objects/rocks/rock_20m_arch.tscn" id="26_r"]
 [ext_resource type="PackedScene" uid="uid://d0n1ly8r5fx18" path="res://Assets/Nature/Forest/imposters/deciduous_sapling_32.tscn" id="27_qjbjq"]
+[ext_resource type="PackedScene" uid="uid://boqfnnd4taail" path="res://Objects/rocks/rock_09m_outcrop.tscn" id="27_r"]
 [ext_resource type="PackedScene" uid="uid://cu47us8uc57vr" path="res://Assets/Nature/Forest/imposters/deciduous_shrub_2_31.tscn" id="28_246vq"]
 [ext_resource type="PackedScene" uid="uid://dwfm8aglmlkyu" path="res://Assets/Nature/Forest/imposters/deciduous_shrub_27.tscn" id="29_lo6q2"]
+[ext_resource type="PackedScene" uid="uid://ddribfiubqygv" path="res://Objects/trees/deciduous_sapling_32.tscn" id="29_r"]
 [ext_resource type="PackedScene" uid="uid://lgystf5wirym" path="res://Assets/Nature/Forest/imposters/fir_tree_17.tscn" id="30_mocti"]
+[ext_resource type="PackedScene" uid="uid://bbrw4vlr0n7se" path="res://Objects/trees/coniferous_sapling_15.tscn" id="30_r"]
+[ext_resource type="PackedScene" uid="uid://gjfl682nk61x" path="res://Objects/trees/deciduous_dead_1_29.tscn" id="31_r"]
 [ext_resource type="PackedScene" uid="uid://v147rlyqf2v1" path="res://Assets/Nature/Forest/imposters/holly_shrub_4.tscn" id="31_rrn5h"]
 [ext_resource type="PackedScene" uid="uid://csx2hqgso3wx1" path="res://Assets/Nature/Forest/imposters/maple_24.tscn" id="32_e7mue"]
 [ext_resource type="PackedScene" uid="uid://hax8kcqp2rnu" path="res://Assets/Nature/Forest/imposters/noble_fir_tree_18.tscn" id="33_nfehj"]
 [ext_resource type="PackedScene" uid="uid://bmrb7un0vsee3" path="res://Assets/Nature/Forest/imposters/oak_25.tscn" id="34_5m26r"]
 [ext_resource type="PackedScene" uid="uid://mhy3vfm83j0b" path="res://Assets/Nature/Forest/imposters/pine_tree_19.tscn" id="35_66w63"]
 [ext_resource type="PackedScene" uid="uid://db75p25dtgqtn" path="res://Assets/Nature/Forest/imposters/plum_tree_3.tscn" id="36_m0cbj"]
+[ext_resource type="PackedScene" path="res://Objects/gras_buschel.tscn" id="36_p5g83"]
 [ext_resource type="PackedScene" uid="uid://b0ehvleg58tyd" path="res://Assets/Nature/Forest/imposters/raspberry_shrub_5.tscn" id="37_ucd25"]
 [ext_resource type="Texture2D" uid="uid://tfs5ofvr2xrt" path="res://Assets/Terrain/Packed/Ground085_albedo_height.png" id="38_7fqmh"]
 [ext_resource type="Texture2D" uid="uid://dly7nns41oktn" path="res://Assets/Terrain/Packed/Ground085_normal_roughness.png" id="39_64ogq"]
+[ext_resource type="Texture2D" uid="uid://dur8xjkexxkdt" path="res://Assets/Terrain/Packed/Ground048_albedo_height.png" id="40_jjj8k"]
 [ext_resource type="Texture2D" uid="uid://c5weenoov5g00" path="res://Assets/Terrain/Packed/Ground079S_albedo_height.png" id="40_nj6lt"]
+[ext_resource type="Texture2D" uid="uid://ddprscrpsofah" path="res://Assets/Terrain/Packed/ground037_alb_ht.png" id="40_xagyi"]
+[ext_resource type="Texture2D" uid="uid://b5i82yct6po1l" path="res://Assets/Terrain/Packed/Ground048_normal_roughness.png" id="41_2kojl"]
 [ext_resource type="Texture2D" uid="uid://m5lhd5dg6lk1" path="res://Assets/Terrain/Packed/Ground079S_normal_roughness.png" id="41_17b0c"]
+[ext_resource type="Texture2D" uid="uid://c1ots7w6i0i1q" path="res://Assets/Terrain/Packed/ground037_nrm_rgh.png" id="41_p5g83"]
 [ext_resource type="PackedScene" uid="uid://bve4ueifkbgpb" path="res://Assets/Nature/Rocks/big_flat_rock.glb" id="48_i5ake"]
 [ext_resource type="PackedScene" uid="uid://bqnxpm2k614mk" path="res://World/firefly_swarm.tscn" id="48_n40p1"]
 [ext_resource type="PackedScene" uid="uid://dvahcx0cklh8s" path="res://World/forest_dust.tscn" id="49_dlis5"]
@@ -53,13 +87,14 @@
 [ext_resource type="PackedScene" uid="uid://d27owjcuy63vt" path="res://Assets/Nature/Rocks/beach_rocks.glb" id="50_o2cvn"]
 [ext_resource type="PackedScene" uid="uid://dp5ia7nl2dkmu" path="res://Assets/Nature/Rocks/big_long_rock.glb" id="51_4giqt"]
 [ext_resource type="PackedScene" uid="uid://cy8d8fxx6jmkg" path="res://Assets/Nature/Rocks/big_flat_beach_rock.glb" id="52_8iv6r"]
+[ext_resource type="PackedScene" uid="uid://bckabhtnph02m" path="res://Objects/buildings/hütte_start.tscn" id="52_hm3sf"]
 [ext_resource type="PackedScene" uid="uid://cwkt6lglvsaxt" path="res://Assets/Nature/Rocks/beach_rocks2.glb" id="53_3gnva"]
 [ext_resource type="PackedScene" uid="uid://bm71pg6e6ier6" path="res://Assets/Nature/Rocks/small_rock.glb" id="54_eyejc"]
 [ext_resource type="PackedScene" uid="uid://dl70sitama8g5" path="res://Assets/Nature/Rocks/rock_formation2.glb" id="57_eyejc"]
+[ext_resource type="PackedScene" uid="uid://cnn0gy0cl2no3" path="res://Objects/buildings/wegschrein_ankunft.tscn" id="58_2kojl"]
 [ext_resource type="PackedScene" uid="uid://do514w58e7odp" path="res://Assets/Nature/Rocks/mossy_rock.glb" id="58_m1472"]
 [ext_resource type="PackedScene" uid="uid://03evjuuuafq3" path="res://Assets/Nature/Rocks/mossy_rock2.glb" id="59_eyejc"]
 [ext_resource type="Script" uid="uid://b7t1utlbkgesh" path="res://scripts/World/rock_collision.gd" id="60_rockcol"]
-[ext_resource type="Script" uid="uid://cf65l2rra8t8n" path="res://scripts/World/ShadowTuner.cs" id="61_shdtn"]
 [ext_resource type="PackedScene" uid="uid://c6idwpnuhitjg" path="res://Objects/trees/apple_tree_0.tscn" id="63_1ex6t"]
 [ext_resource type="PackedScene" uid="uid://bkfkjx6msfa57" path="res://Objects/barrier.tscn" id="65_a5wjk"]
 [ext_resource type="PackedScene" uid="uid://chehqv2utpwcl" path="res://Assets/Buildings/MedievalVillage/Models/DoorFrame_Flat_WoodDark.gltf" id="66_h4nnu"]
@@ -70,40 +105,15 @@
 [ext_resource type="PackedScene" uid="uid://bhf1kohbp3uxs" path="res://Objects/trees/deciduous_sapling_2_33.tscn" id="71_o8btu"]
 [ext_resource type="PackedScene" uid="uid://pfp85g82li4c" path="res://Objects/trees/raspberry_shrub_5.tscn" id="72_2j1j3"]
 [ext_resource type="PackedScene" uid="uid://e7jpsrwjd0i" path="res://Assets/Buildings/MedievalVillage/Models/Corner_ExteriorWide_Brick.gltf" id="73_2j1j3"]
-[ext_resource type="ArrayMesh" uid="uid://ca5a3xo4a5ams" path="res://World/grass_tuft_mesh.tres" id="83_gmesh"]
-[ext_resource type="Material" uid="uid://dr1ik08heffwd" path="res://World/grass_card_material.tres" id="84_gmat"]
-[ext_resource type="PackedScene" uid="uid://ryv1cime6y8t" path="res://Objects/rocks/rock_02m_shard.tscn" id="1_r"]
-[ext_resource type="PackedScene" uid="uid://buy5y46c3nujm" path="res://Objects/rocks/rock_04m_block.tscn" id="2_r"]
-[ext_resource type="PackedScene" uid="uid://cjpjc0rvm54j2" path="res://Objects/rocks/rock_01m_stone.tscn" id="3_r"]
-[ext_resource type="PackedScene" uid="uid://c5cxdwn65c67v" path="res://Objects/rocks/rock_08m_slab_flat.tscn" id="4_r"]
-[ext_resource type="PackedScene" uid="uid://cj52lyjecwj74" path="res://Objects/rocks/rock_06m_slabs_a.tscn" id="5_r"]
-[ext_resource type="PackedScene" uid="uid://xnlgety4ytj1" path="res://Objects/trees/noble_fir_tree_18.tscn" id="6_r"]
-[ext_resource type="PackedScene" uid="uid://owa1vbsn8res" path="res://Objects/trees/coniferous_shrub_16.tscn" id="7_r"]
-[ext_resource type="PackedScene" uid="uid://bhe0mcbcedyk6" path="res://Objects/trees/deciduous_shrub_27.tscn" id="9_r"]
-[ext_resource type="PackedScene" uid="uid://drjrflwunst8u" path="res://Objects/trees/oak_25.tscn" id="10_r"]
-[ext_resource type="PackedScene" uid="uid://tvad0wi4xf3p" path="res://Objects/trees/plum_tree_3.tscn" id="11_r"]
-[ext_resource type="PackedScene" uid="uid://dldhish54wo2o" path="res://Objects/trees/birch_orange_2_23.tscn" id="12_r"]
-[ext_resource type="PackedScene" uid="uid://bixt4qh1hma2i" path="res://Objects/trees/holly_shrub_4.tscn" id="13_r"]
-[ext_resource type="PackedScene" uid="uid://bqa06631kiu0" path="res://Objects/trees/fir_tree_17.tscn" id="13_x8ccd"]
-[ext_resource type="PackedScene" uid="uid://60ubc5fkadp1" path="res://Objects/trees/pine_tree_19.tscn" id="14_pekso"]
-[ext_resource type="PackedScene" uid="uid://dwurfej1g18wd" path="res://Objects/rocks/rock_01m_stone_mossy.tscn" id="14_r"]
-[ext_resource type="PackedScene" uid="uid://t4hr6x117kj2" path="res://Objects/trees/birch_2_21.tscn" id="15_r"]
-[ext_resource type="PackedScene" uid="uid://brdkkxbsgw6y6" path="res://Objects/trees/cherry_tree_2.tscn" id="16_r"]
-[ext_resource type="PackedScene" uid="uid://drqer23cj5bw5" path="res://Objects/trees/ash_tree_1.tscn" id="17_r"]
-[ext_resource type="PackedScene" uid="uid://80g43b8aqdef" path="res://Objects/trees/birch_orange_1_22.tscn" id="18_r"]
-[ext_resource type="PackedScene" uid="uid://dmhhowxhti47r" path="res://Objects/trees/deciduous_shrub_2_31.tscn" id="19_r"]
-[ext_resource type="PackedScene" uid="uid://cyudml7vxmbws" path="res://Objects/trees/maple_24.tscn" id="20_r"]
-[ext_resource type="PackedScene" uid="uid://iu73l6c6m7gm" path="res://Objects/trees/birch_3_26.tscn" id="22_r"]
-[ext_resource type="PackedScene" uid="uid://4w31cgoxyfmr" path="res://Objects/trees/birch_1_20.tscn" id="23_r"]
-[ext_resource type="PackedScene" uid="uid://doqfrvypw1rs4" path="res://Objects/rocks/rock_01m_pebbles.tscn" id="24_r"]
-[ext_resource type="PackedScene" uid="uid://bj48wsiq8s21e" path="res://Objects/rocks/rock_20m_arch.tscn" id="26_r"]
-[ext_resource type="PackedScene" uid="uid://boqfnnd4taail" path="res://Objects/rocks/rock_09m_outcrop.tscn" id="27_r"]
-[ext_resource type="PackedScene" uid="uid://ddribfiubqygv" path="res://Objects/trees/deciduous_sapling_32.tscn" id="29_r"]
-[ext_resource type="PackedScene" uid="uid://bbrw4vlr0n7se" path="res://Objects/trees/coniferous_sapling_15.tscn" id="30_r"]
-[ext_resource type="PackedScene" uid="uid://gjfl682nk61x" path="res://Objects/trees/deciduous_dead_1_29.tscn" id="31_r"]
 [ext_resource type="PackedScene" uid="uid://dhj6crryik1e3" path="res://Objects/rocks/rock_09m_scree.tscn" id="73_nm5b8"]
 [ext_resource type="PackedScene" uid="uid://byl4ehhsek4t4" path="res://Objects/rocks/rock_05m_slab_mossy.tscn" id="74_a8s4g"]
 [ext_resource type="PackedScene" uid="uid://cmnofijbhd8ks" path="res://Objects/rocks/rock_09m_ridge.tscn" id="75_a8s4g"]
+[ext_resource type="Material" uid="uid://dr1ik08heffwd" path="res://World/grass_card_material.tres" id="84_gmat"]
+[ext_resource type="PackedScene" uid="uid://bshfercq07bar" path="res://Assets/Buildings/MedievalVillage/Models/Prop_WoodenFence_Single.gltf" id="105_hm3sf"]
+[ext_resource type="PackedScene" uid="uid://bxhtua2vjnexc" path="res://Assets/Props/FantasyProps/Models/Chest_Wood.gltf" id="106_dpog3"]
+[ext_resource type="PackedScene" uid="uid://ctt0uaylkuo0r" path="res://Assets/Props/FantasyProps/Models/FarmCrate_Apple.gltf" id="107_0g7xh"]
+[ext_resource type="PackedScene" uid="uid://dhlgqclab6yx2" path="res://Assets/Props/FantasyProps/Models/FarmCrate_Empty.gltf" id="108_jjj8k"]
+[ext_resource type="PackedScene" uid="uid://b5kpu5b8g1kv" path="res://Assets/Props/FantasyProps/Models/Crate_Metal.gltf" id="109_2kojl"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -566,6 +576,16 @@ lod0_range = 99.26
 lod1_range = 600.0
 fade_margin = 40.0
 
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_uvivd"]
+name = "gras_buschel"
+id = 35
+scene_file = ExtResource("36_p5g83")
+density = 8.137439
+cast_shadows = 0
+last_lod = 0
+last_shadow_lod = 0
+lod0_range = 128.0
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4175r"]
 load_path = "res://.godot/imported/rock023_alb_ht.png-9c06b8a5f11d940d1c46d8928f6d6a5c.bptc.ctex"
 
@@ -623,9 +643,41 @@ uv_scale = 0.3
 detiling_rotation = 0.141
 detiling_shift = 0.035
 
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xagyi"]
+name = "Ground085_albedo_height"
+id = 4
+albedo_color = Color(0.6271186, 0.62807196, 0.6036481, 1)
+albedo_texture = ExtResource("40_xagyi")
+normal_texture = ExtResource("41_p5g83")
+normal_depth = 1.31
+ao_strength = 2.0
+roughness = 0.797
+uv_scale = 0.283
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_uvivd"]
+name = "Ground048_albedo_height"
+id = 5
+albedo_color = Color(0.783021, 0.89097047, 0.79109335, 1)
+albedo_texture = ExtResource("40_jjj8k")
+normal_texture = ExtResource("41_2kojl")
+uv_scale = 0.5
+
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_4grly"]
-mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_g06w4"), SubResource("Terrain3DMeshAsset_s7vq2"), SubResource("Terrain3DMeshAsset_tw6mt"), SubResource("Terrain3DMeshAsset_lp87e"), SubResource("Terrain3DMeshAsset_w40rn"), SubResource("Terrain3DMeshAsset_ef5ef"), SubResource("Terrain3DMeshAsset_51ycc"), SubResource("Terrain3DMeshAsset_5hqou"), SubResource("Terrain3DMeshAsset_yiqki"), SubResource("Terrain3DMeshAsset_hcs8k"), SubResource("Terrain3DMeshAsset_4w7n7"), SubResource("Terrain3DMeshAsset_g4oec"), SubResource("Terrain3DMeshAsset_yfcck"), SubResource("Terrain3DMeshAsset_754si"), SubResource("Terrain3DMeshAsset_t6x6i"), SubResource("Terrain3DMeshAsset_5guby"), SubResource("Terrain3DMeshAsset_arwi7"), SubResource("Terrain3DMeshAsset_fytio"), SubResource("Terrain3DMeshAsset_3jwga"), SubResource("Terrain3DMeshAsset_pd6e7"), SubResource("Terrain3DMeshAsset_ve4f6"), SubResource("Terrain3DMeshAsset_k6i7b"), SubResource("Terrain3DMeshAsset_5uyn1"), SubResource("Terrain3DMeshAsset_na8ho"), SubResource("Terrain3DMeshAsset_bp0yk"), SubResource("Terrain3DMeshAsset_dx84b"), SubResource("Terrain3DMeshAsset_v1hwx"), SubResource("Terrain3DMeshAsset_bl7ox"), SubResource("Terrain3DMeshAsset_hw2e3"), SubResource("Terrain3DMeshAsset_sk0o4"), SubResource("Terrain3DMeshAsset_ts7so"), SubResource("Terrain3DMeshAsset_1eeys"), SubResource("Terrain3DMeshAsset_yfrte"), SubResource("Terrain3DMeshAsset_s78ae"), SubResource("Terrain3DMeshAsset_r6xou")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_lha57"), SubResource("Terrain3DTextureAsset_od0q7"), SubResource("Terrain3DTextureAsset_uyhyi"), SubResource("Terrain3DTextureAsset_3wxcx")])
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_g06w4"), SubResource("Terrain3DMeshAsset_s7vq2"), SubResource("Terrain3DMeshAsset_tw6mt"), SubResource("Terrain3DMeshAsset_lp87e"), SubResource("Terrain3DMeshAsset_w40rn"), SubResource("Terrain3DMeshAsset_ef5ef"), SubResource("Terrain3DMeshAsset_51ycc"), SubResource("Terrain3DMeshAsset_5hqou"), SubResource("Terrain3DMeshAsset_yiqki"), SubResource("Terrain3DMeshAsset_hcs8k"), SubResource("Terrain3DMeshAsset_4w7n7"), SubResource("Terrain3DMeshAsset_g4oec"), SubResource("Terrain3DMeshAsset_yfcck"), SubResource("Terrain3DMeshAsset_754si"), SubResource("Terrain3DMeshAsset_t6x6i"), SubResource("Terrain3DMeshAsset_5guby"), SubResource("Terrain3DMeshAsset_arwi7"), SubResource("Terrain3DMeshAsset_fytio"), SubResource("Terrain3DMeshAsset_3jwga"), SubResource("Terrain3DMeshAsset_pd6e7"), SubResource("Terrain3DMeshAsset_ve4f6"), SubResource("Terrain3DMeshAsset_k6i7b"), SubResource("Terrain3DMeshAsset_5uyn1"), SubResource("Terrain3DMeshAsset_na8ho"), SubResource("Terrain3DMeshAsset_bp0yk"), SubResource("Terrain3DMeshAsset_dx84b"), SubResource("Terrain3DMeshAsset_v1hwx"), SubResource("Terrain3DMeshAsset_bl7ox"), SubResource("Terrain3DMeshAsset_hw2e3"), SubResource("Terrain3DMeshAsset_sk0o4"), SubResource("Terrain3DMeshAsset_ts7so"), SubResource("Terrain3DMeshAsset_1eeys"), SubResource("Terrain3DMeshAsset_yfrte"), SubResource("Terrain3DMeshAsset_s78ae"), SubResource("Terrain3DMeshAsset_r6xou"), SubResource("Terrain3DMeshAsset_uvivd")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_lha57"), SubResource("Terrain3DTextureAsset_od0q7"), SubResource("Terrain3DTextureAsset_uyhyi"), SubResource("Terrain3DTextureAsset_3wxcx"), SubResource("Terrain3DTextureAsset_xagyi"), SubResource("Terrain3DTextureAsset_uvivd")])
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_f640b"]
+_surfaces = [{
+"aabb": AABB(-0.59, 0, -0.5, 1.0899999, 1, 1),
+"attribute_data": PackedByteArray("AAAAAAAAgD8AAAAAAAAAAAAAgD8AAIA/AAAAAAAAAAAAAIA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIA/AACAPwAAAAAAAIA/AACAPwAAgD8AAAAAAACAPwAAAAAAAIA/AAAAAAAAAAAAAAAAAACAPwAAAAAAAAAAAACAPwAAAEAAAAAAAACAPwAAgD8AAABAAAAAAAAAgD8AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAgD8AAEBAAAAAAAAAgD8AAIA/AABAQAAAAAAAAIA/AAAAAAAAQEAAAAAAAAAAAAAAAAAAAEBAAAAAAA=="),
+"format": 34359742519,
+"index_count": 24,
+"index_data": PackedByteArray("AAABAAIAAAACAAMABAAFAAYABAAGAAcACAAJAAoACAAKAAsADAANAA4ADAAOAA8A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("AAAAvwAAAAAAAAAAAAAAPwAAAAAAAAAAhevRPgAAgD8AAAAAPQoXvwAAgD8AAAAA8wS1vgAAAADzBLW+8wS1PgAAAADzBLU+tvqdPgAAgD/zBLU+MA/MvgAAgD/zBLW+MjENpAAAAAAAAAC/MjENJAAAAAAAAAA/MjENJAAAgD8AAAA/MjENpAAAgD8AAAC/8wS1PgAAAADzBLW+8wS1vgAAAADzBLU+tvqdvgAAgD/zBLU+MA/MPgAAgD/zBLW+/3//f/9/AID/f/9//38AgP9//3//fwCA/3//f/9/AID/P/9/qqqpqv8//3+qqqmq/z//f6qqqar/P/9/qqqpqgAA/3//f/+/AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/v1RVqaoAAP+/VFWpqgAA/79UVamqAAD/v1RVqao=")
+}]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0euad"]
 
@@ -665,17 +717,17 @@ metadata/_edit_lock_ = true
 
 [node name="Terrain3DParticles" parent="Terrain3D" unique_id=167918773 node_paths=PackedStringArray("terrain") instance=ExtResource("7_wjw5m")]
 terrain = NodePath("..")
-instance_spacing = 0.5
+instance_spacing = 0.6875
 cell_width = 47.0
 grid_width = 7
-rows = 94
-amount = 8836
+rows = 68
+amount = 4624
 process_fixed_fps = 38
 trail_push = 1.0
-mesh = ExtResource("83_gmesh")
+mesh = SubResource("ArrayMesh_f640b")
 mesh_material_override = ExtResource("84_gmat")
 min_draw_distance = 164.5
-particle_count = 432964
+particle_count = 226576
 
 [node name="Systeme" type="Node" parent="." unique_id=2147421186]
 
@@ -689,9 +741,6 @@ fog_night = Color(0.04, 0.06, 0.11, 1)
 [node name="FireflySwarm" parent="Systeme" unique_id=2061215875 instance=ExtResource("48_n40p1")]
 
 [node name="ForestDust" parent="Systeme" unique_id=625281556 instance=ExtResource("49_dlis5")]
-
-[node name="ShadowTuner" type="Node" parent="Systeme" unique_id=1777310244]
-script = ExtResource("61_shdtn")
 
 [node name="wasser" type="MeshInstance3D" parent="." unique_id=664896724]
 transform = Transform3D(600, 0, 0, 0, 600, 0, 0, 0, 600, -424.728, -2, -347.174)
@@ -979,9 +1028,6 @@ transform = Transform3D(5.7902336, 0, 0, 0, 5.7902336, 0, 0, 0, 5.7902336, -632.
 [node name="CSGBox3D21" parent="Blockout/umgebung" unique_id=444809228 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(35.748837, 0, 0, 0, 35.748837, 0, 0, 0, 35.748837, -553.53455, 2.9271421, -644.5895)
 
-[node name="CSGBox3D22" parent="Blockout/umgebung" unique_id=2050632227 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(7.197685, 0, 0, 0, 7.197685, 0, 0, 0, 7.197685, -698.66986, -0.81816447, -891.27313)
-
 [node name="CSGBox3D23" parent="Blockout/umgebung" unique_id=222721659 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(10.536658, 0, 0, 0, 10.536658, 0, 0, 0, 10.536658, -702.848, 5.5289145, -935.2423)
 
@@ -1178,225 +1224,224 @@ transform = Transform3D(-0.5408796, 0, 0.84109986, 0, 1, 0, -0.84110004, 0, -0.5
 
 [node name="Orte" type="Node3D" parent="." unique_id=2147421184]
 
-[node name="Lore_Orte" type="Node3D" parent="Orte"]
+[node name="Lore_Orte" type="Node3D" parent="Orte" unique_id=1643762935]
 
-[node name="Freies_Lager" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Freies_Lager" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=434835553]
 transform = Transform3D(0.92, 0, 0.39, 0, 1, 0, -0.39, 0, 0.92, -605, 5, -165)
-size = Vector3(70.0, 14.0, 70.0)
+size = Vector3(70, 14, 70)
 
-[node name="Alte_Kathedrale" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Alte_Kathedrale" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=224137033]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, -592, 9.01, -269)
-size = Vector3(36.0, 22.0, 18.0)
+size = Vector3(36, 22, 18)
 
-[node name="Erbauer_Tempel_Ost" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Erbauer_Tempel_Ost" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=1077736028]
 transform = Transform3D(-0.31, 0, 0.95, 0, 1, 0, -0.95, 0, -0.31, -106, 61, -399)
-size = Vector3(42.0, 26.0, 42.0)
+size = Vector3(42, 26, 42)
 
-[node name="Mine_Nethora" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Mine_Nethora" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=184320349]
 transform = Transform3D(1, 0, 0.09, 0, 1, 0, -0.09, 0, 1, -862, 6.03, -306)
-size = Vector3(24.0, 16.0, 24.0)
+size = Vector3(24, 16, 24)
 
-[node name="Gehoeft_Verlassen" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Gehoeft_Verlassen" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=1886904598]
 transform = Transform3D(0.89, 0, 0.45, 0, 1, 0, -0.45, 0, 0.89, -312, 4.86, -626)
-size = Vector3(28.0, 10.0, 24.0)
+size = Vector3(28, 10, 24)
 
-[node name="Faehrstelle_Aldous" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Faehrstelle_Aldous" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=1116962190]
 transform = Transform3D(-0.97, 0, 0.23, 0, 1, 0, -0.23, 0, -0.97, -431, 3.69, -787)
-size = Vector3(12.0, 7.0, 10.0)
+size = Vector3(12, 7, 10)
 
-[node name="Rastplatz_Ostroute" type="CSGBox3D" parent="Orte/Lore_Orte"]
+[node name="Rastplatz_Ostroute" type="CSGBox3D" parent="Orte/Lore_Orte" unique_id=67717632]
 transform = Transform3D(0.98, 0, 0.22, 0, 1, 0, -0.22, 0, 0.98, -364, 3.19, -807)
-size = Vector3(10.0, 4.0, 10.0)
+size = Vector3(10, 4, 10)
 
-[node name="Wegschrein_Ankunft" type="CSGBox3D" parent="Orte/Lore_Orte"]
-transform = Transform3D(0.92, 0, 0.4, 0, 1, 0, -0.4, 0, 0.92, -676, -0.07, -917)
-size = Vector3(4.0, 6.0, 4.0)
+[node name="Wegschrein_Ankunft" parent="Orte/Lore_Orte" unique_id=1928547251 instance=ExtResource("58_2kojl")]
+transform = Transform3D(0.9191767, 0, -0.40188822, 0, 1, 0, 0.40188822, 0, 0.9191767, -676, -1.9945502, -917)
 
-[node name="Erbauer_Pentagramm" type="Node3D" parent="Orte"]
+[node name="Erbauer_Pentagramm" type="Node3D" parent="Orte" unique_id=1111747558]
 
-[node name="Haupttempel_Nethora" type="CSGBox3D" parent="Orte/Erbauer_Pentagramm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, -0, 0, 1, -575, 84.84, -500)
-size = Vector3(34.0, 20.0, 34.0)
+[node name="Haupttempel_Nethora" type="CSGBox3D" parent="Orte/Erbauer_Pentagramm" unique_id=1478709923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -575, 84.84, -500)
+size = Vector3(34, 20, 34)
 
-[node name="Tempel_3" type="CSGBox3D" parent="Orte/Erbauer_Pentagramm"]
+[node name="Tempel_3" type="CSGBox3D" parent="Orte/Erbauer_Pentagramm" unique_id=403369421]
 transform = Transform3D(0.4, 0, 0.92, 0, 1, 0, -0.92, 0, 0.4, -852, 9.17, -386)
-size = Vector3(34.0, 22.0, 34.0)
+size = Vector3(34, 22, 34)
 
-[node name="Tempel_4" type="CSGBox3D" parent="Orte/Erbauer_Pentagramm"]
+[node name="Tempel_4" type="CSGBox3D" parent="Orte/Erbauer_Pentagramm" unique_id=1558195486]
 transform = Transform3D(-0.03, 0, 1, 0, 1, 0, -1, 0, -0.03, -296, 10.1, -760)
-size = Vector3(34.0, 22.0, 34.0)
+size = Vector3(34, 22, 34)
 
-[node name="Wegschreine" type="Node3D" parent="Orte"]
+[node name="Wegschreine" type="Node3D" parent="Orte" unique_id=823179581]
 
-[node name="Schrein_1" type="CSGBox3D" parent="Orte/Wegschreine"]
+[node name="Schrein_1" type="CSGBox3D" parent="Orte/Wegschreine" unique_id=359230874]
 transform = Transform3D(-0.52, 0, -0.85, 0, 1, 0, 0.85, 0, -0.52, -307, 2.63, -680)
 size = Vector3(3.5, 5.5, 3.5)
 
-[node name="Schrein_2" type="CSGBox3D" parent="Orte/Wegschreine"]
+[node name="Schrein_2" type="CSGBox3D" parent="Orte/Wegschreine" unique_id=766271842]
 transform = Transform3D(-0.16, 0, 0.99, 0, 1, 0, -0.99, 0, -0.16, -258, 4.37, -715)
 size = Vector3(3.5, 5.5, 3.5)
 
-[node name="Schrein_3" type="CSGBox3D" parent="Orte/Wegschreine"]
+[node name="Schrein_3" type="CSGBox3D" parent="Orte/Wegschreine" unique_id=1870983254]
 transform = Transform3D(0.65, 0, 0.76, 0, 1, 0, -0.76, 0, 0.65, -263, 5.5, -639)
 size = Vector3(3.5, 5.5, 3.5)
 
-[node name="Schrein_4" type="CSGBox3D" parent="Orte/Wegschreine"]
+[node name="Schrein_4" type="CSGBox3D" parent="Orte/Wegschreine" unique_id=582709261]
 transform = Transform3D(0.23, 0, -0.97, 0, 1, 0, 0.97, 0, 0.23, -240, 1.88, -577)
 size = Vector3(3.5, 5.5, 3.5)
 
-[node name="Ruinen" type="Node3D" parent="Orte"]
+[node name="Ruinen" type="Node3D" parent="Orte" unique_id=2045666518]
 
-[node name="Ruine_25" type="CSGBox3D" parent="Orte/Ruinen"]
+[node name="Ruine_25" type="CSGBox3D" parent="Orte/Ruinen" unique_id=343767526]
 transform = Transform3D(0.64, 0, 0.77, 0, 1, 0, -0.77, 0, 0.64, -472, 2.53, -693)
 size = Vector3(16.7, 4.4, 12.3)
 
-[node name="Ruine_30" type="CSGBox3D" parent="Orte/Ruinen"]
+[node name="Ruine_30" type="CSGBox3D" parent="Orte/Ruinen" unique_id=1474569114]
 transform = Transform3D(0.97, 0, -0.26, 0, 1, 0, 0.26, 0, 0.97, -226, 2.61, -291)
-size = Vector3(18.5, 7.0, 12.1)
+size = Vector3(18.5, 7, 12.1)
 
-[node name="Hoehlen" type="Node3D" parent="Orte"]
+[node name="Hoehlen" type="Node3D" parent="Orte" unique_id=13831776]
 
-[node name="Hoehle_1" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_1" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=351372549]
 transform = Transform3D(-0.23, 0, -0.97, 0, 1, 0, 0.97, 0, -0.23, -134, 46.46, -341)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_2" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_2" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=1731548085]
 transform = Transform3D(0.27, 0, 0.96, 0, 1, 0, -0.96, 0, 0.27, -174, 35.76, -502)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_3" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_3" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=701536978]
 transform = Transform3D(-0.6, 0, -0.8, 0, 1, 0, 0.8, 0, -0.6, -958, 4.56, -492)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_4" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_4" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=2017535437]
 transform = Transform3D(0.52, 0, 0.86, 0, 1, 0, -0.86, 0, 0.52, -709, 4.23, -138)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_5" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_5" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=942313235]
 transform = Transform3D(0.88, 0, -0.47, 0, 1, 0, 0.47, 0, 0.88, -944, 43.66, -636)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_7" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_7" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=850533521]
 transform = Transform3D(0.8, 0, 0.6, 0, 1, 0, -0.6, 0, 0.8, -207, 36.92, -407)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_8" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_8" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=1620168095]
 transform = Transform3D(-0.83, 0, -0.55, 0, 1, 0, 0.55, 0, -0.83, -475, 3.52, -206)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_9" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_9" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=67779211]
 transform = Transform3D(0.07, 0, 1, 0, 1, 0, -1, 0, 0.07, -731, 3.15, -234)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_10" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_10" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=1437327097]
 transform = Transform3D(0.13, 0, -0.99, 0, 1, 0, 0.99, 0, 0.13, -749, 2.81, -527)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_11" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_11" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=712370145]
 transform = Transform3D(-0.74, 0, -0.67, 0, 1, 0, 0.67, 0, -0.74, -682, 3.35, -311)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_12" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_12" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=791979857]
 transform = Transform3D(-0.98, 0, -0.2, 0, 1, 0, 0.2, 0, -0.98, -715, 2.95, -440)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_16" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_16" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=1945467663]
 transform = Transform3D(-0.99, 0, 0.16, 0, 1, 0, -0.16, 0, -0.99, -489, 3.02, -316)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_17" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_17" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=808652389]
 transform = Transform3D(-0.96, 0, -0.29, 0, 1, 0, 0.29, 0, -0.96, -883, 15.06, -542)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_18" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_18" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=806557671]
 transform = Transform3D(-0.57, 0, 0.82, 0, 1, 0, -0.82, 0, -0.57, -736, 2.7, -640)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_21" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_21" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=233121717]
 transform = Transform3D(0.84, 0, -0.54, 0, 1, 0, 0.54, 0, 0.84, -510, 3.13, -625)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_22" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_22" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=758147750]
 transform = Transform3D(0.54, 0, -0.84, 0, 1, 0, 0.84, 0, 0.54, -863, 3.47, -681)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Hoehle_24" type="CSGBox3D" parent="Orte/Hoehlen"]
+[node name="Hoehle_24" type="CSGBox3D" parent="Orte/Hoehlen" unique_id=594286376]
 transform = Transform3D(-0.89, 0, -0.45, 0, 1, 0, 0.45, 0, -0.89, -401, 3.07, -834)
-size = Vector3(11.0, 8.0, 9.0)
+size = Vector3(11, 8, 9)
 
-[node name="Lagerplaetze" type="Node3D" parent="Orte"]
+[node name="Lagerplaetze" type="Node3D" parent="Orte" unique_id=1170011224]
 
-[node name="Lager_13" type="CSGBox3D" parent="Orte/Lagerplaetze"]
+[node name="Lager_13" type="CSGBox3D" parent="Orte/Lagerplaetze" unique_id=801790361]
 transform = Transform3D(0.68, 0, 0.74, 0, 1, 0, -0.74, 0, 0.68, -413, 5.45, -706)
-size = Vector3(12.0, 4.0, 12.0)
+size = Vector3(12, 4, 12)
 
-[node name="Lager_26" type="CSGBox3D" parent="Orte/Lagerplaetze"]
+[node name="Lager_26" type="CSGBox3D" parent="Orte/Lagerplaetze" unique_id=2141791105]
 transform = Transform3D(-0.77, 0, 0.64, 0, 1, 0, -0.64, 0, -0.77, -206, 1.54, -343)
-size = Vector3(12.0, 4.0, 12.0)
+size = Vector3(12, 4, 12)
 
-[node name="Lager_27" type="CSGBox3D" parent="Orte/Lagerplaetze"]
+[node name="Lager_27" type="CSGBox3D" parent="Orte/Lagerplaetze" unique_id=582915828]
 transform = Transform3D(0.02, 0, -1, 0, 1, 0, 1, 0, 0.02, -394, 2, -578)
-size = Vector3(12.0, 4.0, 12.0)
+size = Vector3(12, 4, 12)
 
-[node name="Lager_28" type="CSGBox3D" parent="Orte/Lagerplaetze"]
+[node name="Lager_28" type="CSGBox3D" parent="Orte/Lagerplaetze" unique_id=1360825001]
 transform = Transform3D(-0.02, 0, -1, 0, 1, 0, 1, 0, -0.02, -422, 1.93, -145)
-size = Vector3(12.0, 4.0, 12.0)
+size = Vector3(12, 4, 12)
 
-[node name="Lager_29" type="CSGBox3D" parent="Orte/Lagerplaetze"]
+[node name="Lager_29" type="CSGBox3D" parent="Orte/Lagerplaetze" unique_id=443951613]
 transform = Transform3D(-0.68, 0, 0.74, 0, 1, 0, -0.74, 0, -0.68, -845, 1.97, -595)
-size = Vector3(12.0, 4.0, 12.0)
+size = Vector3(12, 4, 12)
 
-[node name="Wachtuerme" type="Node3D" parent="Orte"]
+[node name="Wachtuerme" type="Node3D" parent="Orte" unique_id=251697143]
 
-[node name="Turm_1" type="CSGBox3D" parent="Orte/Wachtuerme"]
+[node name="Turm_1" type="CSGBox3D" parent="Orte/Wachtuerme" unique_id=1005892975]
 transform = Transform3D(-0.08, 0, -1, 0, 1, 0, 1, 0, -0.08, -916, 52.92, -291)
-size = Vector3(7.0, 16.0, 7.0)
+size = Vector3(7, 16, 7)
 
-[node name="Turm_2" type="CSGBox3D" parent="Orte/Wachtuerme"]
+[node name="Turm_2" type="CSGBox3D" parent="Orte/Wachtuerme" unique_id=2089427931]
 transform = Transform3D(-0.58, 0, 0.81, 0, 1, 0, -0.81, 0, -0.58, -940, 52.25, -423)
-size = Vector3(7.0, 16.0, 7.0)
+size = Vector3(7, 16, 7)
 
-[node name="Turm_3" type="CSGBox3D" parent="Orte/Wachtuerme"]
+[node name="Turm_3" type="CSGBox3D" parent="Orte/Wachtuerme" unique_id=1755265769]
 transform = Transform3D(0.96, 0, 0.29, 0, 1, 0, -0.29, 0, 0.96, -866, 34.2, -157)
-size = Vector3(7.0, 16.0, 7.0)
+size = Vector3(7, 16, 7)
 
-[node name="Turm_6" type="CSGBox3D" parent="Orte/Wachtuerme"]
+[node name="Turm_6" type="CSGBox3D" parent="Orte/Wachtuerme" unique_id=947735752]
 transform = Transform3D(-0.86, 0, -0.51, 0, 1, 0, 0.51, 0, -0.86, -542, 16.97, -846)
-size = Vector3(7.0, 16.0, 7.0)
+size = Vector3(7, 16, 7)
 
-[node name="Turm_7" type="CSGBox3D" parent="Orte/Wachtuerme"]
+[node name="Turm_7" type="CSGBox3D" parent="Orte/Wachtuerme" unique_id=31591303]
 transform = Transform3D(-0.56, 0, 0.83, 0, 1, 0, -0.83, 0, -0.56, -424, 16.72, -629)
-size = Vector3(7.0, 16.0, 7.0)
+size = Vector3(7, 16, 7)
 
-[node name="Flussquerungen" type="Node3D" parent="Orte"]
+[node name="Flussquerungen" type="Node3D" parent="Orte" unique_id=1264694019]
 
-[node name="Bruecke_1" type="CSGBox3D" parent="Orte/Flussquerungen"]
+[node name="Bruecke_1" type="CSGBox3D" parent="Orte/Flussquerungen" unique_id=824508500]
 transform = Transform3D(0.08, 0, -1, 0, 1, 0, 1, 0, 0.08, -750, 1.6, -717)
-size = Vector3(9.0, 5.0, 26.0)
+size = Vector3(9, 5, 26)
 
-[node name="Furten" type="Node3D" parent="Orte"]
+[node name="Furten" type="Node3D" parent="Orte" unique_id=1879226543]
 
-[node name="Furt_1" type="CSGBox3D" parent="Orte/Furten"]
+[node name="Furt_1" type="CSGBox3D" parent="Orte/Furten" unique_id=1458204078]
 transform = Transform3D(-0.84, 0, -0.54, 0, 1, 0, 0.54, 0, -0.84, -622, 5.73, -700)
-size = Vector3(8.0, 3.0, 22.0)
+size = Vector3(8, 3, 22)
 
-[node name="Furt_2" type="CSGBox3D" parent="Orte/Furten"]
+[node name="Furt_2" type="CSGBox3D" parent="Orte/Furten" unique_id=166879001]
 transform = Transform3D(-0.14, 0, 0.99, 0, 1, 0, -0.99, 0, -0.14, -427, 0.96, -446)
-size = Vector3(8.0, 3.0, 22.0)
+size = Vector3(8, 3, 22)
 
-[node name="Furt_3" type="CSGBox3D" parent="Orte/Furten"]
+[node name="Furt_3" type="CSGBox3D" parent="Orte/Furten" unique_id=1332696450]
 transform = Transform3D(0.22, 0, -0.98, 0, 1, 0, 0.98, 0, 0.22, -357, -1.72, -313)
-size = Vector3(8.0, 3.0, 22.0)
+size = Vector3(8, 3, 22)
 
-[node name="Furt_4" type="CSGBox3D" parent="Orte/Furten"]
+[node name="Furt_4" type="CSGBox3D" parent="Orte/Furten" unique_id=913016222]
 transform = Transform3D(-0.63, 0, -0.77, 0, 1, 0, 0.77, 0, -0.63, -176, 3.78, -740)
-size = Vector3(8.0, 3.0, 22.0)
+size = Vector3(8, 3, 22)
 
-[node name="Kultplaetze" type="Node3D" parent="Orte"]
+[node name="Kultplaetze" type="Node3D" parent="Orte" unique_id=1678747677]
 
-[node name="Steinkreis_2" type="CSGBox3D" parent="Orte/Kultplaetze"]
+[node name="Steinkreis_2" type="CSGBox3D" parent="Orte/Kultplaetze" unique_id=1587579259]
 transform = Transform3D(-0.96, 0, -0.3, 0, 1, 0, 0.3, 0, -0.96, -281, 2.55, -436)
-size = Vector3(18.0, 4.0, 18.0)
+size = Vector3(18, 4, 18)
 
 [node name="Bewuchs" type="Node3D" parent="." unique_id=2147421077]
 
@@ -8316,9 +8361,6 @@ transform = Transform3D(0.4512, 0, -1.2094, 0, 1.2909, 0, 1.2094, 0, 0.4512, -69
 [node name="Rahmen_22" parent="Bewuchs/Sektor_x-800_z-1000/Baeume" unique_id=7319349 instance=ExtResource("15_r")]
 transform = Transform3D(1.3045, 0, -0.4027, 0, 1.3652, 0, 0.4027, 0, 1.3045, -702.2548, 7.2304, -909.1894)
 
-[node name="Rahmen_23" parent="Bewuchs/Sektor_x-800_z-1000/Baeume" unique_id=220016405 instance=ExtResource("16_r")]
-transform = Transform3D(-1.0972, 0, -0.4852, 0, 1.1997, 0, 0.4852, 0, -1.0972, -699.029, -1.6018, -891.6501)
-
 [node name="Rahmen_24" parent="Bewuchs/Sektor_x-800_z-1000/Baeume" unique_id=681858551 instance=ExtResource("17_r")]
 transform = Transform3D(0.0633, 0, 1.2728, 0, 1.2743, 0, -1.2728, 0, 0.0633, -687.786, -2.1711, -907.8457)
 
@@ -8574,7 +8616,7 @@ transform = Transform3D(4.0937924, 0, 0, 0, 4.0937924, 0, 0, 0, 4.0937924, -764.
 transform = Transform3D(1.0760269, 0, -3.9498491, 0, 4.093793, 0, 3.9498491, 0, 1.0760269, -738.38824, -3.5396242, -835.7763)
 
 [node name="rock_09m_scree" parent="Bewuchs/Sektor_x-800_z-1000/Felsen" unique_id=13182095 instance=ExtResource("73_nm5b8")]
-transform = Transform3D(5.809472, 0, 0.5943799, 0, 5.8397994, 0, -0.5943799, 0, 5.809472, -659.7482, -4.982554, -884.3295)
+transform = Transform3D(5.809472, 0, 0.5943799, 0, 5.8397994, 0, -0.5943799, 0, 5.809472, -658.0677, -4.7736983, -883.90674)
 
 [node name="rock_01m_pebbles" parent="Bewuchs/Sektor_x-800_z-1000/Felsen" unique_id=1279898116 instance=ExtResource("24_r")]
 transform = Transform3D(10.65365, 0, 0, 0, 10.65365, 0, 0, 0, 10.65365, -705.76605, -2.2561908, -876.6288)
@@ -8867,7 +8909,7 @@ transform = Transform3D(0.9087, 0, 0.3734, 0, 0.9824, 0, -0.3734, 0, 0.9087, -77
 transform = Transform3D(0.602, 0, -0.5701, 0, 0.8291, 0, 0.5701, 0, 0.602, -607, 1.1361, -871)
 
 [node name="DeciduousShrub_27" parent="Bewuchs/Sektor_x-800_z-1000/Straeucher" unique_id=1401671572 instance=ExtResource("9_r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -742.73895, -1.2416401, -812.24615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -742.73895, -2.4797873, -812.24615)
 
 [node name="DeciduousShrub2_31" parent="Bewuchs/Sektor_x-800_z-1000/Straeucher" unique_id=1472811404 instance=ExtResource("19_r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -735.81, -0.9643273, -812.3528)
@@ -10485,3 +10527,45 @@ transform = Transform3D(0.45359752, 0, 0, 0, 0.4552342, 0, 0, 0, 0.4711676, -780
 
 [node name="Busch_836" parent="Bewuchs/Sektor_x0_z-600/Straeucher" unique_id=345192194 instance=ExtResource("7_r")]
 transform = Transform3D(-0.5913, 0, -1.1494, 0, 1.2926, 0, 1.1494, 0, -0.5913, 1, 41.5467, -445)
+
+[node name="Hütte_start" parent="." unique_id=1737789835 instance=ExtResource("52_hm3sf")]
+transform = Transform3D(0.89879405, 0, -0.43837115, 0, 1, 0, 0.43837115, 0, 0.89879405, -691.23236, -2.4611185, -890.5742)
+
+[node name="Prop_WoodenFence_Single2" parent="Hütte_start" unique_id=2055680602 instance=ExtResource("105_hm3sf")]
+transform = Transform3D(1.5, 0, 5.9604645e-08, 0, 1.5, 0, -5.9604645e-08, 0, 1.5, -0.5166626, 0.49912286, -2.836853)
+
+[node name="Prop_WoodenFence_Single3" parent="Hütte_start" unique_id=1467265248 instance=ExtResource("105_hm3sf")]
+transform = Transform3D(1.5, 0, 5.9604645e-08, 0, 1.5, 0, -5.9604645e-08, 0, 1.5, -0.3595581, 0.4991231, 2.7005005)
+
+[node name="Prop_WoodenFence_Single4" parent="Hütte_start" unique_id=1015172427 instance=ExtResource("105_hm3sf")]
+transform = Transform3D(1.5, 0, 5.9604645e-08, 0, 1.5, 0, -5.9604645e-08, 0, 1.5, -0.42669678, 0.4991231, 6.609833)
+
+[node name="Prop_WoodenFence_Single5" parent="Hütte_start" unique_id=254648169 instance=ExtResource("105_hm3sf")]
+transform = Transform3D(0.009588838, 0, 1.4999692, 0, 1.4999999, 0, -1.4999692, 0, 0.009588838, -1.9495239, 0.4991231, 4.5823364)
+
+[node name="Prop_WoodenFence_Single6" parent="Hütte_start" unique_id=303116243 instance=ExtResource("105_hm3sf")]
+transform = Transform3D(0.009588838, 0, 1.4999692, 0, 1.4999999, 0, -1.4999692, 0, 0.009588838, -2.2826538, 0.4991231, -0.047424316)
+
+[node name="Chest_Wood" parent="Hütte_start" unique_id=9321636 instance=ExtResource("106_dpog3")]
+transform = Transform3D(-0.15467283, 0, -0.9879658, 0, 1, 0, 0.9879658, 0, -0.15467283, -3.239441, 0.52388763, -0.93814087)
+
+[node name="Crate_Wooden2" parent="Hütte_start" unique_id=1214525819 instance=ExtResource("70_12w7i")]
+transform = Transform3D(0.89879405, 0, 0.43837115, 0, 1, 0, -0.43837115, 0, 0.89879405, 0.85235596, 0.52197456, -4.052582)
+
+[node name="FarmCrate_Apple2" parent="Hütte_start" unique_id=10289752 instance=ExtResource("107_0g7xh")]
+transform = Transform3D(0.89879405, 0, 0.43837115, 0, 1, 0, -0.43837115, 0, 0.89879405, 1.5038452, 0.48551524, -4.604004)
+
+[node name="FarmCrate_Empty2" parent="Hütte_start" unique_id=442503308 instance=ExtResource("108_jjj8k")]
+transform = Transform3D(0.89879405, 0, 0.43837115, 0, 1, 0, -0.43837115, 0, 0.89879405, 0.9537964, 0.4855677, -4.8595276)
+
+[node name="Crate_Metal2" parent="Hütte_start" unique_id=701476971 instance=ExtResource("109_2kojl")]
+transform = Transform3D(0.89879405, 0, 0.43837115, 0, 1, 0, -0.43837115, 0, 0.89879405, -0.020812988, 0.46974158, -4.6523743)
+
+[node name="Crate_Metal2" parent="." unique_id=34834829 instance=ExtResource("109_2kojl")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -691.9721, -1.9884267, -892.85095)
+
+[node name="Crate_Wooden2" parent="." unique_id=689044965 instance=ExtResource("70_12w7i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -692.0754, -1.933894, -891.6818)
+
+[node name="Crate_Wooden3" parent="." unique_id=1447720820 instance=ExtResource("70_12w7i")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -690.9578, -1.9380873, -892.73724)
