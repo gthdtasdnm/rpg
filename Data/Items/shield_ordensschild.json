@@ -1,0 +1,13 @@
+{
+  "id": "shield_ordensschild",
+  "name": "Ordensschild",
+  "type": "shield",
+  "description": "Groß genug, um sich vollständig dahinter zu verstecken, und schwer genug, dass man es danach bereut. Das Wappen der Custodes ist längst abgeschabt.",
+  "defense": 8,
+  "staggerResist": 6,
+  "price": 140,
+  "stackable": false,
+  "model": "res://Assets/Weapons/LowPolyMedieval/Models/Shields/Shield A.fbx",
+  "iconYaw": 25,
+  "iconRoll": 0
+}

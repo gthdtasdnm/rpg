@@ -1,0 +1,14 @@
+{
+  "id": "armor_neulingsleder",
+  "name": "Neulingsleder",
+  "type": "armor",
+  "description": "Was das Freie Lager jedem gibt, der bleibt. Geflickt, zu weit und von jemandem getragen, der nicht mehr danach gefragt hat.",
+  "defense": 5,
+  "staggerResist": 2,
+  "price": 80,
+  "stackable": false,
+  "model": "res://Assets/Characters/ModularOutfits/Models/Modular Parts/Male_Ranger_Body.gltf",
+  "iconYaw": 25,
+  "iconRoll": 0,
+  "iconZoom": 0.9
+}

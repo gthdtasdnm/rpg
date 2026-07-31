@@ -1,0 +1,12 @@
+{
+  "id": "potion_segenswasser",
+  "name": "Segenswasser",
+  "type": "consumable",
+  "description": "Von Ulrich geweiht, in eine Flasche gefüllt, die vorher Schnaps enthielt. Ob es wirkt, weil es geweiht ist, oder weil man daran glaubt, sagt der Orden nicht.",
+  "healAmount": 10,
+  "price": 25,
+  "stackable": true,
+  "model": "res://Assets/Props/FantasyProps/Models/Potion_2.gltf",
+  "iconYaw": 20,
+  "iconRoll": 0
+}

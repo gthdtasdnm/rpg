@@ -1,0 +1,203 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/UI/InventoryScreen.cs" id="1_screen"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_frame"]
+bg_color = Color(0.055, 0.055, 0.065, 0.97)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.45, 0.38, 0.24, 0.95)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inner"]
+bg_color = Color(0.095, 0.095, 0.11, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.26, 0.23, 0.16, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_detail"]
+bg_color = Color(0.08, 0.078, 0.086, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.26, 0.23, 0.16, 0.9)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="InventoryScreen" type="PanelContainer"]
+anchor_left = 0.04
+anchor_top = 0.06
+anchor_right = 0.96
+anchor_bottom = 0.94
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_frame")
+script = ExtResource("1_screen")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="Root" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Margin/Root"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Margin/Root/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.87, 0.79, 0.57, 1)
+theme_override_font_sizes/font_size = 24
+text = "Inventar"
+
+[node name="Spacer" type="Control" parent="Margin/Root/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SilverLabel" type="Label" parent="Margin/Root/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.83, 1)
+theme_override_font_sizes/font_size = 18
+text = "Silber: 0"
+vertical_alignment = 1
+
+[node name="HeaderRule" type="HSeparator" parent="Margin/Root"]
+layout_mode = 2
+
+[node name="Tabs" type="HBoxContainer" parent="Margin/Root"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Body" type="HBoxContainer" parent="Margin/Root"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 14
+
+[node name="EquipColumn" type="VBoxContainer" parent="Margin/Root/Body"]
+custom_minimum_size = Vector2(196, 0)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquipTitle" type="Label" parent="Margin/Root/Body/EquipColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.66, 0.48, 1)
+theme_override_font_sizes/font_size = 16
+text = "Ausrüstung"
+
+[node name="EquipSlots" type="VBoxContainer" parent="Margin/Root/Body/EquipColumn"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="EquipSpacer" type="Control" parent="Margin/Root/Body/EquipColumn"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EquipSummary" type="Label" parent="Margin/Root/Body/EquipColumn"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.66, 0.64, 0.6, 1)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="GridPanel" type="PanelContainer" parent="Margin/Root/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_inner")
+
+[node name="GridMargin" type="MarginContainer" parent="Margin/Root/Body/GridPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridScroll" type="ScrollContainer" parent="Margin/Root/Body/GridPanel/GridMargin"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Grid" type="GridContainer" parent="Margin/Root/Body/GridPanel/GridMargin/GridScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 6
+
+[node name="DetailPanel" type="PanelContainer" parent="Margin/Root/Body"]
+custom_minimum_size = Vector2(272, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_detail")
+
+[node name="DetailMargin" type="MarginContainer" parent="Margin/Root/Body/DetailPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Detail" type="VBoxContainer" parent="Margin/Root/Body/DetailPanel/DetailMargin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.85, 0.68, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+text = "Nichts ausgewählt"
+
+[node name="TypeLabel" type="Label" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.6, 0.56, 1)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="DetailRule" type="HSeparator" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail"]
+layout_mode = 2
+
+[node name="StatsLabel" type="Label" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.84, 0.82, 0.76, 1)
+theme_override_font_sizes/font_size = 15
+autowrap_mode = 3
+
+[node name="DescriptionLabel" type="Label" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.7, 0.68, 0.65, 1)
+theme_override_font_sizes/font_size = 14
+autowrap_mode = 3
+
+[node name="Actions" type="VBoxContainer" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PrimaryButton" type="Button" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail/Actions"]
+layout_mode = 2
+text = "Ausrüsten"
+
+[node name="SecondaryButton" type="Button" parent="Margin/Root/Body/DetailPanel/DetailMargin/Detail/Actions"]
+layout_mode = 2
+text = "Wegwerfen"
+
+[node name="HintLabel" type="Label" parent="Margin/Root"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.48, 0.45, 1)
+theme_override_font_sizes/font_size = 13
+text = "Klick wählt aus · Doppelklick rüstet aus oder benutzt · I oder Esc schließt"

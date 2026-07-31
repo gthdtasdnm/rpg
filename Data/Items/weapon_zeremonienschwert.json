@@ -1,0 +1,13 @@
+{
+  "id": "weapon_zeremonienschwert",
+  "name": "Zeremonienschwert",
+  "type": "weapon",
+  "description": "Für Prozessionen geschmiedet, nicht für den Abgrund. Trotzdem trennt es, was ihm in den Weg kommt — nur langsam, und man braucht zwei Hände dafür.",
+  "damage": 24,
+  "scalingStat": "strength",
+  "damageType": "slashing",
+  "weaponCategory": "twohand",
+  "price": 400,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Great_Sword.fbx"
+}

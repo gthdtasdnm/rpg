@@ -1,5 +1,6 @@
 using Godot;
 using RPG.Characters;
+using RPG.Combat;
 using RPG.Items;
 using RPG.Quests;
 using System.Text.Json;
@@ -33,6 +34,7 @@ public partial class SaveSystem : Node
 
 		CharacterStats stats = player.GetNode<CharacterStats>("Stats");
 		Inventory inventory = player.GetNode<Inventory>("Inventory");
+		Equipment equipment = player.GetNode<Equipment>("Equipment");
 
 		SaveData data = new()
 		{
@@ -43,6 +45,7 @@ public partial class SaveSystem : Node
 			PlayerHealth = stats.CurrentHealth,
 			Silver = inventory.Silver,
 			InventoryItems = new(inventory.GetAllItems()),
+			EquippedItems = equipment.GetEquippedForSave(),
 			Flags = new(GameFlags.Instance.GetAllFlags()),
 			ActiveQuestProgress = QuestManager.Instance.GetActiveQuestProgressForSave(),
 		};
@@ -100,6 +103,10 @@ public partial class SaveSystem : Node
 		Inventory playerInventory = player.GetNode<Inventory>("Inventory");
 		playerInventory.LoadItems(data.InventoryItems);
 		playerInventory.RestoreSilver(data.Silver);
+
+		// Muss nach dem Inventar kommen: Equipment legt beim Laden erst einmal alles ab, was im
+		// gespeicherten Rucksack nicht vorkommt (siehe Equipment.DropWhatIsNoLongerOwned).
+		player.GetNode<Equipment>("Equipment").RestoreEquipment(data.EquippedItems);
 		GameFlags.Instance.LoadFlags(data.Flags);
 		QuestManager.Instance.RestoreActiveQuests(data.ActiveQuestProgress);
 

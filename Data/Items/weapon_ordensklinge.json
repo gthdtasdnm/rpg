@@ -1,0 +1,13 @@
+{
+  "id": "weapon_ordensklinge",
+  "name": "Ordensklinge",
+  "type": "weapon",
+  "description": "Standardwaffe der Custodes Profundi. Die Klinge ist gut geführt und schlecht gepflegt — tausend Jahre Wache haben aus dem Handwerk eine Gewohnheit gemacht.",
+  "damage": 12,
+  "scalingStat": "strength",
+  "damageType": "slashing",
+  "weaponCategory": "onehand",
+  "price": 120,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Arming_Sword.fbx"
+}

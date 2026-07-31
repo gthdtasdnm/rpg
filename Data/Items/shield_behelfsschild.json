@@ -1,0 +1,13 @@
+{
+  "id": "shield_behelfsschild",
+  "name": "Behelfsschild",
+  "type": "shield",
+  "description": "Ein Fassdeckel mit Riemen. Hält den ersten Schlag ab, manchmal auch den zweiten.",
+  "defense": 4,
+  "staggerResist": 3,
+  "price": 40,
+  "stackable": false,
+  "model": "res://Assets/Props/FantasyProps/Models/Shield_Wooden.gltf",
+  "iconYaw": 25,
+  "iconRoll": 0
+}

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" uid="uid://3tmngfyxnn0p" path="res://scripts/Items/ItemPickup.cs" id="1_pickup"]
+
+[node name="WorldItem" type="StaticBody3D"]
+script = ExtResource("1_pickup")
+ItemId = ""
+Amount = 1
+AutoLayDown = true

@@ -1,0 +1,13 @@
+{
+  "id": "weapon_wanderstab",
+  "name": "Wanderstab",
+  "type": "weapon",
+  "description": "Gehstock eines Mannes, der es nicht mehr aus der Barriere heraus geschafft hat. Als Waffe reicht er, wenn nichts anderes da ist.",
+  "damage": 5,
+  "scalingStat": "strength",
+  "damageType": "blunt",
+  "weaponCategory": "twohand",
+  "price": 15,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Wizard_Staff.fbx"
+}

@@ -1,6 +1,5 @@
 using Godot;
 using RPG.Characters;
-using RPG.Combat;
 using RPG.Data;
 using RPG.Dialogue;
 using RPG.Interaction;
@@ -22,8 +21,11 @@ public partial class Hud : CanvasLayer
 
 	private Control _pausePanel = null!;
 	private Label _pauseStatusLabel = null!;
-	private Control _inventoryPanel = null!;
-	private VBoxContainer _inventoryItemsBox = null!;
+
+	// Das Inventar ist eine eigene Szene mit eigener Logik (UI/InventoryScreen.tscn) - das HUD
+	// blendet es nur ein und aus, den Inhalt hält es selbst aktuell.
+	private InventoryScreen _inventoryPanel = null!;
+
 	private Control _questLogPanel = null!;
 	private VBoxContainer _questLogEntriesBox = null!;
 	private Control _shopPanel = null!;
@@ -33,7 +35,6 @@ public partial class Hud : CanvasLayer
 	private VBoxContainer _shopSellBox = null!;
 
 	private Inventory? _inventory;
-	private Equipment? _equipment;
 	private PanelKind _openPanel = PanelKind.None;
 	private string? _shopCharacterId;
 
@@ -48,8 +49,7 @@ public partial class Hud : CanvasLayer
 
 		_pausePanel = GetNode<Control>("PausePanel");
 		_pauseStatusLabel = GetNode<Label>("PausePanel/Margin/Box/StatusLabel");
-		_inventoryPanel = GetNode<Control>("InventoryPanel");
-		_inventoryItemsBox = GetNode<VBoxContainer>("InventoryPanel/Margin/Box/Scroll/ItemsBox");
+		_inventoryPanel = GetNode<InventoryScreen>("InventoryPanel");
 		_questLogPanel = GetNode<Control>("QuestLogPanel");
 		_questLogEntriesBox = GetNode<VBoxContainer>("QuestLogPanel/Margin/Box/Scroll/EntriesBox");
 		_shopPanel = GetNode<Control>("ShopPanel");
@@ -60,27 +60,10 @@ public partial class Hud : CanvasLayer
 
 		_interactionPrompt.Visible = false;
 
-		Node? player = GetTree().GetFirstNodeInGroup("player");
-		if (player != null)
-		{
-			Interactor interactor = player.GetNode<Interactor>("CameraPivot/Camera3D/Interactor");
-			interactor.TargetChanged += OnTargetChanged;
-			interactor.TargetLost += OnTargetLost;
-
-			CharacterStats stats = player.GetNode<CharacterStats>("Stats");
-			stats.HealthChanged += OnHealthChanged;
-			OnHealthChanged(stats.CurrentHealth, stats.Definition.MaxHealth);
-
-			_inventory = player.GetNode<Inventory>("Inventory");
-			_inventory.InventoryChanged += OnInventoryChanged;
-			_inventory.SilverChanged += OnSilverChanged;
-			OnSilverChanged(_inventory.Silver);
-
-			_equipment = player.GetNode<Equipment>("Equipment");
-			_equipment.WeaponChanged += (_) => RefreshInventoryIfOpen();
-			_equipment.ShieldChanged += (_) => RefreshInventoryIfOpen();
-			_equipment.ArmorChanged += (_) => RefreshInventoryIfOpen();
-		}
+		// Verzoegert: der Spieler traegt sich erst in seinem eigenen _ready in die Gruppe "player"
+		// ein (scripts/World/player.gd), und in Main.tscn steht er hinter dem HUD - zum Zeitpunkt
+		// dieses _Ready gibt es ihn also noch nicht zu finden.
+		CallDeferred(nameof(ConnectToPlayer));
 
 		// Die Dialogbox selbst gehoert zum Dialogue-Manager-Addon (UI/DialogueBalloon.tscn), nicht
 		// mehr zum HUD. Das HUD muss nur wissen, wann geredet wird - und wann ein Dialog das
@@ -96,6 +79,28 @@ public partial class Hud : CanvasLayer
 		GetNode<Button>("PausePanel/Margin/Box/SaveButton").Pressed += OnSavePressed;
 		GetNode<Button>("PausePanel/Margin/Box/LoadButton").Pressed += OnLoadPressed;
 		GetNode<Button>("PausePanel/Margin/Box/QuitButton").Pressed += () => GetTree().Quit();
+	}
+
+	private void ConnectToPlayer()
+	{
+		Node? player = GetTree().GetFirstNodeInGroup("player");
+		if (player == null)
+		{
+			GD.PushWarning("Hud: kein Knoten in der Gruppe 'player' - Leben, Silber und Inventar bleiben leer");
+			return;
+		}
+
+		Interactor interactor = player.GetNode<Interactor>("CameraPivot/Camera3D/Interactor");
+		interactor.TargetChanged += OnTargetChanged;
+		interactor.TargetLost += OnTargetLost;
+
+		CharacterStats stats = player.GetNode<CharacterStats>("Stats");
+		stats.HealthChanged += OnHealthChanged;
+		OnHealthChanged(stats.CurrentHealth, stats.Definition.MaxHealth);
+
+		_inventory = player.GetNode<Inventory>("Inventory");
+		_inventory.SilverChanged += OnSilverChanged;
+		OnSilverChanged(_inventory.Silver);
 	}
 
 	public override void _UnhandledInput(InputEvent @event)
@@ -154,7 +159,7 @@ public partial class Hud : CanvasLayer
 		if (kind == PanelKind.Pause)
 			_pauseStatusLabel.Text = "";
 		else if (kind == PanelKind.Inventory)
-			RefreshInventory();
+			_inventoryPanel.Refresh();
 		else if (kind == PanelKind.QuestLog)
 			RefreshQuestLog();
 		else if (kind == PanelKind.Shop)
@@ -215,59 +220,6 @@ public partial class Hud : CanvasLayer
 		_healthBar.MaxValue = maxHealth;
 		_healthBar.Value = currentHealth;
 		_healthValueLabel.Text = $"{currentHealth}/{maxHealth}";
-	}
-
-	private void OnInventoryChanged() => RefreshInventoryIfOpen();
-
-	private void RefreshInventoryIfOpen()
-	{
-		if (_openPanel == PanelKind.Inventory)
-			RefreshInventory();
-	}
-
-	// Ausruestbare Typen (siehe Equipment.cs) bekommen einen "Ausrüsten"-Knopf; das aktuell
-	// ausgeruestete Item einer Kategorie wird stattdessen als "(ausgerüstet)" markiert.
-	private void RefreshInventory()
-	{
-		foreach (Node child in _inventoryItemsBox.GetChildren())
-			child.QueueFree();
-
-		if (_inventory != null)
-		{
-			foreach (KeyValuePair<string, int> entry in _inventory.GetAllItems())
-			{
-				if (entry.Value <= 0)
-					continue;
-
-				ItemDefinition? item = GameData.Instance.GetItem(entry.Key);
-				string name = item?.Name ?? entry.Key;
-
-				HBoxContainer row = new();
-				row.AddChild(new Label { Text = $"{name}  ×{entry.Value}", SizeFlagsHorizontal = Control.SizeFlags.ExpandFill });
-
-				bool isEquippable = item != null && (item.Type == "weapon" || item.Type == "shield" || item.Type == "armor");
-				bool isEquipped = entry.Key == _equipment?.EquippedWeaponId
-					|| entry.Key == _equipment?.EquippedShieldId
-					|| entry.Key == _equipment?.EquippedArmorId;
-
-				if (isEquipped)
-				{
-					row.AddChild(new Label { Text = "(ausgerüstet)" });
-				}
-				else if (isEquippable)
-				{
-					string itemId = entry.Key;
-					Button equipButton = new() { Text = "Ausrüsten" };
-					equipButton.Pressed += () => _equipment?.Equip(itemId);
-					row.AddChild(equipButton);
-				}
-
-				_inventoryItemsBox.AddChild(row);
-			}
-		}
-
-		if (_inventoryItemsBox.GetChildCount() == 0)
-			_inventoryItemsBox.AddChild(new Label { Text = "(leer)" });
 	}
 
 	private void OnSilverChanged(int totalSilver)

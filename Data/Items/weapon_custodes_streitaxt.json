@@ -1,0 +1,13 @@
+{
+  "id": "weapon_custodes_streitaxt",
+  "name": "Custodes-Streitaxt",
+  "type": "weapon",
+  "description": "Schneidet und schlägt zugleich, und beides nur halb so gut wie eine Waffe, die sich entschieden hat. Wer nicht weiß, was ihn unten erwartet, nimmt sie trotzdem mit.",
+  "damage": 15,
+  "scalingStat": "strength",
+  "damageType": "mixed",
+  "weaponCategory": "onehand",
+  "price": 180,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Bearded_Axe.fbx"
+}

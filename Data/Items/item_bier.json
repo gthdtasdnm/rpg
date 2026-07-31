@@ -2,7 +2,11 @@
   "id": "item_bier",
   "name": "Krug Bier",
   "type": "consumable",
+  "description": "Dünn, warm und das Beste, was der Wirt noch hat. Hilft gegen fast nichts, aber es hilft.",
   "healAmount": 2,
   "price": 4,
-  "stackable": true
+  "stackable": true,
+  "model": "res://Assets/Props/FantasyProps/Models/Mug.gltf",
+  "iconYaw": 25,
+  "iconRoll": 0
 }

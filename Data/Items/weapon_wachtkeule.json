@@ -1,0 +1,13 @@
+{
+  "id": "weapon_wachtkeule",
+  "name": "Wachtkeule",
+  "type": "weapon",
+  "description": "Was die Vigil ihren Neuen in die Hand drückt. Gegen Knochen und Panzer taugt sie mehr als jede Klinge, gegen alles andere ist sie ein Knüppel.",
+  "damage": 10,
+  "scalingStat": "strength",
+  "damageType": "blunt",
+  "weaponCategory": "onehand",
+  "price": 60,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Spiked_Club.fbx"
+}

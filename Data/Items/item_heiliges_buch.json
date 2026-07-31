@@ -1,0 +1,12 @@
+{
+  "id": "item_heiliges_buch",
+  "name": "Heiliges Buch",
+  "type": "quest",
+  "description": "Nethora will es zurück. Die Erleuchteten wollen es auch. Wer es abgibt, hat sich entschieden — auch wenn er es beim Aufheben noch nicht wusste.",
+  "price": 0,
+  "stackable": false,
+  "model": "res://Assets/Props/FantasyProps/Models/Book_5.gltf",
+  "iconYaw": 30,
+  "iconPitch": -20,
+  "iconRoll": 0
+}

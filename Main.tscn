@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://06y03ggtxbcd" path="res://World/npc.tscn" id="3_npc"]
 [ext_resource type="PackedScene" path="res://UI/Hud.tscn" id="4_hud"]
 [ext_resource type="PackedScene" path="res://UI/PerformanceOverlay.tscn" id="5_perf"]
+[ext_resource type="PackedScene" path="res://Objects/world_item.tscn" id="6_item"]
 
 [node name="Main" type="Node3D" unique_id=1083142749]
 
@@ -33,3 +34,24 @@ DialogueFile = "res://Dialogues/knud.dialogue"
 
 [node name="Player" parent="." unique_id=1657340354 instance=ExtResource("2_uu6xs")]
 transform = Transform3D(-0.70576304, 0, 0.708448, 0, 1, 0, -0.708448, 0, -0.70576304, -680.5343, -1.9917338, -896.2414)
+
+[node name="ItemOrdensklinge" parent="." instance=ExtResource("6_item")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -682.1, -1.99, -894.6)
+ItemId = "weapon_ordensklinge"
+
+[node name="ItemOrdensschild" parent="." instance=ExtResource("6_item")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -683, -1.99, -895.6)
+ItemId = "shield_ordensschild"
+
+[node name="ItemJagdbogen" parent="." instance=ExtResource("6_item")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -679.4, -1.99, -894.2)
+ItemId = "weapon_jagdbogen"
+
+[node name="ItemHeiltrank" parent="." instance=ExtResource("6_item")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -681.2, -1.99, -894)
+ItemId = "potion_heiltrank"
+Amount = 2
+
+[node name="ItemHeiligesBuch" parent="." instance=ExtResource("6_item")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -680.2, -1.99, -893.3)
+ItemId = "item_heiliges_buch"

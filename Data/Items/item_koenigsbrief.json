@@ -1,0 +1,9 @@
+{
+  "id": "item_koenigsbrief",
+  "name": "Königsbrief",
+  "type": "quest",
+  "description": "Versiegelt, an den Orden gerichtet. Der König teilt darin mit, dass er die Barriere nicht länger belagern wird — und dass niemand mehr kommt.",
+  "price": 0,
+  "stackable": false,
+  "model": "res://Assets/Weapons/LowPolyMedieval/Models/Magic/Scroll.fbx"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "weapon_jagdbogen",
+  "name": "Jagdbogen",
+  "type": "weapon",
+  "description": "Für Rehe gebaut, in Nethora nur noch für das benutzt, was einmal ein Reh war. Verlangt eine ruhige Hand statt eines starken Arms.",
+  "damage": 11,
+  "scalingStat": "dexterity",
+  "damageType": "ranged",
+  "weaponCategory": "bow",
+  "price": 150,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Bow.fbx"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "weapon_opferdolch",
+  "name": "Opferdolch",
+  "type": "weapon",
+  "description": "Aus einem Knochen geschnitten, von dem niemand sagt, welchem Tier er gehörte. Die Erleuchteten führen ihn nicht, um zu kämpfen.",
+  "damage": 6,
+  "scalingStat": "dexterity",
+  "damageType": "slashing",
+  "weaponCategory": "onehand",
+  "price": 35,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Bone_Shiv.fbx"
+}

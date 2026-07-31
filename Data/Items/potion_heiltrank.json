@@ -1,0 +1,12 @@
+{
+  "id": "potion_heiltrank",
+  "name": "Heiltrank",
+  "type": "consumable",
+  "description": "Bitter und dickflüssig. Meinhard braut ihn aus dem, was innerhalb der Barriere noch wächst — man sollte nicht fragen, was das ist.",
+  "healAmount": 25,
+  "price": 30,
+  "stackable": true,
+  "model": "res://Assets/Props/FantasyProps/Models/Potion_1.gltf",
+  "iconYaw": 20,
+  "iconRoll": 0
+}

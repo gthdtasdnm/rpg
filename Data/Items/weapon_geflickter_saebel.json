@@ -1,0 +1,13 @@
+{
+  "id": "weapon_geflickter_saebel",
+  "name": "Geflickter Säbel",
+  "type": "weapon",
+  "description": "Zweimal gebrochen, zweimal neu geschweißt. Im Freien Lager wird nichts weggeworfen, was noch schneidet.",
+  "damage": 9,
+  "scalingStat": "strength",
+  "damageType": "slashing",
+  "weaponCategory": "onehand",
+  "price": 45,
+  "stackable": false,
+  "model": "res://Assets/Weapons/KickinIt/Models/Cutlass.fbx"
+}

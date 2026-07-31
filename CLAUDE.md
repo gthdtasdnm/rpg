@@ -75,7 +75,9 @@ mit `_` am Anfang ignoriert `GameData`. Dialoge laufen über das dialogue_manage
 Einstieg `Dialog.Show(datei, titel, sprecher)`; was sie auslösen dürfen, steht in
 `scripts/Dialogue/DialogueBridge.cs`.
 
-**Ist-Stand:** 3 NPCs, 3 Dialoge, 4 Items, 1 Quest, 1 Zauber. Die früher genannten „30 NPCs,
+**Ist-Stand:** 3 NPCs, 3 Dialoge, 18 Items (16 davon mit 3D-Modell), 1 Quest, 1 Zauber. Ein Item
+braucht **kein Icon-Bild** — das Inventar rendert es aus dem Modell, Details in `Data/README.md`.
+Die früher genannten „30 NPCs,
 27 Dialoge, 47 Items" wurden am 26.07. geleert — Inhalte müssen nach `doc/welt.md` neu geschrieben
 werden. Währung ist **Silber**.
 

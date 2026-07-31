@@ -12,6 +12,10 @@ public class SaveData
 	public int PlayerHealth { get; set; }
 	public int Silver { get; set; }
 	public Dictionary<string, int> InventoryItems { get; set; } = new();
+
+	// Slot-Name ("weapon"/"shield"/"armor") -> Item-Id; leere Slots fehlen (siehe Equipment.cs).
+	public Dictionary<string, string> EquippedItems { get; set; } = new();
+
 	public List<string> Flags { get; set; } = new();
 	public Dictionary<string, int[]> ActiveQuestProgress { get; set; } = new();
 }

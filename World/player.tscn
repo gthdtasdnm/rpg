@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c4cmxj82kwwkj" path="res://scripts/Items/Inventory.cs" id="3_inventory"]
 [ext_resource type="Script" uid="uid://b7345nacgt64b" path="res://scripts/Characters/CharacterStats.cs" id="4_stats"]
 [ext_resource type="Script" uid="uid://de2qkhrndiyi1" path="res://scripts/Combat/Equipment.cs" id="5_equipment"]
+[ext_resource type="Script" path="res://scripts/Combat/EquipmentVisuals.cs" id="6_equipvisuals"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_p"]
 radius = 0.4
@@ -35,7 +36,7 @@ script = ExtResource("2_interactor")
 
 [node name="Inventory" type="Node" parent="." unique_id=646656752]
 script = ExtResource("3_inventory")
-StartItems = PackedStringArray("item_bier")
+StartItems = PackedStringArray("item_koenigsbrief", "weapon_wachtkeule", "armor_neulingsleder", "potion_heiltrank", "potion_heiltrank", "item_bier")
 StartSilver = 150
 
 [node name="Stats" type="Node" parent="." unique_id=1238424]
@@ -44,3 +45,8 @@ CharacterId = "player"
 
 [node name="Equipment" type="Node" parent="." unique_id=260707125]
 script = ExtResource("5_equipment")
+
+[node name="WeaponMount" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0.28)
+script = ExtResource("6_equipvisuals")
+Slot = "weapon"

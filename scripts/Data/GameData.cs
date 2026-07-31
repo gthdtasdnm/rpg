@@ -33,6 +33,25 @@ public partial class GameData : Node
 
 	public CharacterDefinition? GetCharacter(string id) => _characters.GetValueOrDefault(id);
 	public ItemDefinition? GetItem(string id) => _items.GetValueOrDefault(id);
+
+	// Im Editor laufen keine Autoloads, `Instance` ist dort also null. @tool-Scripts wie
+	// ItemPickup brauchen die Item-Daten trotzdem, um schon beim Platzieren das richtige Modell
+	// zu zeigen - deshalb dieser Umweg, der die JSONs notfalls selbst liest.
+	public static ItemDefinition? LookupItem(string id)
+	{
+		if (Instance != null)
+			return Instance.GetItem(id);
+
+		if (_editorItems == null)
+		{
+			_editorItems = new Dictionary<string, ItemDefinition>();
+			LoadAll("res://Data/Items", _editorItems, d => d.Id);
+		}
+
+		return _editorItems.GetValueOrDefault(id);
+	}
+
+	private static Dictionary<string, ItemDefinition>? _editorItems;
 	public QuestDefinition? GetQuest(string id) => _quests.GetValueOrDefault(id);
 	public SpellDefinition? GetSpell(string id) => _spells.GetValueOrDefault(id);
 

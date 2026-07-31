@@ -43,6 +43,7 @@ config/icon="res://icon.svg"
 
 GameFlags="*res://scripts/World/GameFlags.cs"
 GameData="*res://scripts/Data/GameData.cs"
+ItemIcons="*res://scripts/UI/ItemIcons.cs"
 QuestManager="*res://scripts/Quests/QuestManager.cs"
 SaveSystem="*res://scripts/World/SaveSystem.cs"
 DialogueManager="*uid://c3rodes2l3gxb"

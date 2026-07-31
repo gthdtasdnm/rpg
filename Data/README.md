@@ -29,6 +29,33 @@ Die verbindliche Feldliste steht jeweils in der C#-Klasse (dort auch die erlaubt
 **Dialoge liegen nicht hier**, sondern als `.dialogue`-Dateien in `Dialogues/` — siehe
 `Dialogues/README.md`.
 
+## Items brauchen nur ein Modell, kein Icon
+
+Ein Item hat **ein** 3D-Modell (`"model": "res://Assets/..."`), und das genügt für alles:
+
+| Wo | Wer macht das |
+|---|---|
+| liegt in der Welt | `Objects/world_item.tscn` (`scripts/Items/ItemPickup.cs`) |
+| hängt beim Ausrüsten am Spieler | `scripts/Combat/EquipmentVisuals.cs` |
+| ist das Inventar-Icon | `scripts/UI/ItemIcons.cs` |
+
+**Icons werden nicht gemalt, sondern gerendert.** `ItemIcons` (Autoload) stellt das Modell in
+einen eigenen kleinen SubViewport, rahmt es automatisch und rendert **einmal**; danach steht die
+Textur und kostet nichts mehr. Längliche Sachen (Schwerter, Stäbe, Bögen) werden dabei automatisch
+so gedreht, dass sie diagonal im Feld liegen und man ihre breite Seite sieht — die Modellpakete
+legen ihre Waffen nämlich nicht alle auf dieselbe Achse. Kompakte Sachen (Trank, Buch, Schild)
+bleiben aufrecht stehen.
+
+Wenn die Automatik bei einem Item danebenliegt: `"iconAutoOrient": false` und mit
+`iconYaw`/`iconPitch`/`iconRoll` (Grad) selbst drehen, `iconZoom` > 1 zoomt näher heran. Ein
+fertiges Bild gewinnt immer: `"icon": "res://..."`. Ohne Modell zeigt das Inventarfeld ein
+Namenskürzel — kaputt geht nichts.
+
+**Ein Item in die Welt legen:** `Objects/world_item.tscn` in die Szene ziehen, `ItemId` eintragen,
+hinstellen. Modell und Kollision entstehen von selbst, und weil das Script ein `@tool` ist, sieht
+man das Item schon im Editor. Der Knoten-Ursprung liegt dabei auf der **Unterkante** des Modells —
+auf den Boden setzen genügt.
+
 ## Währung
 
 **Silber** ist die einzige Währung — keine Kupfer/Gold-Staffelung. Das Feld `price` in

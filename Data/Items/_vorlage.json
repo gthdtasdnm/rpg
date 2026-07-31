@@ -4,6 +4,7 @@
   "id": "weapon_beispiel",
   "name": "Beispielklinge",
   "type": "weapon",
+  "description": "Ein Satz, der sagt, woher das Ding kommt und was es taugt.",
   "price": 50,
   "stackable": false,
 
@@ -18,5 +19,16 @@
   "staggerResist": 0,
 
   "_ab_hier_nur_fuer_traenke": "type=consumable",
-  "healAmount": 0
+  "healAmount": 0,
+
+  "_ab_hier_darstellung": "Ein Modell reicht fuer alles: es liegt in der Welt, haengt beim Ausruesten am Spieler und wird fuers Inventar-Icon abfotografiert. In der Regel genuegt 'model' - der Rest steht nur hier, weil es die Notausgaenge sind.",
+  "model": "res://Assets/Weapons/KickinIt/Models/Arming_Sword.fbx",
+
+  "_darstellung_notausgaenge": "modelScale falls das Modellpaket eine andere Einheit benutzt. iconAutoOrient=false, wenn die automatische Ausrichtung danebenliegt; iconYaw/Pitch/Roll drehen zusaetzlich (Grad), iconZoom>1 zoomt naeher heran.",
+  "modelScale": 1.0,
+  "iconAutoOrient": true,
+  "iconYaw": 20,
+  "iconPitch": 0,
+  "iconRoll": 0,
+  "iconZoom": 1.0
 }

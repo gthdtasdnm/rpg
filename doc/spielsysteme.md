@@ -3,9 +3,10 @@
 Kampf, Magie, Progression, Items. **Übergeordnet gilt `doc/Kapitelverlauf.txt`.**
 Welt und Figuren stehen in `doc/welt.md`, Technik in `doc/technik.md`.
 
-⚠️ **Nichts davon ist implementiert außer Inventar, Ausrüstung (ohne Wirkung) und Stats.**
+⚠️ **Nichts davon ist implementiert außer Items, Inventar, Ausrüstung (ohne Wirkung) und Stats.**
 Kampf, Magie und Progression sind Konzept. Zahlenwerte fehlen absichtlich — sie entstehen erst
-beim Bauen.
+beim Bauen; die Waffen in `Data/Items/` haben inzwischen welche, aber ungetestet (siehe
+Abschnitt 4).
 
 ---
 
@@ -130,6 +131,16 @@ gegen Inventar-Management als Spielmechanik. Entspricht der bestehenden `Invento
 
 Alles Inhaltliche sind **Daten, kein Code**: neues Item → JSON unter `Data/Items/`. Dateien mit
 `_` am Anfang ignoriert `GameData` (Vorlagen).
+
+**Steht:** Inventar als anklickbares Raster (`UI/InventoryScreen.tscn`) mit Kategorie-Reitern,
+Ausrüstungsslots, Detailspalte und den Aktionen Ausrüsten/Ablegen/Benutzen/Wegwerfen · Icons, die
+aus dem 3D-Modell des Items gerendert statt gemalt werden · Items in der Welt platzieren, aufheben
+und wieder fallen lassen · Ausrüstung sichtbar am Charakter und im Savegame. Wie das zusammenhängt,
+steht in `Data/README.md`.
+
+**Offen:** Die Waffenwerte unten sind erste Zahlen zum Anfassen, kein austarierter Satz — Kampf
+und Resistenzen (Abschnitt 1) gibt es noch nicht, `damage`/`defense`/`staggerResist` wirken also
+bisher nirgends. Rüstung und Schild haben noch kein eigenes Modell am Charakter, nur die Waffe.
 
 ### Waffen
 
