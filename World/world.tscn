@@ -114,6 +114,9 @@
 [ext_resource type="PackedScene" uid="uid://ctt0uaylkuo0r" path="res://Assets/Props/FantasyProps/Models/FarmCrate_Apple.gltf" id="107_0g7xh"]
 [ext_resource type="PackedScene" uid="uid://dhlgqclab6yx2" path="res://Assets/Props/FantasyProps/Models/FarmCrate_Empty.gltf" id="108_jjj8k"]
 [ext_resource type="PackedScene" uid="uid://b5kpu5b8g1kv" path="res://Assets/Props/FantasyProps/Models/Crate_Metal.gltf" id="109_2kojl"]
+[ext_resource type="PackedScene" uid="uid://lj3tsf60r20i" path="res://Assets/Nature/Forest/deciduous_sapling_32.tscn" id="115_f640b"]
+[ext_resource type="PackedScene" uid="uid://dn2yk7xqtcfs6" path="res://Assets/Nature/Forest/deciduous_shrub_27.tscn" id="116_v0m6r"]
+[ext_resource type="PackedScene" uid="uid://4ac2q72ujx2q" path="res://Objects/fischerhütte.tscn" id="117_v0m6r"]
 
 [sub_resource type="GDScript" id="GDScript_fb61x"]
 script/source = "@tool
@@ -956,71 +959,54 @@ size = Vector3(18.457382, 36.059395, 16.105011)
 
 [node name="CSGBox3D" parent="Blockout/umgebung" unique_id=967997402 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -724.9544, 6.7565312, -116.31556)
-size = Vector3(12.756348, 7.1469727, 4.317505)
 
 [node name="CSGBox3D2" parent="Blockout/umgebung" unique_id=1499966987 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -603.5394, 2.6519108, -912.07385)
-size = Vector3(5.7008057, 2.9038086, 5.1016846)
 
 [node name="CSGBox3D3" parent="Blockout/umgebung" unique_id=1566024966 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(0.77617234, 0, -0.6305208, 0, 1, 0, 0.6305208, 0, 0.77617234, -599.9777, 2.5490394, -947.64166)
-size = Vector3(4.226074, 4.3466187, 5.2194824)
 
 [node name="CSGBox3D4" parent="Blockout/umgebung" unique_id=1238365049 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(0.51018584, 0, -0.8600642, 0, 1, 0, 0.8600642, 0, 0.51018584, -573.07825, 9.394481, -936.18695)
-size = Vector3(5.2841797, 3.7235107, 3.3085938)
 
 [node name="CSGBox3D5" parent="Blockout/umgebung" unique_id=450882009 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(0.92859054, 0, -0.37110594, 0, 1, 0, 0.37110594, 0, 0.92859054, -626.6399, 7.705256, -954.131)
-size = Vector3(11.566406, 12.562012, 43.264923)
 
 [node name="CSGBox3D6" parent="Blockout/umgebung" unique_id=1737629526 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(0.90749794, 0, -0.42005655, 0, 1, 0, 0.42005655, 0, 0.90749794, -614.1682, 9.63559, -966.69745)
-size = Vector3(5.0809326, 4.6397705, 7.421936)
 
 [node name="CSGBox3D7" parent="Blockout/umgebung" unique_id=994385117 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(0.9845837, 0.06236377, -0.16341895, -0.061522104, 0.9980535, 0.010211298, 0.16373767, 0, 0.9865039, -611.47296, 8.563149, -964.832)
-size = Vector3(5.333008, 2.755371, 9.050781)
 
 [node name="CSGBox3D8" parent="Blockout/umgebung" unique_id=65487950 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(0.46891218, 0, -0.8832448, 0, 1, 0, 0.8832448, 0, 0.46891218, -586.8713, 8.777648, -955.8169)
-size = Vector3(11.140503, 5.58667, 4.127075)
 
 [node name="CSGBox3D9" parent="Blockout/umgebung" unique_id=446089509 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -622.92175, 10.50826, -868.9432)
-size = Vector3(3.4213867, 22.26123, 3.1445313)
 
 [node name="CSGBox3D10" parent="Blockout/umgebung" unique_id=180314437 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -725.75793, 27.456316, -880.42126)
-size = Vector3(7.1054688, 19.912598, 7.124756)
 
 [node name="CSGBox3D11" parent="Blockout/umgebung" unique_id=2084646776 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -737.86224, 19.785246, -939.703)
-size = Vector3(10.677887, 4.574707, 7.813904)
 
 [node name="CSGBox3D12" parent="Blockout/umgebung" unique_id=1016221414 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -794.0895, 5.4764223, -899.40985)
-size = Vector3(26.963806, 12.066528, 11.370117)
 
 [node name="CSGBox3D13" parent="Blockout/umgebung" unique_id=852213461 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -800.2737, 4.659853, -891.13556)
-size = Vector3(13.06958, 7.6308594, 7.980896)
 
 [node name="CSGBox3D14" parent="Blockout/umgebung" unique_id=1235707236 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -801.0707, 2.6473408, -886.5218)
-size = Vector3(13.06958, 7.6308594, 7.980896)
 
 [node name="CSGBox3D15" parent="Blockout/umgebung" unique_id=1980375970 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -802.2865, -0.21106148, -882.19806)
-size = Vector3(13.06958, 7.6308594, 7.980896)
 
 [node name="CSGBox3D16" parent="Blockout/umgebung" unique_id=1140948044 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -792.5954, 7.13235, -857.24396)
-size = Vector3(36.476196, 13.755859, 18.506226)
 
 [node name="CSGBox3D17" parent="Blockout/umgebung" unique_id=806634373 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1.7933581, 0, 0, 0, 1.7933581, 0, 0, 0, 1.7933581, -754.4149, 3.0668416, -871.6192)
-size = Vector3(6.1014404, 6.0838623, 7.1602783)
 
 [node name="CSGBox3D20" parent="Blockout/umgebung" unique_id=2110964262 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(5.7902336, 0, 0, 0, 5.7902336, 0, 0, 0, 5.7902336, -632.2676, 0.49177063, -728.65106)
@@ -1051,19 +1037,15 @@ transform = Transform3D(12.066602, 0, 0, 0, 12.066602, 0, 0, 0, 12.066602, -904.
 
 [node name="CSGBox3D30" parent="Blockout/umgebung" unique_id=604299933 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(5.4161057, 0, 0, 0, 5.4161057, 0, 0, 0, 5.4161057, -876.1684, 4.7889714, -759.77313)
-size = Vector3(1.970581, 2.3398438, 2.1479492)
 
 [node name="CSGBox3D36" parent="Blockout/umgebung" unique_id=2126763073 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(8.651463, 0, 0, 0, 8.651463, 0, 0, 0, 8.651463, -444.82242, 11.813336, -768.4727)
-size = Vector3(1, 3.6153564, 1)
 
 [node name="CSGBox3D37" parent="Blockout/umgebung" unique_id=1328996257 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(3.989319, 0, 0, 0, 3.989319, 0, 0, 0, 3.989319, -401.88907, 0.5000076, -729.63324)
-size = Vector3(1, 1, 10.027466)
 
 [node name="CSGBox3D38" parent="Blockout/umgebung" unique_id=840648207 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(3.6850805, 0, 1.5280242, 0, 3.98932, 0, -1.5280242, 0, 3.6850805, -295.49954, 0.5000057, -725.21246)
-size = Vector3(1, 1, 11.673889)
 
 [node name="CSGBox3D39" parent="Blockout/umgebung" unique_id=1620985454 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(11.37207, 0, 0, 0, 11.37207, 0, 0, 0, 11.37207, -276.80646, 10.414453, -818.22205)
@@ -1073,121 +1055,88 @@ transform = Transform3D(9.385568, 0, -6.421456, 0, 11.372069, 0, 6.421456, 0, 9.
 
 [node name="CSGBox3D41" parent="Blockout/umgebung" unique_id=1303508716 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1.9176586, 0, 0, 0, 1, 0, 0, 0, 1.7800328, -809.5961, 3.2390327, -778.54407)
-size = Vector3(1, 3.597229, 1)
 
 [node name="CSGBox3D42" parent="Blockout/umgebung" unique_id=404506430 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -809.44745, 4.2713866, -766.208)
-size = Vector3(1, 4.359253, 1)
 
 [node name="CSGBox3D43" parent="Blockout/umgebung" unique_id=1495832696 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(4.5226965, 0, 0, 0, 4.5226965, 0, 0, 0, 4.5226965, -818.58966, 0.5000074, -649.174)
 
 [node name="CSGBox3D44" parent="Blockout/umgebung" unique_id=712293514 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(5.468438, 0, 0, 0, 5.468438, 0, 0, 0, 5.468438, -730.28564, 31.132334, -600.595)
-size = Vector3(1, 2.0809326, 1)
 
 [node name="CSGBox3D45" parent="Blockout/umgebung" unique_id=942949175 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(5.161475, 0, 0, 0, 5.161475, 0, 0, 0, 5.161475, -703.85834, 65.95294, -502.31354)
-size = Vector3(1, 2.1381836, 1)
 
 [node name="CSGBox3D46" parent="Blockout/umgebung" unique_id=193039034 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(4.904505, 0, 0, 0, 4.904505, 0, 0, 0, 4.904505, -793.00745, -0.15765905, -472.54233)
-size = Vector3(5.895996, 1, 1)
 
 [node name="CSGBox3D47" parent="Blockout/umgebung" unique_id=2008880332 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(4.1707087, 0, 2.5805738, 1.1903851, 4.351527, -1.9238937, -2.2896166, 2.2623844, 3.7004652, -793.00745, 2.1401877, -465.87405)
-size = Vector3(5.895996, 1, 1)
 
 [node name="CSGBox3D48" parent="Blockout/umgebung" unique_id=1851839931 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(3.1393123, -2.5641866, 1.9249835, 2.8386502, 3.4753358, 0, -1.490865, 1.2177367, 4.053435, -792.8489, 15.500158, -409.96796)
-size = Vector3(1, 7.683838, 1)
 
 [node name="CSGBox3D49" parent="Blockout/umgebung" unique_id=50228794 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(3.5101428, 2.658489, 0.86442506, -2.709233, 3.5771427, 0, -0.68909407, -0.5219014, 4.403256, -805.0644, 15.500158, -402.7743)
-size = Vector3(1, 7.683838, 1)
 
 [node name="CSGBox3D50" parent="Blockout/umgebung" unique_id=1227861102 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(8.910093, 0, 0, 0, 8.910093, 0, 0, 0, 8.910093, -879.65814, 11.576517, -316.72083)
-size = Vector3(1, 3.3164063, 1)
 
 [node name="CSGBox3D51" parent="Blockout/umgebung" unique_id=1233526663 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(7.0095854, 0, 5.500498, 0, 8.910093, 0, -5.500498, 0, 7.0095854, -863.14404, 11.576517, -277.66452)
-size = Vector3(1, 3.3164063, 1)
 
 [node name="CSGBox3D52" parent="Blockout/umgebung" unique_id=1681963252 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(7.0095854, 0, 5.500498, 0, 8.910093, 0, -5.500498, 0, 7.0095854, -855.7237, 8.245684, -284.97488)
-size = Vector3(1, 2.0756836, 1)
 
 [node name="CSGBox3D53" parent="Blockout/umgebung" unique_id=5551037 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(7.0095854, 0, 5.500498, 0, 8.910093, 0, -5.500498, 0, 7.0095854, -867.7948, 8.245684, -313.43253)
-size = Vector3(1, 2.0756836, 1)
 
 [node name="CSGBox3D54" parent="Blockout/umgebung" unique_id=1711527419 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -736.4726, 0.5271268, -441.412)
 
 [node name="CSGBox3D55" parent="Blockout/umgebung" unique_id=1263967803 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -733.47, 4.135708, -462.50446)
-size = Vector3(0.87890625, 3.8397217, 0.044677734)
 
 [node name="CSGBox3D56" parent="Blockout/umgebung" unique_id=763787861 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -712.5485, 4.135708, -446.25253)
-size = Vector3(0.03515625, 3.8397217, 0.7807617)
 
 [node name="CSGBox3D57" parent="Blockout/umgebung" unique_id=530623942 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -731.9141, 4.135708, -419.74545)
-size = Vector3(0.8161621, 3.8397217, 0.041625977)
 
 [node name="CSGBox3D58" parent="Blockout/umgebung" unique_id=1038316577 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(49.591568, 0, 0, 0, 2.5415034, 0, 0, 0, 44.157814, -747.7111, 13.663321, -437.21124)
-size = Vector3(0.17907715, 11.337341, 0.23042297)
 
 [node name="CSGBox3D59" parent="Blockout/umgebung" unique_id=638588385 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(15.020416, 0, 0, 0, 15.020416, 0, 0, 0, 15.020416, -628.6202, 30.101664, -428.10312)
-size = Vector3(1.3193359, 0.2319336, 1)
 
 [node name="CSGBox3D60" parent="Blockout/umgebung" unique_id=345950391 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(9.852266, 0, 0, 0, 9.852266, 0, 0, 0, 9.852266, -574.24805, 9.071995, -167.05452)
-size = Vector3(1, 2.7088623, 1)
 
 [node name="CSGBox3D61" parent="Blockout/umgebung" unique_id=538992649 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(9.852266, 0, 0, 0, 9.852266, 0, 0, 0, 9.852266, -618.49316, 9.071995, -167.05452)
-size = Vector3(1, 2.7088623, 1)
 
 [node name="CSGBox3D62" parent="Blockout/umgebung" unique_id=1412460854 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(9.852266, 0, 0, 0, 9.852266, 0, 0, 0, 9.852266, -598.5262, -1.429863, -167.05452)
-size = Vector3(1, 0.57699585, 1)
 
 [node name="FocusSteine" type="CSGCombiner3D" parent="Blockout" unique_id=2035144773]
 
 [node name="CSGBox3D" parent="Blockout/FocusSteine" unique_id=1210216706 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -442.09753, 62.391315, -961.56256)
-size = Vector3(1, 2.4962158, 1)
 
 [node name="CSGBox3D2" parent="Blockout/FocusSteine" unique_id=1884815726 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -770.5137, 31.187916, -186.95349)
-size = Vector3(1, 2.4962158, 1)
 
 [node name="CSGBox3D3" parent="Blockout/FocusSteine" unique_id=2075197277 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -148.12439, 74.581985, -201.9903)
-size = Vector3(1, 2.4962158, 1)
 
 [node name="CSGBox3D4" parent="Blockout/FocusSteine" unique_id=744992877 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -92.65198, 43.09486, -636.5243)
-size = Vector3(1, 2.4962158, 1)
 
 [node name="CSGBox3D5" parent="Blockout/FocusSteine" unique_id=950756486 instance=ExtResource("9_qjfgf")]
 transform = Transform3D(25.760138, 0, 0, 0, 25.760138, 0, 0, 0, 25.760138, -950.16327, 70.06642, -627.3104)
-size = Vector3(1, 2.4962158, 1)
-
-[node name="CSGBox3D" parent="Blockout" unique_id=222407700 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(8.915136, 0, 0, 0, 8.915136, 0, 0, 0, 8.915136, -707.4933, 1.4712975, -818.57874)
-size = Vector3(2.1293945, 1.2163086, 1)
 
 [node name="Bauten" type="Node3D" parent="." unique_id=2147421187]
-
-[node name="Jägerhütte" parent="Bauten" unique_id=291779436 instance=ExtResource("9_qjfgf")]
-transform = Transform3D(9.648061, 0, 0, 0, 9.648061, 0, 0, 0, 9.648061, -663.51575, 2.1233609, -846.2697)
-size = Vector3(1, 0.6645508, 0.50683594)
 
 [node name="DoorFrame_Flat_WoodDark2" parent="Bauten" unique_id=1149063375 instance=ExtResource("66_h4nnu")]
 transform = Transform3D(7.400299, 0, 2.3813965, 0, 4.6035037, 0, -4.4732, 0, 3.9396951, -684.9298, -4.648111, -959.7953)
@@ -1451,9 +1400,6 @@ print_summary = true
 
 [node name="beach_rocks" parent="Bewuchs/rocks_umgebung" unique_id=1074319634 instance=ExtResource("50_o2cvn")]
 transform = Transform3D(0.80454475, 0, 0.5938921, 0, 1, 0, -0.5938921, 0, 0.80454475, -742.53485, 0.0025554672, -763.79596)
-
-[node name="big_long_rock" parent="Bewuchs/rocks_umgebung" unique_id=606580266 instance=ExtResource("51_4giqt")]
-transform = Transform3D(-0.378288, 0, 0.92568797, 0, 1, 0, -0.92568797, 0, -0.378288, -712.87683, 0.2146785, -815.7766)
 
 [node name="big_flat_beach_rock" parent="Bewuchs/rocks_umgebung" unique_id=864863346 instance=ExtResource("52_8iv6r")]
 transform = Transform3D(4.385758, 0, 0, 0, 4.385758, 0, 0, 0, 4.385758, -704.64465, -13.412979, -796.696)
@@ -8631,10 +8577,10 @@ transform = Transform3D(5.833051, 0, -5.6143475, 0, 8.09601, 0, 5.6143475, 0, 5.
 transform = Transform3D(2.7733433, 0, -4.353408, 0, 5.161743, 0, 4.353408, 0, 2.7733433, -721.0143, -2.752585, -862.57477)
 
 [node name="rock_09m_ridge" parent="Bewuchs/Sektor_x-800_z-1000/Felsen" unique_id=1012520569 instance=ExtResource("75_a8s4g")]
-transform = Transform3D(2.4892352, 0, 1.3762245, 0, 7.3764668, 0, -1.3762245, 0, 2.4892352, -624.43536, 0.081032984, -846.42786)
+transform = Transform3D(2.4892352, 0, 1.3762245, 0, 7.3764668, 0, -1.3762245, 0, 2.4892352, -624.43536, -0.09570981, -846.42786)
 
 [node name="rock_09m_ridge2" parent="Bewuchs/Sektor_x-800_z-1000/Felsen" unique_id=1124581611 instance=ExtResource("75_a8s4g")]
-transform = Transform3D(1.193199, 0, 1.7477744, 0, 5.4881988, 0, -1.7477744, 0, 1.193199, -627.6671, 0.081032984, -840.92944)
+transform = Transform3D(1.193199, 0, 1.7477744, 0, 5.4881988, 0, -1.7477744, 0, 1.193199, -627.6671, -0.022957332, -840.92944)
 
 [node name="rock_09m_ridge4" parent="Bewuchs/Sektor_x-800_z-1000/Felsen" unique_id=130057887 instance=ExtResource("75_a8s4g")]
 transform = Transform3D(0.09047568, 0, 5.649567, 0, 14.653366, 0, -5.649567, 0, 0.09047568, -669.5824, -2.870591, -824.053)
@@ -10569,3 +10515,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -692.0754, -1.933894, -891.68
 
 [node name="Crate_Wooden3" parent="." unique_id=1447720820 instance=ExtResource("70_12w7i")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -690.9578, -1.9380873, -892.73724)
+
+[node name="DeciduousSapling_32" parent="." unique_id=961043757 instance=ExtResource("115_f640b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -597.09985, 0.123680525, -811.149)
+
+[node name="DeciduousShrub_27" parent="." unique_id=990645430 instance=ExtResource("116_v0m6r")]
+transform = Transform3D(0.514178, 0, 0, 0, 0.514178, 0, 0, 0, 0.514178, -593.4742, -0.08536965, -812.226)
+
+[node name="DeciduousShrub_28" parent="." unique_id=178451181 instance=ExtResource("116_v0m6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -516.2486, -0.15012005, -783.17487)
+
+[node name="Node3D" parent="." unique_id=2043602766 instance=ExtResource("117_v0m6r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -704.8129, -0.023782969, -817.6222)
+
+[node name="Hütte_start2" parent="." unique_id=1640957224 instance=ExtResource("52_hm3sf")]
+transform = Transform3D(-0.06279535, 0, -0.99802643, 0, 1, 0, 0.99802643, 0, -0.06279535, -666.2325, -0.3787874, -846.2517)

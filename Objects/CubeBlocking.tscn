@@ -1,3 +1,8 @@
 [gd_scene format=3 uid="uid://c4uweru0sb4st"]
 
-[node name="CSGBox3D" type="CSGBox3D" unique_id=291779436]
+[sub_resource type="BoxMesh" id="BoxMesh_eibnf"]
+
+[node name="Node3D" type="Node3D" unique_id=2043602766]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1761868297]
+mesh = SubResource("BoxMesh_eibnf")

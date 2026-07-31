@@ -1,0 +1,343 @@
+[gd_scene format=3 uid="uid://4ac2q72ujx2q"]
+
+[ext_resource type="PackedScene" uid="uid://16hxs2pktstv" path="res://Assets/Buildings/MedievalVillage/Models/planks_Wooden_simple.gltf" id="1_heqq0"]
+[ext_resource type="PackedScene" uid="uid://j5oixho7wsbv" path="res://Assets/Buildings/MedievalVillage/Models/Corner_Exterior_Wood.gltf" id="2_qfyi8"]
+[ext_resource type="PackedScene" uid="uid://bckabhtnph02m" path="res://Objects/buildings/hütte_start.tscn" id="3_psop2"]
+
+[node name="Node3D" type="Node3D" unique_id=2043602766]
+
+[node name="planks_Wooden_simple" parent="." unique_id=1839008598 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="planks_Wooden_simple2" parent="." unique_id=1014590593 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1)
+
+[node name="planks_Wooden_simple3" parent="." unique_id=1672745975 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -3)
+
+[node name="planks_Wooden_simple4" parent="." unique_id=1875095925 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -5)
+
+[node name="planks_Wooden_simple5" parent="." unique_id=1622779326 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 6.9463754)
+
+[node name="planks_Wooden_simple6" parent="." unique_id=1472827431 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 4.9463754)
+
+[node name="planks_Wooden_simple7" parent="." unique_id=2131079250 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2.9463754)
+
+[node name="planks_Wooden_simple8" parent="." unique_id=1578808392 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, 1)
+
+[node name="planks_Wooden_simple9" parent="." unique_id=1453629719 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, -1)
+
+[node name="planks_Wooden_simple10" parent="." unique_id=1435953553 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, -3)
+
+[node name="planks_Wooden_simple11" parent="." unique_id=817072106 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, -5)
+
+[node name="planks_Wooden_simple12" parent="." unique_id=1401405746 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, 6.9463754)
+
+[node name="planks_Wooden_simple13" parent="." unique_id=1080043013 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, 4.9463754)
+
+[node name="planks_Wooden_simple14" parent="." unique_id=109355995 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9496841, 0, 2.9463754)
+
+[node name="planks_Wooden_simple36" parent="." unique_id=71821038 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, 1)
+
+[node name="planks_Wooden_simple37" parent="." unique_id=1369781243 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, -1)
+
+[node name="planks_Wooden_simple38" parent="." unique_id=977434465 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, -3)
+
+[node name="planks_Wooden_simple39" parent="." unique_id=2040561953 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, -5)
+
+[node name="planks_Wooden_simple40" parent="." unique_id=1168883480 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, 6.9463754)
+
+[node name="planks_Wooden_simple41" parent="." unique_id=632211227 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, 4.9463754)
+
+[node name="planks_Wooden_simple42" parent="." unique_id=117154138 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9494534, 0, 2.9463754)
+
+[node name="planks_Wooden_simple15" parent="." unique_id=291540636 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, 1)
+
+[node name="planks_Wooden_simple16" parent="." unique_id=1718372087 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, -1)
+
+[node name="planks_Wooden_simple17" parent="." unique_id=469256008 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, -3)
+
+[node name="planks_Wooden_simple18" parent="." unique_id=1996271581 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, -5)
+
+[node name="planks_Wooden_simple19" parent="." unique_id=1466283991 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, 6.9463754)
+
+[node name="planks_Wooden_simple20" parent="." unique_id=345941602 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, 4.9463754)
+
+[node name="planks_Wooden_simple21" parent="." unique_id=1848734172 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9494267, 0, 2.9463754)
+
+[node name="planks_Wooden_simple29" parent="." unique_id=1389259036 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, 1)
+
+[node name="planks_Wooden_simple30" parent="." unique_id=410424937 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, -1)
+
+[node name="planks_Wooden_simple31" parent="." unique_id=1334112689 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, -3)
+
+[node name="planks_Wooden_simple32" parent="." unique_id=415655639 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, -5)
+
+[node name="planks_Wooden_simple33" parent="." unique_id=650698316 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, 6.9463754)
+
+[node name="planks_Wooden_simple34" parent="." unique_id=57468434 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, 4.9463754)
+
+[node name="planks_Wooden_simple35" parent="." unique_id=1823309994 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.93976, 0, 2.9463754)
+
+[node name="planks_Wooden_simple22" parent="." unique_id=2008450894 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, 1)
+
+[node name="planks_Wooden_simple23" parent="." unique_id=780106340 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, -1)
+
+[node name="planks_Wooden_simple24" parent="." unique_id=1998481801 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, -3)
+
+[node name="planks_Wooden_simple25" parent="." unique_id=544578154 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, -5)
+
+[node name="planks_Wooden_simple26" parent="." unique_id=1737882374 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, 6.9463754)
+
+[node name="planks_Wooden_simple27" parent="." unique_id=516756404 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, 4.9463754)
+
+[node name="planks_Wooden_simple28" parent="." unique_id=84175724 instance=ExtResource("1_heqq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9997425, 0, 2.9463754)
+
+[node name="Corner_Exterior_Wood2" parent="." unique_id=871225328 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.611, 7.15)
+
+[node name="Corner_Exterior_Wood4" parent="." unique_id=2031594514 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, 7.15)
+
+[node name="Corner_Exterior_Wood7" parent="." unique_id=1400113165 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, 5.1675763)
+
+[node name="Corner_Exterior_Wood8" parent="." unique_id=1653421683 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, 2.7313442)
+
+[node name="Corner_Exterior_Wood9" parent="." unique_id=1985345119 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, 0.62949705)
+
+[node name="Corner_Exterior_Wood10" parent="." unique_id=1673815193 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, -1.4484649)
+
+[node name="Corner_Exterior_Wood11" parent="." unique_id=1534059685 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, -3.5741968)
+
+[node name="Corner_Exterior_Wood12" parent="." unique_id=2091111822 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -2.611, -5.102813)
+
+[node name="Corner_Exterior_Wood13" parent="." unique_id=2098597017 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, 7.15)
+
+[node name="Corner_Exterior_Wood14" parent="." unique_id=1757053631 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, 5.1675763)
+
+[node name="Corner_Exterior_Wood15" parent="." unique_id=1629109127 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, 2.7313442)
+
+[node name="Corner_Exterior_Wood16" parent="." unique_id=336430771 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, 0.62949705)
+
+[node name="Corner_Exterior_Wood17" parent="." unique_id=85152035 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, -1.4484649)
+
+[node name="Corner_Exterior_Wood18" parent="." unique_id=1691633081 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, -3.5741968)
+
+[node name="Corner_Exterior_Wood19" parent="." unique_id=257959111 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -2.611, -5.102813)
+
+[node name="Corner_Exterior_Wood5" parent="." unique_id=2062167092 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -2.611, 7.15)
+
+[node name="Corner_Exterior_Wood6" parent="." unique_id=2040539582 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -2.611, 7.15)
+
+[node name="Corner_Exterior_Wood3" parent="." unique_id=961264035 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.611, 0.5100746)
+
+[node name="Corner_Exterior_Wood20" parent="." unique_id=1582950242 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -2.611, 0.5100746)
+
+[node name="Corner_Exterior_Wood21" parent="." unique_id=723316019 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -2.611, 0.5100746)
+
+[node name="Corner_Exterior_Wood22" parent="." unique_id=304446721 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.611, -5.1505804)
+
+[node name="Corner_Exterior_Wood23" parent="." unique_id=349147536 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -2.611, -5.1505804)
+
+[node name="Corner_Exterior_Wood24" parent="." unique_id=409673604 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -2.611, -5.1505804)
+
+[node name="Corner_Exterior_Wood25" parent="." unique_id=1132437228 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4365187, 7.15)
+
+[node name="Corner_Exterior_Wood26" parent="." unique_id=1515931705 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, 7.15)
+
+[node name="Corner_Exterior_Wood27" parent="." unique_id=1209483583 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, 5.1675763)
+
+[node name="Corner_Exterior_Wood28" parent="." unique_id=981485761 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, 2.7313442)
+
+[node name="Corner_Exterior_Wood29" parent="." unique_id=1497724232 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, 0.62949705)
+
+[node name="Corner_Exterior_Wood30" parent="." unique_id=114158383 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, -1.4484649)
+
+[node name="Corner_Exterior_Wood31" parent="." unique_id=592012217 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, -3.5741968)
+
+[node name="Corner_Exterior_Wood32" parent="." unique_id=222371264 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -5.4365187, -5.102813)
+
+[node name="Corner_Exterior_Wood33" parent="." unique_id=1569237831 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, 7.15)
+
+[node name="Corner_Exterior_Wood34" parent="." unique_id=1105112987 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, 5.1675763)
+
+[node name="Corner_Exterior_Wood35" parent="." unique_id=1715101757 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, 2.7313442)
+
+[node name="Corner_Exterior_Wood36" parent="." unique_id=1195537416 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, 0.62949705)
+
+[node name="Corner_Exterior_Wood37" parent="." unique_id=442170489 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, -1.4484649)
+
+[node name="Corner_Exterior_Wood38" parent="." unique_id=145028611 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, -3.5741968)
+
+[node name="Corner_Exterior_Wood39" parent="." unique_id=1829641688 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -5.4365187, -5.102813)
+
+[node name="Corner_Exterior_Wood40" parent="." unique_id=311628180 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -5.4365187, 7.15)
+
+[node name="Corner_Exterior_Wood41" parent="." unique_id=1751202005 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -5.4365187, 7.15)
+
+[node name="Corner_Exterior_Wood42" parent="." unique_id=1891434298 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4365187, 0.5100746)
+
+[node name="Corner_Exterior_Wood43" parent="." unique_id=4038506 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -5.4365187, 0.5100746)
+
+[node name="Corner_Exterior_Wood44" parent="." unique_id=1586866250 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -5.4365187, 0.5100746)
+
+[node name="Corner_Exterior_Wood45" parent="." unique_id=485775549 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4365187, -5.1505804)
+
+[node name="Corner_Exterior_Wood46" parent="." unique_id=1917683180 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -5.4365187, -5.1505804)
+
+[node name="Corner_Exterior_Wood47" parent="." unique_id=76110475 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -5.4365187, -5.1505804)
+
+[node name="Corner_Exterior_Wood48" parent="." unique_id=1934994103 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.000629, 7.15)
+
+[node name="Corner_Exterior_Wood49" parent="." unique_id=1364342807 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, 7.15)
+
+[node name="Corner_Exterior_Wood50" parent="." unique_id=1777276840 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, 5.1675763)
+
+[node name="Corner_Exterior_Wood51" parent="." unique_id=816372661 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, 2.7313442)
+
+[node name="Corner_Exterior_Wood52" parent="." unique_id=1351363403 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, 0.62949705)
+
+[node name="Corner_Exterior_Wood53" parent="." unique_id=989612625 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, -1.4484649)
+
+[node name="Corner_Exterior_Wood54" parent="." unique_id=1019278500 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, -3.5741968)
+
+[node name="Corner_Exterior_Wood55" parent="." unique_id=1289974238 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.036688, -8.000629, -5.102813)
+
+[node name="Corner_Exterior_Wood56" parent="." unique_id=1581125682 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, 7.15)
+
+[node name="Corner_Exterior_Wood57" parent="." unique_id=37077682 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, 5.1675763)
+
+[node name="Corner_Exterior_Wood58" parent="." unique_id=1147241781 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, 2.7313442)
+
+[node name="Corner_Exterior_Wood59" parent="." unique_id=1881549553 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, 0.62949705)
+
+[node name="Corner_Exterior_Wood60" parent="." unique_id=2048796263 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, -1.4484649)
+
+[node name="Corner_Exterior_Wood61" parent="." unique_id=1224321928 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, -3.5741968)
+
+[node name="Corner_Exterior_Wood62" parent="." unique_id=1321420267 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.899315, -8.000629, -5.102813)
+
+[node name="Corner_Exterior_Wood63" parent="." unique_id=1821832788 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -8.000629, 7.15)
+
+[node name="Corner_Exterior_Wood64" parent="." unique_id=1981945791 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -8.000629, 7.15)
+
+[node name="Corner_Exterior_Wood65" parent="." unique_id=1285655181 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.000629, 0.5100746)
+
+[node name="Corner_Exterior_Wood66" parent="." unique_id=1938834540 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -8.000629, 0.5100746)
+
+[node name="Corner_Exterior_Wood67" parent="." unique_id=696700543 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -8.000629, 0.5100746)
+
+[node name="Corner_Exterior_Wood68" parent="." unique_id=895555621 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8.000629, -5.1505804)
+
+[node name="Corner_Exterior_Wood69" parent="." unique_id=531747110 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9570231, -8.000629, -5.1505804)
+
+[node name="Corner_Exterior_Wood70" parent="." unique_id=1623098405 instance=ExtResource("2_qfyi8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9245286, -8.000629, -5.1505804)
+
+[node name="Hütte_start" parent="." unique_id=1737789835 instance=ExtResource("3_psop2")]
+transform = Transform3D(-4.3711385e-08, 0, -0.99999994, 0, 1, 0, 0.99999994, 0, -4.3711385e-08, 0.51874447, 0, -1.0725591)
